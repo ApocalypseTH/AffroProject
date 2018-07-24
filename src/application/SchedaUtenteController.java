@@ -10,14 +10,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class SchedaUtenteController implements Initializable {
 	
 	static Stage primaryStage;
+	private boolean impStat;
+	final ToggleGroup orologio = new ToggleGroup();
+	final ToggleGroup edificio = new ToggleGroup();
+	private Connection connection;
+	private Statement stm;
+	private ResultSet rs;
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -89,11 +99,148 @@ public class SchedaUtenteController implements Initializable {
 	private TextField analComb;
 	@FXML
 	private TextField bollino;
+	@FXML
+	private CheckBox circuiti;
+	@FXML
+	private CheckBox termoregolato;
+	@FXML
+	private CheckBox contacalorie;
+	@FXML
+	private CheckBox superiore35;
+	@FXML
+	private CheckBox superiore116;
+	@FXML
+	private CheckBox superiore350;
+	@FXML
+	private RadioButton automatico;
+	@FXML
+	private RadioButton manuale;
+	@FXML
+	private Button ora;
+	@FXML
+	private Button statusImpianto;
+	@FXML
+	private TextField c1ditta;
+	@FXML
+	private TextField c1modello;
+	@FXML
+	private TextField c1tipo;
+	@FXML
+	private TextField c1matricola;
+	@FXML
+	private TextField c1combustibile;
+	@FXML
+	private TextField c2ditta;
+	@FXML
+	private TextField c2modello;
+	@FXML
+	private TextField c2tipo;
+	@FXML
+	private TextField c2matricola;
+	@FXML
+	private TextField c2combustibile;
+	@FXML
+	private TextField c3ditta;
+	@FXML
+	private TextField c3modello;
+	@FXML
+	private TextField c3tipo;
+	@FXML
+	private TextField c3matricola;
+	@FXML
+	private TextField c3combustibile;
+	@FXML
+	private TextField c4ditta;
+	@FXML
+	private TextField c4modello;
+	@FXML
+	private TextField c4tipo;
+	@FXML
+	private TextField c4matricola;
+	@FXML
+	private TextField c4combustibile;
+	@FXML
+	private TextField c5ditta;
+	@FXML
+	private TextField c5modello;
+	@FXML
+	private TextField c5tipo;
+	@FXML
+	private TextField c5matricola;
+	@FXML
+	private TextField c5combustibile;
+	@FXML
+	private TextField c6ditta;
+	@FXML
+	private TextField c6modello;
+	@FXML
+	private TextField c6tipo;
+	@FXML
+	private TextField c6matricola;
+	@FXML
+	private TextField c6combustibile;
+	@FXML
+	private TextField b1ditta;
+	@FXML
+	private TextField b1modello;
+	@FXML
+	private TextField b1tipo;
+	@FXML
+	private TextField b1matricola;
+	@FXML
+	private TextField b1combustibile;
+	@FXML
+	private TextField b2ditta;
+	@FXML
+	private TextField b2modello;
+	@FXML
+	private TextField b2tipo;
+	@FXML
+	private TextField b2matricola;
+	@FXML
+	private TextField b2combustibile;
+	@FXML
+	private TextField b3ditta;
+	@FXML
+	private TextField b3modello;
+	@FXML
+	private TextField b3tipo;
+	@FXML
+	private TextField b3matricola;
+	@FXML
+	private TextField b3combustibile;
+	@FXML
+	private TextField b4ditta;
+	@FXML
+	private TextField b4modello;
+	@FXML
+	private TextField b4tipo;
+	@FXML
+	private TextField b4matricola;
+	@FXML
+	private TextField b4combustibile;
+	@FXML
+	private TextField b5ditta;
+	@FXML
+	private TextField b5modello;
+	@FXML
+	private TextField b5tipo;
+	@FXML
+	private TextField b5matricola;
+	@FXML
+	private TextField b5combustibile;
+	@FXML
+	private TextField b6ditta;
+	@FXML
+	private TextField b6modello;
+	@FXML
+	private TextField b6tipo;
+	@FXML
+	private TextField b6matricola;
+	@FXML
+	private TextField b6combustibile;
 	
-	
-	private Connection connection;
-	private Statement stm;
-	private ResultSet rs;
+	private TextField[] t = new TextField[5];
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -120,6 +267,15 @@ public class SchedaUtenteController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		automatico.setToggleGroup(orologio);
+		manuale.setToggleGroup(orologio);
+		
+		t[0]=c1ditta;
+		t[1]=c1modello;
+		t[2]=c1tipo;
+		t[3]=c1matricola;
+		t[4]=c1combustibile;
     }
 
 
@@ -217,6 +373,68 @@ public class SchedaUtenteController implements Initializable {
 			puliziacb.setText(rs.getString("MANPROGM"));
 			analComb.setText(rs.getString("ANALCOMB"));
 			bollino.setText(rs.getString("BOLLINO"));
+			
+			if("Circuiti".equals(rs.getString("IMPCIRC"))) {
+				circuiti.setSelected(true);
+			}
+			else {
+				circuiti.setSelected(false);
+			}
+			if("Termoregolato".equals(rs.getString("IMPTERM"))) {
+				termoregolato.setSelected(true);
+			}
+			else {
+				termoregolato.setSelected(false);
+			}
+			if("??".equals(rs.getString("IMPCONT"))) {
+				contacalorie.setSelected(true);
+			}
+			else {
+				contacalorie.setSelected(false);
+			}
+			if("Superiore 35 KW".equals(rs.getString("IMPSU35"))) {
+				superiore35.setSelected(true);
+			}
+			else {
+				superiore35.setSelected(false);
+			}
+			if("Superiore 116 KW".equals(rs.getString("IMPSU116"))) {
+				superiore116.setSelected(true);
+			}
+			else {
+				superiore116.setSelected(false);
+			}
+			if("Superiore 350 KW".equals(rs.getString("IMPSUPE"))) {
+				superiore350.setSelected(true);
+			}
+			else {
+				superiore350.setSelected(false);
+			}
+			if("SI".equals(rs.getString("IMPACCESO"))) {
+				statusImpianto.setStyle("-fx-text-fill: green;");
+				impStat=true;
+			}
+			else {
+				statusImpianto.setStyle("-fx-text-fill: red;");
+				impStat=false;
+			}
+			if("Automatico".equals(rs.getString("OROLOGIO"))) {
+				automatico.setSelected(true);
+			}
+			else {
+				manuale.setSelected(true);
+			}
+			if("Legale".equals(rs.getString("ORA"))) {
+				ora.setText("Ora Legale");
+			}
+			else {
+				ora.setText("Ora Solare");
+			}
+			
+			t[0].setText(rs.getString("DITTAC1"));
+			t[1].setText(rs.getString("MODELLOC1"));
+			t[3].setText(rs.getString("MATRIC1"));
+			t[4].setText(rs.getString("COMBC1"));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
