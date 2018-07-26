@@ -28,6 +28,7 @@ public class SchedaUtenteController implements Initializable {
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
+	private TextField[][] griglia = new TextField[12][5];
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -239,8 +240,15 @@ public class SchedaUtenteController implements Initializable {
 	private TextField b6matricola;
 	@FXML
 	private TextField b6combustibile;
+	@FXML
+	private Button noteAmministratore;
+	@FXML
+	private Button noteManutenzione;
+	@FXML
+	private Button noteInstallatore;
 	
-	private TextField[] t = new TextField[5];
+	
+	
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -271,24 +279,78 @@ public class SchedaUtenteController implements Initializable {
 		automatico.setToggleGroup(orologio);
 		manuale.setToggleGroup(orologio);
 		
-		t[0]=c1ditta;
-		t[1]=c1modello;
-		t[2]=c1tipo;
-		t[3]=c1matricola;
-		t[4]=c1combustibile;
+		griglia[0][0]=c1ditta;
+		griglia[0][1]=c1modello;
+		griglia[0][2]=c1tipo;
+		griglia[0][3]=c1matricola;
+		griglia[0][4]=c1combustibile;
+		
+		griglia[1][0]=c2ditta;
+		griglia[1][1]=c2modello;
+		griglia[1][2]=c2tipo;
+		griglia[1][3]=c2matricola;
+		griglia[1][4]=c2combustibile;
+		
+		griglia[2][0]=c3ditta;
+		griglia[2][1]=c3modello;
+		griglia[2][2]=c3tipo;
+		griglia[2][3]=c3matricola;
+		griglia[2][4]=c3combustibile;
+		
+		griglia[3][0]=c4ditta;
+		griglia[3][1]=c4modello;
+		griglia[3][2]=c4tipo;
+		griglia[3][3]=c4matricola;
+		griglia[3][4]=c4combustibile;
+		
+		griglia[4][0]=c5ditta;
+		griglia[4][1]=c5modello;
+		griglia[4][2]=c5tipo;
+		griglia[4][3]=c5matricola;
+		griglia[4][4]=c5combustibile;
+		
+		griglia[5][0]=c6ditta;
+		griglia[5][1]=c6modello;
+		griglia[5][2]=c6tipo;
+		griglia[5][3]=c6matricola;
+		griglia[5][4]=c6combustibile;
+		
+		griglia[6][0]=b1ditta;
+		griglia[6][1]=b1modello;
+		griglia[6][2]=b1tipo;
+		griglia[6][3]=b1matricola;
+		griglia[6][4]=b1combustibile;
+		
+		griglia[7][0]=b2ditta;
+		griglia[7][1]=b2modello;
+		griglia[7][2]=b2tipo;
+		griglia[7][3]=b2matricola;
+		griglia[7][4]=b2combustibile;
+		
+		griglia[8][0]=b3ditta;
+		griglia[8][1]=b3modello;
+		griglia[8][2]=b3tipo;
+		griglia[8][3]=b3matricola;
+		griglia[8][4]=b3combustibile;
+		
+		griglia[9][0]=b4ditta;
+		griglia[9][1]=b4modello;
+		griglia[9][2]=b4tipo;
+		griglia[9][3]=b4matricola;
+		griglia[9][4]=b4combustibile;
+		
+		griglia[10][0]=b5ditta;
+		griglia[10][1]=b5modello;
+		griglia[10][2]=b5tipo;
+		griglia[10][3]=b5matricola;
+		griglia[10][4]=b5combustibile;
+
+		griglia[11][0]=b6ditta;
+		griglia[11][1]=b6modello;
+		griglia[11][2]=b6tipo;
+		griglia[11][3]=b6matricola;
+		griglia[11][4]=b6combustibile;
     }
-
-
-	public void schedaU(){
-		SchedaUtente su = new SchedaUtente();
-		try {
-			su.start(primaryStage);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 	
 	public void ricercheU(){
 		
@@ -300,6 +362,67 @@ public class SchedaUtenteController implements Initializable {
 
 	public void ricercheS(){
 	
+	}
+	
+	public void noteA() {
+		
+		String testo="";
+		String id="";
+		try {
+			testo = rs.getString("NOTEA");
+			id=rs.getString("CODICEU");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Note n = new Note(testo, stm, 1, id);
+		try {
+			n.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void noteM() {
+		
+		String testo="";
+		String id="";
+		try {
+			testo = rs.getString("NOTEM");
+			id=rs.getString("CODICEU");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Note n = new Note(testo, stm, 2, id);
+		try {
+			n.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void noteI() {
+		
+		String testo="";
+		String id="";
+		try {
+			testo = rs.getString("NOTEI");
+			id=rs.getString("CODICEU");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Note n = new Note(testo, stm, 3, id);
+		try {
+			n.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void next(){
@@ -431,11 +554,21 @@ public class SchedaUtenteController implements Initializable {
 				ora.setText("Ora Solare");
 			}
 			
-			t[0].setText(rs.getString("DITTAC1"));
-			t[1].setText(rs.getString("MODELLOC1"));
-			t[3].setText(rs.getString("MATRIC1"));
-			t[4].setText(rs.getString("COMBC1"));
-			
+			for(int i=0; i<12; i++) {
+				if(i<6) {
+					griglia[i][0].setText(rs.getString("DITTAC"+(i+1)));
+					griglia[i][1].setText(rs.getString("MODELLOC"+(i+1)));
+					griglia[i][3].setText(rs.getString("MATRIC"+(i+1)));
+					griglia[i][4].setText(rs.getString("COMBC"+(i+1)));
+				}
+				else {
+					griglia[i][0].setText(rs.getString("DITTAB"+(i-5)));
+					griglia[i][1].setText(rs.getString("MODELLOB"+(i-5)));
+					griglia[i][2].setText(rs.getString("TIPOB"+(i-5)));
+					griglia[i][3].setText(rs.getString("MATRIB"+(i-5)));
+					griglia[i][4].setText(rs.getString("COMBB"+(i-5)));
+				}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

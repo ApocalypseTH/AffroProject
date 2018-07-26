@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.Statement;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -8,24 +10,39 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class Main extends Application {
+public class Note extends Application {
+	
+	String testo;
+	Statement stm;
+	Integer i;
+	String id;
+	
+	public Note(String t, Statement s, int i, String id) {
+		testo=t;
+		stm=s;
+		this.i=i;
+		this.id=id;
+	}
+	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage secondaryStage) {
 		try {
 			
-			primaryStage.setTitle("Affro S.a.S.");
+			Stage s= new Stage();
+			
+			NoteController.testo = testo;
+			NoteController.i = i;
+			NoteController.id = id;
+			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("home.fxml"));
+	        loader.setLocation(Main.class.getResource("note.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
 
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			HomeController.primaryStage = primaryStage;
+			s.setScene(scene);
+			s.show();
 			
 		} catch(Exception e) {
 			e.printStackTrace();

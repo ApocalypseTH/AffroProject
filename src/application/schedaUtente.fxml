@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
@@ -351,7 +352,7 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button layoutX="429.0" layoutY="141.0" mnemonicParsing="false" text="Note" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0" />
+                  <Button id="amministratore" fx:id="noteAmministratore" layoutX="429.0" layoutY="141.0" mnemonicParsing="false" onAction="#noteA" text="Note" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="627.0" layoutY="236.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="200.0">
@@ -513,7 +514,7 @@
                               <Insets left="5.0" right="2.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Note" GridPane.columnIndex="4">
+                        <Button id="manutenzione" fx:id="noteManutenzione" mnemonicParsing="false" onAction="#noteM" text="Note" GridPane.columnIndex="4">
                            <GridPane.margin>
                               <Insets left="20.0" right="10.0" />
                            </GridPane.margin>
@@ -989,7 +990,7 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button layoutX="438.0" layoutY="217.0" mnemonicParsing="false" text="Note" />
+                  <Button id="installatore" fx:id="noteInstallatore" layoutX="438.0" layoutY="217.0" mnemonicParsing="false" onAction="#noteI" text="Note" />
                   <Button fx:id="statusImpianto" layoutX="292.0" layoutY="217.0" mnemonicParsing="false" text="Impianto Acceso" />
                </children></AnchorPane>
             <AnchorPane layoutX="524.0" layoutY="566.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="650.0">
@@ -1109,5 +1110,6 @@
             <Button layoutX="331.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Amministratori" />
             <Button layoutX="331.0" layoutY="33.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
          </children></AnchorPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
