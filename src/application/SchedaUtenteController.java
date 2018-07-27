@@ -26,8 +26,8 @@ public class SchedaUtenteController implements Initializable {
 	final ToggleGroup orologio = new ToggleGroup();
 	final ToggleGroup edificio = new ToggleGroup();
 	private Connection connection;
-	private Statement stm;
-	private ResultSet rs;
+	private  Statement stm;
+	private  ResultSet rs;
 	private TextField[][] griglia = new TextField[12][5];
 	
 	@FXML
@@ -43,171 +43,171 @@ public class SchedaUtenteController implements Initializable {
 	private MenuItem ricercheStorico;
 	
 	@FXML
-	private Label codice;
+	private  Label codice;
 	@FXML
-	private TextField nome;
+	private  TextField nome;
 	@FXML
-	private TextField cognome;
+	private  TextField cognome;
 	@FXML
-	private TextField viaU;
+	private  TextField viaU;
 	@FXML
-	private TextField numeroU;
+	private  TextField numeroU;
 	@FXML
-	private TextField localita;
+	private  TextField localita;
 	@FXML
-	private TextField cap;
+	private  TextField cap;
 	@FXML
-	private TextField comuneU;
+	private  TextField comuneU;
 	@FXML
-	private TextField provU;
+	private  TextField provU;
 	@FXML
-	private TextField telefonoU;
+	private  TextField telefonoU;
 	@FXML
-	private TextField cellulareU;
+	private  TextField cellulareU;
 	@FXML
-	private TextField cfU;
+	private  TextField cfU;
 	@FXML
-	private TextField amministratore;
+	private  TextField amministratore;
 	@FXML
-	private TextField viaA;
+	private  TextField viaA;
 	@FXML
-	private TextField numeroA;
+	private  TextField numeroA;
 	@FXML
-	private TextField comuneA;
+	private  TextField comuneA;
 	@FXML
-	private TextField provA;
+	private  TextField provA;
 	@FXML
-	private TextField telefonoA;
+	private  TextField telefonoA;
 	@FXML
-	private TextField cfA;
+	private  TextField cfA;
 	@FXML
-	private TextField installatore;
+	private  TextField installatore;
 	@FXML
-	private TextField certificatoConformita;
+	private  TextField certificatoConformita;
 	@FXML
-	private TextField intervento1;
+	private  TextField intervento1;
 	@FXML
-	private TextField intervento2;
+	private  TextField intervento2;
 	@FXML
-	private TextField intervento3;
+	private  TextField intervento3;
 	@FXML
-	private TextField intervento4;
+	private  TextField intervento4;
 	@FXML
-	private TextField codManut;
+	private  TextField codManut;
 	@FXML
-	private TextField puliziacb;
+	private  TextField puliziacb;
 	@FXML
-	private TextField analComb;
+	private  TextField analComb;
 	@FXML
-	private TextField bollino;
+	private  TextField bollino;
 	@FXML
-	private CheckBox circuiti;
+	private  CheckBox circuiti;
 	@FXML
-	private CheckBox termoregolato;
+	private  CheckBox termoregolato;
 	@FXML
-	private CheckBox contacalorie;
+	private  CheckBox contacalorie;
 	@FXML
-	private CheckBox superiore35;
+	private  CheckBox superiore35;
 	@FXML
-	private CheckBox superiore116;
+	private  CheckBox superiore116;
 	@FXML
-	private CheckBox superiore350;
+	private  CheckBox superiore350;
 	@FXML
-	private RadioButton automatico;
+	private  RadioButton automatico;
 	@FXML
-	private RadioButton manuale;
+	private  RadioButton manuale;
 	@FXML
-	private Button ora;
+	private  Button ora;
 	@FXML
-	private Button statusImpianto;
+	private  Button statusImpianto;
 	@FXML
-	private TextField c1ditta;
+	private  TextField c1ditta;
 	@FXML
-	private TextField c1modello;
+	private  TextField c1modello;
 	@FXML
-	private TextField c1tipo;
+	private  TextField c1tipo;
 	@FXML
-	private TextField c1matricola;
+	private  TextField c1matricola;
 	@FXML
-	private TextField c1combustibile;
+	private  TextField c1combustibile;
 	@FXML
-	private TextField c2ditta;
+	private  TextField c2ditta;
 	@FXML
-	private TextField c2modello;
+	private  TextField c2modello;
 	@FXML
-	private TextField c2tipo;
+	private  TextField c2tipo;
 	@FXML
-	private TextField c2matricola;
+	private  TextField c2matricola;
 	@FXML
-	private TextField c2combustibile;
+	private  TextField c2combustibile;
 	@FXML
-	private TextField c3ditta;
+	private  TextField c3ditta;
 	@FXML
-	private TextField c3modello;
+	private  TextField c3modello;
 	@FXML
-	private TextField c3tipo;
+	private  TextField c3tipo;
 	@FXML
-	private TextField c3matricola;
+	private  TextField c3matricola;
 	@FXML
-	private TextField c3combustibile;
+	private  TextField c3combustibile;
 	@FXML
-	private TextField c4ditta;
+	private  TextField c4ditta;
 	@FXML
-	private TextField c4modello;
+	private  TextField c4modello;
 	@FXML
-	private TextField c4tipo;
+	private  TextField c4tipo;
 	@FXML
-	private TextField c4matricola;
+	private  TextField c4matricola;
 	@FXML
-	private TextField c4combustibile;
+	private  TextField c4combustibile;
 	@FXML
-	private TextField c5ditta;
+	private  TextField c5ditta;
 	@FXML
-	private TextField c5modello;
+	private  TextField c5modello;
 	@FXML
-	private TextField c5tipo;
+	private  TextField c5tipo;
 	@FXML
-	private TextField c5matricola;
+	private  TextField c5matricola;
 	@FXML
-	private TextField c5combustibile;
+	private  TextField c5combustibile;
 	@FXML
-	private TextField c6ditta;
+	private  TextField c6ditta;
 	@FXML
-	private TextField c6modello;
+	private  TextField c6modello;
 	@FXML
-	private TextField c6tipo;
+	private  TextField c6tipo;
 	@FXML
-	private TextField c6matricola;
+	private  TextField c6matricola;
 	@FXML
-	private TextField c6combustibile;
+	private  TextField c6combustibile;
 	@FXML
-	private TextField b1ditta;
+	private  TextField b1ditta;
 	@FXML
-	private TextField b1modello;
+	private  TextField b1modello;
 	@FXML
-	private TextField b1tipo;
+	private  TextField b1tipo;
 	@FXML
-	private TextField b1matricola;
+	private  TextField b1matricola;
 	@FXML
-	private TextField b1combustibile;
+	private  TextField b1combustibile;
 	@FXML
-	private TextField b2ditta;
+	private  TextField b2ditta;
 	@FXML
-	private TextField b2modello;
+	private  TextField b2modello;
 	@FXML
-	private TextField b2tipo;
+	private  TextField b2tipo;
 	@FXML
-	private TextField b2matricola;
+	private  TextField b2matricola;
 	@FXML
-	private TextField b2combustibile;
+	private  TextField b2combustibile;
 	@FXML
-	private TextField b3ditta;
+	private  TextField b3ditta;
 	@FXML
-	private TextField b3modello;
+	private  TextField b3modello;
 	@FXML
-	private TextField b3tipo;
+	private  TextField b3tipo;
 	@FXML
-	private TextField b3matricola;
+	private  TextField b3matricola;
 	@FXML
 	private TextField b3combustibile;
 	@FXML
@@ -246,8 +246,16 @@ public class SchedaUtenteController implements Initializable {
 	private Button noteManutenzione;
 	@FXML
 	private Button noteInstallatore;
-	
-	
+	@FXML
+	private RadioButton condTerzoResponsabile;
+	@FXML
+	private RadioButton condConAmministratore;
+	@FXML
+	private RadioButton privato;
+	@FXML
+	private RadioButton altroDitta;
+	@FXML
+	private RadioButton altroTerzoResponsabile;
 	
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
@@ -278,6 +286,12 @@ public class SchedaUtenteController implements Initializable {
 		
 		automatico.setToggleGroup(orologio);
 		manuale.setToggleGroup(orologio);
+		
+		condTerzoResponsabile.setToggleGroup(edificio);
+		condConAmministratore.setToggleGroup(edificio);
+		privato.setToggleGroup(edificio);
+		altroDitta.setToggleGroup(edificio);
+		altroTerzoResponsabile.setToggleGroup(edificio);
 		
 		griglia[0][0]=c1ditta;
 		griglia[0][1]=c1modello;
@@ -425,6 +439,71 @@ public class SchedaUtenteController implements Initializable {
 		
 	}
 	
+	public void cancellaRecord() {
+		try {
+			stm.execute("delete from utenti where codiceu="+rs.getString("CODICEU"));
+			requery();
+			refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void requery() {
+		try {
+			rs = stm.executeQuery("select * from utenti order by codiceu");
+			rs.next();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void cercaW(){
+		Cerca c = new Cerca(this);
+		try {
+			c.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public  void cerca(String nome, String cognome) {
+		try {
+			ResultSet cerca = stm.executeQuery("select codiceu from utenti where nomeu like '%"+nome+"%' and cognomeu like '%"+cognome+"%'");
+			
+			if(cerca.next()) {
+				String idc = cerca.getString("CODICEU");
+				
+				System.out.println(nome+" "+cognome+" "+idc);
+				
+				requery();
+				rs.first();
+				while (!idc.equals(rs.getString("CODICEU"))) {
+					rs.next();
+				}
+				refresh();
+			}
+			else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Attenzione");
+				alert.setHeaderText("La ricerca non ha prodotto risultati");
+				alert.showAndWait();
+				requery();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("La ricerca non ha prodotto risultati");
+			alert.showAndWait();
+		}
+	}
+	
 	public void next(){
 		try {
 			rs.next();
@@ -509,7 +588,7 @@ public class SchedaUtenteController implements Initializable {
 			else {
 				termoregolato.setSelected(false);
 			}
-			if("??".equals(rs.getString("IMPCONT"))) {
+			if("Contacalorie".equals(rs.getString("IMPCONT"))) {
 				contacalorie.setSelected(true);
 			}
 			else {
@@ -569,6 +648,49 @@ public class SchedaUtenteController implements Initializable {
 					griglia[i][4].setText(rs.getString("COMBB"+(i-5)));
 				}
 			}
+			
+			if(!"".equals(rs.getString("NOTEA"))) {
+				noteAmministratore.setStyle("-fx-text-fill: red;");
+			}
+			else {
+				noteAmministratore.setStyle("-fx-text-fill: black;");
+			}
+			if(!"".equals(rs.getString("NOTEM"))) {
+				noteManutenzione.setStyle("-fx-text-fill: red;");
+			}
+			else {
+				noteManutenzione.setStyle("-fx-text-fill: black;");
+			}
+			if(!"".equals(rs.getString("NOTEI"))) {
+				noteInstallatore.setStyle("-fx-text-fill: red;");
+			}
+			else {
+				noteInstallatore.setStyle("-fx-text-fill: black;");
+			}
+			
+			if("Condominio con terzo responsabile".equals(rs.getString("IMPTIPO"))) {
+				condTerzoResponsabile.setSelected(true);
+			}
+			else if("Condominio con amministratore".equals(rs.getString("IMPTIPO"))) {
+				condConAmministratore.setSelected(true);
+			}
+			else if("Privato".equals(rs.getString("IMPTIPO"))) {
+				privato.setSelected(true);
+			}
+			else if("Altro (Ditta)".equals(rs.getString("IMPTIPO"))) {
+				altroDitta.setSelected(true);
+			}
+			else if("Altro (con terzo responsabile)".equals(rs.getString("IMPTIPO"))) {
+				altroTerzoResponsabile.setSelected(true);
+			}
+			else if("".equals(rs.getString("IMPTIPO")) || "Condominio".equals(rs.getString("IMPTIPO")) || "Altro".equals(rs.getString("IMPTIPO"))) {
+				condTerzoResponsabile.setSelected(false);
+				condConAmministratore.setSelected(false);
+				privato.setSelected(false);
+				altroDitta.setSelected(false);
+				altroTerzoResponsabile.setSelected(false);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
