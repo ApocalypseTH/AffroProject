@@ -35,7 +35,13 @@ public class HomeController {
 	}
 	
 	public void ricercheU(){
-		
+		RicercaUtenti su = new RicercaUtenti();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void ricercheA(){
