@@ -256,7 +256,7 @@
                   </Label>
                   <Label layoutX="14.0" layoutY="44.0" text="Amministratore:" AnchorPane.bottomAnchor="9.0" />
                   <ComboBox fx:id="amministratore" layoutX="119.0" layoutY="39.0" prefHeight="25.0" prefWidth="258.0" AnchorPane.bottomAnchor="6.0" />
-                  <CheckBox fx:id="cAmministratore" layoutX="392.0" layoutY="44.0" mnemonicParsing="false" text="Tutti" />
+                  <CheckBox fx:id="cAmministratore" layoutX="392.0" layoutY="44.0" mnemonicParsing="false" onAction="#checkAmministratore" text="Tutti" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="139.0" layoutY="477.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="477.0">
@@ -266,12 +266,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="marcaCaldaia" layoutX="119.0" layoutY="40.0" prefHeight="25.0" prefWidth="258.0" />
+                  <ComboBox fx:id="marcaCaldaia" layoutX="119.0" layoutY="40.0" onAction="#caldaiaRefresh" onContextMenuRequested="#caldaiaRefresh" prefHeight="25.0" prefWidth="258.0" />
                   <ComboBox fx:id="modelloCaldaia" layoutX="119.0" layoutY="75.0" prefHeight="25.0" prefWidth="258.0" />
                   <Label layoutX="14.0" layoutY="44.0" text="Marca:" />
                   <Label layoutX="14.0" layoutY="79.0" text="Modello:" />
-                  <CheckBox fx:id="cCaldaiaDitta" layoutX="393.0" layoutY="44.0" mnemonicParsing="false" text="Tutte" />
-                  <CheckBox fx:id="cCaldaiaModello" layoutX="393.0" layoutY="79.0" mnemonicParsing="false" text="Tutti" />
+                  <CheckBox fx:id="cCaldaiaDitta" layoutX="393.0" layoutY="44.0" mnemonicParsing="false" onAction="#checkCaldaiaDitta" text="Tutte" />
+                  <CheckBox fx:id="cCaldaiaModello" layoutX="393.0" layoutY="79.0" mnemonicParsing="false" onAction="#checkCaldaiaModello" text="Tutti" />
                   <Label layoutX="14.0" layoutY="114.0" text="Combustibile:" />
                   <TextField layoutX="119.0" layoutY="110.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
@@ -283,12 +283,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="marcaBruciatore" layoutX="119.0" layoutY="40.0" prefHeight="25.0" prefWidth="258.0" />
+                  <ComboBox fx:id="marcaBruciatore" layoutX="119.0" layoutY="40.0" onAction="#bruciatoreRefresh" onContextMenuRequested="#bruciatoreRefresh" prefHeight="25.0" prefWidth="258.0" />
                   <ComboBox fx:id="modelloBruciatore" layoutX="119.0" layoutY="75.0" prefHeight="25.0" prefWidth="258.0" />
                   <Label layoutX="14.0" layoutY="44.0" text="Marca:" />
                   <Label layoutX="14.0" layoutY="79.0" text="Modello:" />
-                  <CheckBox fx:id="cBruciatoreDitta" layoutX="393.0" layoutY="44.0" mnemonicParsing="false" text="Tutte" />
-                  <CheckBox fx:id="cBruciatoreModello" layoutX="393.0" layoutY="79.0" mnemonicParsing="false" text="Tutti" />
+                  <CheckBox fx:id="cBruciatoreDitta" layoutX="393.0" layoutY="44.0" mnemonicParsing="false" onAction="#checkBruciatoreDitta" text="Tutte" />
+                  <CheckBox fx:id="cBruciatoreModello" layoutX="393.0" layoutY="79.0" mnemonicParsing="false" onAction="#checkBruciatoreModello" text="Tutti" />
                   <Label layoutX="14.0" layoutY="114.0" text="Combustibile:" />
                   <TextField layoutX="119.0" layoutY="110.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
@@ -301,15 +301,15 @@
                      </font>
                   </Label>
                   <Label layoutX="14.0" layoutY="42.0" text="Codice:" />
-                  <TextField layoutX="53.0" layoutY="42.0" AnchorPane.topAnchor="37.0" />
+                  <TextField fx:id="codManu" layoutX="53.0" layoutY="42.0" AnchorPane.topAnchor="37.0" />
                   <Label layoutX="248.0" layoutY="42.0" text="Analisi effettuate:" />
-                  <ComboBox layoutX="340.0" layoutY="38.0" prefWidth="150.0" />
+                  <ComboBox fx:id="nAnalisi" layoutX="340.0" layoutY="38.0" prefWidth="150.0" />
                   <AnchorPane layoutX="148.0" layoutY="66.0" prefHeight="103.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                      <children>
                         <Label layoutX="14.0" layoutY="43.0" text="Pulizia C/B:" />
                         <RadioButton layoutX="243.0" layoutY="35.0" mnemonicParsing="false" text="Eseguita" />
                         <RadioButton layoutX="243.0" layoutY="60.0" mnemonicParsing="false" text="Non Eseguita" />
-                        <DatePicker layoutX="348.0" layoutY="39.0" prefHeight="25.0" prefWidth="137.0" AnchorPane.rightAnchor="5.0" />
+                        <DatePicker fx:id="puliziacb" layoutX="348.0" layoutY="39.0" prefHeight="25.0" prefWidth="137.0" AnchorPane.rightAnchor="5.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="148.0" layoutY="180.0" prefHeight="53.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
@@ -357,8 +357,8 @@
                         <ComboBox fx:id="installatore" layoutX="114.0" layoutY="33.0" prefHeight="25.0" prefWidth="258.0" />
                         <Label layoutX="11.0" layoutY="69.0" text="Certificato Conformità:" />
                         <ComboBox fx:id="certConf" layoutX="168.0" layoutY="65.0" prefWidth="150.0" AnchorPane.bottomAnchor="3.0" />
-                        <CheckBox fx:id="cInstallatore" layoutX="396.0" layoutY="37.0" mnemonicParsing="false" text="Tutti" />
-                        <CheckBox fx:id="cCertConf" layoutX="396.0" layoutY="66.0" mnemonicParsing="false" text="Tutti" />
+                        <CheckBox fx:id="cInstallatore" layoutX="396.0" layoutY="37.0" mnemonicParsing="false" onAction="#checkInstallatore" text="Tutti" />
+                        <CheckBox fx:id="cCertConf" layoutX="396.0" layoutY="66.0" mnemonicParsing="false" onAction="#checkCertConf" text="Tutti" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="8.0" layoutY="570.0" prefHeight="91.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
@@ -386,7 +386,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Conferma" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#conferma" prefHeight="51.0" prefWidth="98.0" text="Conferma" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Annulla" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Azzera" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
