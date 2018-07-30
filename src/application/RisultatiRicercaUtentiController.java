@@ -76,31 +76,32 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	
 	private void refresh(TextField t) {
         t.setOnMouseClicked(e -> {
-           //			System.out.println(rs.getString("CODICEU"));
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 					System.out.println(r);
-					System.out.println(source.getText());
+					String txt=source.getText();
 					
-					Node l = (Node) getNodeByRowColumnIndex(r, 0);
-//					System.out.println(l.getText());
+					String s="";
+					
+					if(r==1) {
+						s="select * from utenti where cognomeu='"+txt+"'";
+					}
+					else if(r==2) {
+						s="select * from utenti where nomeu='"+txt+"'";
+					}
+					
+					try {
+						rs= stm.executeQuery(s);
+						
+//						riempire con i dati da inserire nei textfield
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
         });
         
     }
-	
-	public Node getNodeByRowColumnIndex (final int row, final int column) {
-	    Node result = null;
-	    ObservableList<Node> childrens = gp.getChildren();
-
-	    int i=0;
-	    for (Node node : childrens) {
-		        if(gp.getRowIndex(node) == row && gp.getColumnIndex(node) == column) {
-		            result = node;
-		            break;
-		        }
-	    }
-
-	    return result;
-	}
 	
 }
