@@ -307,45 +307,45 @@
                   <AnchorPane layoutX="148.0" layoutY="66.0" prefHeight="103.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                      <children>
                         <Label layoutX="14.0" layoutY="43.0" text="Pulizia C/B:" />
-                        <RadioButton layoutX="243.0" layoutY="35.0" mnemonicParsing="false" text="Eseguita" />
-                        <RadioButton layoutX="243.0" layoutY="60.0" mnemonicParsing="false" text="Non Eseguita" />
-                        <DatePicker fx:id="puliziacb" layoutX="348.0" layoutY="39.0" prefHeight="25.0" prefWidth="137.0" AnchorPane.rightAnchor="5.0" />
+                        <RadioButton fx:id="puliziacbEseguita" layoutX="243.0" layoutY="35.0" mnemonicParsing="false" text="Eseguita" />
+                        <RadioButton fx:id="puliziacbNonEseguita" layoutX="243.0" layoutY="60.0" mnemonicParsing="false" text="Non Eseguita" />
+                        <DatePicker fx:id="puliziacbData" layoutX="348.0" layoutY="39.0" prefHeight="25.0" prefWidth="137.0" AnchorPane.rightAnchor="5.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="148.0" layoutY="180.0" prefHeight="53.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <RadioButton layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Eseguita" />
-                        <RadioButton layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Non Eseguita" />
+                        <RadioButton fx:id="analisiEseguita" layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Eseguita" />
+                        <RadioButton fx:id="analisiNonEseguita" layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Non Eseguita" />
                         <Label layoutX="14.0" layoutY="18.0" text="Analisi Di Combustione:" />
-                        <TextField layoutX="346.0" layoutY="13.0" prefHeight="25.0" prefWidth="93.0" />
+                        <TextField fx:id="analisiAnno" layoutX="346.0" layoutY="13.0" prefHeight="25.0" prefWidth="93.0" />
                         <Label layoutX="443.0" layoutY="17.0" text="anno" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="5.0" layoutY="241.0" prefHeight="53.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="240.0">
                      <children>
-                        <RadioButton layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Eseguito" />
-                        <RadioButton layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Non Eseguito" />
+                        <RadioButton fx:id="bollinoEseguito" layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Eseguito" />
+                        <RadioButton fx:id="bollinoNonEseguito" layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Non Eseguito" />
                         <Label layoutX="14.0" layoutY="18.0" text="Bollino:" />
-                        <TextField layoutX="346.0" layoutY="13.0" prefHeight="25.0" prefWidth="93.0" />
+                        <TextField fx:id="bollinoAnno" layoutX="346.0" layoutY="13.0" prefHeight="25.0" prefWidth="93.0" />
                         <Label layoutX="443.0" layoutY="17.0" text="anno" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="5.0" layoutY="300.0" prefHeight="53.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <RadioButton layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Acceso" />
-                        <RadioButton layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Spento" />
+                        <RadioButton fx:id="impAcceso" layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Acceso" />
+                        <RadioButton fx:id="impSpento" layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Spento" />
                         <Label layoutX="14.0" layoutY="18.0" text="Impianto:" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="5.0" layoutY="362.0" prefHeight="53.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <RadioButton layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Legale" />
-                        <RadioButton layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Solare" />
+                        <RadioButton fx:id="legale" layoutX="243.0" layoutY="8.0" mnemonicParsing="false" text="Legale" />
+                        <RadioButton fx:id="solare" layoutX="243.0" layoutY="31.0" mnemonicParsing="false" text="Solare" />
                         <Label layoutX="14.0" layoutY="18.0" text="Ora:" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="14.0" layoutY="430.0" text="Messa in Funzione:" />
-                  <DatePicker layoutX="241.0" layoutY="426.0" prefHeight="25.0" prefWidth="221.0" />
+                  <DatePicker fx:id="messaInFunzione" layoutX="241.0" layoutY="426.0" prefHeight="25.0" prefWidth="221.0" />
                   <AnchorPane layoutX="6.0" layoutY="466.0" prefHeight="91.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
                         <Label layoutX="14.0" layoutY="37.0" text="Installatore:" />
@@ -363,8 +363,8 @@
                   </AnchorPane>
                   <AnchorPane layoutX="8.0" layoutY="570.0" prefHeight="91.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <RadioButton layoutX="40.0" layoutY="46.0" mnemonicParsing="false" text="Cognome-Nome" />
-                        <RadioButton layoutX="334.0" layoutY="46.0" mnemonicParsing="false" text="Comune-Indirizzo" />
+                        <RadioButton fx:id="ordineCN" layoutX="40.0" layoutY="46.0" mnemonicParsing="false" text="Cognome-Nome" />
+                        <RadioButton fx:id="ordineCI" layoutX="334.0" layoutY="46.0" mnemonicParsing="false" text="Comune-Indirizzo" />
                         <Label alignment="CENTER" layoutX="205.0" layoutY="13.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Ordinamento" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
                            <font>
                               <Font name="System Bold" size="15.0" />

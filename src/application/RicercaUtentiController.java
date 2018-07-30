@@ -32,6 +32,7 @@ public class RicercaUtentiController implements Initializable{
 	final ToggleGroup orologio = new ToggleGroup();
 	final ToggleGroup edificio = new ToggleGroup();
 	Boolean e;
+	Boolean or;
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -126,7 +127,38 @@ public class RicercaUtentiController implements Initializable{
 	@FXML
 	private RadioButton altroTerzoResponsabile;
 	@FXML
-	private DatePicker puliziacb;
+	private DatePicker puliziacbData;
+	@FXML
+	private RadioButton puliziacbEseguita;
+	@FXML
+	private RadioButton puliziacbNonEseguita;
+	@FXML
+	private RadioButton analisiEseguita;
+	@FXML
+	private RadioButton analisiNonEseguita;
+	@FXML
+	private RadioButton bollinoEseguito;
+	@FXML
+	private RadioButton bollinoNonEseguito;
+	@FXML
+	private RadioButton impAcceso;
+	@FXML
+	private RadioButton impSpento;
+	@FXML
+	private RadioButton legale;
+	@FXML
+	private RadioButton solare;
+	@FXML
+	private DatePicker messaInFunzione;
+	@FXML
+	private RadioButton ordineCN;
+	@FXML
+	private RadioButton ordineCI;
+	@FXML
+	private TextField analisiAnno;
+	@FXML
+	private TextField bollinoAnno;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -313,188 +345,271 @@ public class RicercaUtentiController implements Initializable{
 		}
 	}
 	
-	public String andCheck(Boolean e) {
+	public String andCheck() {
 		if(e)
 			return " and";
 		e=true;
 		return "";
 	}
-	public String orCheck(Boolean e) {
-		if(e)
+	public String orCheck() {
+		if(or)
 			return " or";
-		e=true;
+		or=true;
 		return "";
 	}
 	
 	public void conferma() {
 		e = false;
-		String q = "select * from utenti where";
+		String q = "select * from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
 		
 		if(!(cognome.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" cognomeu='"+cognome.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" cognomeu like '%"+cognome.getText()+"%'");
 		}
 		if(!(nome.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" nomeu='"+nome.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" nomeu like '%"+nome.getText()+"%'");
 		}
 		if(!(viaU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" indirizzoU='"+viaU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" indirizzoU like '%"+viaU.getText()+"%'");
 		}
 		if(!(numeroU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" numeroU='"+numeroU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" numeroU like '%'"+numeroU.getText()+"%'");
 		}
 		if(!(localita.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" localitau='"+localita.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" localitau like '%"+localita.getText()+"%'");
 		}
 		if(!(cap.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" capu='"+cap.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" capu like '%"+cap.getText()+"%'");
 		}
 		if(!(comuneU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" comuneU='"+comuneU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" comuneU like '%"+comuneU.getText()+"%'");
 		}
 		if(!(provU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" provinciaU='"+provU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" provinciaU like '%"+provU.getText()+"%'");
 		}
 		if(!(telefonoU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" telefonoU='"+telefonoU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" telefonoU like '%"+telefonoU.getText()+"%'");
 		}
 		if(!(cellulareU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" cellulareU='"+cellulareU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" cellulareU like '%"+cellulareU.getText()+"%'");
 		}
 		if(!(cfU.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" cfivaU='"+cfU.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" cfivaU like '%"+cfU.getText()+"%'");
 		}
 		
 		
 		if(condTerzoResponsabile.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" imptipo='Condominio con terzo responsabile'");
+			q=q.concat(andCheck());
+			q=q.concat(" imptipo='Condominio con terzo responsabile'");
 		}
 		if(condConAmministratore.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" imptipo='Condominio con amministratore'");
+			q=q.concat(andCheck());
+			q=q.concat(" imptipo='Condominio con amministratore'");
 		}
 		if(privato.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" imptipo='Privato'");
+			q=q.concat(andCheck());
+			q=q.concat(" imptipo='Privato'");
 		}
 		if(altroDitta.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" imptipo='Altro (Ditta)'");
+			q=q.concat(andCheck());
+			q=q.concat(" imptipo='Altro (Ditta)'");
 		}
 		if(altroTerzoResponsabile.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" imptipo='Altro (con terzo responsabile)'");
+			q=q.concat(andCheck());
+			q=q.concat(" imptipo='Altro (con terzo responsabile)'");
 		}
 		
 		if(automatico.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" orologio='Automatico'");
+			q=q.concat(andCheck());
+			q=q.concat(" orologio='Automatico'");
 		}
 		if(manuale.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" orologio='Manuale'");
+			q=q.concat(andCheck());
+			q=q.concat(" orologio='Manuale'");
 		}
 		
 		if(circuiti.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impcirc='Circuiti'");
+			q=q.concat(andCheck());
+			q=q.concat(" impcirc='Circuiti'");
 		}
 		if(termoregolato.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impterm='Termoregolato'");
+			q=q.concat(andCheck());
+			q=q.concat(" impterm='Termoregolato'");
 		}
 		if(contacalorie.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impcont='Contacalorie'");
+			q=q.concat(andCheck());
+			q=q.concat(" impcont='Contacalorie'");
 		}
 		if(superiore35.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impsu35='Superiore 35 KW'");
+			q=q.concat(andCheck());
+			q=q.concat(" impsu35='Superiore 35 KW'");
 		}
 		if(superiore116.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impsu116='Superiore 116 KW'");
+			q=q.concat(andCheck());
+			q=q.concat(" impsu116='Superiore 116 KW'");
 		}
 		if(superiore350.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" impsupe='Superiore 350 KW'");
+			q=q.concat(andCheck());
+			q=q.concat(" impsupe='Superiore 350 KW'");
 		}
 		
 		if(!cAmministratore.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" cognomea='"+amministratore.getValue()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" cognomea='"+amministratore.getValue()+"'");
 		}
 		if(!cCaldaiaModello.isSelected() && !cCaldaiaDitta.isSelected()) {
-			Boolean or=false;
-			q.concat(andCheck(e));
-			q.concat(" (");
+			or=false;
+			q=q.concat(andCheck());
+			q=q.concat(" (");
 			for (int i=1; i<=6; i++) {
-				q.concat(orCheck(or));
-				q.concat(" modelloc"+i+"='"+modelloCaldaia.getValue()+"'");
+				q=q.concat(orCheck());
+				q=q.concat(" modelloc"+i+"='"+modelloCaldaia.getValue()+"'");
 			}
-			q.concat(" )");
+			q=q.concat(" )");
 		}
 		else if(!cCaldaiaDitta.isSelected()) {
-			Boolean or=false;
-			q.concat(andCheck(e));
-			q.concat(" (");
+			or=false;
+			q=q.concat(andCheck());
+			q=q.concat(" (");
 			for (int i=1; i<=6; i++) {
-				q.concat(orCheck(or));
-				q.concat(" dittac"+i+"='"+marcaCaldaia.getValue()+"'");
+				q=q.concat(orCheck());
+				q=q.concat(" dittac"+i+"='"+marcaCaldaia.getValue()+"'");
 			}
 			q.concat(" )");
 		}
 		if(!cBruciatoreModello.isSelected() && !cBruciatoreDitta.isSelected()) {
-			Boolean or=false;
-			q.concat(andCheck(e));
-			q.concat(" (");
+			or=false;
+			q=q.concat(andCheck());
+			q=q.concat(" (");
 			for (int i=1; i<=6; i++) {
-				q.concat(orCheck(or));
-				q.concat(" modellob"+i+"='"+modelloBruciatore.getValue()+"'");
+				q=q.concat(orCheck());
+				q=q.concat(" modellob"+i+"='"+modelloBruciatore.getValue()+"'");
 			}
-			q.concat(" )");
+			q=q.concat(" )");
 		}
 		else if(!cBruciatoreDitta.isSelected()) {
-			Boolean or=false;
-			q.concat(andCheck(e));
-			q.concat(" (");
+			or=false;
+			q=q.concat(andCheck());
+			q=q.concat(" (");
 			for (int i=1; i<=6; i++) {
-				q.concat(orCheck(or));
-				q.concat(" dittab"+i+"='"+marcaBruciatore.getValue()+"'");
+				q=q.concat(orCheck());
+				q=q.concat(" dittab"+i+"='"+marcaBruciatore.getValue()+"'");
 			}
-			q.concat(" )");
+			q=q.concat(" )");
 		}
 		if(!cInstallatore.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" dittai='"+installatore.getValue()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" dittai='"+installatore.getValue()+"'");
 		}
 		if(!cCertConf.isSelected()) {
-			q.concat(andCheck(e));
-			q.concat(" certconfv='"+certConf.getValue()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" certconfv='"+certConf.getValue()+"'");
 		}
 		
 		if(!(codManu.getText()).equals("")) {
-			q.concat(andCheck(e));
-			q.concat(" codmanu='"+codManu.getText()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" codmanu='"+codManu.getText()+"'");
 		}
 		if(!nAnalisi.getSelectionModel().isEmpty()) {
-			q.concat(andCheck(e));
-			q.concat(" n_analisi='"+nAnalisi.getValue()+"'");
+			q=q.concat(andCheck());
+			q=q.concat(" n_analisi='"+nAnalisi.getValue()+"'");
 		}
 		
-		System.out.println(puliziacb.getValue());
+		System.out.println(puliziacbData.getValue());
 		
+		if(puliziacbData.getValue() != null) {
+			if (puliziacbEseguita.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" ( motivoch like '%pulizie%' and datach='"+puliziacbData.getValue()+"' )");
+			}
+			else if(puliziacbNonEseguita.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" ( motivoch like '%pulizie%' and datach<>'"+puliziacbData.getValue()+"' )");
+			}
+		}
+		if( (analisiAnno.getText()).length() == 4 ) {
+			if (analisiEseguita.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" a.data between '"+analisiAnno.getText()+"-01-01' and '"+analisiAnno.getText()+"-12-31'");
+			}
+			else if(analisiNonEseguita.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" a.data not between '"+analisiAnno.getText()+"-01-01' and '"+analisiAnno.getText()+"-12-31'");
+			}
+		}
+		if( (bollinoAnno.getText()).length() == 4 ) {
+			if (bollinoEseguito.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" bollino = '"+bollinoAnno.getText()+"'");
+			}
+			else if(bollinoNonEseguito.isSelected()) {
+				q=q.concat(andCheck());
+				q=q.concat(" bollino <> '"+bollinoAnno.getText()+"'");
+			}
+		}
+		if(impAcceso.isSelected()) {
+			q=q.concat(andCheck());
+			q=q.concat(" impacceso='SI'");
+		}
+		else if(impSpento.isSelected()) {
+			q=q.concat(andCheck());
+			q=q.concat(" impacceso='NO'");
+		}
+		if(legale.isSelected()) {
+			q=q.concat(andCheck());
+			q=q.concat(" ora='Legale'");
+		}
+		else if(solare.isSelected()) {
+			q=q.concat(andCheck());
+			q=q.concat(" ora='Solare'");
+		}
+		if(messaInFunzione.getValue() != null) {
+			or=false;
+			q=q.concat(andCheck());
+			q=q.concat(" (");
+			for (int i=1; i<=6; i++) {
+				q=q.concat(orCheck());
+				q=q.concat(" mfc"+i+"='"+messaInFunzione.getValue()+"'");
+			}
+			q=q.concat(" )");
+		}
+		
+//		raggruppato per tutti i campi necessari
+//		q=q.concat(" group by ");
+		
+		if(!e) {
+			q="select * from utenti";
+		}
+		
+		if(ordineCN.isSelected()) {
+			q=q.concat(" order by u.cognomeu, u.nomeu");
+		}
+		else if(ordineCI.isSelected()) {
+			q=q.concat(" order by u.comuneu, u.indirizzou");
+		}
+		
+		
+		
+		System.out.println(q);
+		
+		RisultatiRicercaUtenti su = new RisultatiRicercaUtenti(q);
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 	}
 
 	

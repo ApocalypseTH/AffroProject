@@ -10,7 +10,9 @@ public class RicercaUtenti extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-
+		
+		RicercaUtentiController.primaryStage = primaryStage;
+		
 		loader.setLocation(this.getClass().getResource("ricercaUtenti.fxml"));
 		AnchorPane pane = (AnchorPane) loader.load();
 		Scene scene = new Scene(pane);
