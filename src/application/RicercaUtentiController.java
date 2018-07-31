@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -18,6 +19,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -360,7 +362,7 @@ public class RicercaUtentiController implements Initializable{
 	
 	public void conferma() {
 		e = false;
-		String q = "select * from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
+		String q = "select distinct * from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
 		
 		if(!(cognome.getText()).equals("")) {
 			q=q.concat(andCheck());
@@ -598,16 +600,26 @@ public class RicercaUtentiController implements Initializable{
 			q=q.concat(" order by u.comuneu, u.indirizzou");
 		}
 		
+		try {
+			stm.execute(q);
 		
 		
-		System.out.println(q);
+			System.out.println(q);
 		
-		RisultatiRicercaUtenti su = new RisultatiRicercaUtenti(q);
+			RisultatiRicercaUtenti su = new RisultatiRicercaUtenti(q);
 		try {
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("Non inserire caratteri sensibili come ' o /");
+			alert.showAndWait();
 		}
 			
 	}
