@@ -5,6 +5,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
 import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 
 public class Funz {
@@ -17,8 +18,7 @@ public class Funz {
 		String pwd="";
 		
 		File file = new File("application/dati.xml");
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
-		        .newInstance();
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder;
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();

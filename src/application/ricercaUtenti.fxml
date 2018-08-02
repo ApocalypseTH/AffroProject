@@ -387,8 +387,8 @@
                     </rowConstraints>
                      <children>
                         <Button mnemonicParsing="false" onAction="#conferma" prefHeight="51.0" prefWidth="98.0" text="Conferma" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Annulla" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Azzera" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#annulla" prefHeight="51.0" prefWidth="98.0" text="Annulla" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#azzera" prefHeight="51.0" prefWidth="98.0" text="Azzera" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

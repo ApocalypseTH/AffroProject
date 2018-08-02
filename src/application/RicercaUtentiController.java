@@ -33,6 +33,12 @@ public class RicercaUtentiController implements Initializable{
 	public ResultSet installatori;
 	final ToggleGroup orologio = new ToggleGroup();
 	final ToggleGroup edificio = new ToggleGroup();
+	final ToggleGroup pulizia = new ToggleGroup();
+	final ToggleGroup analisi = new ToggleGroup();
+	final ToggleGroup bollino = new ToggleGroup();
+	final ToggleGroup imp = new ToggleGroup();
+	final ToggleGroup ora = new ToggleGroup();
+	final ToggleGroup ordine = new ToggleGroup();
 	Boolean e;
 	Boolean or;
 	
@@ -175,6 +181,19 @@ public class RicercaUtentiController implements Initializable{
 		privato.setToggleGroup(edificio);
 		altroDitta.setToggleGroup(edificio);
 		altroTerzoResponsabile.setToggleGroup(edificio);
+		
+		puliziacbEseguita.setToggleGroup(pulizia);
+		puliziacbNonEseguita.setToggleGroup(pulizia);
+		analisiEseguita.setToggleGroup(analisi);
+		analisiNonEseguita.setToggleGroup(analisi);
+		bollinoEseguito.setToggleGroup(bollino);
+		bollinoNonEseguito.setToggleGroup(bollino);
+		impAcceso.setToggleGroup(imp);
+		impSpento.setToggleGroup(imp);
+		legale.setToggleGroup(ora);
+		solare.setToggleGroup(ora);
+		ordineCI.setToggleGroup(ordine);
+		ordineCN.setToggleGroup(ordine);
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -362,7 +381,7 @@ public class RicercaUtentiController implements Initializable{
 	
 	public void conferma() {
 		e = false;
-		String q = "select distinct * from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
+		String q = "select distinct u.codiceu, u.nomeu, u.cognomeu from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
 		
 		if(!(cognome.getText()).equals("")) {
 			q=q.concat(andCheck());
@@ -622,6 +641,82 @@ public class RicercaUtentiController implements Initializable{
 			alert.showAndWait();
 		}
 			
+	}
+	
+	public void annulla() {
+		Main su = new Main();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void azzera() {
+		cognome.setText("");
+		nome.setText("");
+		viaU.setText("");
+		numeroU.setText("");
+		localita.setText("");
+		cap.setText("");
+		comuneU.setText("");
+		provU.setText("");
+		telefonoU.setText("");
+		cellulareU.setText("");
+		cfU.setText("");
+		
+		condTerzoResponsabile.setSelected(false);
+		condConAmministratore.setSelected(false);
+		privato.setSelected(false);
+		altroDitta.setSelected(false);
+		altroTerzoResponsabile.setSelected(false);
+		
+		circuiti.setSelected(false);
+		termoregolato.setSelected(false);
+		contacalorie.setSelected(false);
+		superiore35.setSelected(false);
+		superiore116.setSelected(false);
+		superiore350.setSelected(false);
+		
+		automatico.setSelected(false);
+		manuale.setSelected(false);
+		
+		cAmministratore.setSelected(true);
+		checkAmministratore();
+		cCaldaiaDitta.setSelected(true);
+		checkCaldaiaDitta();
+		cCaldaiaModello.setSelected(true);
+		checkCaldaiaModello();
+		cBruciatoreDitta.setSelected(true);
+		checkBruciatoreDitta();
+		cBruciatoreModello.setSelected(true);
+		checkBruciatoreModello();
+		cInstallatore.setSelected(true);
+		checkInstallatore();
+		cCertConf.setSelected(true);
+		checkCertConf();
+		
+		codManu.setText("");
+		nAnalisi.setValue("");
+		
+		puliziacbEseguita.setSelected(false);
+		puliziacbNonEseguita.setSelected(false);
+		puliziacbData.setValue(null);
+		analisiEseguita.setSelected(false);
+		analisiNonEseguita.setSelected(false);
+		analisiAnno.setText("");
+		bollinoEseguito.setSelected(false);
+		bollinoNonEseguito.setSelected(false);
+		bollinoAnno.setText("");
+		impAcceso.setSelected(false);
+		impSpento.setSelected(false);
+		legale.setSelected(false);
+		solare.setSelected(false);
+		messaInFunzione.setValue(null);
+		ordineCI.setSelected(false);
+		ordineCN.setSelected(false);
+		
 	}
 
 	

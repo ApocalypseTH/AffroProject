@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RicercaUtentiController">
+   <children>
+      <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="253.0" layoutY="400.0" prefHeight="91.0" prefWidth="495.0" style="-fx-background-color: grey; -fx-border-color: black;">
+               <children>
+                  <GridPane layoutX="148.0" layoutY="4.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#conferma" prefHeight="51.0" prefWidth="98.0" text="Conferma" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Annulla" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="98.0" text="Azzera" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="253.0" layoutY="179.0" prefHeight="200.0" prefWidth="495.0" style="-fx-background-color: grey; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="141.0" layoutY="14.0" style="-fx-background-color: lime;" text="Ricerca Analsi Di Combustione">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="92.0" prefHeight="17.0" prefWidth="133.0" text="Analisi Di Combustione:" />
+                  <RadioButton layoutX="248.0" layoutY="75.0" mnemonicParsing="false" text="Eseguita" />
+                  <RadioButton layoutX="248.0" layoutY="128.0" mnemonicParsing="false" text="Non Eseguita" />
+                  <TextField layoutX="363.0" layoutY="97.0" prefHeight="25.0" prefWidth="75.0" />
+                  <Label layoutX="453.0" layoutY="101.0" text="anno" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <MenuBar layoutX="204.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Scheda Utente" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Analisi" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Storico" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Utente" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
+                  <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Anagrafica Ditta" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Stampe">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Elenco Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Schede Utenti" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opzioni">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
+                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Unione Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Azzeramento Numero Analisi" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
+                  <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
+                  <MenuItem mnemonicParsing="false" text="Libretti" />
+                  <MenuItem mnemonicParsing="false" text="Cartella" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
