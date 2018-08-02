@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dati>
+	<ip>127.0.0.1</ip>
+    <port>3306</port>
+    <db>affro</db>
+	<user>root</user>
+    <password></password>
+</dati>
