@@ -17,7 +17,7 @@ public class Funz {
 		String user="";
 		String pwd="";
 		
-		File file = new File("application/dati.xml");
+		File file = new File("dati.xml");
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder;
 		try {

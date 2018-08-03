@@ -16,14 +16,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class RisultatiRicercaUtentiController implements Initializable{
+public class RisultatiRicercaAnalisiController implements Initializable{
 	public static String query;
 	public static Integer i;
 	public static String id;
@@ -34,6 +36,8 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	
 	@FXML
 	private GridPane gp;
+	@FXML
+	private GridPane analisi;
 	@FXML
 	private TextField cognome;
 	@FXML
@@ -77,19 +81,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	@FXML
 	private TextField b6;
 	@FXML
-	private TextField amministratore;
-	@FXML
-	private TextField installatore;
-	@FXML
-	private TextField codManu;
-	@FXML
-	private TextField manuProgrammata;
-	@FXML
-	private TextField analisi;
-	@FXML
-	private TextField bollino;
-	@FXML
-	private TextField messaInFunzione;
+	private ScrollPane sp;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -109,22 +101,18 @@ public class RisultatiRicercaUtentiController implements Initializable{
 			stm = connection.createStatement();
 			rs= stm.executeQuery(query);
 			
-			System.out.println(query);
-			
 			coda= new Vector<Integer>();
 			
 			int i=1;
-			while (rs.next()) {				
+			while (rs.next()) {
+				coda.add(Integer.parseInt(rs.getString("CODICEU")));
+				
 				Label t1= new Label(rs.getString("CODICEU"));
 				TextField t2= new TextField(rs.getString("COGNOMEU"));
 				TextField t3= new TextField(rs.getString("NOMEU"));
 				
 				t2.setEditable(false);
 				t3.setEditable(false);
-				
-				System.out.println(rs.getString("COGNOMEU"));
-				
-				coda.add(Integer.parseInt(rs.getString("CODICEU")));
 				
 				refresh(t2);
 				refresh(t3);
@@ -152,7 +140,8 @@ public class RisultatiRicercaUtentiController implements Initializable{
 					
 					int cod = coda.get(r-1);
 					
-					String s="select * from utenti where codiceu=?";
+					String s="select * from utenti as u join analisi as a on u.codiceu=a.codiceu where u.codiceu=?";
+					
 					
 					try {
 //						rs= stm.executeQuery(s);
@@ -188,15 +177,32 @@ public class RisultatiRicercaUtentiController implements Initializable{
 						b5.setText(rs.getString("DITTAB5")+" "+rs.getString("MODELLOB5"));
 						b6.setText(rs.getString("DITTAB6")+" "+rs.getString("MODELLOB6"));
 						
-						amministratore.setText(rs.getString("COGNOMEA"));
+						analisi.getChildren().clear();
+						analisi.setStyle("cell-border-color: black ;");
 						
-						installatore.setText(rs.getString("DITTAI"));
+						rs.previous();
+						int i=0;
+						while (rs.next()) {							
+							Label t1= new Label(" "+rs.getString("a.CODICEU"));
+							TextField t2= new TextField(" "+rs.getString("a.DATA"));
+							TextField t3= new TextField(" "+rs.getString("a.ID"));
+							
+							t2.setEditable(false);
+							t3.setEditable(false);
+										
+							analisi.addRow(i, t1, t2, t3);
+							i++;
+						}
 						
-						codManu.setText(rs.getString("CODMANU"));
-						manuProgrammata.setText(rs.getString("MANPROGM"));
-						analisi.setText(rs.getString("ANALCOMB"));
-						bollino.setText(rs.getString("BOLLINO"));
-						messaInFunzione.setText(rs.getString("CONTRATM"));
+						 for (Node n: analisi.getChildren()) {
+						      if (n instanceof Control) {
+						        Control control = (Control) n;
+						        control.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+						        control.setStyle("-fx-background-color: white; -fx-alignment: center;");
+						      }
+						 }
+						 
+						 sp.setStyle("-fx-background-color: whitesmoke; -fx-padding: 10;");
 						
 						
 					} catch (SQLException e1) {

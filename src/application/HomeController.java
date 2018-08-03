@@ -45,7 +45,13 @@ public class HomeController {
 	}
 	
 	public void ricercheA(){
-		
+		RicercaAnalisi su = new RicercaAnalisi();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void ricercheS(){
