@@ -23,7 +23,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class RisultatiRicercaUtentiController implements Initializable{
+public class RisultatiRicercaStoricoController implements Initializable{
 	public static String query;
 	public static Integer i;
 	public static String id;
@@ -115,19 +115,22 @@ public class RisultatiRicercaUtentiController implements Initializable{
 			
 			int i=1;
 			while (rs.next()) {				
-				Label t1= new Label(rs.getString("CODICEU"));
-				TextField t2= new TextField(rs.getString("COGNOMEU"));
-				TextField t3= new TextField(rs.getString("NOMEU"));
+				Label t1= new Label(rs.getString("u.CODICEU"));
+				TextField t2= new TextField(rs.getString("u.COGNOMEU")+" "+rs.getString("u.NOMEU"));
+				TextField t3= new TextField(rs.getString("r.dataint"));
+				TextField t4= new TextField(rs.getString("r.motivoch"));
 				
 				t2.setEditable(false);
 				t3.setEditable(false);
+				t4.setEditable(false);
 
 				coda.add(Integer.parseInt(rs.getString("CODICEU")));
 				
 				refresh(t2);
 				refresh(t3);
+				refresh(t4);
 							
-				gp.addRow(i, t1, t2, t3);
+				gp.addRow(i, t1, t2, t3, t4);
 				i++;
 			}
 					
@@ -164,7 +167,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 						
 						cognome.setText(rs.getString("COGNOMEU"));
 						nome.setText(rs.getString("NOMEU"));
-						indirizzo.setText(rs.getString("INDIRIZZOU")+" "+rs.getString("NUMEROU"));
+						indirizzo.setText(rs.getString("INDIRIZZOU")+", "+rs.getString("NUMEROU"));
 						localita.setText(rs.getString("lOCALITAU"));
 						cap.setText(rs.getString("CAPU"));
 						comune.setText(rs.getString("COMUNEU"));

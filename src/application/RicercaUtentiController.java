@@ -609,7 +609,7 @@ public class RicercaUtentiController implements Initializable{
 //		q=q.concat(" group by ");
 		
 		if(!e) {
-			q="select * from utenti";
+			q="select * from utenti as u";
 		}
 		
 		if(ordineCN.isSelected()) {
@@ -620,10 +620,9 @@ public class RicercaUtentiController implements Initializable{
 		}
 		
 		try {
-			stm.execute(q);
-		
-		
 			System.out.println(q);
+			
+			stm.execute(q);
 		
 			RisultatiRicercaUtenti su = new RisultatiRicercaUtenti(q);
 		try {

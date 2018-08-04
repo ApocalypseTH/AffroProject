@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class RicercaAnalisiController implements Initializable{
+public class RicercaStoricoController implements Initializable{
 	public static Stage primaryStage;
 	private Connection connection;
 	private Statement stm;
@@ -34,18 +34,20 @@ public class RicercaAnalisiController implements Initializable{
 	
 	
 	public void conferma() {
-		String q="select distinct u.codiceu, u.cognomeu, u.nomeu from analisi as a join utenti as u on a.codiceu=u.codiceu";
+		String q="select u.codiceu, u.cognomeu, u.nomeu, r.dataint, r.motivoch from ricint as r join utenti as u on r.codiceu=u.codiceu";
 		
 		if(!"".equals(t.getText())) {
 			if(eseguita.isSelected())
-				q=q.concat(" where a.data between '"+t.getText()+"-01-01' and '"+t.getText()+"-12-31'");
+				q=q.concat(" where r.dataint between '"+t.getText()+"-01-01' and '"+t.getText()+"-12-31'");
 			else if(nonEseguita.isSelected())
-				q=q.concat(" where a.data<'"+t.getText()+"-01-01' or a.data>'"+t.getText()+"-12-31'");
+				q=q.concat(" where r.dataint<'"+t.getText()+"-01-01' or r.dataint>'"+t.getText()+"-12-31'");
 		}
+		
+		q=q.concat(" order by r.dataint");
 		
 //		System.out.println(q);
 		
-		RisultatiRicercaAnalisi su = new RisultatiRicercaAnalisi(q);
+		RisultatiRicercaStorico su = new RisultatiRicercaStorico(q);
 		try {
 			su.start(primaryStage);
 		} catch (Exception e) {

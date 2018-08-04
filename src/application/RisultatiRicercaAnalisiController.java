@@ -192,18 +192,7 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 										
 							analisi.addRow(i, t1, t2, t3);
 							i++;
-						}
-						
-						 for (Node n: analisi.getChildren()) {
-						      if (n instanceof Control) {
-						        Control control = (Control) n;
-						        control.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-						        control.setStyle("-fx-background-color: white; -fx-alignment: center;");
-						      }
-						 }
-						 
-						 sp.setStyle("-fx-background-color: whitesmoke; -fx-padding: 10;");
-						
+						}						
 						
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
