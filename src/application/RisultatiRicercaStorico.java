@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.Statement;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -8,24 +10,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class Main extends Application {
+public class RisultatiRicercaStorico extends Application {
+	
+	String query;
+	
+	public RisultatiRicercaStorico(String t) {
+		query=t;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
-			primaryStage.setTitle("Affro S.a.S.");
+			
+			RisultatiRicercaStoricoController.query = query;
+			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("home.fxml"));
-	        AnchorPane ap = loader.load();
-	        BorderPane root = new BorderPane();
-	        root.setCenter(ap);
-
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	        loader.setLocation(Main.class.getResource("risultatiRicercaStorico.fxml"));
+	        AnchorPane pane = (AnchorPane) loader.load();
+			Scene scene = new Scene(pane);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
-			HomeController.primaryStage = primaryStage;
 			
 		} catch(Exception e) {
 			e.printStackTrace();

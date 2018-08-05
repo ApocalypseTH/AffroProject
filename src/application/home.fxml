@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+   <children>
+      <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="200.0" layoutY="349.0" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0">
+               <children>
+                  <AnchorPane layoutX="145.0" layoutY="5.0" prefHeight="19.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="AFFRO di Affro Michele e C. s.a.s." textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="191.0" layoutY="30.0" prefHeight="19.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Via Vittorio Veneto, 15 - 32100 Belluno" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <MenuBar layoutX="204.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#schedaU" text="Scheda Utente" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheU" text="Ricerche Utenti" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheA" text="Ricerche Analisi" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheS" text="Ricerche Storico" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Utente" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
+                  <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Anagrafica Ditta" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Stampe">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Elenco Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Schede Utenti" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opzioni">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
+                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Unione Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Azzeramento Numero Analisi" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
+                  <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
+                  <MenuItem mnemonicParsing="false" text="Libretti" />
+                  <MenuItem mnemonicParsing="false" text="Cartella" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

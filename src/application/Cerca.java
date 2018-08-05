@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.Statement;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -8,22 +10,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class Main extends Application {
+public class Cerca extends Application {
+	
+	SchedaUtenteController su;
+	
+	public Cerca(SchedaUtenteController su) {
+		this.su=su;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
-			primaryStage.setTitle("Affro S.a.S.");
+			Stage s= new Stage();
+			
+			CercaController.su = su;
+			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("home.fxml"));
+	        loader.setLocation(Main.class.getResource("cerca.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
 
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			s.setScene(scene);
+			s.show();
 			
 			HomeController.primaryStage = primaryStage;
 			
