@@ -22,7 +22,7 @@ public class Cerca extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			Stage s= new Stage();
+			Stage s = new Stage();
 			
 			CercaController.su = su;
 			
