@@ -63,5 +63,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void storicoPerUtente(){
+		StoricoPerUtente su = new StoricoPerUtente();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
