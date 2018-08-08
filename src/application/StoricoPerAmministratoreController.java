@@ -25,20 +25,22 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class StoricoPerUtenteController implements Initializable{
+public class StoricoPerAmministratoreController implements Initializable{
 	public static Integer i;
 	public static String id;
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
-	private Vector<Integer> coda;
+	private Vector<String> coda;
+	private Vector<Integer> ut;
 	
 	@FXML
 	private GridPane gp;
 	@FXML
-	private GridPane analisi;
+	private GridPane utenti;
 	@FXML
-	private ScrollPane sp;
+	private GridPane interventi;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -56,37 +58,26 @@ public class StoricoPerUtenteController implements Initializable{
 			
 			connection = DriverManager.getConnection(connectionString);
 			stm = connection.createStatement();
-			rs= stm.executeQuery("select * from utenti");
+			rs= stm.executeQuery("select * from ammin");
 			
-			coda= new Vector<Integer>();
+			coda= new Vector<String>();
+			ut= new Vector<Integer>();
 			
 			int i=1;
 			while (rs.next()) {
-				coda.add(Integer.parseInt(rs.getString("CODICEU")));
+				coda.add(rs.getString("COGNOMEA"));
 				
-				Label t1= new Label(rs.getString("CODICEU"));
-				TextField t2= new TextField(rs.getString("COGNOMEU"));
-				TextField t3= new TextField(rs.getString("NOMEU"));
-				TextField t4= new TextField(rs.getString("INDIRIZZOU"));
-				TextField t5= new TextField(rs.getString("COMUNEU"));
-				TextField t6= new TextField(rs.getString("TELEFONOU"));
-				TextField t7= new TextField(rs.getString("IMPTIPO"));
+				Label t1= new Label(" "+Integer.toString(i));
+				TextField t2= new TextField(rs.getString("COGNOMEA"));
+				TextField t3= new TextField(rs.getString("TELEFONOA"));
 				
 				t2.setEditable(false);
 				t3.setEditable(false);
-				t4.setEditable(false);
-				t5.setEditable(false);
-				t6.setEditable(false);
-				t7.setEditable(false);
 				
 				refresh(t2);
 				refresh(t3);
-				refresh(t4);
-				refresh(t5);
-				refresh(t6);
-				refresh(t7);
 							
-				gp.addRow(i, t1, t2, t3, t4, t5, t6, t7);
+				gp.addRow(i, t1, t2, t3);
 				i++;
 			}
 					
@@ -107,43 +98,40 @@ public class StoricoPerUtenteController implements Initializable{
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 					
-					int cod = coda.get(r-1);
+					String cod = coda.get(r-1);
 					
-					String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
+					String s="select * from utenti as u join ammin as a on u.cognomea=a.cognomea where a.cognomea=?";
 					
 					
 					try {
 //						rs= stm.executeQuery(s);
 						
 						PreparedStatement prepStat = connection.prepareStatement(s);
-						prepStat.setInt(1, cod);
+						prepStat.setString(1, cod);
 						
 						rs = prepStat.executeQuery();		
 						
-						analisi.getChildren().clear();
-						analisi.setGridLinesVisible(false);
-						analisi.setGridLinesVisible(true);
-
+						utenti.getChildren().clear();
+						utenti.setGridLinesVisible(false);
+						utenti.setGridLinesVisible(true);
+						ut.clear();
+						
 						int i=0;
-						while (rs.next()) {							
-							Label t1= new Label(" "+rs.getString("r.CODICEU"));
-							TextField t2= new TextField(" "+rs.getString("r.DATACH"));
-							TextField t3= new TextField(" "+rs.getString("r.CODMANU"));
-							TextField t4= new TextField(" "+rs.getString("r.MOTIVOCH"));
-							TextField t5= new TextField(" "+rs.getString("r.COGNOMECH"));
-							TextField t6= new TextField(" "+rs.getString("r.TELECH"));
-							TextField t7= new TextField(" "+rs.getString("r.DATAINT"));
-							TextField t8= new TextField(" "+rs.getString("r.TECNICO"));
+						while (rs.next()) {
+							
+							ut.add(rs.getInt("u.CODICEU"));
+							
+							Label t1= new Label(" "+rs.getString("u.CODICEU"));
+							TextField t2= new TextField(" "+rs.getString("u.COGNOMEU"));
+							TextField t3= new TextField(" "+rs.getString("u.NOMEU"));
 							
 							t2.setEditable(false);
 							t3.setEditable(false);
-							t4.setEditable(false);
-							t5.setEditable(false);
-							t6.setEditable(false);
-							t7.setEditable(false);
-							t8.setEditable(false);
+							
+							refreshUt(t2);
+							refreshUt(t3);
 										
-							analisi.addRow(i, t1, t2, t3, t4, t5, t6, t7, t8);
+							utenti.addRow(i, t1, t2, t3);
 							i++;
 						}						
 						
@@ -155,5 +143,51 @@ public class StoricoPerUtenteController implements Initializable{
         });
         
     }
+	
+	private void refreshUt(TextField t) {
+		t.setOnMouseClicked(e -> {
+			TextField source = (TextField) e.getSource();
+			int r=utenti.getRowIndex(source);
+			
+			int cod = ut.get(r);
+			
+			String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
+			
+			
+			try {
+
+				
+				PreparedStatement prepStat = connection.prepareStatement(s);
+				prepStat.setInt(1, cod);
+				
+				rs = prepStat.executeQuery();		
+				
+				interventi.getChildren().clear();
+				interventi.setGridLinesVisible(false);		
+				interventi.setGridLinesVisible(true);
+				int i=0;
+				while (rs.next()) {							
+					Label t1= new Label(" "+rs.getString("r.CODICEU"));
+					TextField t2= new TextField(" "+rs.getString("r.DATACH"));
+					TextField t4= new TextField(" "+rs.getString("r.MOTIVOCH"));
+
+					t2.setEditable(false);
+					t4.setEditable(false);
+					
+
+								
+					interventi.addRow(i, t1, t2, t4);
+					i++;
+				}						
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
+});
+	}
 	
 }

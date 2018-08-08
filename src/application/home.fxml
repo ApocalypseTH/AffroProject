@@ -37,7 +37,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#ricercheS" text="Ricerche Storico" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#storicoPerUtente" text="Storico Interventi per Utente" />
-                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
+                  <MenuItem mnemonicParsing="false" onAction="#storicoPerAmministratore" text="Storico Interventi per Amministratore" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
                   <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />

@@ -178,7 +178,8 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 						b6.setText(rs.getString("DITTAB6")+" "+rs.getString("MODELLOB6"));
 						
 						analisi.getChildren().clear();
-						analisi.setStyle("cell-border-color: black ;");
+						analisi.setGridLinesVisible(false);
+						analisi.setGridLinesVisible(true);
 						
 						rs.previous();
 						int i=0;
