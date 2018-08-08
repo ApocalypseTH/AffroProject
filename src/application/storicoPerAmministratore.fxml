@@ -58,7 +58,7 @@
             </AnchorPane>
             <AnchorPane layoutX="235.0" layoutY="517.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="400.0">
                <children>
-                  <Label alignment="CENTER" layoutX="71.0" layoutY="6.0" prefHeight="25.0" prefWidth="350.0" style="-fx-background-color: lime;" text="Utenti" textAlignment="CENTER" AnchorPane.topAnchor="5.0">
+                  <Label fx:id="l1" alignment="CENTER" layoutX="71.0" layoutY="6.0" prefHeight="25.0" prefWidth="350.0" style="-fx-background-color: lime;" text="Utenti" textAlignment="CENTER" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -118,7 +118,7 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <Label alignment="CENTER" layoutX="563.0" layoutY="6.0" prefHeight="25.0" prefWidth="350.0" style="-fx-background-color: lime;" text="Interventi" textAlignment="CENTER" AnchorPane.topAnchor="5.0">
+                  <Label fx:id="l2" alignment="CENTER" layoutX="563.0" layoutY="6.0" prefHeight="25.0" prefWidth="350.0" style="-fx-background-color: lime;" text="Interventi" textAlignment="CENTER" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

@@ -40,6 +40,10 @@ public class StoricoPerAmministratoreController implements Initializable{
 	private GridPane utenti;
 	@FXML
 	private GridPane interventi;
+	@FXML
+	private Label l1;
+	@FXML
+	private Label l2;
 
 
 	@Override
@@ -99,6 +103,8 @@ public class StoricoPerAmministratoreController implements Initializable{
 					int r=gp.getRowIndex(source);
 					
 					String cod = coda.get(r-1);
+					
+					l1.setText("Utenti di "+cod);
 					
 					String s="select * from utenti as u join ammin as a on u.cognomea=a.cognomea where a.cognomea=?";
 					
@@ -161,6 +167,10 @@ public class StoricoPerAmministratoreController implements Initializable{
 				prepStat.setInt(1, cod);
 				
 				rs = prepStat.executeQuery();		
+				
+				rs.next();
+				l2.setText("Interventi di "+rs.getString("COGNOMEU"));
+				rs.previous();
 				
 				interventi.getChildren().clear();
 				interventi.setGridLinesVisible(false);		
