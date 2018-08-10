@@ -21,7 +21,7 @@ public class RicercaStoricoController implements Initializable{
 	public static Stage primaryStage;
 	private Connection connection;
 	private Statement stm;
-	private ToggleGroup group;
+	private ToggleGroup group  = new ToggleGroup();
 	
 	@FXML
 	private TextField t;

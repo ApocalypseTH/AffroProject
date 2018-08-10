@@ -81,5 +81,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void archivioCaldaie(){
+		Caldaie su = new Caldaie();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
