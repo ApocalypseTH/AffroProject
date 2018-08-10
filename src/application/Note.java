@@ -1,7 +1,5 @@
 package application;
 
-import java.sql.Statement;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -13,13 +11,11 @@ import javafx.scene.layout.BorderPane;
 public class Note extends Application {
 	
 	String testo;
-	Statement stm;
 	Integer i;
 	String id;
 	
-	public Note(String t, Statement s, int i, String id) {
+	public Note(String t, int i, String id) {
 		testo=t;
-		stm=s;
 		this.i=i;
 		this.id=id;
 	}
