@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class connDB {
+public class ConnDB {
 	
 	private static Connection connection;
 
 	public Connection getConnection() {
 		
-		if(connection.equals(null)) {
+		if(connection == null) {
 			Funz funz = new Funz();
 			String connectionString = funz.getConnString();
 			try {
@@ -29,6 +29,12 @@ public class connDB {
 		
 	}
 	
+	public static void main(String[] args) {
+		
+		ConnDB conn = new ConnDB();
+		System.out.println(conn.getConnection());
+		
+	}
 	
 
 }

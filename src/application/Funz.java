@@ -158,9 +158,6 @@ public class Funz {
 		}
 	}
 	
-	
-	
-	
 	public static void main(String[] args) {
 		Funz funz = new Funz();
 		funz.setIp("127.0.0.1");

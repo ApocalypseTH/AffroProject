@@ -86,18 +86,20 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-
+//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
+//
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		
-		try {
-			
-			connection = DriverManager.getConnection(connectionString);
+//			
+//			connection = DriverManager.getConnection(connectionString);
+			ConnDB conn = new ConnDB();
+			connection = conn.getConnection();
 			stm = connection.createStatement();
 			rs= stm.executeQuery(query);
 			
