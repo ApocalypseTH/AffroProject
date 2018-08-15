@@ -41,7 +41,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#archivioCaldaie" text="Archivio Caldaie" />
                   <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
+                  <MenuItem mnemonicParsing="false" onAction="#archivioInstallatori" text="Archivio Installatori" />
                   <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
                   <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
                   <SeparatorMenuItem mnemonicParsing="false" />

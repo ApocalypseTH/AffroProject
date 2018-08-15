@@ -426,6 +426,8 @@ public class CaldaieController implements Initializable{
 	
 	public void cerca( String ditta, String modello) {
 		refreshTabella("select * from caldaie where dittac like '%"+ditta+"%' and modelloc like '%"+modello+"%'");
+		tutte.setSelected(false);
+		check();
 	}
 	
 	public void elimina() {
@@ -488,7 +490,7 @@ public void aggiungi() {
 	
 	public void confermaAggiungi(){
 		try {
-			String q = "insert into caldaie (dittac, modelloc, pnfc, pnuc, ruc, combc, ecc, mbc, cacsc, bisrc) values ('"+ditta.getText()+"', '"+modello.getText()+"', '"+modello.getText()+"', '"+modello.getText()+"', '"+potenzaFocolare.getText()+"', '"+potenzaUtile.getText()+"', '"+rendimentoUtile.getText()+"', '"+combustibile.getText()+"', '"+cert.getText()+"', ";
+			String q = "insert into caldaie (dittac, modelloc, pnfc, pnuc, ruc, combc, ecc, mbc, cacsc, bisrc) values ('"+ditta.getText()+"', '"+modello.getText()+"', '"+potenzaFocolare.getText()+"', '"+potenzaUtile.getText()+"', '"+rendimentoUtile.getText()+"', '"+combustibile.getText()+"', '"+cert.getText()+"', ";
 			if(murale.isSelected()) {
 				q=q.concat("'Murale', ");
 			}

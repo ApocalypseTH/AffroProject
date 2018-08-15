@@ -90,5 +90,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void archivioInstallatori(){
+		Installatori su = new Installatori();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
