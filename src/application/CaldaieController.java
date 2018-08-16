@@ -270,7 +270,7 @@ public class CaldaieController implements Initializable{
 				codac.add(rs.getString("DITTAC"));
 				codam.add(rs.getString("MODELLOC"));
 				
-				Label t1= new Label(" "+i);
+				Label t1= new Label(" "+(i+1));
 				TextField t2= new TextField(rs.getString("DITTAC"));
 				TextField t3= new TextField(rs.getString("MODELLOC"));
 				

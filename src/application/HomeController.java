@@ -99,5 +99,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void archivioAmministratori(){
+		Amministratori su = new Amministratori();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
