@@ -24,13 +24,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class InstallatoriController implements Initializable{
+public class AmministratoriController implements Initializable{
 	public static Stage primaryStage;
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<String> codac;
-	private String dittaM;
+	private String ammin;
 	
 
 	@FXML
@@ -38,13 +38,21 @@ public class InstallatoriController implements Initializable{
 	@FXML
 	private GridPane gp;
 	@FXML
-	private TextField ditta;
+	private TextField amministratore;
 	@FXML
 	private TextField comune;
 	@FXML
+	private TextField provincia;
+	@FXML
+	private TextField via;
+	@FXML
+	private TextField numero;
+	@FXML
+	private TextField cf;
+	@FXML
 	private TextField telefono;
 	@FXML
-	private Label nInstallatori;
+	private Label nAmministratori;
 	@FXML
 	private Button conferma;
 	@FXML
@@ -90,7 +98,7 @@ public class InstallatoriController implements Initializable{
 		
 		codac= new Vector<String>();
 		
-		refreshTabella("select * from insta order by dittai");
+		refreshTabella("select * from ammin order by cognomea");
 		
 	}
 	
@@ -109,10 +117,10 @@ public class InstallatoriController implements Initializable{
 			while (rs.next()) {
 //				coda.add(Integer.parseInt(rs.getString("CODICEU")));
 				
-				codac.add(rs.getString("DITTAI"));
+				codac.add(rs.getString("COGNOMEA"));
 				
 				Label t1= new Label(" "+(i+1));
-				TextField t2= new TextField(rs.getString("DITTAI"));
+				TextField t2= new TextField(rs.getString("COGNOMEA"));
 				
 				t2.setEditable(false);
 				
@@ -127,9 +135,9 @@ public class InstallatoriController implements Initializable{
 		}
 		
 		try {
-			rs = stm.executeQuery("select count(*) as count from insta ");
+			rs = stm.executeQuery("select count(*) as count from ammin ");
 			rs.next();
-			nInstallatori.setText(rs.getString("count"));
+			nAmministratori.setText(rs.getString("count"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -144,7 +152,7 @@ public class InstallatoriController implements Initializable{
 				String c=codac.get(r);
 				
 				
-				String q="select * from insta where dittai=?;";
+				String q="select * from ammin where cognomea=?;";
 				
 				PreparedStatement prepStat;
 				try {
@@ -156,9 +164,13 @@ public class InstallatoriController implements Initializable{
 					
 					rs.next();
 					
-					ditta.setText(rs.getString("DITTAI"));
-					comune.setText(rs.getString("INDIRIZZOI"));
-					telefono.setText(rs.getString("TELEFONOI"));
+					amministratore.setText(rs.getString("COGNOMEA"));
+					comune.setText(rs.getString("COMUNEA"));
+					telefono.setText(rs.getString("TELEFONOA"));
+					via.setText(rs.getString("INDIRIZZOA"));
+					numero.setText(rs.getString("NUMEROA"));
+					provincia.setText(rs.getString("PROVINCIAA"));
+					cf.setText(rs.getString("CFIVAA"));
 					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
@@ -170,7 +182,7 @@ public class InstallatoriController implements Initializable{
 	
 	public void modifica() {
 		
-		dittaM = ditta.getText();
+		ammin = amministratore.getText();
 		
 		conferma.setVisible(true);
 		annulla.setVisible(true);
@@ -182,24 +194,28 @@ public class InstallatoriController implements Initializable{
 		
 		sp.setMouseTransparent(true);
 		
-		ditta.setEditable(true);
+		amministratore.setEditable(true);
+		via.setEditable(true);
+		numero.setEditable(true);
 		comune.setEditable(true);
+		provincia.setEditable(true);
 		telefono.setEditable(true);
+		cf.setEditable(true);
 	}
 	
 	public void confermaModifica() {
 		try {
-			String q = "update insta set dittai='"+ditta.getText()+"', indirizzoi='"+comune.getText()+"', telefonoi='"+telefono.getText()+"'";
+			String q = "update ammin set cognomea='"+amministratore.getText()+"', indirizzoa='"+via.getText()+"', numeroa='"+numero.getText()+"', comunea='"+comune.getText()+"', provinciaa='"+provincia.getText()+"', telefonoa='"+telefono.getText()+"', cfivaa='"+cf.getText()+"'";
 			
 			
-			stm.execute(q.concat(" where dittai='"+dittaM+"'"));
+			stm.execute(q.concat(" where cognomea='"+ammin+"'"));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-		refreshTabella("select * from insta order by dittai");
+		refreshTabella("select * from ammin order by cognomea");
 		
 		annullaModifica();
 	}
@@ -215,14 +231,18 @@ public class InstallatoriController implements Initializable{
 		
 		sp.setMouseTransparent(false);
 		
-		ditta.setEditable(false);
+		amministratore.setEditable(false);
+		via.setEditable(false);
+		numero.setEditable(false);
 		comune.setEditable(false);
+		provincia.setEditable(false);
 		telefono.setEditable(false);
+		cf.setEditable(false);
 
 	}
 	
 	public void cercaW(){
-		CercaInstallatori c = new CercaInstallatori(this);
+		CercaAmministratori c = new CercaAmministratori(this);
 		try {
 			c.start(primaryStage);
 		} catch (Exception e) {
@@ -231,8 +251,8 @@ public class InstallatoriController implements Initializable{
 		}
 	}
 	
-	public void cerca( String ditta) {
-		refreshTabella("select * from insta where dittai like '%"+ditta+"%'");
+	public void cerca( String amm) {
+		refreshTabella("select * from ammin where cognomea like '%"+amm+"%'");
 		annullaRicerca.setVisible(true);
 		modifica.setDisable(true);
 		aggiungi.setDisable(true);
@@ -246,22 +266,22 @@ public class InstallatoriController implements Initializable{
 		cerca.setDisable(false);
 		elimina.setDisable(false);
 		
-		refreshTabella("select * from insta order by dittai");
+		refreshTabella("select * from ammin order by cognomea");
 	}
 	
 	public void elimina() {
 		try {
-			stm.execute("delete from insta where dittai='"+ditta.getText()+"'");
+			stm.execute("delete from ammin where cognomea='"+amministratore.getText()+"'");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		refreshTabella("select * from insta order by dittai");
+		refreshTabella("select * from ammin order by cognomea");
 	}
 	
 public void aggiungi() {
 		
-		dittaM = ditta.getText();
+		ammin = amministratore.getText();
 		
 		confermaAggiunta.setVisible(true);
 		annullaAggiunta.setVisible(true);
@@ -273,20 +293,27 @@ public void aggiungi() {
 		
 		sp.setMouseTransparent(true);
 		
-		ditta.setEditable(true);
+		amministratore.setEditable(true);
+		via.setEditable(true);
+		numero.setEditable(true);
 		comune.setEditable(true);
+		provincia.setEditable(true);
 		telefono.setEditable(true);
-
-
-		
-		ditta.setText("");
+		cf.setEditable(true);
+	
+		amministratore.setText("");
+		via.setText("");
+		numero.setText("");
 		comune.setText("");
+		provincia.setText("");
 		telefono.setText("");
+		cf.setText("");
 	}
 	
 	public void confermaAggiungi(){
 		try {
-			String q = "insert into insta (dittai, indirizzoi, telefonoi) values ('"+ditta.getText()+"', '"+comune.getText()+"', '"+telefono.getText()+"')";			
+			String q = "insert into ammin (cognomea, indirizzoa, numeroa, comunea, provinciaa, telefonoa, cfivaa) values ('"+amministratore.getText()+"', '"+via.getText()+"', '"+numero.getText()+"', '"+comune.getText()+"', '"+provincia.getText()+"', '"+telefono.getText()+"', '"+cf.getText()+"')";
+			System.out.println(q);
 			stm.execute(q);
 			
 		} catch (SQLException e) {
@@ -294,7 +321,7 @@ public void aggiungi() {
 			e.printStackTrace();
 		}
 		
-		refreshTabella("select * from insta order by dittai");
+		refreshTabella("select * from ammin order by cognomea");
 
 		annullaAggiungi();
 	}
@@ -309,9 +336,13 @@ public void aggiungi() {
 		
 		sp.setMouseTransparent(false);
 		
-		ditta.setEditable(false);
+		amministratore.setEditable(false);
+		via.setEditable(false);
+		numero.setEditable(false);
 		comune.setEditable(false);
+		provincia.setEditable(false);
 		telefono.setEditable(false);
+		cf.setEditable(false);
 	}
 }
 

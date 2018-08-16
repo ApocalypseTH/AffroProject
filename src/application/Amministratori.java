@@ -8,13 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class Installatori extends Application {
+public class Amministratori extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Installatori.class.getResource("installatori.fxml"));
+	        loader.setLocation(Amministratori.class.getResource("amministratori.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
@@ -23,7 +23,7 @@ public class Installatori extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			InstallatoriController.primaryStage = primaryStage;
+			AmministratoriController.primaryStage = primaryStage;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
