@@ -397,7 +397,7 @@ public class RicercaUtentiController implements Initializable{
 		}
 		if(!(numeroU.getText()).equals("")) {
 			q=q.concat(andCheck());
-			q=q.concat(" numeroU like '%'"+numeroU.getText()+"%'");
+			q=q.concat(" numeroU like '%"+numeroU.getText()+"%'");
 		}
 		if(!(localita.getText()).equals("")) {
 			q=q.concat(andCheck());
