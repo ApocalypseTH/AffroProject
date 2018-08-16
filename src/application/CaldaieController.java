@@ -170,6 +170,7 @@ public class CaldaieController implements Initializable{
 	
 	public void check() {
 		if(tutte.isSelected()) {
+			ditte.setValue("");
 			ditte.setDisable(true);
 			refreshTabella("select * from caldaie order by dittac");
 			
@@ -438,12 +439,37 @@ public class CaldaieController implements Initializable{
 			e.printStackTrace();
 		}
 		refreshTabella("select * from caldaie order by dittac");
+		
+		if(tutte.isSelected()) {
+			refreshTabella("select * from caldaie order by dittac");
+			
+			try {
+				rs = stm.executeQuery("select count(*) as count from caldaie ");
+				rs.next();
+				nCaldaie.setText(rs.getString("count"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else {
+			
+			try {
+				rs = stm.executeQuery("select count(*) as count from caldaie where dittac='"+ditte.getValue()+"'");
+				rs.next();
+				nCaldaie.setText(rs.getString("count"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			refreshTabella("select * from caldaie where dittac='"+ditte.getValue()+"'");
+		}
+		
 	}
 	
 public void aggiungi() {
-		
-		dittaM = ditta.getText();
-		modelloM = modello.getText();
 		
 		confermaAggiunta.setVisible(true);
 		annullaAggiunta.setVisible(true);
@@ -579,5 +605,3 @@ public void aggiungi() {
 		cert.setEditable(false);
 	}
 }
-
-

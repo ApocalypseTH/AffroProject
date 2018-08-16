@@ -2,46 +2,36 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class CercaCaldaie extends Application {
-	
-	CaldaieController su;
-	
-	public CercaCaldaie(CaldaieController su) {
-		this.su=su;
-	}
-	
+public class Bruciatore extends Application{
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
-			Stage s = new Stage();
-			
-			CercaCaldaieController.su = su;
-			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("cercaCaldaie.fxml"));
+	        loader.setLocation(Bruciatore.class.getResource("bruciatore.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
 
 			Scene scene = new Scene(root);
-			s.setScene(scene);
-			s.show();
+			primaryStage.setScene(scene);
+			primaryStage.show();
 			
-			HomeController.primaryStage = primaryStage;
+			BruciatoreController.primaryStage = primaryStage;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-
+	
 }

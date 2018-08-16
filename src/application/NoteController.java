@@ -28,8 +28,6 @@ public class NoteController implements Initializable{
 	@FXML
 	private Button annulla;
 	
-	
-	
 	public void conferma() {
 		String txt=t.getText();
 		String q = "";

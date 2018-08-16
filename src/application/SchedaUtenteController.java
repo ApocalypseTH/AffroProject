@@ -368,13 +368,13 @@ public class SchedaUtenteController implements Initializable {
     }
 	
 	public void ricercheU(){
-		
+	
 	}
 	
 	public void ricercheA(){
-		
+	
 	}
-
+	
 	public void ricercheS(){
 	
 	}
@@ -398,8 +398,8 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
 	public void noteM() {
 		requery();
 		refresh();
@@ -419,8 +419,8 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
 	public void noteI() {
 		requery();
 		refresh();
@@ -440,7 +440,6 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void cancellaRecord() {
@@ -626,7 +625,7 @@ public class SchedaUtenteController implements Initializable {
 		requery();
 		refresh();
 		
-		//MANCA LA MODIFICA DELL'INSTALLATORE, DA FARE QUANDO L'ARCHIVIO SARA' PRONTO
+//____________MANCA LA MODIFICA DELL'INSTALLATORE, DA FARE QUANDO L'ARCHIVIO SARA' PRONTO____________
 		
 	}
 	

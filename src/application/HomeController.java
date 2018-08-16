@@ -99,5 +99,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void archivioBruciatori() {
+		Bruciatore b = new Bruciatore();
+		try {
+			b.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
