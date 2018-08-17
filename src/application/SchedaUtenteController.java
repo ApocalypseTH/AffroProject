@@ -17,6 +17,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SchedaUtenteController implements Initializable {
@@ -29,7 +31,6 @@ public class SchedaUtenteController implements Initializable {
 	private  Statement stm;
 	private  ResultSet rs;
 	private TextField[][] griglia = new TextField[12][5];
-	private boolean modifica;
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -42,6 +43,27 @@ public class SchedaUtenteController implements Initializable {
 
 	@FXML
 	private MenuItem ricercheStorico;
+	
+	//riferimenti ai pane del codice fxml per velocizzare il processo con il quale si rendono editabili 
+	//e non tutti i textfield presenti nella scheda utente
+	
+	@FXML
+	private GridPane caldbrugp;
+	@FXML
+	private GridPane utentegp;
+	@FXML
+	private GridPane ammingp;
+	@FXML
+	private GridPane manutsxgp;	//grid pane dati sezione manut quello a sx
+	@FXML
+	private GridPane manutdxgp; //grid pane dati sezione manut quello a dx
+	@FXML
+	private GridPane tipiimpiantogp;
+	@FXML
+	private GridPane installatoregp;
+	@FXML
+	private AnchorPane orologioap;
+	
 	
 	@FXML
 	private  Label codice;
@@ -275,9 +297,7 @@ public class SchedaUtenteController implements Initializable {
 			connection = DriverManager.getConnection(connectionString);
 			stm = connection.createStatement();
 			rs = stm.executeQuery("select * from utenti order by codiceu");
-			rs.next();
-			refresh();
-			
+			rs.next();			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -293,6 +313,15 @@ public class SchedaUtenteController implements Initializable {
 		privato.setToggleGroup(edificio);
 		altroDitta.setToggleGroup(edificio);
 		altroTerzoResponsabile.setToggleGroup(edificio);
+		
+		utentegp.setMouseTransparent(true);
+		ammingp.setMouseTransparent(true);
+		caldbrugp.setMouseTransparent(true);
+		orologioap.setMouseTransparent(true);
+		installatoregp.setMouseTransparent(true);
+		manutdxgp.setMouseTransparent(true);
+		manutsxgp.setMouseTransparent(true);
+		tipiimpiantogp.setMouseTransparent(true);
 		
 		griglia[0][0]=c1ditta;
 		griglia[0][1]=c1modello;
@@ -365,6 +394,8 @@ public class SchedaUtenteController implements Initializable {
 		griglia[11][2]=b6tipo;
 		griglia[11][3]=b6matricola;
 		griglia[11][4]=b6combustibile;
+		
+		refresh();
     }
 	
 	public void ricercheU(){
@@ -380,8 +411,6 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void noteA() {
-		requery();
-		refresh();
 		String testo="";
 		String id="";
 		try {
@@ -391,7 +420,7 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Note n = new Note(testo, 1, id);
+		Note n = new Note(testo, 1, id, this);
 		try {
 			n.start(primaryStage);
 		} catch (Exception e) {
@@ -401,8 +430,6 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void noteM() {
-		requery();
-		refresh();
 		String testo="";
 		String id="";
 		try {
@@ -412,7 +439,7 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Note n = new Note(testo, 2, id);
+		Note n = new Note(testo, 2, id, this);
 		try {
 			n.start(primaryStage);
 		} catch (Exception e) {
@@ -422,8 +449,6 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void noteI() {
-		requery();
-		refresh();
 		String testo="";
 		String id="";
 		try {
@@ -433,7 +458,7 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Note n = new Note(testo, 3, id);
+		Note n = new Note(testo, 3, id, this);
 		try {
 			n.start(primaryStage);
 		} catch (Exception e) {
@@ -453,10 +478,30 @@ public class SchedaUtenteController implements Initializable {
 		}
 	}
 	
+	public int getRow() {
+		try {
+			return rs.getRow();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 1;
+		}
+	}
+	
 	public void requery() {
 		try {
 			rs = stm.executeQuery("select * from utenti order by codiceu");
 			rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void requery(int row) {
+		try {
+			rs = stm.executeQuery("select * from utenti order by codiceu");
+			rs.absolute(row);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -548,85 +593,12 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void modifica() {
 		
-		if(modifica) {
-			nome.setEditable(true);
-			cognome.setEditable(true);
-			viaU.setEditable(true);
-			numeroU.setEditable(true);
-			localita.setEditable(true);
-			cap.setEditable(true);
-			comuneU.setEditable(true);
-			provU.setEditable(true);
-			telefonoU.setEditable(true);
-			cellulareU.setEditable(true);
-			cfU.setEditable(true);
-			intervento1.setEditable(true);
-			intervento2.setEditable(true);
-			intervento3.setEditable(true);
-			intervento4.setEditable(true);
-			codManut.setEditable(true);
-			puliziacb.setEditable(true);
-			analComb.setEditable(true);
-			bollino.setEditable(true);
-		}		
 	}
 	
 	public void annullaModifica() {
-		nome.setEditable(false);
-		cognome.setEditable(false);
-		viaU.setEditable(false);
-		numeroU.setEditable(false);
-		localita.setEditable(false);
-		cap.setEditable(false);
-		comuneU.setEditable(false);
-		provU.setEditable(false);
-		telefonoU.setEditable(false);
-		cellulareU.setEditable(false);
-		cfU.setEditable(false);
-		intervento1.setEditable(false);
-		intervento2.setEditable(false);
-		intervento3.setEditable(false);
-		intervento4.setEditable(false);
-		codManut.setEditable(false);
-		puliziacb.setEditable(false);
-		analComb.setEditable(false);
-		bollino.setEditable(false);
-		refresh();
 	}
 	
 	public void confermaModifica() {
-		try {
-			String sql = "update utenti set "+
-			"congomeu = '"+cognome.getText()+"', "+
-			"nomeu = '"+nome.getText()+"', "+
-			"indirizzoU = '"+viaU.getText()+"', "+
-			"numerou = '"+numeroU.getText()+"', "+
-			"localitau = '"+localita.getText()+"', "+
-			"capu = '"+cap.getText()+"', "+
-			"comuneu = '"+comuneU.getText()+"', "+
-			"provinciau = '"+provU.getText()+"', "+
-			"telefonou = '"+telefonoU.getText()+"', "+
-			"cellulareu = '"+cellulareU.getText()+"', "+
-			"cfivau = '"+cfU.getText()+"', "+
-			"annoprec1 = '"+intervento1.getText()+"', "+
-			"annoprec2 = '"+intervento2.getText()+"', "+
-			"annocor1 = '"+intervento3.getText()+"', "+
-			"annocor2 = '"+intervento4.getText()+"', "+
-			"codmanu = '"+codManut.getText()+"', "+
-			"manprogm = '"+puliziacb.getText()+"', "+
-			"analcomb = '"+analComb.getText()+"', "+
-			"bollino = '"+bollino.getText()+"', "+
-			" where codiceu = '"+rs.getString("CODICEU")+"'";
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		requery();
-		refresh();
-		
-//____________MANCA LA MODIFICA DELL'INSTALLATORE, DA FARE QUANDO L'ARCHIVIO SARA' PRONTO____________
-		
 	}
 	
 	public void refresh() {

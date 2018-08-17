@@ -21,6 +21,8 @@ public class NoteController implements Initializable{
 	private Connection connection;
 	private Statement stm;
 	
+	static SchedaUtenteController suc;
+	
 	@FXML
 	private TextArea t;
 	@FXML
@@ -54,6 +56,9 @@ public class NoteController implements Initializable{
 	public void annulla() {
 		Stage stage = (Stage) annulla.getScene().getWindow();
 	    // do what you have to do
+		//Ok I'll do what i want to do XOXO by Eddie
+		suc.requery(suc.getRow());
+		suc.refresh();
 	    stage.close();
 	}
 

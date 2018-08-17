@@ -14,10 +14,13 @@ public class Note extends Application {
 	Integer i;
 	String id;
 	
-	public Note(String t, int i, String id) {
+	private SchedaUtenteController suc;
+	
+	public Note(String t, int i, String id, SchedaUtenteController suc) {
 		testo=t;
 		this.i=i;
 		this.id=id;
+		this.suc = suc;
 	}
 	
 	@Override
@@ -29,6 +32,7 @@ public class Note extends Application {
 			NoteController.testo = testo;
 			NoteController.i = i;
 			NoteController.id = id;
+			NoteController.suc = suc;
 			
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("note.fxml"));
