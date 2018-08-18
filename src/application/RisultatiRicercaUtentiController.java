@@ -24,6 +24,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class RisultatiRicercaUtentiController implements Initializable{
+	static Stage primaryStage;
 	public static String query;
 	public static Integer i;
 	public static String id;
@@ -31,6 +32,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<Integer> coda;
+	private int cod;
 	
 	@FXML
 	private GridPane gp;
@@ -90,6 +92,8 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	private TextField bollino;
 	@FXML
 	private TextField messaInFunzione;
+	@FXML
+	private Button schedaUtente;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -115,7 +119,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 			
 			int i=1;
 			while (rs.next()) {				
-				Label t1= new Label(rs.getString("CODICEU"));
+				Label t1= new Label(" "+rs.getString("CODICEU"));
 				TextField t2= new TextField(rs.getString("COGNOMEU"));
 				TextField t3= new TextField(rs.getString("NOMEU"));
 				
@@ -130,6 +134,8 @@ public class RisultatiRicercaUtentiController implements Initializable{
 				gp.addRow(i, t1, t2, t3);
 				i++;
 			}
+			
+			schedaUtente.setDisable(true);
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,7 +154,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 					
-					int cod = coda.get(r-1);
+					cod = coda.get(r-1);
 					
 					String s="select * from utenti where codiceu=?";
 					
@@ -196,6 +202,7 @@ public class RisultatiRicercaUtentiController implements Initializable{
 						bollino.setText(rs.getString("BOLLINO"));
 						messaInFunzione.setText(rs.getString("CONTRATM"));
 						
+						schedaUtente.setDisable(false);
 						
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -205,5 +212,16 @@ public class RisultatiRicercaUtentiController implements Initializable{
         });
         
     }
+	
+	public void gotoSchedaUtente() {
+		SchedaUtente su;
+		try {
+			su = new SchedaUtente(cod);
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

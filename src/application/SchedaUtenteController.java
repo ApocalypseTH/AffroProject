@@ -31,6 +31,7 @@ public class SchedaUtenteController implements Initializable {
 	private  Statement stm;
 	private  ResultSet rs;
 	private TextField[][] griglia = new TextField[12][5];
+	static int user = 0;
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -395,6 +396,15 @@ public class SchedaUtenteController implements Initializable {
 		griglia[11][3]=b6matricola;
 		griglia[11][4]=b6combustibile;
 		
+		if(user != 0) {
+			try {
+				while(rs.getInt("CODICEU") != user)
+					rs.next();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		refresh();
     }
 	
@@ -470,7 +480,10 @@ public class SchedaUtenteController implements Initializable {
 	public void cancellaRecord() {
 		try {
 			stm.execute("delete from utenti where codiceu="+rs.getString("CODICEU"));
-			requery();
+			if(rs.isLast())
+				requery();
+			else
+				requery(rs.getRow()+1);
 			refresh();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -553,22 +566,38 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void next(){
 		try {
-			rs.next();
+			if(rs.isLast()) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Attenzione");
+				alert.setHeaderText("Sei all'ultimo utente");
+				alert.showAndWait();
+			} else {
+				rs.next();
+				refresh();
+			}
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		refresh();
 	}
 	
 	public void previous() {
 		try {
-			rs.previous();
+			if(rs.isFirst()) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Attenzione");
+				alert.setHeaderText("Sei al primo utente");
+				alert.showAndWait();
+			} else {
+				rs.previous();
+				refresh();
+			}
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		refresh();
 	}
 	
 	public void last() {
@@ -751,11 +780,6 @@ public class SchedaUtenteController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attenzione");
-			alert.setHeaderText("Sei al primo o all'ultimo utente");
-
-			alert.showAndWait();
 		}
 	}
 

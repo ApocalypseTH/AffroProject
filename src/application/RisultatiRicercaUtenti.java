@@ -24,6 +24,7 @@ public class RisultatiRicercaUtenti extends Application {
 			
 			
 			RisultatiRicercaUtentiController.query = query;
+			RisultatiRicercaUtentiController.primaryStage = primaryStage;
 			
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("risultatiRicercaUtenti.fxml"));
