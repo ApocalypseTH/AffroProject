@@ -119,5 +119,23 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void elencoTecnici(){
+		Tecnici su = new Tecnici();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void anagraficaDitta(){
+		AnagraficaDitta su = new AnagraficaDitta();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
