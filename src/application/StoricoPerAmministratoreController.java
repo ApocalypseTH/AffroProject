@@ -87,13 +87,8 @@ public class StoricoPerAmministratoreController implements Initializable{
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attenzione");
-			alert.setHeaderText("Non inserire caratteri sensibili come ' o /");
-			alert.showAndWait();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			
 		}
 	}
 	
@@ -106,7 +101,7 @@ public class StoricoPerAmministratoreController implements Initializable{
 					
 					l1.setText("Utenti di "+cod);
 					
-					String s="select * from utenti as u join ammin as a on u.cognomea=a.cognomea where a.cognomea=?";
+					String s="select * from utenti as u join ammin as a on u.cognomea=a.cognomea join ricint as r on r.codiceu=u.codiceu where a.cognomea=?";
 					
 					
 					try {
@@ -169,7 +164,7 @@ public class StoricoPerAmministratoreController implements Initializable{
 				rs = prepStat.executeQuery();		
 				
 				rs.next();
-				l2.setText("Interventi di "+rs.getString("COGNOMEU"));
+				l2.setText("Interventi di "+rs.getString("u.COGNOMEU"));
 				rs.previous();
 				
 				interventi.getChildren().clear();

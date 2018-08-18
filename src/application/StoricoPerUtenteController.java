@@ -64,7 +64,7 @@ public class StoricoPerUtenteController implements Initializable{
 			while (rs.next()) {
 				coda.add(Integer.parseInt(rs.getString("CODICEU")));
 				
-				Label t1= new Label(rs.getString("CODICEU"));
+				Label t1= new Label(" "+rs.getString("CODICEU"));
 				TextField t2= new TextField(rs.getString("COGNOMEU"));
 				TextField t3= new TextField(rs.getString("NOMEU"));
 				TextField t4= new TextField(rs.getString("INDIRIZZOU"));
