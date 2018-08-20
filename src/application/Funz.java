@@ -67,6 +67,26 @@ public class Funz {
 		return "jdbc:mysql://"+ip+":"+port+"/"+db+"?user="+user+"&password="+pwd;
 	}
 	
+	public String getIp() {		
+		return document.getElementsByTagName("ip").item(0).getTextContent();
+	}
+	
+	public String getPort() {		
+		return document.getElementsByTagName("port").item(0).getTextContent();
+	}
+	
+	public String getDB() {		
+		return document.getElementsByTagName("db").item(0).getTextContent();
+	}
+	
+	public String getUser() {		
+		return document.getElementsByTagName("user").item(0).getTextContent();
+	}
+	
+	public String getPassword() {		
+		return document.getElementsByTagName("password").item(0).getTextContent();
+	}
+	
 	public void setIp(String ip) {
 		
 		source = new DOMSource(document);

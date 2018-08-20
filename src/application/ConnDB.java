@@ -31,8 +31,8 @@ public class ConnDB {
 	
 	public static void main(String[] args) {
 		
-		ConnDB conn = new ConnDB();
-		System.out.println(conn.getConnection());
+//		ConnDB conn = new ConnDB();
+//		System.out.println(conn.getConnection());
 		
 	}
 	
