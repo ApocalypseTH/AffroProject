@@ -1,7 +1,5 @@
 package application;
 
-import java.sql.Statement;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -10,19 +8,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class CercaAmministratori extends Application {
+public class AmministratoriSchedaUtente extends Application {
 	
-	AmministratoriController su;
-	AmministratoriSchedaUtenteController s;
-	int id;
+	SchedaUtenteController su;
 	
-	public CercaAmministratori(AmministratoriController su) {
+	public AmministratoriSchedaUtente(SchedaUtenteController su) {
 		this.su=su;
-		id=1;
-	}
-	public CercaAmministratori(AmministratoriSchedaUtenteController su) {
-		this.s=su;
-		id=0;
 	}
 	
 	@Override
@@ -31,12 +22,9 @@ public class CercaAmministratori extends Application {
 			
 			Stage s = new Stage();
 			
-			CercaAmministratoriController.su = su;
-			CercaAmministratoriController.s = this.s;
-			CercaAmministratoriController.id=id;
-			
+			AmministratoriSchedaUtenteController.su = su;
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("cercaAmministratori.fxml"));
+	        loader.setLocation(AmministratoriSchedaUtente.class.getResource("amministratoriSchedaUtente.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
@@ -45,11 +33,12 @@ public class CercaAmministratori extends Application {
 			s.setScene(scene);
 			s.show();
 			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

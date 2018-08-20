@@ -12,7 +12,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -32,6 +34,7 @@ public class SchedaUtenteController implements Initializable {
 	private  ResultSet rs;
 	private TextField[][] griglia = new TextField[12][5];
 	static int user = 0;
+	int id;
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -90,20 +93,13 @@ public class SchedaUtenteController implements Initializable {
 	private  TextField cellulareU;
 	@FXML
 	private  TextField cfU;
-	@FXML
-	private  TextField amministratore;
-	@FXML
-	private  TextField viaA;
-	@FXML
-	private  TextField numeroA;
-	@FXML
-	private  TextField comuneA;
-	@FXML
-	private  TextField provA;
-	@FXML
-	private  TextField telefonoA;
-	@FXML
-	private  TextField cfA;
+	@FXML  TextField amministratore;
+	@FXML  TextField viaA;
+	@FXML  TextField numeroA;
+	@FXML  TextField comuneA;
+	@FXML  TextField provA;
+	@FXML  TextField telefonoA;
+	@FXML  TextField cfA;
 	@FXML
 	private  TextField installatore;
 	@FXML
@@ -271,6 +267,12 @@ public class SchedaUtenteController implements Initializable {
 	@FXML
 	private Button noteInstallatore;
 	@FXML
+	private Button confModifica;
+	@FXML
+	private Button annullaModifica;
+	@FXML
+	private Button messaInFunzione;
+	@FXML
 	private RadioButton condTerzoResponsabile;
 	@FXML
 	private RadioButton condConAmministratore;
@@ -280,7 +282,8 @@ public class SchedaUtenteController implements Initializable {
 	private RadioButton altroDitta;
 	@FXML
 	private RadioButton altroTerzoResponsabile;
-	
+	@FXML
+	private MenuButton analisi;
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -315,14 +318,6 @@ public class SchedaUtenteController implements Initializable {
 		altroDitta.setToggleGroup(edificio);
 		altroTerzoResponsabile.setToggleGroup(edificio);
 		
-		utentegp.setMouseTransparent(true);
-		ammingp.setMouseTransparent(true);
-		caldbrugp.setMouseTransparent(true);
-		orologioap.setMouseTransparent(true);
-		installatoregp.setMouseTransparent(true);
-		manutdxgp.setMouseTransparent(true);
-		manutsxgp.setMouseTransparent(true);
-		tipiimpiantogp.setMouseTransparent(true);
 		
 		griglia[0][0]=c1ditta;
 		griglia[0][1]=c1modello;
@@ -395,6 +390,16 @@ public class SchedaUtenteController implements Initializable {
 		griglia[11][2]=b6tipo;
 		griglia[11][3]=b6matricola;
 		griglia[11][4]=b6combustibile;
+		
+		for(int i=0; i<griglia.length; i++) {
+			for(int j=0; j<griglia[i].length; j++) {
+				griglia[i][j].setEditable(false);
+			}
+		}
+		
+		orologioap.setMouseTransparent(true);
+		tipiimpiantogp.setMouseTransparent(true);
+		
 		
 		if(user != 0) {
 			try {
@@ -621,13 +626,75 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void modifica() {
+		id=Integer.parseInt(codice.getText());
 		
+		
+		cognome.setEditable(true);
+		nome.setEditable(true);
+		viaU.setEditable(true);
+		numeroU.setEditable(true);
+		comuneU.setEditable(true);
+		provU.setEditable(true);
+		telefonoU.setEditable(true);
+		cap.setEditable(true);
+		localita.setEditable(true);
+		cellulareU.setEditable(true);
+		cfU.setEditable(true);
+		
+		confModifica.setVisible(true);
+		annullaModifica.setVisible(true);
+		analisi.setDisable(false);
+		messaInFunzione.setDisable(false);
+		
+		 ammingp.setOnMouseClicked(e -> {
+			 AmministratoriSchedaUtente su = new AmministratoriSchedaUtente(this);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
 	}
 	
 	public void annullaModifica() {
+		ammingp.setOnMouseClicked(null);
+		
+		cognome.setEditable(false);
+		nome.setEditable(false);
+		viaU.setEditable(false);
+		numeroU.setEditable(false);
+		comuneU.setEditable(false);
+		provU.setEditable(false);
+		telefonoU.setEditable(false);
+		cap.setEditable(false);
+		localita.setEditable(false);
+		cellulareU.setEditable(false);
+		cfU.setEditable(false);
+		
+		confModifica.setVisible(false);
+		annullaModifica.setVisible(false);
+		analisi.setDisable(true);
+		messaInFunzione.setDisable(true);
 	}
 	
 	public void confermaModifica() {
+		try {
+			String q="update utenti set cognomeu='', nomeu='', indirizzou='', numerou='', localitau='', capu='', comuneu='', provinciau='', telefonou='', cellulareu='', cfivau='', cognomea='', indirizzoa='', numeroa='', comunea='', provinciaa='', telefonoa='', cfivaa='', dittai='', codmanu='', manprogm='', analcomb='', bollino='',  ";
+//			da compilare, e mancano anche caldaie, bruciatori, checkbox, radiobutton e menubutton
+			
+			stm.execute(q.concat(" where codiceu="+id));
+			
+			requery();
+			rs.next();
+			while(Integer.parseInt(rs.getString("id")) != id) {
+				rs.next();
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void refresh() {
