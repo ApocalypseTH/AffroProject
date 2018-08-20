@@ -33,7 +33,7 @@ public class SchedaUtenteController implements Initializable {
 	private  Statement stm;
 	private  ResultSet rs;
 	private TextField[][] griglia = new TextField[12][5];
-	static int user = 0;
+	static int user = -1;
 	int id;
 	
 	@FXML
@@ -401,9 +401,9 @@ public class SchedaUtenteController implements Initializable {
 		tipiimpiantogp.setMouseTransparent(true);
 		
 		
-		if(user != 0) {
+		if(user != -1) {
 			try {
-				while(rs.getInt("CODICEU") != user)
+				while(rs.getInt("CODICEU") != user && !rs.isAfterLast())
 					rs.next();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
