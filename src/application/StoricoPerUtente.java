@@ -12,6 +12,13 @@ import javafx.scene.layout.BorderPane;
 
 public class StoricoPerUtente extends Application {
 	
+	public StoricoPerUtente() {
+		super();
+	}
+	
+	public StoricoPerUtente(String q) {
+		StoricoPerUtenteController.query = q;
+	}
 	
 	@Override
 	public void start(Stage primaryStage) {

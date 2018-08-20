@@ -44,9 +44,9 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="54.0" layoutY="101.0" text="Intervento:" />
-                  <RadioButton fx:id="eseguita" layoutX="190.0" layoutY="79.0" mnemonicParsing="false" text="Eseguito" />
-                  <RadioButton fx:id="nonEseguita" layoutX="190.0" layoutY="128.0" mnemonicParsing="false" text="Non Eseguito" />
+                  <Label layoutX="54.0" layoutY="101.0" text="Pulizia C/B:" />
+                  <RadioButton fx:id="eseguita" layoutX="190.0" layoutY="79.0" mnemonicParsing="false" text="Eseguita" />
+                  <RadioButton fx:id="nonEseguita" layoutX="190.0" layoutY="128.0" mnemonicParsing="false" text="Non Eseguita" />
                   <TextField fx:id="t" layoutX="337.0" layoutY="96.0" prefHeight="25.0" prefWidth="75.0" />
                   <Label layoutX="430.0" layoutY="101.0" text="anno" />
                </children>

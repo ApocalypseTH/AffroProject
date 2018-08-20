@@ -7,6 +7,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class RicercaUtenti extends Application {
+	
+	public RicercaUtenti() {
+		super();
+	}
+	
+	public RicercaUtenti(boolean storico) {
+		RicercaUtentiController.storico = storico;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();

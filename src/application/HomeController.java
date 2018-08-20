@@ -64,9 +64,9 @@ public class HomeController {
 		}
 	}
 	public void storicoPerUtente(){
-		StoricoPerUtente su = new StoricoPerUtente();
+		RicercaUtenti ru = new RicercaUtenti(true);
 		try {
-			su.start(primaryStage);
+			ru.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

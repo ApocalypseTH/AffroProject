@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 public class RicercaUtentiController implements Initializable{
 	
 	static Stage primaryStage;
+	static boolean storico = false;
 	public Statement stm;
 	public ResultSet amministratori;
 	public ResultSet caldaie;
@@ -381,7 +382,7 @@ public class RicercaUtentiController implements Initializable{
 	
 	public void conferma() {
 		e = false;
-		String q = "select distinct u.codiceu, u.nomeu, u.cognomeu from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
+		String q = "select distinct u.codiceu, u.nomeu, u.cognomeu, u.indirizzou, u.comuneu, u.telefonou, u.imptipo from utenti as u left join ricint as r on u.codiceu=r.codiceu left join analisi as a on u.codiceu=a.codiceu where";
 		
 		if(!(cognome.getText()).equals("")) {
 			q=q.concat(andCheck());
@@ -623,14 +624,14 @@ public class RicercaUtentiController implements Initializable{
 			System.out.println(q);
 			
 			stm.execute(q);
-		
-			RisultatiRicercaUtenti su = new RisultatiRicercaUtenti(q);
-		try {
-			su.start(primaryStage);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			if(storico) {
+				StoricoPerUtente su = new StoricoPerUtente(q);
+				su.start(primaryStage);
+			}
+			else {
+				RisultatiRicercaUtenti ru = new RisultatiRicercaUtenti(q);
+				ru.start(primaryStage);
+			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

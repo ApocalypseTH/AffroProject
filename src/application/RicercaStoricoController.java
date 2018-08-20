@@ -34,16 +34,16 @@ public class RicercaStoricoController implements Initializable{
 	
 	
 	public void conferma() {
-		String q="select u.codiceu, u.cognomeu, u.nomeu, r.dataint, r.motivoch from ricint as r join utenti as u on r.codiceu=u.codiceu";
+		String q="select u.codiceu, u.cognomeu, u.nomeu, r.dataint, r.motivoch from ricint as r join utenti as u on r.codiceu=u.codiceu where motivoch like '%puliz%'";
 		
 		if(!"".equals(t.getText())) {
 			if(eseguita.isSelected())
-				q=q.concat(" where r.dataint between '"+t.getText()+"-01-01' and '"+t.getText()+"-12-31'");
+				q=q.concat(" and r.dataint between '"+t.getText()+"-01-01' and '"+t.getText()+"-12-31'");
 			else if(nonEseguita.isSelected())
-				q=q.concat(" where r.dataint<'"+t.getText()+"-01-01' or r.dataint>'"+t.getText()+"-12-31'");
+				q=q.concat(" and r.dataint<'"+t.getText()+"-01-01' or r.dataint>'"+t.getText()+"-12-31'");
 		}
 		
-		q=q.concat(" order by r.dataint");
+		q=q.concat(" order by r.dataint desc");
 		
 //		System.out.println(q);
 		

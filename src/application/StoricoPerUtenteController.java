@@ -26,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class StoricoPerUtenteController implements Initializable{
+	static String query; 
 	public static Integer i;
 	public static String id;
 	private Connection connection;
@@ -56,7 +57,7 @@ public class StoricoPerUtenteController implements Initializable{
 			
 			connection = DriverManager.getConnection(connectionString);
 			stm = connection.createStatement();
-			rs= stm.executeQuery("select * from utenti");
+			rs= stm.executeQuery(query);
 			
 			coda= new Vector<Integer>();
 			
@@ -120,10 +121,11 @@ public class StoricoPerUtenteController implements Initializable{
 						
 						rs = prepStat.executeQuery();		
 						
+						
 						analisi.getChildren().clear();
 						analisi.setGridLinesVisible(false);
 						analisi.setGridLinesVisible(true);
-
+						
 						int i=0;
 						while (rs.next()) {							
 							Label t1= new Label(" "+rs.getString("r.CODICEU"));
