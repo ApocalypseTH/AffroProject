@@ -10,19 +10,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
-public class CercaInstallatori extends Application {
+public class MessaInFunzione extends Application {
 	
-	InstallatoriController su;
-	InstallatoriSchedaUtenteController s;
 	int id;
 	
-	public CercaInstallatori(InstallatoriController su) {
-		this.su=su;
-		id=1;
-	}
-	public CercaInstallatori(InstallatoriSchedaUtenteController su) {
-		this.s=su;
-		id=0;
+	public MessaInFunzione(int id) {
+		// TODO Auto-generated constructor stub
+		this.id=id;
 	}
 	
 	@Override
@@ -31,12 +25,10 @@ public class CercaInstallatori extends Application {
 			
 			Stage s = new Stage();
 			
-			CercaInstallatoriController.su = su;
-			CercaInstallatoriController.s = this.s;
-			CercaInstallatoriController.id=id;
+			MessaInFunzioneController.id=id;
 			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("cercaInstallatori.fxml"));
+	        loader.setLocation(Main.class.getResource("messaInFunzione.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
@@ -44,8 +36,6 @@ public class CercaInstallatori extends Application {
 			Scene scene = new Scene(root);
 			s.setScene(scene);
 			s.show();
-			
-			HomeController.primaryStage = primaryStage;
 			
 		} catch(Exception e) {
 			e.printStackTrace();

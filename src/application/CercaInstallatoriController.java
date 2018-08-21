@@ -24,6 +24,8 @@ public class CercaInstallatoriController {
 	static Stage primaryStage;
 	
 	static InstallatoriController su;
+	static InstallatoriSchedaUtenteController s;
+	static int id;
 	
 	@FXML
 	private TextField ditta;
@@ -32,7 +34,10 @@ public class CercaInstallatoriController {
 	
 	public void cerca(){
 		
-		su.cerca(ditta.getText());
+		if(id==1)
+			su.cerca(ditta.getText());
+		if(id==0)
+			s.cerca(ditta.getText());
 		
 		Stage stage = (Stage) cerca.getScene().getWindow();
 	    stage.close();

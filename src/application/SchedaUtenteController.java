@@ -100,10 +100,8 @@ public class SchedaUtenteController implements Initializable {
 	@FXML  TextField provA;
 	@FXML  TextField telefonoA;
 	@FXML  TextField cfA;
-	@FXML
-	private  TextField installatore;
-	@FXML
-	private  TextField certificatoConformita;
+	@FXML  TextField installatore;
+	@FXML  TextField certificatoConformita;
 	@FXML
 	private  TextField intervento1;
 	@FXML
@@ -284,6 +282,8 @@ public class SchedaUtenteController implements Initializable {
 	private RadioButton altroTerzoResponsabile;
 	@FXML
 	private MenuButton analisi;
+	@FXML
+	private AnchorPane dittaInstallatore;
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -525,6 +525,18 @@ public class SchedaUtenteController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void returnToId(int i) {
+		requery();
+		try {
+			rs.next();
+			while(Integer.parseInt(rs.getString("id")) != id) {
+				rs.next();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public void cercaW(){
 		Cerca c = new Cerca(this);
@@ -628,7 +640,8 @@ public class SchedaUtenteController implements Initializable {
 	public void modifica() {
 		id=Integer.parseInt(codice.getText());
 		
-		
+		orologioap.setMouseTransparent(false);
+		tipiimpiantogp.setMouseTransparent(false);
 		cognome.setEditable(true);
 		nome.setEditable(true);
 		viaU.setEditable(true);
@@ -640,6 +653,7 @@ public class SchedaUtenteController implements Initializable {
 		localita.setEditable(true);
 		cellulareU.setEditable(true);
 		cfU.setEditable(true);
+		certificatoConformita.setEditable(true);
 		
 		confModifica.setVisible(true);
 		annullaModifica.setVisible(true);
@@ -655,11 +669,23 @@ public class SchedaUtenteController implements Initializable {
 					e1.printStackTrace();
 				}
 		 });
+		 dittaInstallatore.setOnMouseClicked(e -> {
+			 InstallatoriSchedaUtente su = new InstallatoriSchedaUtente(this);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
 	}
 	
 	public void annullaModifica() {
 		ammingp.setOnMouseClicked(null);
+		dittaInstallatore.setOnMouseClicked(null);
 		
+		orologioap.setMouseTransparent(true);
+		tipiimpiantogp.setMouseTransparent(true);
 		cognome.setEditable(false);
 		nome.setEditable(false);
 		viaU.setEditable(false);
@@ -671,6 +697,7 @@ public class SchedaUtenteController implements Initializable {
 		localita.setEditable(false);
 		cellulareU.setEditable(false);
 		cfU.setEditable(false);
+		certificatoConformita.setEditable(false);
 		
 		confModifica.setVisible(false);
 		annullaModifica.setVisible(false);
@@ -692,6 +719,17 @@ public class SchedaUtenteController implements Initializable {
 			}
 				
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		annullaModifica();
+	}
+	
+	public void messaInFunzione(){
+		MessaInFunzione c = new MessaInFunzione(Integer.parseInt(codice.getText()));
+		try {
+			c.start(primaryStage);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
