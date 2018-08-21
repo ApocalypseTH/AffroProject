@@ -77,26 +77,28 @@ public class RicercaStoricoController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
-		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		
-		try {
-			
-			connection = DriverManager.getConnection(connectionString);
-			stm = connection.createStatement();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
+//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
+//
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		
+//		try {
+//			
+//			connection = DriverManager.getConnection(connectionString);
+//			ConnDB conn = new ConnDB();
+//			connection = conn.getConnection();
+//			stm = connection.createStatement();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//		
 		eseguita.setToggleGroup(group);
 		nonEseguita.setToggleGroup(group);
 		

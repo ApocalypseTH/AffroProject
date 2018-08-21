@@ -20,6 +20,8 @@ public class SchedaUtente extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 
+		SchedaUtenteController.primaryStage = primaryStage;
+		
 		loader.setLocation(this.getClass().getResource("schedaUtente.fxml"));
 		AnchorPane pane = (AnchorPane) loader.load();
 		Scene scene = new Scene(pane);

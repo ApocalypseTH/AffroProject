@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,6 +31,7 @@ public class Funz {
 	private static StreamResult result;
 	
 	public Funz() {
+		
 		file = new File("src/dati.xml");
 		documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {

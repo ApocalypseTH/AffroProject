@@ -27,6 +27,7 @@ public class RicercaUtentiController implements Initializable{
 	
 	static Stage primaryStage;
 	static boolean storico = false;
+	private Connection connection;
 	public Statement stm;
 	public ResultSet amministratori;
 	public ResultSet caldaie;
@@ -171,9 +172,7 @@ public class RicercaUtentiController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-		
+		// TODO Auto-generated method stub		
 		automatico.setToggleGroup(orologio);
 		manuale.setToggleGroup(orologio);
 		
@@ -195,17 +194,21 @@ public class RicercaUtentiController implements Initializable{
 		solare.setToggleGroup(ora);
 		ordineCI.setToggleGroup(ordine);
 		ordineCN.setToggleGroup(ordine);
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		
+//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
 
 		try {
 			
-			Connection connection = DriverManager.getConnection(connectionString);
+//			Connection connection = DriverManager.getConnection(connectionString);
+			ConnDB conn = new ConnDB();
+			connection = conn.getConnection();
 			stm = connection.createStatement();
+			
 			amministratori = stm.executeQuery("select * from ammin order by cognomea");
 
 			while (amministratori.next()) {

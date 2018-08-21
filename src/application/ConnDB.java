@@ -11,6 +11,7 @@ public class ConnDB {
 	public Connection getConnection() {
 		
 		if(connection == null) {
+			System.out.println("new connection");
 			Funz funz = new Funz();
 			String connectionString = funz.getConnString();
 			try {
@@ -23,10 +24,35 @@ public class ConnDB {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else 
+			System.out.println("Same connection");
+		
+		return connection;	
+	}
+	
+	public void closeConnection() {	
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		return connection;
-		
+	}
+	
+	//da chiamare quando cambio i parametri di connessione, in modo da crearne una nuova con i nuovi parametri
+	public void newConnection() {
+		Funz funz = new Funz();
+		String connectionString = funz.getConnString();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(connectionString);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {

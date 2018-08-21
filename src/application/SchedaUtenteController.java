@@ -460,6 +460,9 @@ public class SchedaUtenteController implements Initializable {
 			try {
 				while(rs.getInt("CODICEU") != user && !rs.isAfterLast())
 					rs.next();
+
+				if(rs.isAfterLast())
+					rs.first();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1089,6 +1092,46 @@ public class SchedaUtenteController implements Initializable {
 				altroTerzoResponsabile.setSelected(false);
 			}
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void gotoBruciatori() {
+		Bruciatore b = new Bruciatore();
+		b.start(primaryStage);
+	}
+	
+	public void gotoInstallatori() {
+		Installatori i = new Installatori();
+		i.start(primaryStage);
+	}
+	
+	public void gotoAmministratori() {
+		Amministratori a = new Amministratori();
+		a.start(primaryStage);
+	}
+	
+	public void gotoRicercaUtenti() {
+		RicercaUtenti r = new RicercaUtenti();
+		try {
+			r.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void gotoCaldaie() {
+		Caldaie c = new Caldaie();
+		c.start(primaryStage);
+	}
+	
+	public void gotoStoricoInterventi() {
+		try {
+			StoricoPerUtente s = new StoricoPerUtente("select codiceu, nomeu, cognomeu, indirizzou, comuneu, telefonou, imptipo from utenti where codiceu='"+rs.getInt("CODICEU")+"'");
+			s.start(primaryStage);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
