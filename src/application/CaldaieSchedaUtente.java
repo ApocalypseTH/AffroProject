@@ -7,20 +7,19 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class CercaCaldaie extends Application {
+
+public class CaldaieSchedaUtente extends Application {
 	
-	CaldaieController su;
-	CaldaieSchedaUtenteController s;
+	SchedaUtenteController su;
+	String mat;
 	int id;
 	
-	public CercaCaldaie(CaldaieController su) {
+	public CaldaieSchedaUtente(SchedaUtenteController su, String mat, int id) {
 		this.su=su;
-		id=1;
+		this.mat=mat;
+		this.id=id;
 	}
-	public CercaCaldaie(CaldaieSchedaUtenteController s) {
-		this.s=s;
-		id=0;
-	}
+	
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -28,12 +27,11 @@ public class CercaCaldaie extends Application {
 			
 			Stage s = new Stage();
 			
-			CercaCaldaieController.su = su;
-			CercaCaldaieController.s=this.s;
-			CercaCaldaieController.id=id;
-			
+			CaldaieSchedaUtenteController.su = su;
+			CaldaieSchedaUtenteController.mat=mat;
+			CaldaieSchedaUtenteController.id=id;
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("cercaCaldaie.fxml"));
+	        loader.setLocation(CaldaieSchedaUtente.class.getResource("caldaieSchedaUtente.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
@@ -41,16 +39,12 @@ public class CercaCaldaie extends Application {
 			Scene scene = new Scene(root);
 			s.setScene(scene);
 			s.show();
-			
-			HomeController.primaryStage = primaryStage;
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 }

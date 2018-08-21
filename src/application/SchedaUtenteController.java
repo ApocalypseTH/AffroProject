@@ -138,126 +138,149 @@ public class SchedaUtenteController implements Initializable {
 	private  Button ora;
 	@FXML
 	private  Button statusImpianto;
+	@FXML  TextField c1ditta;
 	@FXML
-	private  TextField c1ditta;
+	 TextField c1modello;
 	@FXML
-	private  TextField c1modello;
+	  TextField c1tipo;
 	@FXML
-	private  TextField c1tipo;
+	  TextField c1matricola;
 	@FXML
-	private  TextField c1matricola;
+	  TextField c1combustibile;
 	@FXML
-	private  TextField c1combustibile;
+	  TextField c2ditta;
 	@FXML
-	private  TextField c2ditta;
+	  TextField c2modello;
 	@FXML
-	private  TextField c2modello;
+	  TextField c2tipo;
 	@FXML
-	private  TextField c2tipo;
+	  TextField c2matricola;
 	@FXML
-	private  TextField c2matricola;
+	  TextField c2combustibile;
 	@FXML
-	private  TextField c2combustibile;
+	  TextField c3ditta;
 	@FXML
-	private  TextField c3ditta;
+	  TextField c3modello;
 	@FXML
-	private  TextField c3modello;
+	  TextField c3tipo;
 	@FXML
-	private  TextField c3tipo;
+	  TextField c3matricola;
 	@FXML
-	private  TextField c3matricola;
+	  TextField c3combustibile;
 	@FXML
-	private  TextField c3combustibile;
+	  TextField c4ditta;
 	@FXML
-	private  TextField c4ditta;
+	  TextField c4modello;
 	@FXML
-	private  TextField c4modello;
+	  TextField c4tipo;
 	@FXML
-	private  TextField c4tipo;
+	  TextField c4matricola;
 	@FXML
-	private  TextField c4matricola;
+	  TextField c4combustibile;
 	@FXML
-	private  TextField c4combustibile;
+	  TextField c5ditta;
 	@FXML
-	private  TextField c5ditta;
+	  TextField c5modello;
 	@FXML
-	private  TextField c5modello;
+	  TextField c5tipo;
 	@FXML
-	private  TextField c5tipo;
+	  TextField c5matricola;
 	@FXML
-	private  TextField c5matricola;
+	  TextField c5combustibile;
 	@FXML
-	private  TextField c5combustibile;
+	  TextField c6ditta;
 	@FXML
-	private  TextField c6ditta;
+	  TextField c6modello;
 	@FXML
-	private  TextField c6modello;
+	  TextField c6tipo;
 	@FXML
-	private  TextField c6tipo;
+	  TextField c6matricola;
 	@FXML
-	private  TextField c6matricola;
+	  TextField c6combustibile;
 	@FXML
-	private  TextField c6combustibile;
+	  TextField b1ditta;
 	@FXML
-	private  TextField b1ditta;
+	  TextField b1modello;
 	@FXML
-	private  TextField b1modello;
+	  TextField b1tipo;
 	@FXML
-	private  TextField b1tipo;
+	  TextField b1matricola;
 	@FXML
-	private  TextField b1matricola;
+	  TextField b1combustibile;
 	@FXML
-	private  TextField b1combustibile;
+	  TextField b2ditta;
 	@FXML
-	private  TextField b2ditta;
+	  TextField b2modello;
 	@FXML
-	private  TextField b2modello;
+	  TextField b2tipo;
 	@FXML
-	private  TextField b2tipo;
+	  TextField b2matricola;
 	@FXML
-	private  TextField b2matricola;
+	  TextField b2combustibile;
 	@FXML
-	private  TextField b2combustibile;
+	  TextField b3ditta;
 	@FXML
-	private  TextField b3ditta;
+	  TextField b3modello;
 	@FXML
-	private  TextField b3modello;
+	  TextField b3tipo;
 	@FXML
-	private  TextField b3tipo;
+	  TextField b3matricola;
 	@FXML
-	private  TextField b3matricola;
+	 TextField b3combustibile;
 	@FXML
-	private TextField b3combustibile;
+	 TextField b4ditta;
 	@FXML
-	private TextField b4ditta;
+	 TextField b4modello;
 	@FXML
-	private TextField b4modello;
+	 TextField b4tipo;
 	@FXML
-	private TextField b4tipo;
+	 TextField b4matricola;
 	@FXML
-	private TextField b4matricola;
+	 TextField b4combustibile;
 	@FXML
-	private TextField b4combustibile;
+	 TextField b5ditta;
 	@FXML
-	private TextField b5ditta;
+	 TextField b5modello;
 	@FXML
-	private TextField b5modello;
+	 TextField b5tipo;
 	@FXML
-	private TextField b5tipo;
+	 TextField b5matricola;
 	@FXML
-	private TextField b5matricola;
+	 TextField b5combustibile;
 	@FXML
-	private TextField b5combustibile;
+	 TextField b6ditta;
 	@FXML
-	private TextField b6ditta;
+	 TextField b6modello;
 	@FXML
-	private TextField b6modello;
+	 TextField b6tipo;
 	@FXML
-	private TextField b6tipo;
+	 TextField b6matricola;
 	@FXML
-	private TextField b6matricola;
+	 TextField b6combustibile;
 	@FXML
-	private TextField b6combustibile;
+	Label c1;
+	@FXML
+	Label c2;
+	@FXML
+	Label c3;
+	@FXML
+	Label c4;
+	@FXML
+	Label c5;
+	@FXML
+	Label c6;
+	@FXML
+	Label b1;
+	@FXML
+	Label b2;
+	@FXML
+	Label b3;
+	@FXML
+	Label b4;
+	@FXML
+	Label b5;
+	@FXML
+	Label b6;
 	@FXML
 	private Button noteAmministratore;
 	@FXML
@@ -678,11 +701,71 @@ public class SchedaUtenteController implements Initializable {
 					e1.printStackTrace();
 				}
 		 });
+		 c1.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c1matricola.getText(), 1);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 c2.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c2matricola.getText(), 2);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 c3.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c3matricola.getText(), 3);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 c4.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c4matricola.getText(), 4);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 c5.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c5matricola.getText(), 5);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 c6.setOnMouseClicked(e -> {
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c6matricola.getText(), 6);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
 	}
 	
 	public void annullaModifica() {
 		ammingp.setOnMouseClicked(null);
 		dittaInstallatore.setOnMouseClicked(null);
+		c1.setOnMouseClicked(null);
+		c2.setOnMouseClicked(null);
+		c3.setOnMouseClicked(null);
+		c4.setOnMouseClicked(null);
+		c5.setOnMouseClicked(null);
+		c6.setOnMouseClicked(null);
 		
 		orologioap.setMouseTransparent(true);
 		tipiimpiantogp.setMouseTransparent(true);

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CaldaieSchedaUtenteController">
+   <children>
+      <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="253.0" layoutY="179.0" prefHeight="200.0" prefWidth="495.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+               <children>
+                  <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="643.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0">
+                     <children>
+                        <GridPane gridLinesVisible="true" layoutX="104.0" layoutY="14.0" prefHeight="30.0" prefWidth="373.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="401.0" minWidth="10.0" prefWidth="401.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="72.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="217.0" layoutY="6.0" text="Modelli In Archivio" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label fx:id="nCaldaie" alignment="CENTER" layoutX="22.0" layoutY="8.0" text="n" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <ScrollPane fx:id="sp" layoutX="9.0" layoutY="73.0" prefHeight="559.0" prefWidth="471.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="72.0">
+                           <content>
+                              <GridPane fx:id="gp" gridLinesVisible="true" prefWidth="450.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="49.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="306.0" minWidth="10.0" prefWidth="205.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="201.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="36.0" prefWidth="450.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="40.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="49.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="306.0" minWidth="10.0" prefWidth="205.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="201.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="116.0" layoutY="7.0" text="Ditta" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="11.0" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="79.0" layoutY="8.0" text="Modello" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="495.0" layoutY="8.0" prefHeight="391.0" prefWidth="485.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                     <children>
+                        <GridPane gridLinesVisible="true" layoutX="113.0" layoutY="14.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="81.0" text="Ditta Costruttrice" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" text="Modello Caldaia" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="ditta" alignment="CENTER" editable="false" layoutX="44.0" layoutY="9.0" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="modello" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <GridPane gridLinesVisible="true" layoutX="243.0" layoutY="78.0" prefHeight="60.0" prefWidth="236.0" AnchorPane.rightAnchor="6.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" text="Potenza Focolare [KW]" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="potenzaFocolare" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <GridPane gridLinesVisible="true" layoutX="242.0" layoutY="138.0" prefHeight="60.0" prefWidth="236.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" text="Potenza Utile [KW]" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="potenzaUtile" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <GridPane gridLinesVisible="true" layoutX="242.0" layoutY="198.0" prefHeight="60.0" prefWidth="236.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" text="Rendimento Utile [%]" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="rendimentoUtile" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <GridPane gridLinesVisible="true" layoutX="242.0" layoutY="258.0" prefHeight="60.0" prefWidth="236.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" text="Combustibile" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="combustibile" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <GridPane gridLinesVisible="true" layoutX="242.0" layoutY="318.0" prefHeight="60.0" prefWidth="236.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label alignment="CENTER" text="Estremi Di Certificazione" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="cert" alignment="CENTER" editable="false" style="-fx-background-color: cyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <AnchorPane layoutX="7.0" layoutY="78.0" prefHeight="60.0" prefWidth="227.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="6.0">
+                           <children>
+                              <RadioButton fx:id="murale" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Murale" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0" />
+                              <RadioButton fx:id="basamento" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" text="Basamento" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="7.0" layoutY="138.0" prefHeight="60.0" prefWidth="227.0" style="-fx-border-color: black;" AnchorPane.topAnchor="150.0">
+                           <children>
+                              <RadioButton fx:id="cameraAperta" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" text="Camera Aperta" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0" />
+                              <RadioButton fx:id="cameraStagna" layoutX="24.0" layoutY="28.0" mnemonicParsing="false" text="Camera Stagna" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="7.0" layoutY="225.0" prefHeight="90.0" prefWidth="227.0" style="-fx-border-color: black;">
+                           <children>
+                              <RadioButton fx:id="soloRiscaldamento" layoutX="9.0" layoutY="27.0" mnemonicParsing="false" text="Solo Riscaldamento" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" />
+                              <RadioButton fx:id="istantanea" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" text="Istantanea" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0" />
+                              <RadioButton fx:id="conBollitore" mnemonicParsing="false" text="Con Bollitore" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <CheckBox fx:id="tutte" layoutX="205.0" layoutY="670.0" mnemonicParsing="false" onAction="#check" selected="true" text="Tutte le Ditte" />
+                  <ComboBox fx:id="ditte" layoutX="147.0" layoutY="694.0" onAction="#dittaRefresh" onContextMenuRequested="#dittaRefresh" prefHeight="25.0" prefWidth="206.0" />
+                  <AnchorPane layoutX="673.0" layoutY="418.0" prefHeight="124.0" prefWidth="485.0" style="-fx-border-color: black; -fx-background-color: red;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="9.0">
+                     <children>
+                        <Button fx:id="cerca" layoutX="126.0" layoutY="14.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="45.0" prefWidth="237.0" text="Cerca" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="14.0" />
+                        <Button layoutX="124.0" layoutY="65.0" mnemonicParsing="false" onAction="#conferma" prefHeight="45.0" prefWidth="237.0" text="Conferma" />
+                     </children>
+                  </AnchorPane>
+                  <TextField fx:id="matricola" layoutX="640.0" layoutY="457.0" prefHeight="25.0" prefWidth="200.0" />
+                  <Label layoutX="706.0" layoutY="428.0" style="-fx-background-color: white; -fx-border-color: black;" text="Matricola:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <MenuBar layoutX="204.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Scheda Utente" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Analisi" />
+                  <MenuItem mnemonicParsing="false" text="Ricerche Storico" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Utente" />
+                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
+                  <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
+                  <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Anagrafica Ditta" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Stampe">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Elenco Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Schede Utenti" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opzioni">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
+                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
+                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Unione Utenti" />
+                  <MenuItem mnemonicParsing="false" text="Azzeramento Numero Analisi" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
+                  <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
+                  <MenuItem mnemonicParsing="false" text="Libretti" />
+                  <MenuItem mnemonicParsing="false" text="Cartella" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

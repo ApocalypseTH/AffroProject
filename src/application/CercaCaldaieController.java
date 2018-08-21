@@ -24,6 +24,8 @@ public class CercaCaldaieController {
 	static Stage primaryStage;
 	
 	static CaldaieController su;
+	static CaldaieSchedaUtenteController s;
+	static int id;
 	
 	@FXML
 	private TextField ditta;
@@ -33,23 +35,10 @@ public class CercaCaldaieController {
 	private Button cerca;
 	
 	public void cerca(){
-		
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("schedaUtente.fxml"));
-//		try {
-//			AnchorPane pane = (AnchorPane) loader.load();
-//		
-//		SchedaUtenteController controller = loader.getController();
-//		controller.cerca(nome.getText(), cognome.getText());
-//		Scene finale = new Scene(pane);
-//		
-//		primaryStage.setScene(finale);
-//		
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		su.cerca(ditta.getText(), modello.getText());
+		if(id==1)
+			su.cerca(ditta.getText(), modello.getText());
+		if(id==0)
+			s.cerca(ditta.getText(), modello.getText());
 		
 		Stage stage = (Stage) cerca.getScene().getWindow();
 	    stage.close();
