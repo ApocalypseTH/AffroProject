@@ -1000,12 +1000,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="33.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
+                  <Button fx:id="nuovo" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
                   <Button layoutX="173.0" layoutY="33.0" mnemonicParsing="false" onAction="#modifica" prefHeight="30.0" prefWidth="150.0" text="Modifica" />
-                  <Button layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
-                  <Button layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
-                  <Button layoutX="173.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Stampa Scheda" />
-                  <Button layoutX="331.0" layoutY="116.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Menu Principale" />
+                  <Button fx:id="canc" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
+                  <Button fx:id="richiestaInt" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
+                  <Button fx:id="stamp" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Stampa Scheda" />
+                  <Button fx:id="menu" layoutX="331.0" layoutY="116.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Menu Principale" />
                   <Button fx:id="confModifica" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#confermaModifica" prefHeight="30.0" prefWidth="150.0" text="Conferma" visible="false" />
                   <Button fx:id="annullaModifica" layoutX="173.0" layoutY="116.0" mnemonicParsing="false" onAction="#annullaModifica" prefHeight="30.0" prefWidth="150.0" text="Annulla" visible="false" />
                </children></AnchorPane>
@@ -1079,22 +1079,22 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#previous" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="prec" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#previous" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#first" text="&lt;&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="primo" layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#first" text="&lt;&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                      <children>
-                        <Button layoutX="-5.0" layoutY="1.0" mnemonicParsing="false" onAction="#next" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="segue" layoutX="-5.0" layoutY="1.0" mnemonicParsing="false" onAction="#next" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                      <children>
-                        <Button layoutY="1.0" mnemonicParsing="false" onAction="#last" text="&gt;&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="ultimo" layoutY="1.0" mnemonicParsing="false" onAction="#last" text="&gt;&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -1104,13 +1104,13 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Ricerche" />
-            <Button layoutX="14.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Caldaie" />
-            <Button layoutX="173.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Storico" />
-            <Button layoutX="173.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Installatori" />
-            <Button layoutX="331.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bruciatori" />
-            <Button layoutX="331.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Amministratori" />
-            <Button layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
+            <Button fx:id="ricerche" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Ricerche" />
+            <Button fx:id="caldaie" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Caldaie" />
+            <Button fx:id="storico" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Storico" />
+            <Button fx:id="installatori" layoutX="173.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Installatori" />
+            <Button fx:id="bruciatori" layoutX="331.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bruciatori" />
+            <Button fx:id="amministratori" layoutX="331.0" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Amministratori" />
+            <Button fx:id="altroUt" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

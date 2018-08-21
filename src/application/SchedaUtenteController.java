@@ -70,6 +70,38 @@ public class SchedaUtenteController implements Initializable {
 	
 	
 	@FXML
+	private  Button primo;
+	@FXML
+	private  Button prec;
+	@FXML
+	private  Button segue;
+	@FXML
+	private  Button ultimo;
+	@FXML
+	private  Button altroUt;
+	@FXML
+	private  Button ricerche;
+	@FXML
+	private  Button storico;
+	@FXML
+	private  Button bruciatori;
+	@FXML
+	private  Button caldaie;
+	@FXML
+	private  Button installatori;
+	@FXML
+	private  Button amministratori;
+	@FXML
+	private  Button nuovo;
+	@FXML
+	private  Button canc;
+	@FXML
+	private  Button richiestaInt;
+	@FXML
+	private  Button stamp;
+	@FXML
+	private  Button menu;
+	@FXML
 	private  Label codice;
 	@FXML
 	private  TextField nome;
@@ -663,6 +695,22 @@ public class SchedaUtenteController implements Initializable {
 	public void modifica() {
 		id=Integer.parseInt(codice.getText());
 		
+		primo.setDisable(true);
+		prec.setDisable(true);
+		segue.setDisable(true);
+		ultimo.setDisable(true);
+		altroUt.setDisable(true);
+		ricerche.setDisable(true);
+		storico.setDisable(true);
+		bruciatori.setDisable(true);
+		caldaie.setDisable(true);
+		installatori.setDisable(true);
+		amministratori.setDisable(true);
+		nuovo.setDisable(true);
+		canc.setDisable(true);
+		richiestaInt.setDisable(true);
+		stamp.setDisable(true);
+		menu.setDisable(true);
 		orologioap.setMouseTransparent(false);
 		tipiimpiantogp.setMouseTransparent(false);
 		cognome.setEditable(true);
@@ -755,6 +803,60 @@ public class SchedaUtenteController implements Initializable {
 					e1.printStackTrace();
 				}
 		 });
+		 b1.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b1matricola.getText(), 1);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 b2.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b2matricola.getText(), 2);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 b3.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b3matricola.getText(), 3);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 b4.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b4matricola.getText(), 4);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 b5.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b5matricola.getText(), 5);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
+		 b6.setOnMouseClicked(e -> {
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b6matricola.getText(), 6);
+				try {
+					su.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		 });
 	}
 	
 	public void annullaModifica() {
@@ -766,7 +868,29 @@ public class SchedaUtenteController implements Initializable {
 		c4.setOnMouseClicked(null);
 		c5.setOnMouseClicked(null);
 		c6.setOnMouseClicked(null);
+		b1.setOnMouseClicked(null);
+		b2.setOnMouseClicked(null);
+		b3.setOnMouseClicked(null);
+		b4.setOnMouseClicked(null);
+		b5.setOnMouseClicked(null);
+		b6.setOnMouseClicked(null);
 		
+		primo.setDisable(false);
+		prec.setDisable(false);
+		segue.setDisable(false);
+		ultimo.setDisable(false);
+		altroUt.setDisable(false);
+		ricerche.setDisable(false);
+		storico.setDisable(false);
+		bruciatori.setDisable(false);
+		caldaie.setDisable(false);
+		installatori.setDisable(false);
+		amministratori.setDisable(false);
+		nuovo.setDisable(false);
+		canc.setDisable(false);
+		richiestaInt.setDisable(false);
+		stamp.setDisable(false);
+		menu.setDisable(false);
 		orologioap.setMouseTransparent(true);
 		tipiimpiantogp.setMouseTransparent(true);
 		cognome.setEditable(false);

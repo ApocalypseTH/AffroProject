@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 public class CercaBruciatoreController {
 
 	static BruciatoreController bc;
+	static BruciatoreSchedaUtenteController b;
+	static int id;
 	
 	static Stage PrimaryStage;
 	
@@ -19,7 +21,10 @@ public class CercaBruciatoreController {
 	private Button cerca;
 	
 	public void cerca() {
-		bc.cerca(ditta.getText(), modello.getText());
+		if(id==1)
+			bc.cerca(ditta.getText(), modello.getText());
+		if(id==0)
+			b.cerca(ditta.getText(), modello.getText());
 		
 		Stage stage = (Stage) cerca.getScene().getWindow();
 		stage.close();
