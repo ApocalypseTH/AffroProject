@@ -287,9 +287,9 @@
                         <Label alignment="CENTER" layoutX="46.0" layoutY="408.0" prefHeight="21.0" prefWidth="247.0" style="-fx-background-color: lime;" text="Valori calcolati" />
                         <Label alignment="CENTER" layoutX="453.0" layoutY="205.0" prefHeight="21.0" prefWidth="247.0" style="-fx-background-color: lime;" text="Verifiche" />
                         <Label alignment="CENTER" layoutX="453.0" layoutY="408.0" prefHeight="21.0" prefWidth="247.0" style="-fx-background-color: lime;" text="Altre verifiche" />
-                        <Button fx:id="elimina" layoutX="434.0" layoutY="561.0" mnemonicParsing="false" text="Elimina" />
-                        <Button fx:id="conferma" layoutX="534.0" layoutY="561.0" mnemonicParsing="false" text="Conferma" />
-                        <Button fx:id="annulla" layoutX="651.0" layoutY="561.0" mnemonicParsing="false" text="Annulla" />
+                        <Button fx:id="elimina" layoutX="434.0" layoutY="561.0" mnemonicParsing="false" onAction="#elimina" text="Elimina" />
+                        <Button fx:id="conferma" layoutX="534.0" layoutY="561.0" mnemonicParsing="false" onAction="#confermaModifica" text="Conferma" />
+                        <Button fx:id="annulla" layoutX="651.0" layoutY="561.0" mnemonicParsing="false" onAction="#annullaModifica" text="Annulla" />
                      </children>
                   </AnchorPane>
                   <GridPane gridLinesVisible="true" layoutX="677.0" layoutY="286.0" prefHeight="111.0" prefWidth="247.0">
@@ -425,7 +425,7 @@
       </MenuBar>
       <AnchorPane layoutX="20.0" layoutY="719.0" prefHeight="63.0" prefWidth="367.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button fx:id="modifica" layoutX="449.0" layoutY="16.0" mnemonicParsing="false" text="Modifica Analisi" />
+            <Button fx:id="modifica" layoutX="449.0" layoutY="16.0" mnemonicParsing="false" onAction="#modifica" text="Modifica Analisi" />
             <Button fx:id="nuova" layoutX="599.0" layoutY="16.0" mnemonicParsing="false" text="Nuova analisi" />
             <Button fx:id="stampa" layoutX="28.0" layoutY="16.0" mnemonicParsing="false" text="Stampa" />
             <Button fx:id="sceltaStp" layoutX="120.0" layoutY="16.0" mnemonicParsing="false" text="Scelta Stp." />
