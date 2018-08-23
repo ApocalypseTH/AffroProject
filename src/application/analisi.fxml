@@ -426,7 +426,7 @@
       <AnchorPane layoutX="20.0" layoutY="719.0" prefHeight="63.0" prefWidth="367.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
             <Button fx:id="modifica" layoutX="449.0" layoutY="16.0" mnemonicParsing="false" onAction="#modifica" text="Modifica Analisi" />
-            <Button fx:id="nuova" layoutX="599.0" layoutY="16.0" mnemonicParsing="false" text="Nuova analisi" />
+            <Button fx:id="nuova" layoutX="599.0" layoutY="16.0" mnemonicParsing="false" onAction="#caldaiaNuovaAnalisi" text="Nuova analisi" />
             <Button fx:id="stampa" layoutX="28.0" layoutY="16.0" mnemonicParsing="false" text="Stampa" />
             <Button fx:id="sceltaStp" layoutX="120.0" layoutY="16.0" mnemonicParsing="false" text="Scelta Stp." />
          </children>

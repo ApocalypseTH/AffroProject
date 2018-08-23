@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,6 +36,8 @@ public class SchedaUtenteController implements Initializable {
 	private TextField[][] griglia = new TextField[12][5];
 	static int user = -1;
 	int id;
+	
+	private DateConverter d = new DateConverter();
 	
 	@FXML
 	private MenuItem schedaUtente;
@@ -702,6 +705,11 @@ public class SchedaUtenteController implements Initializable {
 		modifica();
 	}
 	
+	public void Analizzalo() {
+		Analisi a = new Analisi();
+		a.start(primaryStage);
+	}
+	
 	public void modifica() {
 		id=Integer.parseInt(codice.getText());
 		
@@ -1190,7 +1198,7 @@ public class SchedaUtenteController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	public void gotoBruciatori() {

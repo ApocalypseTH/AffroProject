@@ -10,15 +10,19 @@ public class DateConverter {
 	private SimpleDateFormat s2 = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public String mysqlToLocal(String mysqldate) throws ParseException {
-		Date d;
-		d = s.parse(mysqldate);
-		return s2.format(d);
+		if(!mysqldate.equals(null) && !"".equals(mysqldate)) {
+			Date d;
+			d = s.parse(mysqldate);
+			return s2.format(d);
+		} return "";
 	}
 	
 	public String localToMysql(String localdate) throws ParseException {
-		Date d;
-		d = s2.parse(localdate);
-		return s.format(d);
+		if(!localdate.equals(null) && !"".equals(localdate)) {
+			Date d;
+			d = s2.parse(localdate);
+			return s.format(d);
+		} return ""; 
 	}
 	
 }

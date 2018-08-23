@@ -6,20 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Vector;
-
-import com.sun.prism.TextureMap;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -30,11 +27,15 @@ public class AnalisiController implements Initializable{
 	private ResultSet rs;
 	private DateConverter d;
 	
+	private boolean ismodifica;
+	
 	private String dataM;
 	private String caldaiaM;
 	
-	static int codiceu = 3;
+	private String caldaiaID;
 	
+	static int codiceu = 3;
+		
 	@FXML
 	private TextField data;
 	@FXML
@@ -113,7 +114,7 @@ public class AnalisiController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+				
 		data.setEditable(false);
 		caldBru.setEditable(false);
 		modello.setEditable(false);
@@ -144,6 +145,7 @@ public class AnalisiController implements Initializable{
 		elimina.setDisable(true);
 		annulla.setDisable(true);
 		conferma.setDisable(true);
+		modifica.setDisable(true);
 		
 		d = new DateConverter();
 		
@@ -159,7 +161,7 @@ public class AnalisiController implements Initializable{
 			rs.next();
 			utente.setText(codiceu+" - "+rs.getString("cognomeu")+" "+rs.getString("nomeu"));
 			
-			refreshTabella("select * from analisi where codiceu='"+codiceu+"'");
+			refreshTabella("select * from analisi where codiceu='"+codiceu+"' order by data desc ");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -216,6 +218,10 @@ public class AnalisiController implements Initializable{
 					TextField source = (TextField) e.getSource();
 					int r = gp.getRowIndex(source);
 					
+					if(modifica.isDisabled()) {
+						modifica.setDisable(false);
+					}
+					
 					String idCald = codaIdCald.get(r);
 					String data = codaData.get(r);
 					
@@ -265,6 +271,8 @@ public class AnalisiController implements Initializable{
 	
 	public void modifica() {
 		
+		ismodifica = true;
+		
 		try {
 			dataM = rs.getString("data");
 			caldaiaM = rs.getString("id");
@@ -309,50 +317,84 @@ public class AnalisiController implements Initializable{
 	
 	public void confermaModifica() {
 		
-		String q;
-		try {
-			q = "update analisi set "
-					+ "data='"+d.localToMysql(data.getText())
-					+ "', tempfumi='"+tempFumi.getText()
-					+ "', tempamb='"+tempAmb.getText()
-					+ "', co2 ='"+co2.getText()
-					+ "', bach='"+barach.getText()
-					+ "', co='"+coMis.getText()
-					+ "', o2='"+o2.getText()
-					+ "', perdita='"+perdCal.getText()
-					+ "', rendim='"+rendComb.getText()
-					+ "', portcomb='"+portComb.getText()
-					+ "', aria='"+indAria.getText()
-					+ "', cocal='"+coCalc.getText()
-					+ "', potenza='"+potTerm.getText()
-					+ "', ver0='"+tiraggio.getText()
-					+ "', ver1='"+rispBarach.getText()
-					+ "', ver2='"+co1000ppm.getText()
-					+ "', ver3='"+rendDPR.getText()
-					+ "', coiben='"+statoCoib.getText()
-					+ "', canna='"+statoCanna.getText()
-					+ "', regctrl='"+dispRegCtrl.getText()
-					+ "', aera='"+sistAer.getText()
-					+ "' where codiceu='"+codiceu+"' and data='"+dataM+"' and id='"+caldaiaM+"'";
+		if (ismodifica) {
+			String q;
+			try {
+				q = "update analisi set "
+						+ "data='"+d.localToMysql(data.getText())
+						+ "', tempfumi='"+tempFumi.getText()
+						+ "', tempamb='"+tempAmb.getText()
+						+ "', co2 ='"+co2.getText()
+						+ "', bach='"+barach.getText()
+						+ "', co='"+coMis.getText()
+						+ "', o2='"+o2.getText()
+						+ "', perdita='"+perdCal.getText()
+						+ "', rendim='"+rendComb.getText()
+						+ "', portcomb='"+portComb.getText()
+						+ "', aria='"+indAria.getText()
+						+ "', cocal='"+coCalc.getText()
+						+ "', potenza='"+potTerm.getText()
+						+ "', ver0='"+tiraggio.getText()
+						+ "', ver1='"+rispBarach.getText()
+						+ "', ver2='"+co1000ppm.getText()
+						+ "', ver3='"+rendDPR.getText()
+						+ "', coiben='"+statoCoib.getText()
+						+ "', canna='"+statoCanna.getText()
+						+ "', regctrl='"+dispRegCtrl.getText()
+						+ "', aera='"+sistAer.getText()
+						+ "' where codiceu='"+codiceu+"' and data='"+dataM+"' and id='"+caldaiaM+"'";
 
-			stm.execute(q);
-			annullaModifica();
-			refreshTabella("select * from analisi where codiceu='"+codiceu+"'");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attenzione");
-			alert.setHeaderText("Formato data errato \nFormato corretto: gg/MM/aaaa");
-			alert.showAndWait();
+				stm.execute(q);
+				annullaModifica();
+				refreshTabella("select * from analisi where codiceu='"+codiceu+"'");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Attenzione");
+				alert.setHeaderText("Formato data errato \nFormato corretto: gg/MM/aaaa");
+				alert.showAndWait();
+				data.setText("");
+			}
+		} else {
+			
+			try {
+				String sql = "insert into analisi(codiceu, segnou, id, data, elemento, modello, matri, comb, tempfumi, tempamb, co2, bach, co, o2, perdita, rendim, portcomb, aria, cocal, potenza, ver0, ver1, ver2, ver3, coiben, canna, regctrl, aera) "
+						+ "values('"+codiceu+"', '', '"+caldaiaID.toUpperCase()+"', '"+d.localToMysql(data.getText())+"', '"+caldBru.getText()+"', '"+modello.getText()+"', "
+								+ "'"+matricola.getText()+"', '"+combustibile.getText()+"', '"+tempFumi.getText()+"', '"+tempAmb.getText()+"', '"+co2.getText()+"', "
+										+ "'"+barach.getText()+"', '"+coMis.getText()+"', '"+o2.getText()+"', '"+perdCal.getText()+"', '"+rendComb.getText()+"', '"+portComb.getText()+"', "
+												+ "'"+indAria.getText()+"', '"+coCalc.getText()+"', '"+potTerm.getText()+"', '"+tiraggio.getText()+"', '"+rispBarach.getText()+"', '"+co1000ppm.getText()+"', '"+rendDPR.getText()+"', "
+														+ "'"+statoCoib.getText()+"', '"+statoCanna.getText()+"', '"+dispRegCtrl.getText()+"', '"+sistAer.getText()+"')";
+				
+				System.out.println(sql);
+				stm.execute(sql);
+				annullaModifica();
+				refreshTabella("select * from analisi where codiceu='"+codiceu+"' order by data desc");
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Attenzione");
+				alert.setHeaderText("Formato data errato \nFormato corretto: gg/MM/aaaa");
+				alert.showAndWait();
+				data.setText("");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
 	
 	public void annullaModifica() {
+		
+		ismodifica=false;
 		
 		elimina.setDisable(true);
 		annulla.setDisable(true);
@@ -401,6 +443,91 @@ public class AnalisiController implements Initializable{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void caldaiaNuovaAnalisi() {
+		CaldaiaAnalisi ca = new CaldaiaAnalisi(codiceu, this);
+		ca.start(primaryStage);
+	}
+	
+	public void nuovaAnalisi(String caldaiaID) {
+		
+		this.caldaiaID = caldaiaID;
+		
+		gp.setMouseTransparent(true);
+		
+		annulla.setDisable(false);
+		conferma.setDisable(false);
+		
+		stampa.setDisable(true);
+		sceltaStp.setDisable(true);
+		nuova.setDisable(true);
+		modifica.setDisable(true);
+		
+		data.setEditable(true);
+		tempFumi.setEditable(true);
+		tempAmb.setEditable(true);
+		o2.setEditable(true);
+		barach.setEditable(true);
+		coMis.setEditable(true);
+		portComb.setEditable(true);
+		indAria.setEditable(true);
+		co2.setEditable(true);
+		coCalc.setEditable(true);
+		perdCal.setEditable(true);
+		rendComb.setEditable(true);
+		potTerm.setEditable(true);
+		tiraggio.setEditable(true);
+		rispBarach.setEditable(true);
+		co1000ppm.setEditable(true);
+		rendDPR.setEditable(true);
+		statoCoib.setEditable(true);
+		statoCanna.setEditable(true);
+		dispRegCtrl.setEditable(true);
+		sistAer.setEditable(true);
+		
+		data.setText("");
+		tempFumi.setText("");
+		tempAmb.setText("");
+		o2.setText("");
+		barach.setText("");
+		coMis.setText("");
+		portComb.setText("");
+		indAria.setText("");
+		co2.setText("");
+		coCalc.setText("");
+		perdCal.setText("");
+		rendComb.setText("");
+		potTerm.setText("");
+		tiraggio.setText("");
+		rispBarach.setText("");
+		co1000ppm.setText("");
+		rendDPR.setText("");
+		statoCoib.setText("");
+		statoCanna.setText("");
+		dispRegCtrl.setText("");
+		sistAer.setText("");
+		
+		String sql = "select ditta"+caldaiaID+", modello"+caldaiaID+", matri"+caldaiaID+", comb"+caldaiaID+" from utenti where codiceu='"+codiceu+"'";
+		
+		try {
+			System.out.println(sql);
+			rs = stm.executeQuery(sql);
+			rs.next();
+			caldBru.setText(rs.getString("ditta"+caldaiaID));
+			modello.setText(rs.getString("modello"+caldaiaID));
+			matricola.setText(rs.getString("matri"+caldaiaID));
+			combustibile.setText(rs.getString("comb"+caldaiaID));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+	}
+	
+	public static void main(String[] args) {
+		AnalisiController ac = new AnalisiController();
+		ac.caldaiaNuovaAnalisi();
 	}
 
 }

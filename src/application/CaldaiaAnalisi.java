@@ -7,32 +7,39 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class Analisi extends Application{
+public class CaldaiaAnalisi extends Application {
 	
-	public Analisi() {
+	private int codiceu;
+	private AnalisiController ac;
+	
+	public CaldaiaAnalisi() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Analisi(int codiceu) {
-		AnalisiController.codiceu = codiceu;
+	public CaldaiaAnalisi(int codiceUtente, AnalisiController ac) {
+		codiceu = codiceUtente;
+		this.ac = ac;
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
+			Stage s = new Stage();
+			
+			CaldaiaAnalisiController.codiceu = codiceu;
+			CaldaiaAnalisiController.ac = this.ac;
+			CaldaiaAnalisiController.stage = s;
+			
 			FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(RicercaAnalisi.class.getResource("analisi.fxml"));
+	        loader.setLocation(RicercaAnalisi.class.getResource("caldaiaAnalisi.fxml"));
 	        AnchorPane ap = loader.load();
 	        BorderPane root = new BorderPane();
 	        root.setCenter(ap);
 
 			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			AnalisiController.primaryStage = primaryStage;
+			s.setScene(scene);
+			s.show();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -42,5 +49,6 @@ public class Analisi extends Application{
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 
 }
