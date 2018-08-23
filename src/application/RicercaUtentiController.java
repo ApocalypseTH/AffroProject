@@ -137,11 +137,17 @@ public class RicercaUtentiController implements Initializable{
 	@FXML
 	private RadioButton altroTerzoResponsabile;
 	@FXML
-	private DatePicker puliziacbData;
+	private TextField gg;
+	@FXML
+	private TextField mm;
+	@FXML
+	private TextField aa;
 	@FXML
 	private RadioButton puliziacbEseguita;
 	@FXML
 	private RadioButton puliziacbNonEseguita;
+	@FXML
+	private RadioButton puliziacbEseguitaSoloSchedaUtente;
 	@FXML
 	private RadioButton analisiEseguita;
 	@FXML
@@ -184,6 +190,7 @@ public class RicercaUtentiController implements Initializable{
 		
 		puliziacbEseguita.setToggleGroup(pulizia);
 		puliziacbNonEseguita.setToggleGroup(pulizia);
+		puliziacbEseguitaSoloSchedaUtente.setToggleGroup(pulizia);
 		analisiEseguita.setToggleGroup(analisi);
 		analisiNonEseguita.setToggleGroup(analisi);
 		bollinoEseguito.setToggleGroup(bollino);
@@ -550,16 +557,55 @@ public class RicercaUtentiController implements Initializable{
 			q=q.concat(" n_analisi='"+nAnalisi.getValue()+"'");
 		}
 		
-		System.out.println(puliziacbData.getValue());
-		
-		if(puliziacbData.getValue() != null) {
-			if (puliziacbEseguita.isSelected()) {
-				q=q.concat(andCheck());
-				q=q.concat(" ( motivoch like '%pulizie%' and datach='"+puliziacbData.getValue()+"' )");
+		if(!puliziacbEseguitaSoloSchedaUtente.isSelected()) {
+			if(!"".equals(aa.getText()) && "".equals(mm.getText()) && "".equals(gg.getText())) {
+				if (puliziacbEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach between '20"+aa.getText()+"-01-01' and '20"+aa.getText()+"-12-31' )");
+				}
+				else if(puliziacbNonEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach not between '20"+aa.getText()+"-01-01' and '20"+aa.getText()+"-12-31' )");
+				}
 			}
-			else if(puliziacbNonEseguita.isSelected()) {
+			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && "".equals(gg.getText())) {
+				if (puliziacbEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach between '20"+aa.getText()+"-"+mm.getText()+"-01' and '20"+aa.getText()+"-"+mm.getText()+"-31' )");
+				}
+				else if(puliziacbNonEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach not between '20"+aa.getText()+"-"+mm.getText()+"-01' and '20"+aa.getText()+"-"+mm.getText()+"-31' )");
+				}
+			}
+			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && !"".equals(gg.getText())) {
+				if (puliziacbEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach='20"+aa.getText()+"-"+mm.getText()+"-"+gg.getText()+"' )");
+				}
+				else if(puliziacbNonEseguita.isSelected()) {
+					q=q.concat(andCheck());
+					q=q.concat(" ( motivoch like '%pulizi%' and datach<>'20"+aa.getText()+"-"+mm.getText()+"-"+gg.getText()+"' )");
+				}
+			}
+		}
+		else {
+			if(!"".equals(aa.getText()) && "".equals(mm.getText()) && "".equals(gg.getText())) {
 				q=q.concat(andCheck());
-				q=q.concat(" ( motivoch like '%pulizie%' and datach<>'"+puliziacbData.getValue()+"' )");
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '____"+aa.getText()+"' )");
+
+			}
+			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && "".equals(gg.getText())) {
+
+				q=q.concat(andCheck());
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '__"+mm.getText()+""+aa.getText()+"' )");
+
+			}
+			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && !"".equals(gg.getText())) {
+
+				q=q.concat(andCheck());
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '"+gg.getText()+""+mm.getText()+""+aa.getText()+"' )");
+
 			}
 		}
 		if( (analisiAnno.getText()).length() == 4 ) {
@@ -705,7 +751,9 @@ public class RicercaUtentiController implements Initializable{
 		
 		puliziacbEseguita.setSelected(false);
 		puliziacbNonEseguita.setSelected(false);
-		puliziacbData.setValue(null);
+		gg.setText("");
+		mm.setText("");
+		aa.setText("");
 		analisiEseguita.setSelected(false);
 		analisiNonEseguita.setSelected(false);
 		analisiAnno.setText("");
