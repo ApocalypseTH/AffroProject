@@ -117,7 +117,7 @@ public class RisultatiRicercaStoricoController implements Initializable{
 			
 			int i=1;
 			while (rs.next()) {				
-				Label t1= new Label(rs.getString("u.CODICEU"));
+				Label t1= new Label(" "+rs.getString("u.CODICEU"));
 				TextField t2= new TextField(rs.getString("u.COGNOMEU")+" "+rs.getString("u.NOMEU"));
 				TextField t3= new TextField(rs.getString("r.dataint"));
 				TextField t4= new TextField(rs.getString("r.motivoch"));

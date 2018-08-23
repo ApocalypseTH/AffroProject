@@ -24,23 +24,30 @@ public class RicercaStoricoController implements Initializable{
 	private ToggleGroup group  = new ToggleGroup();
 	
 	@FXML
-	private TextField t;
+	private TextField anno;
+	@FXML
+	private TextField mese;
 	@FXML
 	private RadioButton eseguita;
 	@FXML
-	private RadioButton nonEseguita;
-	
-	
-	
+	private RadioButton nonEseguita;	
 	
 	public void conferma() {
 		String q="select u.codiceu, u.cognomeu, u.nomeu, r.dataint, r.motivoch from ricint as r join utenti as u on r.codiceu=u.codiceu where motivoch like '%puliz%'";
 		
-		if(!"".equals(t.getText())) {
-			if(eseguita.isSelected())
-				q=q.concat(" and r.dataint between '"+t.getText()+"-01-01' and '"+t.getText()+"-12-31'");
-			else if(nonEseguita.isSelected())
-				q=q.concat(" and r.dataint<'"+t.getText()+"-01-01' or r.dataint>'"+t.getText()+"-12-31'");
+		if(!"".equals(anno.getText())) {
+			if(!"".equals(mese.getText())) {
+				if(eseguita.isSelected())
+					q=q.concat(" and r.dataint between '"+anno.getText()+"-"+mese.getText()+"-01' and '"+anno.getText()+"-"+mese.getText()+"-31'");
+				else if(nonEseguita.isSelected())
+					q=q.concat(" and r.dataint<'"+anno.getText()+"-"+mese.getText()+"-01' or r.dataint>'"+anno.getText()+"-"+mese.getText()+"-31'");
+			} else {
+				if(eseguita.isSelected())
+					q=q.concat(" and r.dataint between '"+anno.getText()+"-01-01' and '"+anno.getText()+"-12-31'");
+				else if(nonEseguita.isSelected())
+					q=q.concat(" and r.dataint<'"+anno.getText()+"-01-01' or r.dataint>'"+anno.getText()+"-12-31'");
+			}
+
 		}
 		
 		q=q.concat(" order by r.dataint desc");
@@ -68,7 +75,7 @@ public class RicercaStoricoController implements Initializable{
 	}
 	
 	public void azzera() {
-		t.setText("");
+		anno.setText("");
 		eseguita.setSelected(false);
 		nonEseguita.setSelected(false);
 	}
