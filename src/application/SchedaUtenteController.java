@@ -1020,8 +1020,6 @@ public class SchedaUtenteController implements Initializable {
 				q=q.concat("imptipo='Altro' ");
 			}
 			
-			System.out.println(q);
-			
 			stm.execute(q.concat(" where codiceu="+id));
 				
 		} catch (SQLException e) {
