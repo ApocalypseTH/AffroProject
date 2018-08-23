@@ -37,7 +37,8 @@ public class CaldaieSchedaUtenteController implements Initializable{
 	private String dittaM;
 	private String modelloM;
 	static SchedaUtenteController su;
-	static String mat;
+	static String c;
+	static String m;
 	static int id;
 
 	@FXML
@@ -130,7 +131,8 @@ public class CaldaieSchedaUtenteController implements Initializable{
 		conBollitore.setMouseTransparent(true);
 		soloRiscaldamento.setMouseTransparent(true);
 		
-		matricola.setText(mat);
+		if(!m.equals("") && !c.equals(""))
+			refresh(c, m);
 		
 		codac= new Vector<String>();
 		codam= new Vector<String>();
@@ -181,6 +183,59 @@ public class CaldaieSchedaUtenteController implements Initializable{
 		}
 		else {
 			ditte.setDisable(false);
+		}
+	}
+	
+	public void refresh(String c, String m) {
+		String q="select * from caldaie where dittac=? and modelloc=?;";
+		
+		PreparedStatement prepStat;
+		try {
+			
+			prepStat = connection.prepareStatement(q);
+			prepStat.setString(1, c);
+			prepStat.setString(2, m);
+			
+			rs= prepStat.executeQuery();
+			
+			rs.next();
+			
+			if("Basamento".equals(rs.getString("MBC"))) {
+				basamento.setSelected(true);
+			}
+			else {
+				murale.setSelected(true);
+			}
+			
+			if("Camera Aperta".equals(rs.getString("CACSC"))) {
+				cameraAperta.setSelected(true);
+			}
+			else {
+				cameraStagna.setSelected(true);
+			}
+			
+			if("Solo Riscaldamento".equals(rs.getString("BISRC"))) {
+				soloRiscaldamento.setSelected(true);
+			}
+			else if("Con Bollitore".equals(rs.getString("BISRC"))) {
+				conBollitore.setSelected(true);
+			}
+			else {
+				istantanea.setSelected(true);
+			}
+			
+			ditta.setText(rs.getString("DITTAC"));
+			modello.setText(rs.getString("MODELLOC"));
+			
+			potenzaFocolare.setText(rs.getString("PNFC"));
+			potenzaUtile.setText(rs.getString("PNUC"));
+			rendimentoUtile.setText(rs.getString("RUC"));
+			combustibile.setText(rs.getString("COMBC"));
+			cert.setText(rs.getString("ECC"));
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 	
@@ -307,42 +362,41 @@ public class CaldaieSchedaUtenteController implements Initializable{
 			case 1:
 				su.c1ditta.setText(rs.getString("DITTAC"));
 				su.c1modello.setText(rs.getString("MODELLOC"));
-				su.c1matricola.setText(matricola.getText());
+
 				su.c1combustibile.setText(rs.getString("COMBC"));
 				break;
 			
 			case 2:
 				su.c2ditta.setText(rs.getString("DITTAC"));
 				su.c2modello.setText(rs.getString("MODELLOC"));
-				su.c2matricola.setText(matricola.getText());
+	
 				su.c2combustibile.setText(rs.getString("COMBC"));
 				break;
 				
 			case 3:
 				su.c3ditta.setText(rs.getString("DITTAC"));
 				su.c3modello.setText(rs.getString("MODELLOC"));
-				su.c3matricola.setText(matricola.getText());
+
 				su.c3combustibile.setText(rs.getString("COMBC"));
 				break;
 				
 			case 4:
 				su.c4ditta.setText(rs.getString("DITTAC"));
 				su.c4modello.setText(rs.getString("MODELLOC"));
-				su.c4matricola.setText(matricola.getText());
+
 				su.c4combustibile.setText(rs.getString("COMBC"));
 				break;
 				
 			case 5:
 				su.c5ditta.setText(rs.getString("DITTAC"));
 				su.c5modello.setText(rs.getString("MODELLOC"));
-				su.c5matricola.setText(matricola.getText());
 				su.c5combustibile.setText(rs.getString("COMBC"));
 				break;
 				
 			case 6:
 				su.c6ditta.setText(rs.getString("DITTAC"));
 				su.c6modello.setText(rs.getString("MODELLOC"));
-				su.c6matricola.setText(matricola.getText());
+
 				su.c6combustibile.setText(rs.getString("COMBC"));
 				break;
 			}

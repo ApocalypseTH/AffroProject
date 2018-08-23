@@ -11,12 +11,14 @@ import javafx.scene.layout.BorderPane;
 public class CaldaieSchedaUtente extends Application {
 	
 	SchedaUtenteController su;
-	String mat;
+	String c;
+	String m;
 	int id;
 	
-	public CaldaieSchedaUtente(SchedaUtenteController su, String mat, int id) {
+	public CaldaieSchedaUtente(SchedaUtenteController su, String c, String m, int id) {
 		this.su=su;
-		this.mat=mat;
+		this.c=c;
+		this.m=m;
 		this.id=id;
 	}
 	
@@ -28,7 +30,8 @@ public class CaldaieSchedaUtente extends Application {
 			Stage s = new Stage();
 			
 			CaldaieSchedaUtenteController.su = su;
-			CaldaieSchedaUtenteController.mat=mat;
+			CaldaieSchedaUtenteController.c=c;
+			CaldaieSchedaUtenteController.m=m;
 			CaldaieSchedaUtenteController.id=id;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(CaldaieSchedaUtente.class.getResource("caldaieSchedaUtente.fxml"));

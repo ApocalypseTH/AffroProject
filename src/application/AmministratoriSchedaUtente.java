@@ -11,9 +11,10 @@ import javafx.scene.layout.BorderPane;
 public class AmministratoriSchedaUtente extends Application {
 	
 	SchedaUtenteController su;
-	
-	public AmministratoriSchedaUtente(SchedaUtenteController su) {
+	String a;
+	public AmministratoriSchedaUtente(SchedaUtenteController su, String a) {
 		this.su=su;
+		this.a=a;
 	}
 	
 	@Override
@@ -23,6 +24,7 @@ public class AmministratoriSchedaUtente extends Application {
 			Stage s = new Stage();
 			
 			AmministratoriSchedaUtenteController.su = su;
+			AmministratoriSchedaUtenteController.a=a;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(AmministratoriSchedaUtente.class.getResource("amministratoriSchedaUtente.fxml"));
 	        AnchorPane ap = loader.load();

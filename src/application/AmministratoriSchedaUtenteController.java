@@ -32,7 +32,7 @@ public class AmministratoriSchedaUtenteController implements Initializable{
 	private Vector<String> codac;
 	private String ammin;
 	static SchedaUtenteController su;
-	
+	static String a;
 
 	@FXML
 	private ScrollPane sp;
@@ -95,6 +95,8 @@ public class AmministratoriSchedaUtenteController implements Initializable{
 		
 		codac= new Vector<String>();
 		
+		refresh(a);
+		
 		refreshTabella("select * from ammin order by cognomea");
 		
 	}
@@ -138,6 +140,33 @@ public class AmministratoriSchedaUtenteController implements Initializable{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	public void refresh(String a) {
+
+		String q="select * from ammin where cognomea=?;";
+		
+		PreparedStatement prepStat;
+		try {
+			
+			prepStat = connection.prepareStatement(q);
+			prepStat.setString(1, a);
+			
+			rs= prepStat.executeQuery();
+			
+			rs.next();
+			
+			amministratore.setText(rs.getString("COGNOMEA"));
+			comune.setText(rs.getString("COMUNEA"));
+			telefono.setText(rs.getString("TELEFONOA"));
+			via.setText(rs.getString("INDIRIZZOA"));
+			numero.setText(rs.getString("NUMEROA"));
+			provincia.setText(rs.getString("PROVINCIAA"));
+			cf.setText(rs.getString("CFIVAA"));
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 	

@@ -11,11 +11,13 @@ public class BruciatoreSchedaUtente extends Application{
 	
 SchedaUtenteController su;
  int id;
- String mat;
+ String c;
+ String m;
 	
-	public BruciatoreSchedaUtente(SchedaUtenteController su, String mat, int i) {
+	public BruciatoreSchedaUtente(SchedaUtenteController su, String c, String m, int i) {
 		this.su=su;
-		this.mat=mat;
+		this.c=c;
+		this.m=m;
 		id=i;
 	}
 
@@ -26,7 +28,8 @@ SchedaUtenteController su;
 			Stage s = new Stage();
 			
 			BruciatoreSchedaUtenteController.su = su;
-			BruciatoreSchedaUtenteController.mat = mat;
+			BruciatoreSchedaUtenteController.c = c;
+			BruciatoreSchedaUtenteController.m=m;
 			BruciatoreSchedaUtenteController.id = id;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(BruciatoreSchedaUtente.class.getResource("bruciatoreSchedaUtente.fxml"));

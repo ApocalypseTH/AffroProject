@@ -36,7 +36,8 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 	private String modelloB;
 	static SchedaUtenteController su;
 	static int id;
-	static String mat;
+	static String c;
+	static String m;
 	
 
 	@FXML
@@ -111,8 +112,9 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 		modulante.setMouseTransparent(true);
 		emulsione.setMouseTransparent(true);
 		
-		matricola.setText(mat);
-		
+		if(!c.equals("") && !m.equals(""))
+			refresh(c, m);
+			
 		codab = new Vector<String>();
 		codam = new Vector<String>();
 		
@@ -162,6 +164,49 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 		}
 		else {
 			ditte.setDisable(false);
+		}
+	}
+	
+	public void refresh(String c, String m) {
+		String q="select * from brucia where dittab=? and modellob=?;";
+		
+		PreparedStatement prepStat;
+		try {
+			
+			prepStat = connection.prepareStatement(q);
+			prepStat.setString(1, c);
+			prepStat.setString(2, m);
+			
+			rs= prepStat.executeQuery();
+			
+			rs.next();
+			
+			if("Monostadio".equals(rs.getString("TIPOBRU"))) {
+				monostadio.setSelected(true);
+			}
+			else if ("Bistadio".equals(rs.getString("TIPOBRU"))){
+				bistadio.setSelected(true);
+			} else {
+				modulante.setSelected(true);
+			}
+		
+			if(rs.getInt("EMULB") == 1) {
+				emulsione.setSelected(true);
+			} else {
+				emulsione.setSelected(false);
+			}
+			
+			ditta.setText(rs.getString("DITTAB"));
+			modello.setText(rs.getString("MODELLOB"));
+			tipo.setText(rs.getString("TIPOB"));
+			potenzaMin.setText(rs.getString("POTMINB"));
+			potenzaMax.setText(rs.getString("POTMAXB"));
+			combustibile.setText(rs.getString("COMBB"));
+			certificazione.setText(rs.getString("ECB"));
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 	
@@ -276,7 +321,7 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 1:
 				su.b1ditta.setText(rs.getString("DITTAB"));
 				su.b1modello.setText(rs.getString("MODELLOB"));
-				su.b1matricola.setText(matricola.getText());
+
 				su.b1tipo.setText(rs.getString("TIPOB"));
 				su.b1combustibile.setText(rs.getString("COMBB"));
 				break;
@@ -284,7 +329,7 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 2:
 				su.b2ditta.setText(rs.getString("DITTAB"));
 				su.b2modello.setText(rs.getString("MODELLOB"));
-				su.b2matricola.setText(matricola.getText());
+
 				su.b2tipo.setText(rs.getString("TIPOB"));
 				su.b2combustibile.setText(rs.getString("COMBB"));
 				break;
@@ -292,7 +337,7 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 3:
 				su.b3ditta.setText(rs.getString("DITTAB"));
 				su.b3modello.setText(rs.getString("MODELLOB"));
-				su.b3matricola.setText(matricola.getText());
+
 				su.b3tipo.setText(rs.getString("TIPOB"));
 				su.b3combustibile.setText(rs.getString("COMBB"));
 				break;
@@ -300,7 +345,6 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 4:
 				su.b4ditta.setText(rs.getString("DITTAB"));
 				su.b4modello.setText(rs.getString("MODELLOB"));
-				su.b4matricola.setText(matricola.getText());
 				su.b4tipo.setText(rs.getString("TIPOB"));
 				su.b4combustibile.setText(rs.getString("COMBB"));
 				break;
@@ -308,7 +352,7 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 5:
 				su.b5ditta.setText(rs.getString("DITTAB"));
 				su.b5modello.setText(rs.getString("MODELLOB"));
-				su.b5matricola.setText(matricola.getText());
+
 				su.b5tipo.setText(rs.getString("TIPOB"));
 				su.b5combustibile.setText(rs.getString("COMBB"));
 				break;
@@ -316,7 +360,7 @@ public class BruciatoreSchedaUtenteController implements Initializable{
 			case 6:
 				su.b6ditta.setText(rs.getString("DITTAB"));
 				su.b6modello.setText(rs.getString("MODELLOB"));
-				su.b6matricola.setText(matricola.getText());
+
 				su.b6tipo.setText(rs.getString("TIPOB"));
 				su.b6combustibile.setText(rs.getString("COMBB"));
 				break;

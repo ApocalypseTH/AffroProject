@@ -339,6 +339,8 @@ public class SchedaUtenteController implements Initializable {
 	private MenuButton analisi;
 	@FXML
 	private AnchorPane dittaInstallatore;
+	@FXML
+	private TextField codiceCatasto;
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -695,6 +697,11 @@ public class SchedaUtenteController implements Initializable {
 		refresh();
 	}
 	
+	public void nuovo() {
+		//sbiancare tutto
+		modifica();
+	}
+	
 	public void modifica() {
 		id=Integer.parseInt(codice.getText());
 		
@@ -728,6 +735,21 @@ public class SchedaUtenteController implements Initializable {
 		cellulareU.setEditable(true);
 		cfU.setEditable(true);
 		certificatoConformita.setEditable(true);
+		c1matricola.setEditable(true);
+		c2matricola.setEditable(true);
+		c3matricola.setEditable(true);
+		c4matricola.setEditable(true);
+		c5matricola.setEditable(true);
+		c6matricola.setEditable(true);
+		b1matricola.setEditable(true);
+		b2matricola.setEditable(true);
+		b3matricola.setEditable(true);
+		b4matricola.setEditable(true);
+		b5matricola.setEditable(true);
+		b6matricola.setEditable(true);
+		codiceCatasto.setEditable(true);
+		bollino.setEditable(true);
+		codManut.setEditable(true);
 		
 		confModifica.setVisible(true);
 		annullaModifica.setVisible(true);
@@ -735,7 +757,7 @@ public class SchedaUtenteController implements Initializable {
 		messaInFunzione.setDisable(false);
 		
 		 ammingp.setOnMouseClicked(e -> {
-			 AmministratoriSchedaUtente su = new AmministratoriSchedaUtente(this);
+			 AmministratoriSchedaUtente su = new AmministratoriSchedaUtente(this, amministratore.getText());
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -744,7 +766,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 dittaInstallatore.setOnMouseClicked(e -> {
-			 InstallatoriSchedaUtente su = new InstallatoriSchedaUtente(this);
+			 InstallatoriSchedaUtente su = new InstallatoriSchedaUtente(this, installatore.getText());
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -753,7 +775,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c1.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c1matricola.getText(), 1);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c1ditta.getText(), c1modello.getText(), 1);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -762,7 +784,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c2.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c2matricola.getText(), 2);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this,  c2ditta.getText(), c2modello.getText(), 2);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -771,7 +793,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c3.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c3matricola.getText(), 3);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this,  c3ditta.getText(), c3modello.getText(), 3);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -780,7 +802,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c4.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c4matricola.getText(), 4);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c4ditta.getText(), c4modello.getText(), 4);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -789,7 +811,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c5.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c5matricola.getText(), 5);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c5ditta.getText(), c5modello.getText(), 5);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -798,7 +820,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 c6.setOnMouseClicked(e -> {
-			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c6matricola.getText(), 6);
+			 CaldaieSchedaUtente su = new CaldaieSchedaUtente(this, c6ditta.getText(), c6modello.getText(), 6);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -807,7 +829,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b1.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b1matricola.getText(), 1);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b1ditta.getText(), b1modello.getText(), 1);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -816,7 +838,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b2.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b2matricola.getText(), 2);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b2ditta.getText(), b2modello.getText(), 2);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -825,7 +847,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b3.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b3matricola.getText(), 3);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b3ditta.getText(), b3modello.getText(), 3);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -834,7 +856,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b4.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b4matricola.getText(), 4);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b4ditta.getText(), b4modello.getText(), 4);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -843,7 +865,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b5.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b5matricola.getText(), 5);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b5ditta.getText(), b5modello.getText(), 5);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -852,7 +874,7 @@ public class SchedaUtenteController implements Initializable {
 				}
 		 });
 		 b6.setOnMouseClicked(e -> {
-			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b6matricola.getText(), 6);
+			 BruciatoreSchedaUtente su = new BruciatoreSchedaUtente(this, b6ditta.getText(), b6modello.getText(), 6);
 				try {
 					su.start(primaryStage);
 				} catch (Exception e1) {
@@ -908,25 +930,99 @@ public class SchedaUtenteController implements Initializable {
 		cellulareU.setEditable(false);
 		cfU.setEditable(false);
 		certificatoConformita.setEditable(false);
+		c1matricola.setEditable(false);
+		c2matricola.setEditable(false);
+		c3matricola.setEditable(false);
+		c4matricola.setEditable(false);
+		c5matricola.setEditable(false);
+		c6matricola.setEditable(false);
+		b1matricola.setEditable(false);
+		b2matricola.setEditable(false);
+		b3matricola.setEditable(false);
+		b4matricola.setEditable(false);
+		b5matricola.setEditable(false);
+		b6matricola.setEditable(false);
+		codiceCatasto.setEditable(false);
+		bollino.setEditable(false);
+		codManut.setEditable(false);
 		
 		confModifica.setVisible(false);
 		annullaModifica.setVisible(false);
 		analisi.setDisable(true);
 		messaInFunzione.setDisable(true);
+		
+		requery();
+		try {
+//			rs.next();
+			while(Integer.parseInt(rs.getString("CODICEU")) != id) {
+				rs.next();
+			}
+			refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void confermaModifica() {
 		try {
-			String q="update utenti set cognomeu='', nomeu='', indirizzou='', numerou='', localitau='', capu='', comuneu='', provinciau='', telefonou='', cellulareu='', cfivau='', cognomea='', indirizzoa='', numeroa='', comunea='', provinciaa='', telefonoa='', cfivaa='', dittai='', codmanu='', manprogm='', analcomb='', bollino='',  ";
-//			da compilare, e mancano anche caldaie, bruciatori, checkbox, radiobutton e menubutton
+			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', catasto='"+codiceCatasto.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getText()+"',  ";
+			for(int i=0; i<6; i++) {				
+				q=q.concat("dittac"+(i+1)+"='"+griglia[i][0].getText()+"', modelloc"+(i+1)+"='"+griglia[i][1].getText()+"', matric"+(i+1)+"='"+griglia[i][3].getText()+"', combc"+(i+1)+"='"+griglia[i][4].getText()+"', ");
+			}
+			for(int i=0; i<6; i++) {				
+				q=q.concat("dittab"+(i+1)+"='"+griglia[i+6][0].getText()+"', modellob"+(i+1)+"='"+griglia[i+6][1].getText()+"', tipob"+(i+1)+"='"+griglia[i+6][2].getText()+"', matrib"+(i+1)+"='"+griglia[i+6][3].getText()+"', combb"+(i+1)+"='"+griglia[i+6][4].getText()+"', ");
+			}
+			
+			if(circuiti.isSelected()) {
+				q=q.concat("impcirc='Circuiti', ");
+			}
+			if(termoregolato.isSelected()) {
+				q=q.concat("impterm='Termoregolato', ");
+			}
+			if(contacalorie.isSelected()) {
+				q=q.concat("impcont='Contacalorie', ");
+			}
+			if(superiore35.isSelected()) {
+				q=q.concat("impsu35='Superiore 35 KW', ");
+			}
+			if(superiore116.isSelected()) {
+				q=q.concat("impsu116='Superiore 116 KW', ");
+			}
+			if(superiore350.isSelected()) {
+				q=q.concat("impsupe='Superiore 350 KW', ");
+			}
+			
+			if(automatico.isSelected()) {
+				q=q.concat("orologio='Automatico', ");
+			}
+			else {
+				q=q.concat("orologio='Legale', ");
+			}
+			
+			if(condTerzoResponsabile.isSelected()) {
+				q=q.concat("imptipo='Condominio con terzo responsabile' ");
+			}
+			else if(condConAmministratore.isSelected()) {
+				q=q.concat("imptipo='Condominio con amministratore' ");
+			}
+			else if(privato.isSelected()) {
+				q=q.concat("imptipo='Privato' ");
+			}
+			else if(altroDitta.isSelected()) {
+				q=q.concat("imptipo='Altro (Ditta)' ");
+			}
+			else if(altroTerzoResponsabile.isSelected()) {
+				q=q.concat("imptipo='Altro (con terzo responsabile)' ");
+			}
+			else {
+				q=q.concat("imptipo='Altro' ");
+			}
+			
+			System.out.println(q);
 			
 			stm.execute(q.concat(" where codiceu="+id));
-			
-			requery();
-			rs.next();
-			while(Integer.parseInt(rs.getString("id")) != id) {
-				rs.next();
-			}
 				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -976,6 +1072,7 @@ public class SchedaUtenteController implements Initializable {
 			puliziacb.setText(rs.getString("MANPROGM"));
 			analComb.setText(rs.getString("ANALCOMB"));
 			bollino.setText(rs.getString("BOLLINO"));
+			codiceCatasto.setText(rs.getString("CATASTO"));
 			
 			if("Circuiti".equals(rs.getString("IMPCIRC"))) {
 				circuiti.setSelected(true);

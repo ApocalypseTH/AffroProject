@@ -32,7 +32,8 @@ public class InstallatoriSchedaUtenteController implements Initializable{
 	private Vector<String> codac;
 	private String dittaM;
 	static SchedaUtenteController su;
-
+	static String i;
+	
 	@FXML
 	private ScrollPane sp;
 	@FXML
@@ -81,6 +82,8 @@ public class InstallatoriSchedaUtenteController implements Initializable{
 		
 		codac= new Vector<String>();
 		
+		refresh(i);
+		
 		refreshTabella("select * from insta order by dittai");
 		
 	}
@@ -124,6 +127,29 @@ public class InstallatoriSchedaUtenteController implements Initializable{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public void refresh(String i) {
+		String q="select * from insta where dittai=?;";
+		
+		PreparedStatement prepStat;
+		try {
+			
+			prepStat = connection.prepareStatement(q);
+			prepStat.setString(1, i);
+			
+			rs= prepStat.executeQuery();
+			
+			rs.next();
+			
+			ditta.setText(rs.getString("DITTAI"));
+			comune.setText(rs.getString("INDIRIZZOI"));
+			telefono.setText(rs.getString("TELEFONOI"));
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 	
