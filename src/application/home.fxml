@@ -56,9 +56,6 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Opzioni">
             <items>
-              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
-                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
-                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
                   <MenuItem mnemonicParsing="false" text="Recupero Dati" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Unione Utenti" />
@@ -68,7 +65,7 @@
                   <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
-                  <MenuItem mnemonicParsing="false" text="Libretti" />
+                  <MenuItem mnemonicParsing="false" text="Parametri Di Connessione" />
                   <MenuItem mnemonicParsing="false" text="Cartella" />
             </items>
           </Menu>
