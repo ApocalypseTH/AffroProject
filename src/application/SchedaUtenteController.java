@@ -183,6 +183,8 @@ public class SchedaUtenteController implements Initializable {
 	@FXML
 	  TextField c1combustibile;
 	@FXML
+	  TextField c1catasto;
+	@FXML
 	  TextField c2ditta;
 	@FXML
 	  TextField c2modello;
@@ -192,6 +194,8 @@ public class SchedaUtenteController implements Initializable {
 	  TextField c2matricola;
 	@FXML
 	  TextField c2combustibile;
+	@FXML
+	  TextField c2catasto;
 	@FXML
 	  TextField c3ditta;
 	@FXML
@@ -203,6 +207,8 @@ public class SchedaUtenteController implements Initializable {
 	@FXML
 	  TextField c3combustibile;
 	@FXML
+	  TextField c3catasto;
+	@FXML
 	  TextField c4ditta;
 	@FXML
 	  TextField c4modello;
@@ -212,6 +218,8 @@ public class SchedaUtenteController implements Initializable {
 	  TextField c4matricola;
 	@FXML
 	  TextField c4combustibile;
+	@FXML
+	  TextField c4catasto;
 	@FXML
 	  TextField c5ditta;
 	@FXML
@@ -223,6 +231,8 @@ public class SchedaUtenteController implements Initializable {
 	@FXML
 	  TextField c5combustibile;
 	@FXML
+	  TextField c5catasto;
+	@FXML
 	  TextField c6ditta;
 	@FXML
 	  TextField c6modello;
@@ -232,6 +242,8 @@ public class SchedaUtenteController implements Initializable {
 	  TextField c6matricola;
 	@FXML
 	  TextField c6combustibile;
+	@FXML
+	  TextField c6catasto;
 	@FXML
 	  TextField b1ditta;
 	@FXML
@@ -342,8 +354,6 @@ public class SchedaUtenteController implements Initializable {
 	private MenuButton analisi;
 	@FXML
 	private AnchorPane dittaInstallatore;
-	@FXML
-	private TextField codiceCatasto;
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
@@ -547,11 +557,16 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void cancellaRecord() {
 		try {
-			stm.execute("delete from utenti where codiceu="+rs.getString("CODICEU"));
+			Boolean b= false;
+			int r=rs.getRow();
 			if(rs.isLast())
-				requery();
+				b=true;
+			stm.execute("delete from utenti where codiceu="+rs.getString("CODICEU"));
+			if(b)
+				requery(r-1);
 			else
-				requery(rs.getRow()+1);
+				requery(r);
+			
 			refresh();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -591,14 +606,92 @@ public class SchedaUtenteController implements Initializable {
 	public void returnToId(int i) {
 		requery();
 		try {
-			rs.next();
-			while(Integer.parseInt(rs.getString("id")) != id) {
+			while(Integer.parseInt(rs.getString("CODICEU")) != i) {
 				rs.next();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void statusImpianto() {
+		try {
+			if("SI".equals(rs.getString("IMPACCESO"))) {
+				stm.execute("update utenti set impacceso='NO' where codiceu="+codice.getText());
+				intervento("SPEGNIMENTO IMPIANTO");
+			}
+			else {
+				stm.execute("update utenti set impacceso='SI' where codiceu="+codice.getText());
+				intervento("ACCENSIONE IMPIANTO");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void statusOra() {
+		try {
+			if("Legale".equals(rs.getString("ORA"))) {
+				stm.execute("update utenti set ora='Solare' where codiceu="+codice.getText());
+				intervento("VARIAZIONE A ORA SOLARE");
+			}
+			else {
+				stm.execute("update utenti set ora='Legale' where codiceu="+codice.getText());
+				intervento("VARIAZIONE A ORA LEGALE");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void puliziacb() {
+				intervento("PULIZIE E MANUTENZIONE ORDINARIA");
+	}
+	
+	public void intervento(String motivo){
+		try {
+			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint) values ("+codice.getText()+", CURRENT_TIMESTAMP, '"+motivo+"', CURRENT_TIMESTAMP)");
+			
+			returnToId(Integer.parseInt(codice.getText()));
+			
+			if(rs.getString("ANNOPREC1")==null) {
+				stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+			}
+			else if(rs.getString("ANNOPREC2")==null) {
+				stm.execute("update utenti set ANNOPREC2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+			}
+			else if(rs.getString("ANNOCOR1")==null) {
+				stm.execute("update utenti set ANNOCOR1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+			}
+			else if(rs.getString("ANNOCOR2")==null) {
+				stm.execute("update utenti set ANNOCOR2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+			}
+			else if(rs.getString("ANNOPREC2")!=null) {
+				stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP, ANNOPREC2=NULL, ANNOCOR1=NULL, ANNOCOR2=NULL where codiceu="+codice.getText());
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		returnToId(Integer.parseInt(codice.getText()));
+		refresh();
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Conferma");
+		alert.setHeaderText("Intervento avvenuto con successo");
+		try {
+			alert.setContentText("è avvenuto un intervento all'utente "+rs.getString("COGNOMEU")+" riguardante: "+motivo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		alert.showAndWait();
 	}
 	
 	public void cercaW(){
@@ -701,7 +794,80 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void nuovo() {
-		//sbiancare tutto
+		try {
+			stm.execute("insert into utenti(cognomeu) values('')");
+			rs = stm.executeQuery("select codiceu from utenti where cognomeu='' and nomeu is null and cognomea is null");
+			rs.next();
+			id=rs.getInt("CODICEU");
+			requery();
+			try {
+//				rs.next();
+				while(Integer.parseInt(rs.getString("CODICEU")) != id) {
+					rs.next();
+				}
+				refresh();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cognome.setText("");
+		nome.setText("");
+		viaU.setText("");
+		numeroU.setText("");
+		localita.setText("");
+		cap.setText("");
+		comuneU.setText("");
+		provU.setText("");
+		telefonoU.setText("");
+		cellulareU.setText("");
+		cfU.setText("");
+		amministratore.setText("");
+		viaA.setText("");
+		numeroA.setText("");
+		comuneA.setText("");
+		provA.setText("");
+		telefonoA.setText("");
+		cfA.setText("");
+		intervento1.setText("");
+		intervento2.setText("");
+		intervento3.setText("");
+		intervento4.setText("");
+		codManut.setText("");
+		puliziacb.setText("");
+		analComb.setText("");
+		bollino.setText("");
+		analisi.setText("");
+		installatore.setText("");
+		certificatoConformita.setText("");
+		c1catasto.setText("");
+		c2catasto.setText("");
+		c3catasto.setText("");
+		c4catasto.setText("");
+		c5catasto.setText("");
+		c6catasto.setText("");
+		condConAmministratore.setSelected(false);
+		condTerzoResponsabile.setSelected(false);
+		privato.setSelected(false);
+		altroDitta.setSelected(false);
+		altroTerzoResponsabile.setSelected(false);
+		circuiti.setSelected(false);
+		termoregolato.setSelected(false);
+		contacalorie.setSelected(false);
+		superiore35.setSelected(false);
+		superiore116.setSelected(false);
+		superiore350.setSelected(false);
+		
+		for(int i=0; i<11; i++) {
+			for(int j=0; j<5; j++) {
+				griglia[i][j].setText("");
+			}
+		}
+		
+		
 		modifica();
 	}
 	
@@ -755,9 +921,14 @@ public class SchedaUtenteController implements Initializable {
 		b4matricola.setEditable(true);
 		b5matricola.setEditable(true);
 		b6matricola.setEditable(true);
-		codiceCatasto.setEditable(true);
 		bollino.setEditable(true);
 		codManut.setEditable(true);
+		c1catasto.setEditable(true);
+		c2catasto.setEditable(true);
+		c3catasto.setEditable(true);
+		c4catasto.setEditable(true);
+		c5catasto.setEditable(true);
+		c6catasto.setEditable(true);
 		
 		confModifica.setVisible(true);
 		annullaModifica.setVisible(true);
@@ -950,9 +1121,14 @@ public class SchedaUtenteController implements Initializable {
 		b4matricola.setEditable(false);
 		b5matricola.setEditable(false);
 		b6matricola.setEditable(false);
-		codiceCatasto.setEditable(false);
 		bollino.setEditable(false);
 		codManut.setEditable(false);
+		c1catasto.setEditable(false);
+		c2catasto.setEditable(false);
+		c3catasto.setEditable(false);
+		c4catasto.setEditable(false);
+		c5catasto.setEditable(false);
+		c6catasto.setEditable(false);
 		
 		confModifica.setVisible(false);
 		annullaModifica.setVisible(false);
@@ -975,13 +1151,16 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void confermaModifica() {
 		try {
-			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', catasto='"+codiceCatasto.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getText()+"',  ";
+			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getText()+"',  ";
 			for(int i=0; i<6; i++) {				
 				q=q.concat("dittac"+(i+1)+"='"+griglia[i][0].getText()+"', modelloc"+(i+1)+"='"+griglia[i][1].getText()+"', matric"+(i+1)+"='"+griglia[i][3].getText()+"', combc"+(i+1)+"='"+griglia[i][4].getText()+"', ");
 			}
 			for(int i=0; i<6; i++) {				
 				q=q.concat("dittab"+(i+1)+"='"+griglia[i+6][0].getText()+"', modellob"+(i+1)+"='"+griglia[i+6][1].getText()+"', tipob"+(i+1)+"='"+griglia[i+6][2].getText()+"', matrib"+(i+1)+"='"+griglia[i+6][3].getText()+"', combb"+(i+1)+"='"+griglia[i+6][4].getText()+"', ");
 			}
+			
+			q=q.concat("c1catasto="+c1catasto.getText()+", c2catasto="+c2catasto.getText()+", c3catasto="+c3catasto.getText()+", c4catasto="+c4catasto.getText()+", c5catasto="+c5catasto.getText()+", c6catasto="+c6catasto.getText()+", ");
+			
 			
 			if(circuiti.isSelected()) {
 				q=q.concat("impcirc='Circuiti', ");
@@ -1078,7 +1257,12 @@ public class SchedaUtenteController implements Initializable {
 			puliziacb.setText(rs.getString("MANPROGM"));
 			analComb.setText(rs.getString("ANALCOMB"));
 			bollino.setText(rs.getString("BOLLINO"));
-			codiceCatasto.setText(rs.getString("CATASTO"));
+			c1catasto.setText(rs.getString("C1CATASTO"));
+			c2catasto.setText(rs.getString("C2CATASTO"));
+			c3catasto.setText(rs.getString("C3CATASTO"));
+			c4catasto.setText(rs.getString("C4CATASTO"));
+			c5catasto.setText(rs.getString("C5CATASTO"));
+			c6catasto.setText(rs.getString("C6CATASTO"));
 			
 			if("Circuiti".equals(rs.getString("IMPCIRC"))) {
 				circuiti.setSelected(true);

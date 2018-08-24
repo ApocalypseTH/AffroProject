@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
    <children>
       <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -363,16 +363,17 @@
                   </Label>
                   <ScrollPane layoutX="144.0" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="43.0">
                      <content>
-                        <AnchorPane prefHeight="300.0" prefWidth="800.0">
+                        <AnchorPane prefHeight="300.0" prefWidth="1019.0">
                            <children>
-                              <GridPane fx:id="caldbrugp" gridLinesVisible="true" layoutX="117.0" layoutY="47.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <GridPane fx:id="caldbrugp" gridLinesVisible="true" layoutX="117.0" layoutY="-1.0" prefHeight="301.0" prefWidth="914.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="35.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="120.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="239.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="95.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="189.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="120.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="119.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="227.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="124.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="152.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -775,6 +776,41 @@
                                           <TextField fx:id="b6combustibile" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="21.0" layoutY="3.0" text="Codice Catasto" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                                       <children>
+                                          <TextField fx:id="c1catasto" editable="false" layoutX="-22.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                       <children>
+                                          <TextField fx:id="c2catasto" editable="false" layoutX="-30.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                                       <children>
+                                          <TextField fx:id="c3catasto" editable="false" layoutX="-15.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                                       <children>
+                                          <TextField fx:id="c4catasto" editable="false" layoutX="-52.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                                       <children>
+                                          <TextField fx:id="c5catasto" editable="false" layoutX="-30.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                                       <children>
+                                          <TextField fx:id="c6catasto" editable="false" layoutX="-40.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </GridPane>
                            </children>
@@ -784,12 +820,12 @@
                </children></AnchorPane>
             <AnchorPane layoutX="500.0" layoutY="400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="400.0">
                <children>
-                  <Label alignment="CENTER" layoutX="154.0" layoutY="131.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Installatore" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="131.0">
+                  <Label alignment="CENTER" layoutX="156.0" layoutY="71.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Installatore" textAlignment="CENTER" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="156.0" AnchorPane.topAnchor="71.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="installatoregp" gridLinesVisible="true" layoutX="13.0" layoutY="161.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="161.0">
+                  <GridPane fx:id="installatoregp" gridLinesVisible="true" layoutX="16.0" layoutY="122.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="122.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -821,18 +857,8 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button id="installatore" fx:id="noteInstallatore" layoutX="439.0" layoutY="222.0" mnemonicParsing="false" onAction="#noteI" text="Note" />
-                  <Button fx:id="statusImpianto" layoutX="303.0" layoutY="222.0" mnemonicParsing="false" text="Impianto Acceso" />
-                  <AnchorPane layoutX="3.0" layoutY="51.0" prefHeight="74.0" prefWidth="491.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
-                     <children>
-                        <TextField fx:id="codiceCatasto" alignment="CENTER" editable="false" layoutX="108.0" layoutY="37.0" prefHeight="25.0" prefWidth="273.0" AnchorPane.bottomAnchor="5.0" />
-                        <Label alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-color: lime;" text="Codice Catasto" textAlignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
+                  <Button id="installatore" fx:id="noteInstallatore" layoutX="438.0" layoutY="210.0" mnemonicParsing="false" onAction="#noteI" text="Note" />
+                  <Button fx:id="statusImpianto" layoutX="302.0" layoutY="210.0" mnemonicParsing="false" onAction="#statusImpianto" text="Impianto Acceso" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="524.0" layoutY="566.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="650.0">
@@ -842,7 +868,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="nuovo" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
+                  <Button fx:id="nuovo" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#nuovo" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
                   <Button layoutX="173.0" layoutY="33.0" mnemonicParsing="false" onAction="#modifica" prefHeight="30.0" prefWidth="150.0" text="Modifica" />
                   <Button fx:id="canc" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
                   <Button fx:id="richiestaInt" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
@@ -1001,12 +1027,12 @@
                               <Insets left="15.0" right="15.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Pulizia C/B" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#puliziacb" text="Pulizia C/B" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets left="4.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="ora" alignment="CENTER" mnemonicParsing="false" text="Ora Solare" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Button fx:id="ora" alignment="CENTER" mnemonicParsing="false" onAction="#statusOra" text="Ora Solare" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets left="5.0" right="2.0" />
                            </GridPane.margin>
