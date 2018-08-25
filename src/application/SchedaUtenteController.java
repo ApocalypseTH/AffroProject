@@ -694,6 +694,16 @@ public class SchedaUtenteController implements Initializable {
 		alert.showAndWait();
 	}
 	
+	public void richInt() {
+		RichiestaIntervento c = new RichiestaIntervento(codice.getText(), codManut.getText(), cognome.getText()+" "+nome.getText(), this);
+		try {
+			c.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void cercaW(){
 		Cerca c = new Cerca(this);
 		try {

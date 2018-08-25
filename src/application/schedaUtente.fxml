@@ -871,7 +871,7 @@
                   <Button fx:id="nuovo" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#nuovo" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
                   <Button layoutX="173.0" layoutY="33.0" mnemonicParsing="false" onAction="#modifica" prefHeight="30.0" prefWidth="150.0" text="Modifica" />
                   <Button fx:id="canc" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
-                  <Button fx:id="richiestaInt" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
+                  <Button fx:id="richiestaInt" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#richInt" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
                   <Button fx:id="stamp" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Stampa Scheda" />
                   <Button fx:id="menu" layoutX="331.0" layoutY="116.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Menu Principale" />
                   <Button fx:id="confModifica" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#confermaModifica" prefHeight="30.0" prefWidth="150.0" text="Conferma" visible="false" />
