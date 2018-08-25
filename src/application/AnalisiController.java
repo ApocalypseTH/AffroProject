@@ -346,9 +346,6 @@ public class AnalisiController implements Initializable{
 
 				stm.execute(q);
 				
-				String utenteSql = "update utenti set analcomb='"+d.localToMysql(data.getText()).substring(0, 3)+"' where codiceu='"+codiceu+"'";
-				stm.execute(utenteSql);
-				
 				annullaModifica();
 				refreshTabella("select * from analisi where codiceu='"+codiceu+"'");
 			} catch (SQLException e) {
@@ -375,6 +372,8 @@ public class AnalisiController implements Initializable{
 				
 				System.out.println(sql);
 				stm.execute(sql);
+				String utenteSql = "update utenti set analcomb='"+d.localToMysql(data.getText()).substring(0, 4)+"' where codiceu='"+codiceu+"'";
+				stm.execute(utenteSql);
 				annullaModifica();
 				refreshTabella("select * from analisi where codiceu='"+codiceu+"' order by data desc");
 				

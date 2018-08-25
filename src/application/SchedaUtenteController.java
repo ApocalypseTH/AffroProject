@@ -648,7 +648,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void intervento(String motivo){
 		try {
-			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint) values ("+codice.getText()+", CURRENT_TIMESTAMP, '"+motivo+"', CURRENT_TIMESTAMP)");
+			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint, cognomech) values ("+codice.getText()+", CURRENT_TIMESTAMP, '"+motivo+"', CURRENT_TIMESTAMP, '"+cognome.getText()+" - "+nome.getText()+"')");
 			
 			returnToId(Integer.parseInt(codice.getText()));
 			
@@ -1398,6 +1398,11 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	
+	public void gotoMain() {
+		Main m = new Main();
+		m.start(primaryStage);
 	}
 	
 	public void gotoBruciatori() {

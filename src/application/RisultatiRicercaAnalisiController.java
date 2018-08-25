@@ -33,6 +33,9 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<Integer> coda;
+	private int codiceu;
+	
+	static Stage primaryStage;
 	
 	@FXML
 	private GridPane gp;
@@ -138,6 +141,8 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 					
 					int cod = coda.get(r-1);
 					
+					codiceu = cod;
+					
 					String s="select * from utenti as u join analisi as a on u.codiceu=a.codiceu where u.codiceu=? order by a.data desc";
 					
 					
@@ -201,5 +206,19 @@ public class RisultatiRicercaAnalisiController implements Initializable{
         });
         
     }
+	
+	public void gotoSchedaUtente() {
+		
+		SchedaUtente su = new SchedaUtente(codiceu);
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 	
 }
