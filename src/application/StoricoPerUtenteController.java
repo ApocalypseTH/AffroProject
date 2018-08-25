@@ -33,6 +33,7 @@ public class StoricoPerUtenteController implements Initializable{
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<Integer> coda;
+	static Stage primaryStage;
 	
 	@FXML
 	private GridPane gp;
@@ -146,6 +147,14 @@ public class StoricoPerUtenteController implements Initializable{
 							t6.setEditable(false);
 							t7.setEditable(false);
 							t8.setEditable(false);
+							
+							intervento(t2);
+							intervento(t3);
+							intervento(t4);
+							intervento(t5);
+							intervento(t6);
+							intervento(t7);
+							intervento(t8);
 										
 							analisi.addRow(i, t1, t2, t3, t4, t5, t6, t7, t8);
 							i++;
@@ -159,5 +168,16 @@ public class StoricoPerUtenteController implements Initializable{
         });
         
     }
+	private void intervento(TextField t) {
+        t.setOnMouseClicked(e -> {
+        	RichiestaIntervento c = new RichiestaIntervento(rs);
+    		try {
+    			c.start(primaryStage);
+    		} catch (Exception e1) {
+    			// TODO Auto-generated catch block
+    			e1.printStackTrace();
+    		}
+        });
+	}
 	
 }

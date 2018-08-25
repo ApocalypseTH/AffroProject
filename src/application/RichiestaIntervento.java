@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.ResultSet;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -13,6 +15,8 @@ public class RichiestaIntervento extends Application {
 	String cod;
 	String ut;
 	String id;
+	ResultSet rs;
+	int i;
 	
 	private SchedaUtenteController suc;
 	
@@ -21,6 +25,11 @@ public class RichiestaIntervento extends Application {
 		this.id=id;
 		this.ut=ut;
 		this.suc = suc;
+		i=0;
+	}
+	public RichiestaIntervento(ResultSet rs) {
+		this.rs=rs;
+		i=1;
 	}
 	
 	@Override
@@ -33,7 +42,9 @@ public class RichiestaIntervento extends Application {
 			RichiestaInterventoController.id=id;
 			RichiestaInterventoController.ut=ut;
 			RichiestaInterventoController.suc = suc;
-			
+			RichiestaInterventoController.res=rs;
+			RichiestaInterventoController.i=i;
+				
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("richiestaIntervento.fxml"));
 	        AnchorPane ap = loader.load();

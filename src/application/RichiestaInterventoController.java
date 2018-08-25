@@ -27,6 +27,8 @@ public class RichiestaInterventoController implements Initializable{
 	public static String ut;
 	private Connection connection;
 	private Statement stm;
+	static ResultSet res;
+	static int i;
 	
 	static SchedaUtenteController suc;
 	
@@ -70,23 +72,36 @@ public class RichiestaInterventoController implements Initializable{
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		codice.setText(id);
-		utente.setText(ut);
-		codManu.setText(cod);
-		try {
-			ResultSet rs=stm.executeQuery("select CURRENT_DATE as d");
-			rs.next();
-			dataChiamata.setValue(LOCAL_DATE(rs.getString("d")));
-			dataIntervento.setValue(LOCAL_DATE(rs.getString("d")));
-			
-			rs=stm.executeQuery("select * from tecnici");
-			while(rs.next())
-				tecnico.getItems().add(rs.getString("NOMET"));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(i==0) {
+			codice.setText(id);
+			utente.setText(ut);
+			codManu.setText(cod);
+			try {
+				ResultSet rs=stm.executeQuery("select CURRENT_DATE as d");
+				rs.next();
+				dataChiamata.setValue(LOCAL_DATE(rs.getString("d")));
+				dataIntervento.setValue(LOCAL_DATE(rs.getString("d")));
+				
+				rs=stm.executeQuery("select * from tecnici");
+				while(rs.next())
+					tecnico.getItems().add(rs.getString("NOMET"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		if(i==1) {
+			stampa.setDisable(false);
+			try {
+				codice.setText(res.getString("CODICEU"));
+				utente.setText(res.getString("COGNOMECH"));
+				codManu.setText(res.getString("CODMANU"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 	public static final LocalDate LOCAL_DATE (String dateString){
@@ -96,47 +111,57 @@ public class RichiestaInterventoController implements Initializable{
 	}
 	
 	public void conferma() {
-		try {
-			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint, codmanu, cognomech, telech, noteint, tecnico) values ("+id+", '"+dataChiamata.getValue()+"', '"+motivoChiamata.getText()+"', '"+dataIntervento.getValue()+"', '"+codManu.getText()+"', '"+richiedente.getText()+"', '"+telefono.getText()+"', '"+note.getText()+"', '"+tecnico.getValue()+"')");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		stampa.setDisable(false);
-		
-		ResultSet rs;
-		try {
-			rs = stm.executeQuery("select * from utenti");
+		if(i==0) {
+			try {
+				stm.execute("insert into ricint(codiceu, datach, motivoch, dataint, codmanu, cognomech, telech, noteint, tecnico) values ("+id+", '"+dataChiamata.getValue()+"', '"+motivoChiamata.getText()+"', '"+dataIntervento.getValue()+"', '"+codManu.getText()+"', '"+richiedente.getText()+"', '"+telefono.getText()+"', '"+note.getText()+"', '"+tecnico.getValue()+"')");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			stampa.setDisable(false);
+
+			ResultSet rs;
+			try {
+				rs = stm.executeQuery("select * from utenti");
 
 
-			rs.next();
-			while(Integer.parseInt(rs.getString("CODICEU")) != Integer.parseInt(codice.getText())) {
 				rs.next();
+				while(Integer.parseInt(rs.getString("CODICEU")) != Integer.parseInt(codice.getText())) {
+					rs.next();
+				}
+
+				if(rs.getString("ANNOPREC1")==null) {
+					stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+				}
+				else if(rs.getString("ANNOPREC2")==null) {
+					stm.execute("update utenti set ANNOPREC2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+				}
+				else if(rs.getString("ANNOCOR1")==null) {
+					stm.execute("update utenti set ANNOCOR1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+				}
+				else if(rs.getString("ANNOCOR2")==null) {
+					stm.execute("update utenti set ANNOCOR2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
+				}
+				else if(rs.getString("ANNOPREC2")!=null) {
+					stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP, ANNOPREC2=NULL, ANNOCOR1=NULL, ANNOCOR2=NULL where codiceu="+codice.getText());
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
-			if(rs.getString("ANNOPREC1")==null) {
-				stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
-			}
-			else if(rs.getString("ANNOPREC2")==null) {
-				stm.execute("update utenti set ANNOPREC2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
-			}
-			else if(rs.getString("ANNOCOR1")==null) {
-				stm.execute("update utenti set ANNOCOR1=CURRENT_TIMESTAMP where codiceu="+codice.getText());
-			}
-			else if(rs.getString("ANNOCOR2")==null) {
-				stm.execute("update utenti set ANNOCOR2=CURRENT_TIMESTAMP where codiceu="+codice.getText());
-			}
-			else if(rs.getString("ANNOPREC2")!=null) {
-				stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP, ANNOPREC2=NULL, ANNOCOR1=NULL, ANNOCOR2=NULL where codiceu="+codice.getText());
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			suc.requery(suc.getRow());
+			suc.refresh();
+			conferma.setDisable(true);
 		}
-		
-		suc.requery(suc.getRow());
-		suc.refresh();
-		conferma.setDisable(true);
+		else {
+			try {
+				stm.execute("update ricint set (codiceu, datach, motivoch, dataint, codmanu, cognomech, telech, noteint, tecnico) values ("+id+", '"+dataChiamata.getValue()+"', '"+motivoChiamata.getText()+"', '"+dataIntervento.getValue()+"', '"+codManu.getText()+"', '"+richiedente.getText()+"', '"+telefono.getText()+"', '"+note.getText()+"', '"+tecnico.getValue()+"')");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	public void annulla() {
