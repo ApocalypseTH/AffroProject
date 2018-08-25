@@ -872,8 +872,18 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void Analizzalo() {
-		Analisi a = new Analisi();
-		a.start(primaryStage);
+		Analisi a;
+		try {
+			a = new Analisi(Integer.parseInt(rs.getString("CODICEU")));
+			a.start(primaryStage);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void modifica() {

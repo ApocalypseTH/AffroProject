@@ -125,10 +125,6 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attenzione");
-			alert.setHeaderText("Non inserire caratteri sensibili come ' o /");
-			alert.showAndWait();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			
