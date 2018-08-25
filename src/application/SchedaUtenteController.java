@@ -357,18 +357,20 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
-		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-
+//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
+//
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		
-		try {
-			
-			connection = DriverManager.getConnection(connectionString);
+//			
+//			connection = DriverManager.getConnection(connectionString);
+			ConnDB conn = new ConnDB();
+			connection = conn.getConnection();
 			stm = connection.createStatement();
 			rs = stm.executeQuery("select * from utenti order by codiceu");
 			rs.next();			
@@ -470,19 +472,10 @@ public class SchedaUtenteController implements Initializable {
 		orologioap.setMouseTransparent(true);
 		tipiimpiantogp.setMouseTransparent(true);
 		
-		
-		if(user != -1) {
-			try {
-				while(rs.getInt("CODICEU") != user && !rs.isAfterLast())
-					rs.next();
-
-				if(rs.isAfterLast())
-					rs.first();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (user != -1) {
+			returnToId(user);
 		}
+			
 		refresh();
     }
 	
@@ -1311,10 +1304,12 @@ public class SchedaUtenteController implements Initializable {
 				superiore350.setSelected(false);
 			}
 			if("SI".equals(rs.getString("IMPACCESO"))) {
+				statusImpianto.setText("Impianto Acceso");
 				statusImpianto.setStyle("-fx-text-fill: green;");
 				impStat=true;
 			}
 			else {
+				statusImpianto.setText("Impianto Spento");
 				statusImpianto.setStyle("-fx-text-fill: red;");
 				impStat=false;
 			}

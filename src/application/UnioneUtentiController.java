@@ -8,16 +8,19 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class UnioneUtentiController implements Initializable{
 	
@@ -157,8 +160,6 @@ public class UnioneUtentiController implements Initializable{
 	private GridPane storico;
 	@FXML
 	private GridPane analisi;
-	@FXML
-	private GridPane cisterna;
 	
 	@FXML
 	private TextField codiceUtente;
@@ -327,9 +328,7 @@ public class UnioneUtentiController implements Initializable{
 			int r=gpUtenti.getRowIndex(source);
 			
 			int cod = coda.get(r-1);
-			
-			codiceu=cod;
-			
+						
 			refreshTabella(cod);
 			
 		});
@@ -340,8 +339,9 @@ public class UnioneUtentiController implements Initializable{
 		if (cambioCodice.isDisabled())
 			cambioCodice.setDisable(false);
 		
+		codiceu = codiceU;
+
 		String s="select * from utenti as u where u.codiceu='"+codiceU+"'";
-		
 		
 		try {
 			rs= stm.executeQuery(s);
@@ -411,25 +411,6 @@ public class UnioneUtentiController implements Initializable{
 				i2++;
 			}
 			
-			cisterna.getChildren().clear();
-			cisterna.setGridLinesVisible(false);
-			cisterna.setGridLinesVisible(true);
-			
-			String sql3 = "select codiceu, carico from cisterna where codiceu='"+codiceu+"'";
-			rs = stm.executeQuery(sql3);
-			
-			int i3=0;
-			while(rs.next()) {
-				
-				Label t1= new Label(" "+rs.getString("CODICEU"));
-				TextField t2= new TextField(rs.getString("CARICO"));
-				
-				t2.setEditable(false);
-				
-				cisterna.addRow(i3, t1, t2);
-				i3++;
-			}
-			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -441,15 +422,16 @@ public class UnioneUtentiController implements Initializable{
 		
 		cambiaPane.setDisable(false);
 		cambioCodice.setDisable(true);
-		menuPrinc.setDisable(true);		
+		menuPrinc.setDisable(true);	
+		gpUtenti.setMouseTransparent(true);
 	}
 	
 	public void confermalo() {
 		
 		boolean ok = true;
 		String CorB = "";
-		String IDiniz = idCaldIniziale.getText();
-		String IDfin = idCaldFinale.getText();
+		String IDiniz = idCaldIniziale.getText().toLowerCase();
+		String IDfin = idCaldFinale.getText().toLowerCase();
 		
 		if (nuovoCodice.getText().isEmpty()) {
 			ok=false;
@@ -461,15 +443,15 @@ public class UnioneUtentiController implements Initializable{
 		}
 		
 		if(!IDiniz.isEmpty() && !IDfin.isEmpty() && ok) {
-			if(!((IDiniz.toUpperCase().charAt(0) == 'B' || IDiniz.toUpperCase().charAt(0) == 'C') && (Integer.parseInt(""+IDiniz.toUpperCase().charAt(1))<7)))
+			if(!((IDiniz.charAt(0) == 'b' || IDiniz.charAt(0) == 'c') && (Integer.parseInt(""+IDiniz.charAt(1))<7)))
 				ok = false;
 			
-			if(!((IDfin.toUpperCase().charAt(0) == 'B' || IDfin.toUpperCase().charAt(0) == 'C') && (Integer.parseInt(""+IDfin.toUpperCase().charAt(1))<7))) 
+			if(!((IDfin.charAt(0) == 'b' || IDfin.charAt(0) == 'c') && (Integer.parseInt(""+IDfin.charAt(1))<7))) 
 				ok = false;
 			
-			if(IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'C') {
+			if(IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'c') {
 				CorB = "C";
-			} else if (IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'B') {
+			} else if (IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'b') {
 				CorB = "B";
 			} else {
 				ok = false;
@@ -489,7 +471,6 @@ public class UnioneUtentiController implements Initializable{
 		}
 			
 		if(ok) {
-			
 			if (CorB.equals("C")) {
 				String sql = "select ditta"+IDiniz+", modello"+IDiniz+", "+IDiniz+"catasto, matri"+IDiniz+", comb"+IDiniz+", mf"+IDiniz+" from utenti where codiceu='"+codiceu+"'";
 				try {
@@ -506,15 +487,31 @@ public class UnioneUtentiController implements Initializable{
 								+ "modello"+IDfin+"='"+rs.getString("modello"+IDiniz)+"', "
 								+ IDfin+"catasto='"+rs.getString(IDiniz+"catasto")+"', "
 								+ "matri"+IDfin+"='"+rs.getString("matri"+IDiniz)+"', "
-								+ "comb"+IDfin+"='"+rs.getString("comb"+IDiniz)+"' "
+								+ "comb"+IDfin+"='"+rs.getString("comb"+IDiniz)+"', "
 								+ "mf"+IDfin+"='"+rs.getString("mf"+IDiniz)+"' "
 										+ "where codiceu='"+nuovoCodice.getText()+"'";
+						System.out.println(upSql);
+
 						stm.execute(upSql);
 						
-						String upAnalisi = "update analisi set codiceu='"+nuovoCodice.getText()+"', id='"+IDfin+"' where codiceu='"+codiceu+"' and id='"+IDiniz+"'";
+						String oldCald = "update utenti set ditta"+IDiniz+"='', "
+								+ "modello"+IDiniz+"='', "
+								+ IDiniz+"catasto='', "
+								+ "matri"+IDiniz+"='', "
+								+ "comb"+IDiniz+"='', "
+								+ "mf"+IDiniz+"=null "
+										+ "where codiceu='"+codiceu+"'";
+						stm.execute(oldCald);
+						
+						String upAnalisi = "update analisi set codiceu='"+nuovoCodice.getText()+"', id='"+IDfin.toUpperCase()+"' where codiceu='"+codiceu+"' and id='"+IDiniz+"'";
 						stm.execute(upAnalisi);
 						
-						String upCisterna = "update cisterna ";
+						String upStorico = "update ricint set codiceu='"+nuovoCodice.getText()+"' where codiceu='"+codiceu+"'";
+						stm.execute(upStorico);
+						
+						refreshTabella(codiceu);
+						annullalo();
+						
 					} else {
 						idCaldIniziale.setText("");
 						Alert alert = new Alert(AlertType.WARNING);
@@ -533,6 +530,55 @@ public class UnioneUtentiController implements Initializable{
 					alert.showAndWait();
 				}
 				
+			} else {
+				String sql = "select ditta"+IDiniz+", modello"+IDiniz+", tipo"+IDiniz+", matri"+IDiniz+", comb"+IDiniz+" from utenti where codiceu='"+codiceu+"'";
+				try {
+					rs = stm.executeQuery(sql);
+					rs.next();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				try {
+					if(!(rs.getString("ditta"+IDiniz).equals("") && rs.getString("modello"+IDiniz).equals(""))) {
+						String upSql = "update utenti set ditta"+IDfin+"='"+rs.getString("ditta"+IDiniz)+"', "
+								+ "modello"+IDfin+"='"+rs.getString("modello"+IDiniz)+"', "
+								+ "tipo"+IDfin+"='"+rs.getString("tipo"+IDiniz)+"', "
+								+ "matri"+IDfin+"='"+rs.getString("matri"+IDiniz)+"', "
+								+ "comb"+IDfin+"='"+rs.getString("comb"+IDiniz)+"' "
+										+ "where codiceu='"+nuovoCodice.getText()+"'";
+						System.out.println(upSql);
+						stm.execute(upSql);
+						
+						String oldBru = "update utenti set ditta"+IDiniz+"='', "
+								+ "modello"+IDiniz+"='', "
+								+ "tipo"+IDiniz+"='', "
+								+ "matri"+IDiniz+"='', "
+								+ "comb"+IDiniz+"='' "
+										+ "where codiceu='"+codiceu+"'";
+						stm.execute(oldBru);
+						
+						refreshTabella(codiceu);
+						annullalo();
+						
+					} else {
+						idCaldIniziale.setText("");
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Attenzione");
+						alert.setHeaderText("Nessuna caldaia selezionata");
+						alert.showAndWait();
+						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					nuovoCodice.setText("");
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Attenzione");
+					alert.setHeaderText("Inserire un nuovo codice utente valido");
+					alert.showAndWait();
+				}
 			}
 			
 			
@@ -545,6 +591,20 @@ public class UnioneUtentiController implements Initializable{
 			alert.showAndWait();
 		}
 		
+	}
+	
+	public void annullalo() {
+		cambiaPane.setDisable(true);
+		menuPrinc.setDisable(false);	
+		gpUtenti.setMouseTransparent(false);
+		idCaldFinale.setText("");
+		idCaldIniziale.setText("");
+		nuovoCodice.setText("");
+	}
+	
+	public void gotoMenu() {
+		Stage stage = (Stage) menuPrinc.getScene().getWindow();
+		stage.close();		
 	}
 
 }

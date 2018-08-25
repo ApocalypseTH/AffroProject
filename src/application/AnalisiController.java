@@ -34,7 +34,7 @@ public class AnalisiController implements Initializable{
 	
 	private String caldaiaID;
 	
-	static int codiceu = 3;
+	static int codiceu;
 		
 	@FXML
 	private TextField data;
@@ -345,6 +345,10 @@ public class AnalisiController implements Initializable{
 						+ "' where codiceu='"+codiceu+"' and data='"+dataM+"' and id='"+caldaiaM+"'";
 
 				stm.execute(q);
+				
+				String utenteSql = "update utenti set analcomb='"+d.localToMysql(data.getText()).substring(0, 3)+"' where codiceu='"+codiceu+"'";
+				stm.execute(utenteSql);
+				
 				annullaModifica();
 				refreshTabella("select * from analisi where codiceu='"+codiceu+"'");
 			} catch (SQLException e) {
