@@ -247,7 +247,7 @@
                         <RadioButton fx:id="manuale" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" text="Manuale" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="404.0" layoutY="341.0" mnemonicParsing="false" text="Apri Cartella" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="330.0" />
+                  <Button layoutX="404.0" layoutY="341.0" mnemonicParsing="false" onAction="#apriCartella" text="Apri Cartella" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="330.0" />
                   <Label fx:id="codice" alignment="CENTER" layoutX="6.0" layoutY="55.0" text="cod" textFill="RED" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="55.0">
                      <font>
                         <Font name="System Bold" size="12.0" />

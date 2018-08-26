@@ -1,5 +1,8 @@
 package application;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -872,6 +875,25 @@ public class SchedaUtenteController implements Initializable {
 		
 		
 		modifica();
+	}
+	
+	public void apriCartella() {
+		
+		String username = System.getProperty("user.name");
+		Desktop desktop = Desktop.getDesktop();
+        File dirToOpen = null;
+        try {
+            dirToOpen = new File("C:/Users/"+username+"/Documents/"+codice.getText());
+            desktop.open(dirToOpen);
+        } catch (IllegalArgumentException iae) {
+        	Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("Nessuna cartella associata a questo utente");
+			alert.showAndWait();
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void Analizzalo() {
