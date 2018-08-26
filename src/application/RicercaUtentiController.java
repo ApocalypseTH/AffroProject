@@ -41,8 +41,8 @@ public class RicercaUtentiController implements Initializable{
 	final ToggleGroup imp = new ToggleGroup();
 	final ToggleGroup ora = new ToggleGroup();
 	final ToggleGroup ordine = new ToggleGroup();
-	Boolean e;
-	Boolean or;
+	boolean e;
+	boolean or;
 	
 	@FXML
 	private MenuItem schedaUtente;
