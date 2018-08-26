@@ -704,7 +704,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void catasto() {
 		  try {
-	            Desktop.getDesktop().browse(new URI("http://www.google.com"));
+	            Desktop.getDesktop().browse(new URI("http://www.youporn.com"));
 	        } catch (IOException e1) {
 	            e1.printStackTrace();
 	        } catch (URISyntaxException e1) {
