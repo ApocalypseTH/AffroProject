@@ -468,7 +468,7 @@
                   </ScrollPane>
                   <AnchorPane layoutX="303.0" layoutY="399.0" prefHeight="356.0" prefWidth="680.0" style="-fx-border-color: black;">
                      <children>
-                        <ScrollPane layoutX="14.0" layoutY="76.0" prefHeight="264.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
+                        <ScrollPane layoutX="93.0" layoutY="82.0" prefHeight="264.0" prefWidth="200.0" AnchorPane.leftAnchor="85.0" AnchorPane.topAnchor="82.0">
                            <content>
                               <GridPane fx:id="storico" prefWidth="181.0">
                                 <columnConstraints>
@@ -481,7 +481,7 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
-                        <ScrollPane layoutX="242.0" layoutY="77.0" prefHeight="264.0" prefWidth="200.0" AnchorPane.leftAnchor="242.0" AnchorPane.topAnchor="80.0">
+                        <ScrollPane layoutX="422.0" layoutY="81.0" prefHeight="264.0" prefWidth="200.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="81.0">
                            <content>
                               <GridPane fx:id="analisi" prefWidth="180.0">
                                  <columnConstraints>
@@ -495,23 +495,9 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
-                        <ScrollPane layoutX="468.0" layoutY="77.0" prefHeight="264.0" prefWidth="200.0" AnchorPane.leftAnchor="468.0" AnchorPane.topAnchor="80.0">
-                           <content>
-                              <GridPane fx:id="cisterna" prefWidth="180.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="42.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="138.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </content>
-                        </ScrollPane>
-                        <Label layoutX="273.0" layoutY="12.0" style="-fx-background-color: lime;" text="Analisi Combustione" AnchorPane.leftAnchor="273.0" AnchorPane.topAnchor="12.0" />
-                        <Label layoutX="542.0" layoutY="12.0" style="-fx-background-color: lime;" text="Cisterna" AnchorPane.leftAnchor="542.0" AnchorPane.topAnchor="12.0" />
-                        <Label layoutX="92.0" layoutY="11.0" style="-fx-background-color: lime;" text="Storico" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="11.0" />
-                        <GridPane gridLinesVisible="true" layoutX="244.0" layoutY="58.0" prefHeight="25.0" prefWidth="178.0" AnchorPane.leftAnchor="243.0" AnchorPane.topAnchor="56.0">
+                        <Label layoutX="433.0" layoutY="14.0" style="-fx-background-color: lime;" text="Analisi Combustione" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="13.0" />
+                        <Label layoutX="163.0" layoutY="13.0" style="-fx-background-color: lime;" text="Storico" AnchorPane.leftAnchor="163.0" AnchorPane.topAnchor="13.0" />
+                        <GridPane gridLinesVisible="true" layoutX="401.0" layoutY="57.0" prefHeight="25.0" prefWidth="178.0" AnchorPane.leftAnchor="401.0" AnchorPane.topAnchor="57.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="35.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="108.0" />
@@ -533,7 +519,7 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <GridPane gridLinesVisible="true" layoutX="17.0" layoutY="57.0" prefHeight="25.0" prefWidth="178.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="56.0">
+                        <GridPane gridLinesVisible="true" layoutX="86.0" layoutY="58.0" prefHeight="25.0" prefWidth="178.0" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="58.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="42.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="136.0" />
@@ -545,22 +531,6 @@
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
                                     <Label alignment="CENTER" layoutX="58.0" layoutY="2.0" text="Chiamata" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </GridPane>
-                        <GridPane gridLinesVisible="true" layoutX="469.0" layoutY="57.0" prefHeight="25.0" prefWidth="178.0" AnchorPane.leftAnchor="469.0" AnchorPane.topAnchor="56.0">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="42.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="136.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                 <children>
-                                    <Label alignment="CENTER" layoutX="62.0" layoutY="2.0" text="Data" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -661,7 +631,7 @@
                               <Font size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="annulla" layoutX="191.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Annulla" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="10.0">
+                        <Button fx:id="annulla" layoutX="191.0" layoutY="10.0" mnemonicParsing="false" onAction="#annullalo" prefHeight="25.0" prefWidth="71.0" text="Annulla" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="10.0">
                            <font>
                               <Font size="12.0" />
                            </font>

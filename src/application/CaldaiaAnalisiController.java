@@ -123,7 +123,7 @@ public class CaldaiaAnalisiController implements Initializable{
 		for(int i=1; i<=6; i++) {
 			q=q+"dittac"+i+", modelloc"+i+", matric"+i+", combc"+i+(i==6?" ":", ");
 		}
-		q=q+"from utenti where codiceu='"+3+"'";
+		q=q+"from utenti where codiceu='"+codiceu+"'";
 		
 		System.out.println(q);
 		

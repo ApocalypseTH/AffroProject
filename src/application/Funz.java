@@ -30,9 +30,11 @@ public class Funz {
 	private static DOMSource source;
 	private static StreamResult result;
 	
+	private static String path = "src/dati.xml";
+	
 	public Funz() {
 		
-		file = new File("src/dati.xml");
+		file = new File(path);
 		documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -92,7 +94,7 @@ public class Funz {
 	public void setIp(String ip) {
 		
 		source = new DOMSource(document);
-		result = new StreamResult(new File("src/dati.xml"));
+		result = new StreamResult(new File(path));
 		
 		Node nip = document.getElementsByTagName("ip").item(0);
 		if(nip.hasChildNodes())
@@ -110,7 +112,7 @@ public class Funz {
 	
 	public void SetPort(int port) {
 		source = new DOMSource(document);
-		result = new StreamResult(new File("src/dati.xml"));
+		result = new StreamResult(new File(path));
 		
 		Node nport = document.getElementsByTagName("port").item(0);
 		if(nport.hasChildNodes())
@@ -128,7 +130,7 @@ public class Funz {
 	
 	public void SetDB(String db) {
 		source = new DOMSource(document);
-		result = new StreamResult(new File("src/dati.xml"));
+		result = new StreamResult(new File(path));
 		
 		Node ndb = document.getElementsByTagName("db").item(0);
 		if(ndb.hasChildNodes())
@@ -146,7 +148,7 @@ public class Funz {
 
 	public void SetUser(String user) {
 		source = new DOMSource(document);
-		result = new StreamResult(new File("src/dati.xml"));
+		result = new StreamResult(new File(path));
 		
 		Node nuser= document.getElementsByTagName("user").item(0);
 		if(nuser.hasChildNodes())
@@ -164,7 +166,7 @@ public class Funz {
 	
 	public void SetPassword(String password) {
 		source = new DOMSource(document);
-		result = new StreamResult(new File("src/dati.xml"));
+		result = new StreamResult(new File(path));
 		
 		Node npassword = document.getElementsByTagName("password").item(0);
 		if(npassword.hasChildNodes())

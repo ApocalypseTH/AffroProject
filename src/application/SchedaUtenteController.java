@@ -1,5 +1,8 @@
 package application;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -357,18 +360,20 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
-		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-
+//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
+//
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		
-		try {
-			
-			connection = DriverManager.getConnection(connectionString);
+//			
+//			connection = DriverManager.getConnection(connectionString);
+			ConnDB conn = new ConnDB();
+			connection = conn.getConnection();
 			stm = connection.createStatement();
 			rs = stm.executeQuery("select * from utenti order by codiceu");
 			rs.next();			
@@ -470,19 +475,10 @@ public class SchedaUtenteController implements Initializable {
 		orologioap.setMouseTransparent(true);
 		tipiimpiantogp.setMouseTransparent(true);
 		
-		
-		if(user != -1) {
-			try {
-				while(rs.getInt("CODICEU") != user && !rs.isAfterLast())
-					rs.next();
-
-				if(rs.isAfterLast())
-					rs.first();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (user != -1) {
+			returnToId(user);
 		}
+			
 		refresh();
     }
 	
@@ -655,7 +651,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void intervento(String motivo){
 		try {
-			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint) values ("+codice.getText()+", CURRENT_TIMESTAMP, '"+motivo+"', CURRENT_TIMESTAMP)");
+			stm.execute("insert into ricint(codiceu, datach, motivoch, dataint, cognomech) values ("+codice.getText()+", CURRENT_TIMESTAMP, '"+motivo+"', CURRENT_TIMESTAMP, '"+cognome.getText()+" - "+nome.getText()+"')");
 			
 			returnToId(Integer.parseInt(codice.getText()));
 			
@@ -879,6 +875,25 @@ public class SchedaUtenteController implements Initializable {
 		
 		
 		modifica();
+	}
+	
+	public void apriCartella() {
+		
+		String username = System.getProperty("user.name");
+		Desktop desktop = Desktop.getDesktop();
+        File dirToOpen = null;
+        try {
+            dirToOpen = new File("C:/Users/"+username+"/Documents/"+codice.getText());
+            desktop.open(dirToOpen);
+        } catch (IllegalArgumentException iae) {
+        	Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("Nessuna cartella associata a questo utente");
+			alert.showAndWait();
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void Analizzalo() {
@@ -1321,10 +1336,12 @@ public class SchedaUtenteController implements Initializable {
 				superiore350.setSelected(false);
 			}
 			if("SI".equals(rs.getString("IMPACCESO"))) {
+				statusImpianto.setText("Impianto Acceso");
 				statusImpianto.setStyle("-fx-text-fill: green;");
 				impStat=true;
 			}
 			else {
+				statusImpianto.setText("Impianto Spento");
 				statusImpianto.setStyle("-fx-text-fill: red;");
 				impStat=false;
 			}
@@ -1403,6 +1420,11 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	
+	public void gotoMain() {
+		Main m = new Main();
+		m.start(primaryStage);
 	}
 	
 	public void gotoBruciatori() {
