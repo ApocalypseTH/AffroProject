@@ -3,6 +3,8 @@ package application;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -698,6 +700,16 @@ public class SchedaUtenteController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void catasto() {
+		  try {
+	            Desktop.getDesktop().browse(new URI("http://www.google.com"));
+	        } catch (IOException e1) {
+	            e1.printStackTrace();
+	        } catch (URISyntaxException e1) {
+	            e1.printStackTrace();
+	        }
 	}
 	
 	public void cercaW(){
