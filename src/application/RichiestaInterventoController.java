@@ -31,6 +31,7 @@ public class RichiestaInterventoController implements Initializable{
 	static int i;
 	
 	static SchedaUtenteController suc;
+	static StoricoPerUtenteController spuc;
 	
 	@FXML
 	private TextArea note;
@@ -58,6 +59,8 @@ public class RichiestaInterventoController implements Initializable{
 	private Button conferma;
 	@FXML
 	private Button stampa;
+	@FXML
+	private Button elimina;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -80,11 +83,8 @@ public class RichiestaInterventoController implements Initializable{
 				ResultSet rs=stm.executeQuery("select CURRENT_DATE as d");
 				rs.next();
 				dataChiamata.setValue(LOCAL_DATE(rs.getString("d")));
-				dataIntervento.setValue(LOCAL_DATE(rs.getString("d")));
+				dataIntervento.setValue(LOCAL_DATE(rs.getString("d")));	
 				
-				rs=stm.executeQuery("select * from tecnici");
-				while(rs.next())
-					tecnico.getItems().add(rs.getString("NOMET"));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -93,13 +93,30 @@ public class RichiestaInterventoController implements Initializable{
 		if(i==1) {
 			stampa.setDisable(false);
 			try {
-				codice.setText(res.getString("CODICEU"));
-				utente.setText(res.getString("COGNOMECH"));
-				codManu.setText(res.getString("CODMANU"));
+				codice.setText(res.getString("r.CODICEU"));
+				richiedente.setText(res.getString("r.COGNOMECH"));
+				codManu.setText(res.getString("r.CODMANU"));
+				dataChiamata.setValue(LOCAL_DATE(res.getString("r.DATACH")));
+				dataIntervento.setValue(LOCAL_DATE(res.getString("r.DATAINT")));
+				telefono.setText(res.getString("r.TELECH"));
+				note.setText(res.getString("r.NOTEINT"));
+				tecnico.setValue(res.getString("r.TECNICO"));
+				utente.setText(res.getString("u.COGNOMEU")+" "+res.getString("u.NOMEU"));
+				motivoChiamata.setText(res.getString("r.MOTIVOCH"));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			elimina.setVisible(true);
+		}
+		
+		try {
+			ResultSet rs = stm.executeQuery("select * from tecnici");
+			while(rs.next())
+				tecnico.getItems().add(rs.getString("NOMET"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		
@@ -156,11 +173,12 @@ public class RichiestaInterventoController implements Initializable{
 		}
 		else {
 			try {
-				stm.execute("update ricint set (codiceu, datach, motivoch, dataint, codmanu, cognomech, telech, noteint, tecnico) values ("+id+", '"+dataChiamata.getValue()+"', '"+motivoChiamata.getText()+"', '"+dataIntervento.getValue()+"', '"+codManu.getText()+"', '"+richiedente.getText()+"', '"+telefono.getText()+"', '"+note.getText()+"', '"+tecnico.getValue()+"')");
+				stm.execute("update ricint set datach='"+dataChiamata.getValue()+"', motivoch='"+motivoChiamata.getText()+"', dataint='"+dataIntervento.getValue()+"', codmanu='"+codManu.getText()+"', cognomech='"+richiedente.getText()+"', telech='"+telefono.getText()+"', noteint='"+note.getText()+"', tecnico='"+tecnico.getValue()+"' where codiceu='"+codice.getText()+"' and datach='"+res.getString("r.DATACH")+"' and motivoch='"+res.getString("r.MOTIVOCH")+"' ");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			spuc.refresh();
 		}
 		
 	}
@@ -169,5 +187,15 @@ public class RichiestaInterventoController implements Initializable{
 	    // do what you have to do
 		//Ok I'll do what i want to do XOXO by Eddie
 	    stage.close();
+	}
+	public void elimina() {
+		try {
+			stm.execute("delete from ricint where codiceu='"+res.getString("r.CODICEU")+"' and datach='"+res.getString("r.DATACH")+"' and motivoch='"+res.getString("r.MOTIVOCH")+"'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		spuc.refresh();
+		annulla();
 	}
 }

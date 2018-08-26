@@ -34,6 +34,9 @@ public class StoricoPerUtenteController implements Initializable{
 	private ResultSet rs;
 	private Vector<Integer> coda;
 	static Stage primaryStage;
+	int codice;
+	private Vector<String> data;
+	private Vector<String> motivo;
 	
 	@FXML
 	private GridPane gp;
@@ -62,7 +65,9 @@ public class StoricoPerUtenteController implements Initializable{
 			stm = connection.createStatement();
 			rs= stm.executeQuery(query);
 			
-			coda= new Vector<Integer>();
+			coda = new Vector<Integer>();
+			data = new Vector<String>();
+			motivo = new Vector<String>();
 			
 			int i=1;
 			while (rs.next()) {
@@ -106,12 +111,77 @@ public class StoricoPerUtenteController implements Initializable{
 		}
 	}
 	
+	public void refresh() {
+		data.clear();
+		motivo.clear();
+		
+		String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
+		
+		
+		try {
+//			rs= stm.executeQuery(s);
+			
+			PreparedStatement prepStat = connection.prepareStatement(s);
+			prepStat.setInt(1, codice);
+			
+			rs = prepStat.executeQuery();		
+			
+			
+			analisi.getChildren().clear();
+			analisi.setGridLinesVisible(false);
+			analisi.setGridLinesVisible(true);
+			
+			int i=0;
+			while (rs.next()) {
+				
+				data.add(rs.getString("r.DATACH"));
+				motivo.add(rs.getString("r.MOTIVOCH"));
+				
+				Label t1= new Label(" "+rs.getString("r.CODICEU"));
+				TextField t2= new TextField(" "+rs.getString("r.DATACH"));
+				TextField t3= new TextField(" "+rs.getString("r.CODMANU"));
+				TextField t4= new TextField(" "+rs.getString("r.MOTIVOCH"));
+				TextField t5= new TextField(" "+rs.getString("r.COGNOMECH"));
+				TextField t6= new TextField(" "+rs.getString("r.TELECH"));
+				TextField t7= new TextField(" "+rs.getString("r.DATAINT"));
+				TextField t8= new TextField(" "+rs.getString("r.TECNICO"));
+				
+				t2.setEditable(false);
+				t3.setEditable(false);
+				t4.setEditable(false);
+				t5.setEditable(false);
+				t6.setEditable(false);
+				t7.setEditable(false);
+				t8.setEditable(false);
+				
+				intervento(t2);
+				intervento(t3);
+				intervento(t4);
+				intervento(t5);
+				intervento(t6);
+				intervento(t7);
+				intervento(t8);
+							
+				analisi.addRow(i, t1, t2, t3, t4, t5, t6, t7, t8);
+				i++;
+			}						
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	private void refresh(TextField t) {
         t.setOnMouseClicked(e -> {
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 					
 					int cod = coda.get(r-1);
+					
+					codice=cod;
+					data.clear();
+					motivo.clear();
 					
 					String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
 					
@@ -130,7 +200,11 @@ public class StoricoPerUtenteController implements Initializable{
 						analisi.setGridLinesVisible(true);
 						
 						int i=0;
-						while (rs.next()) {							
+						while (rs.next()) {
+							
+							data.add(rs.getString("r.DATACH"));
+							motivo.add(rs.getString("r.MOTIVOCH"));
+							
 							Label t1= new Label(" "+rs.getString("r.CODICEU"));
 							TextField t2= new TextField(" "+rs.getString("r.DATACH"));
 							TextField t3= new TextField(" "+rs.getString("r.CODMANU"));
@@ -170,8 +244,24 @@ public class StoricoPerUtenteController implements Initializable{
     }
 	private void intervento(TextField t) {
         t.setOnMouseClicked(e -> {
-        	RichiestaIntervento c = new RichiestaIntervento(rs);
-    		try {
+        	TextField source = (TextField) e.getSource();
+			int r=gp.getRowIndex(source);
+			
+			String mot = motivo.get(r);
+			String dat= data.get(r);
+			
+			String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? and r.datach=? and r.motivoch=?";
+			
+			try {				
+				PreparedStatement prepStat = connection.prepareStatement(s);
+				prepStat.setInt(1, codice);
+				prepStat.setString(2, dat);
+				prepStat.setString(3, mot);
+				
+				rs = prepStat.executeQuery();
+				rs.next();
+        	RichiestaIntervento c = new RichiestaIntervento(rs, this);
+    		
     			c.start(primaryStage);
     		} catch (Exception e1) {
     			// TODO Auto-generated catch block

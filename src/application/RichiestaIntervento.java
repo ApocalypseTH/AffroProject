@@ -19,7 +19,7 @@ public class RichiestaIntervento extends Application {
 	int i;
 	
 	private SchedaUtenteController suc;
-	
+	StoricoPerUtenteController spuc;
 	public RichiestaIntervento(String id, String cod, String ut, SchedaUtenteController suc) {
 		this.cod=cod;
 		this.id=id;
@@ -27,8 +27,9 @@ public class RichiestaIntervento extends Application {
 		this.suc = suc;
 		i=0;
 	}
-	public RichiestaIntervento(ResultSet rs) {
+	public RichiestaIntervento(ResultSet rs, StoricoPerUtenteController spuc) {
 		this.rs=rs;
+		this.spuc=spuc;
 		i=1;
 	}
 	
@@ -44,6 +45,7 @@ public class RichiestaIntervento extends Application {
 			RichiestaInterventoController.suc = suc;
 			RichiestaInterventoController.res=rs;
 			RichiestaInterventoController.i=i;
+			RichiestaInterventoController.spuc=spuc;
 				
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("richiestaIntervento.fxml"));
