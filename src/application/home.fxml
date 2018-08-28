@@ -50,12 +50,11 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Opzioni">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
+                  <MenuItem mnemonicParsing="false" onAction="#backup" text="Recupero Dati" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#unioneUtenti" text="Unione Utenti" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
-                  <MenuItem mnemonicParsing="false" text="File Di Stampa" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#percorsi" text="Percorsi Di Ricerca" />
                   <MenuItem mnemonicParsing="false" onAction="#parametriConnessione" text="Parametri Di Connessione" />

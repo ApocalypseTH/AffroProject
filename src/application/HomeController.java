@@ -164,5 +164,14 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void backup(){
+		Backup su = new Backup();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
