@@ -361,7 +361,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="144.0" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="43.0">
+                  <ScrollPane layoutX="144.0" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="41.0">
                      <content>
                         <AnchorPane prefHeight="300.0" prefWidth="1019.0">
                            <children>

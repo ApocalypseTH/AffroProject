@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -174,6 +175,7 @@ public class StoricoPerUtenteController implements Initializable{
 	
 	private void refresh(TextField t) {
         t.setOnMouseClicked(e -> {
+        	
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 					
@@ -243,31 +245,36 @@ public class StoricoPerUtenteController implements Initializable{
         
     }
 	private void intervento(TextField t) {
-        t.setOnMouseClicked(e -> {
-        	TextField source = (TextField) e.getSource();
-			int r=gp.getRowIndex(source);
-			
-			String mot = motivo.get(r);
-			String dat= data.get(r);
-			
-			String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? and r.datach=? and r.motivoch=?";
-			
-			try {				
-				PreparedStatement prepStat = connection.prepareStatement(s);
-				prepStat.setInt(1, codice);
-				prepStat.setString(2, dat);
-				prepStat.setString(3, mot);
-				
-				rs = prepStat.executeQuery();
-				rs.next();
-        	RichiestaIntervento c = new RichiestaIntervento(rs, this);
-    		
-    			c.start(primaryStage);
-    		} catch (Exception e1) {
-    			// TODO Auto-generated catch block
-    			e1.printStackTrace();
-    		}
-        });
+		t.setOnMouseClicked(e -> {
+			if(e.getButton().equals(MouseButton.PRIMARY)){
+				if(e.getClickCount() == 2){
+
+					TextField source = (TextField) e.getSource();
+					int r=gp.getRowIndex(source);
+
+					String mot = motivo.get(r);
+					String dat= data.get(r);
+
+					String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? and r.datach=? and r.motivoch=?";
+
+					try {				
+						PreparedStatement prepStat = connection.prepareStatement(s);
+						prepStat.setInt(1, codice);
+						prepStat.setString(2, dat);
+						prepStat.setString(3, mot);
+
+						rs = prepStat.executeQuery();
+						rs.next();
+						RichiestaIntervento c = new RichiestaIntervento(rs, this);
+
+						c.start(primaryStage);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 	}
 	
 }
