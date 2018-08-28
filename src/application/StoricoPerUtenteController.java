@@ -34,7 +34,7 @@ public class StoricoPerUtenteController implements Initializable{
 	private ResultSet rs;
 	private Vector<Integer> coda;
 	static Stage primaryStage;
-	int codice;
+	static int codice;
 	private Vector<String> data;
 	private Vector<String> motivo;
 	

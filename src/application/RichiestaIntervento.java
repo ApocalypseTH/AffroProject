@@ -15,6 +15,7 @@ public class RichiestaIntervento extends Application {
 	String cod;
 	String ut;
 	String id;
+	
 	ResultSet rs;
 	int i;
 	

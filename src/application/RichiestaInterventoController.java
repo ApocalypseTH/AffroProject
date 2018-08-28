@@ -6,8 +6,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -29,6 +31,8 @@ public class RichiestaInterventoController implements Initializable{
 	private Statement stm;
 	static ResultSet res;
 	static int i;
+	
+	DateConverter dateConv;
 	
 	static SchedaUtenteController suc;
 	static StoricoPerUtenteController spuc;
@@ -69,6 +73,8 @@ public class RichiestaInterventoController implements Initializable{
 			ConnDB conn = new ConnDB();
 			connection = conn.getConnection();
 			stm = connection.createStatement();
+			
+			dateConv = new DateConverter();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -198,4 +204,59 @@ public class RichiestaInterventoController implements Initializable{
 		spuc.refresh();
 		annulla();
 	}
+	
+	public void stampa() {
+		
+		if (i==0) {
+			CaldaiaIntervento ci = new CaldaiaIntervento(Integer.parseInt(id), this);
+			ci.start(null);
+		}
+		if (i == 1) {
+			CaldaiaIntervento ci = new CaldaiaIntervento(spuc.codice, this);
+			ci.start(null);
+		}
+		
+	}
+	
+	public void creaDocumento(String idcaldaia) {
+		
+		ResultSet rs = null;
+		
+			try {
+				if (i==0) {
+					rs = stm.executeQuery("select u.cognomeu, u.nomeu, u.indirizzou, u.numerou, u.comuneu, u.modello"+idcaldaia+", u.mf"+idcaldaia+", "
+							+ "u.matri"+idcaldaia+", u.cognomea, u.indirizzoa, u.numeroa, u.comunea, u.cfivaa from utenti as u where u.codiceu='"+id+"'");
+					rs.next();
+				}
+				if (i==1) {
+					rs = stm.executeQuery("select u.cognomeu, u.nomeu, u.indirizzou, u.numerou, u.comuneu, u.modello"+idcaldaia+", u.mf"+idcaldaia+", "
+							+ "u.matri"+idcaldaia+", u.cognomea, u.indirizzoa, u.numeroa, u.comunea, u.cfivaa from utenti as u where u.codiceu='"+spuc.codice+"'");
+					rs.next();
+				}
+				
+				if(!rs.equals(null)) {
+					Replacement2 r = new Replacement2(new Stage());
+					r.replace(dateConv.mysqlToLocal(dataIntervento.getValue().toString()), 
+								(rs.getString("cognomea").equals("")?(rs.getString("cognomeu")+" "+rs.getString("nomeu")):rs.getString("cognomea")), 
+								rs.getString("cfivaa"),
+								(rs.getString("indirizzoa").equals("")?(rs.getString("indirizzou")+(rs.getString("numerou").equals("")?"":", "+rs.getString("numerou"))+" - "+rs.getString("comuneu")):(rs.getString("indirizzoa")+(rs.getString("numeroa").equals("")?"":", "+rs.getString("numeroa"))+" - "+rs.getString("comunea"))), 
+								rs.getString("modello"+idcaldaia), 
+								rs.getString("matri"+idcaldaia), 
+								rs.getString("cognomeu")+" "+rs.getString("nomeu"), 
+								(rs.getString("indirizzou")+(rs.getString("numerou").equals("")?"":", "+rs.getString("numerou"))+" - "+rs.getString("comuneu"))+" - "+(rs.getString("mf"+idcaldaia).equals("")?"":"M.F.: "+dateConv.mysqlToLocal(rs.getString("mf"+idcaldaia))),
+								motivoChiamata.getText(), 
+								(stampaNote.isSelected()?note.getText():""));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+			
+	
+	}
+	
 }

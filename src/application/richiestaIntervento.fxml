@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RichiestaInterventoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RichiestaInterventoController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="350.0" prefWidth="740.0" style="-fx-border-color: black; -fx-background-color: grey;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -203,7 +203,7 @@
       <AnchorPane layoutX="49.0" layoutY="344.0" prefHeight="84.0" prefWidth="740.0" style="-fx-border-color: black; -fx-background-color: red;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <children>
             <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="116.0" text="Scelta Stampante" />
-            <Button fx:id="stampa" disable="true" layoutX="138.0" layoutY="21.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="116.0" text="Stp. Foglio Lav." />
+            <Button fx:id="stampa" disable="true" layoutX="138.0" layoutY="21.0" mnemonicParsing="false" onAction="#stampa" prefHeight="43.0" prefWidth="116.0" text="Stp. Foglio Lav." />
             <Button fx:id="conferma" layoutX="610.0" layoutY="21.0" mnemonicParsing="false" onAction="#conferma" prefHeight="43.0" prefWidth="116.0" text="Conferma" />
             <Button layoutX="485.0" layoutY="21.0" mnemonicParsing="false" onAction="#annulla" prefHeight="43.0" prefWidth="116.0" text="Annulla" />
             <Button fx:id="elimina" layoutX="359.0" layoutY="21.0" mnemonicParsing="false" onAction="#elimina" prefHeight="43.0" prefWidth="116.0" text="Elimina" visible="false" />
