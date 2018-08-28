@@ -235,7 +235,7 @@ public class RichiestaInterventoController implements Initializable{
 				}
 				
 				if(!rs.equals(null)) {
-					Replacement2 r = new Replacement2(new Stage());
+					FoglioLavoro r = new FoglioLavoro(new Stage());
 					r.replace(dateConv.mysqlToLocal(dataIntervento.getValue().toString()), 
 								(rs.getString("cognomea").equals("")?(rs.getString("cognomeu")+" "+rs.getString("nomeu")):rs.getString("cognomea")), 
 								rs.getString("cfivaa"),
@@ -243,7 +243,7 @@ public class RichiestaInterventoController implements Initializable{
 								rs.getString("modello"+idcaldaia), 
 								rs.getString("matri"+idcaldaia), 
 								rs.getString("cognomeu")+" "+rs.getString("nomeu"), 
-								(rs.getString("indirizzou")+(rs.getString("numerou").equals("")?"":", "+rs.getString("numerou"))+" - "+rs.getString("comuneu"))+" - "+(rs.getString("mf"+idcaldaia).equals("")?"":"M.F.: "+dateConv.mysqlToLocal(rs.getString("mf"+idcaldaia))),
+								(rs.getString("indirizzou")+(rs.getString("numerou").equals("")?"":", "+rs.getString("numerou"))+" - "+rs.getString("comuneu"))+" - "+((rs.getString("mf"+idcaldaia).equals("") || rs.getString("mf"+idcaldaia).equals(null) || rs.getString("mf"+idcaldaia).equals("null"))?"":"M.F.: "+dateConv.mysqlToLocal(rs.getString("mf"+idcaldaia))),
 								motivoChiamata.getText(), 
 								(stampaNote.isSelected()?note.getText():""));
 				}

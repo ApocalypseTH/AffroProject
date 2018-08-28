@@ -13,17 +13,19 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import com.mysql.jdbc.StringUtils;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class Replacement2 {
+public class FoglioLavoro {
 	
 	private Stage primaryStage;
 	private XWPFDocument document;
 	FileOutputStream out;
 	
-	public Replacement2(Stage stage) {
+	public FoglioLavoro(Stage stage) {
 		this.primaryStage = stage;
 	}
 	
@@ -113,11 +115,11 @@ public class Replacement2 {
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);
-             
+			 
              if(file != null){
             	 out = new FileOutputStream(file);
             	 document.write(out);
-     				out.close();
+     			out.close();
              } else {
             	 System.out.println("save cancelled");
              }
@@ -125,6 +127,10 @@ public class Replacement2 {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("Il file è attualmente in uso, chiudere il file aperto e riprovare");
+			alert.showAndWait();
 		}
 		
 	}

@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -671,6 +670,13 @@ public class SchedaUtenteController implements Initializable {
 			}
 			else if(rs.getString("ANNOPREC2")!=null) {
 				stm.execute("update utenti set ANNOPREC1=CURRENT_TIMESTAMP, ANNOPREC2=NULL, ANNOCOR1=NULL, ANNOCOR2=NULL where codiceu="+codice.getText());
+			}
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
+		    LocalDate localDate = LocalDate.now();
+		    
+			if(motivo.equals("PULIZIE E MANUTENZIONE ORDINARIA")) {
+				stm.execute("update utenti set manprogm='"+formatter.format(localDate)+"' where codiceu="+codice.getText());
 			}
 			
 		} catch (SQLException e) {

@@ -440,28 +440,26 @@ public class UnioneUtentiController implements Initializable{
 			alert.setTitle("Attenzione");
 			alert.setHeaderText("Inserire il codice utente");
 			alert.showAndWait();
-		}
-		
-		if(!IDiniz.isEmpty() && !IDfin.isEmpty() && ok) {
-			if(!((IDiniz.charAt(0) == 'b' || IDiniz.charAt(0) == 'c') && (Integer.parseInt(""+IDiniz.charAt(1))<7)))
-				ok = false;
-			
-			if(!((IDfin.charAt(0) == 'b' || IDfin.charAt(0) == 'c') && (Integer.parseInt(""+IDfin.charAt(1))<7))) 
-				ok = false;
-			
-			if(IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'c') {
-				CorB = "C";
-			} else if (IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'b') {
-				CorB = "B";
-			} else {
-				ok = false;
-				idCaldFinale.setText("");
-				idCaldIniziale.setText("");
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Attenzione");
-				alert.setHeaderText("Inserire coppie di codici C-C o B-B");
-				alert.showAndWait();
-			}
+		} else if(!IDiniz.isEmpty() && !IDfin.isEmpty() && ok) {
+				if(!((IDiniz.charAt(0) == 'b' || IDiniz.charAt(0) == 'c') && (Integer.parseInt(""+IDiniz.charAt(1))<7)))
+					ok = false;
+				
+				if(!((IDfin.charAt(0) == 'b' || IDfin.charAt(0) == 'c') && (Integer.parseInt(""+IDfin.charAt(1))<7))) 
+					ok = false;
+				
+				if(IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'c') {
+					CorB = "C";
+				} else if (IDiniz.charAt(0) == IDfin.charAt(0) && IDfin.charAt(0) == 'b') {
+					CorB = "B";
+				} else {
+					ok = false;
+					idCaldFinale.setText("");
+					idCaldIniziale.setText("");
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Attenzione");
+					alert.setHeaderText("Inserire coppie di codici C-C o B-B");
+					alert.showAndWait();
+				}
 		} else {
 			ok = false;
 			Alert alert = new Alert(AlertType.WARNING);
@@ -469,6 +467,8 @@ public class UnioneUtentiController implements Initializable{
 			alert.setHeaderText("Inserire tutti gli id");
 			alert.showAndWait();
 		}
+		
+		
 			
 		if(ok) {
 			if (CorB.equals("C")) {
