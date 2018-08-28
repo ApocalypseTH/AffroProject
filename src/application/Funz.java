@@ -90,6 +90,15 @@ public class Funz {
 	public String getPassword() {		
 		return document.getElementsByTagName("password").item(0).getTextContent();
 	}
+	public String getCartella() {		
+		return document.getElementsByTagName("cartella").item(0).getTextContent();
+	}
+	public String getFoglioLavoro() {		
+		return document.getElementsByTagName("foglioLavoro").item(0).getTextContent();
+	}
+	public String getAllegato() {		
+		return document.getElementsByTagName("allegato").item(0).getTextContent();
+	}
 	
 	public void setIp(String ip) {
 		
@@ -173,6 +182,58 @@ public class Funz {
 			npassword.replaceChild(document.createTextNode(password), npassword.getFirstChild());
 		else
 			npassword.appendChild(document.createTextNode(password));
+		
+		try {
+			transformer.transform(source, result);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void SetCartella(String cartella) {
+		source = new DOMSource(document);
+		result = new StreamResult(new File(path));
+		
+		Node npassword = document.getElementsByTagName("cartella").item(0);
+		if(npassword.hasChildNodes())
+			npassword.replaceChild(document.createTextNode(cartella), npassword.getFirstChild());
+		else
+			npassword.appendChild(document.createTextNode(cartella));
+		
+		try {
+			transformer.transform(source, result);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void SetFoglioLavoro(String foglio) {
+		source = new DOMSource(document);
+		result = new StreamResult(new File(path));
+		
+		Node npassword = document.getElementsByTagName("foglioLavoro").item(0);
+		if(npassword.hasChildNodes())
+			npassword.replaceChild(document.createTextNode(foglio), npassword.getFirstChild());
+		else
+			npassword.appendChild(document.createTextNode(foglio));
+		
+		try {
+			transformer.transform(source, result);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void SetAllegato(String allegato) {
+		source = new DOMSource(document);
+		result = new StreamResult(new File(path));
+		
+		Node npassword = document.getElementsByTagName("allegato").item(0);
+		if(npassword.hasChildNodes())
+			npassword.replaceChild(document.createTextNode(allegato), npassword.getFirstChild());
+		else
+			npassword.appendChild(document.createTextNode(allegato));
 		
 		try {
 			transformer.transform(source, result);

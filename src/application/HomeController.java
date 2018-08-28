@@ -137,5 +137,32 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	public void unioneUtenti(){
+		UnioneUtenti su = new UnioneUtenti();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void parametriConnessione(){
+		Connessione su = new Connessione();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void percorsi(){
+		Percorsi su = new Percorsi();
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
