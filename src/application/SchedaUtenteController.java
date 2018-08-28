@@ -704,7 +704,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void catasto() {
 		  try {
-	            Desktop.getDesktop().browse(new URI("http://www.youporn.com"));
+	            Desktop.getDesktop().browse(new URI("https://catasto-impianti-termici.regione.veneto.it/libretto.php?op=elenco"));
 	        } catch (IOException e1) {
 	            e1.printStackTrace();
 	        } catch (URISyntaxException e1) {
@@ -1206,7 +1206,7 @@ public class SchedaUtenteController implements Initializable {
 				q=q.concat("dittab"+(i+1)+"='"+griglia[i+6][0].getText()+"', modellob"+(i+1)+"='"+griglia[i+6][1].getText()+"', tipob"+(i+1)+"='"+griglia[i+6][2].getText()+"', matrib"+(i+1)+"='"+griglia[i+6][3].getText()+"', combb"+(i+1)+"='"+griglia[i+6][4].getText()+"', ");
 			}
 			
-			q=q.concat("c1catasto="+c1catasto.getText()+", c2catasto="+c2catasto.getText()+", c3catasto="+c3catasto.getText()+", c4catasto="+c4catasto.getText()+", c5catasto="+c5catasto.getText()+", c6catasto="+c6catasto.getText()+", ");
+			q=q.concat("c1catasto='"+c1catasto.getText()+"', c2catasto='"+c2catasto.getText()+"', c3catasto='"+c3catasto.getText()+"', c4catasto='"+c4catasto.getText()+"', c5catasto='"+c5catasto.getText()+"', c6catasto='"+c6catasto.getText()+"', ");
 			
 			
 			if(circuiti.isSelected()) {
