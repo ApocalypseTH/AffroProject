@@ -1,17 +1,15 @@
 package application;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.poi.util.StringUtil;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
-
-import com.mysql.jdbc.StringUtils;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -24,6 +22,7 @@ public class FoglioLavoro {
 	private Stage primaryStage;
 	private XWPFDocument document;
 	FileOutputStream out;
+	Desktop desktop;
 	
 	public FoglioLavoro(Stage stage) {
 		this.primaryStage = stage;
@@ -32,7 +31,7 @@ public class FoglioLavoro {
 	public void replace(String data, String ammin, String iva, String indAmmin, String modelloc, String matri, String utente, String indUtente, String motivo, String note) {
 		
 		try {
-			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/doc1.docx"));
+			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/modello_lav.docx"));
 			
 			for (XWPFParagraph p : document.getParagraphs()) {
 	    	    List<XWPFRun> runs = p.getRuns();
@@ -120,6 +119,9 @@ public class FoglioLavoro {
             	 out = new FileOutputStream(file);
             	 document.write(out);
      			out.close();
+     			desktop = Desktop.getDesktop();
+     			if (desktop.isSupported(Desktop.Action.PRINT))
+     			    desktop.print(new File(file.getAbsolutePath()));     			
              } else {
             	 System.out.println("save cancelled");
              }

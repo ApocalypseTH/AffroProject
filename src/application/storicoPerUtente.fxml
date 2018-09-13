@@ -164,11 +164,11 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button layoutX="861.0" layoutY="355.0" mnemonicParsing="false" text="Scheda utente" />
-                  <Button layoutX="115.0" layoutY="355.0" mnemonicParsing="false" text="Foglio Lav." />
-                  <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" text="Allegato II" />
-                  <Button layoutX="768.0" layoutY="355.0" mnemonicParsing="false" text="Seleziona" />
-                  <Button layoutX="679.0" layoutY="355.0" mnemonicParsing="false" text="Cancella" />
+                  <Button layoutX="861.0" layoutY="355.0" mnemonicParsing="false" onAction="#gotoSchedaUtente" text="Scheda utente" />
+                  <Button fx:id="foglioL" layoutX="6.0" layoutY="355.0" mnemonicParsing="false" onAction="#printFoglioL" text="Foglio Lav." />
+                  <Button fx:id="allegato2" layoutX="106.0" layoutY="355.0" mnemonicParsing="false" onAction="#printAllegato2" text="Allegato II" />
+                  <Button layoutX="768.0" layoutY="355.0" mnemonicParsing="false" onAction="#seleziona" text="Seleziona" />
+                  <Button layoutX="679.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancella" text="Cancella" />
                </children>
             </AnchorPane>
          </children>

@@ -606,6 +606,7 @@ public class SchedaUtenteController implements Initializable {
 			while(Integer.parseInt(rs.getString("CODICEU")) != i) {
 				rs.next();
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1477,7 +1478,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void gotoStoricoInterventi() {
 		try {
-			StoricoPerUtente s = new StoricoPerUtente("select codiceu, nomeu, cognomeu, indirizzou, comuneu, telefonou, imptipo from utenti where codiceu='"+rs.getInt("CODICEU")+"'");
+			StoricoPerUtente s = new StoricoPerUtente("select codiceu, nomeu, cognomeu, indirizzou, comuneu, telefonou, imptipo from utenti where codiceu='"+rs.getInt("CODICEU")+"'", Integer.parseInt(codice.getText()));
 			s.start(primaryStage);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

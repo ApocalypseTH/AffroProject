@@ -20,11 +20,16 @@ public class StoricoPerUtente extends Application {
 		StoricoPerUtenteController.query = q;
 	}
 	
+	public StoricoPerUtente(String q, int codice) {
+		StoricoPerUtenteController.query = q;
+		StoricoPerUtenteController.codice = codice;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
-			
+			StoricoPerUtenteController.primaryStage = primaryStage;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("storicoPerUtente.fxml"));
 	        AnchorPane pane = (AnchorPane) loader.load();

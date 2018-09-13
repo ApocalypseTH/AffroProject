@@ -2,27 +2,24 @@ package application;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -35,7 +32,7 @@ public class StoricoPerUtenteController implements Initializable{
 	private ResultSet rs;
 	private Vector<Integer> coda;
 	static Stage primaryStage;
-	static int codice;
+	static int codice = -1;
 	private Vector<String> data;
 	private Vector<String> motivo;
 	
@@ -46,6 +43,11 @@ public class StoricoPerUtenteController implements Initializable{
 	@FXML
 	private ScrollPane sp;
 
+	@FXML
+	private Button allegato2;
+	@FXML
+	private Button foglioL;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -98,6 +100,14 @@ public class StoricoPerUtenteController implements Initializable{
 							
 				gp.addRow(i, t1, t2, t3, t4, t5, t6, t7);
 				i++;
+			}
+			
+			foglioL.setDisable(true);
+			allegato2.setDisable(true);
+			
+			if (codice != -1) {
+				refresh();
+				allegato2.setDisable(false);
 			}
 					
 		} catch (SQLException e) {
@@ -241,6 +251,10 @@ public class StoricoPerUtenteController implements Initializable{
 						e1.printStackTrace();
 					}
 					
+					if (allegato2.isDisabled()) {
+						allegato2.setDisable(false);
+					}
+					
         });
         
     }
@@ -248,7 +262,9 @@ public class StoricoPerUtenteController implements Initializable{
 		t.setOnMouseClicked(e -> {
 			if(e.getButton().equals(MouseButton.PRIMARY)){
 				if(e.getClickCount() == 2){
-
+					
+					foglioL.setDisable(false);
+					
 					TextField source = (TextField) e.getSource();
 					int r=gp.getRowIndex(source);
 
@@ -272,9 +288,94 @@ public class StoricoPerUtenteController implements Initializable{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+				} else if(e.getClickCount() == 1) {
+					foglioL.setDisable(false);
+					//procedo con la stampa senza aprire la finestra della richiesta intervento
 				}
 			}
 		});
 	}
 	
+	public void printFoglioL() {
+		
+		
+		
+	}
+	
+	public void printAllegato2() {
+		CaldaiaAllegato2 ca2 = new CaldaiaAllegato2(codice, this);
+		ca2.start(new Stage());
+	}
+	
+	public void creaDocumento(String idElemento, String tecnico) {
+		
+		try {
+		
+		ResultSet rsUtente; // il numero della caldaia lo ho già ... è idElemento
+		ResultSet rsCald;
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String data = sdf.format(date);
+		
+		
+			String sqlU = "select c"+idElemento+"catasto, comuneu, provinciau, indirizzou, numerou, cognomea, cfivaa, indirizzoa, numeroa, comunea, provinciaa,"
+					+ " dittac"+idElemento+", modelloc"+idElemento+", matric"+idElemento+" from utenti where codiceu='"+codice+"'";
+			System.out.println("dati utente: "+sqlU);
+			rsUtente = stm.executeQuery(sqlU);
+			rsUtente.next();
+			
+			String ditta = rsUtente.getString("DITTAC"+idElemento);
+			String modello = rs.getString("MODELLOC"+idElemento);
+			
+			String sqlC = "select pnfc from caldaie where dittac='"+ditta+"' and modelloc='"+modello+"'";
+			System.out.println("dati pot foc: "+sqlC);
+			rsCald = stm.executeQuery(sqlC);
+			rsCald.next();
+			
+			Allegato2 allegato2 = new Allegato2(new Stage());
+			allegato2.replace(rsUtente.getString("c"+idElemento+"catasto"), 
+							  rsUtente.getString("comuneu"), 
+							  rsUtente.getString("provinciau"), 
+							  rsUtente.getString("indirizzou"), 
+							  rsUtente.getString("numerou"), 
+							  rsUtente.getString("cognomea"), 
+							  rsUtente.getString("cfivaa"), 
+							  rsUtente.getString("indirizzoa"), 
+							  rsUtente.getString("numeroa"), 
+							  rsUtente.getString("comunea"), 
+							  rsUtente.getString("provinciaa"), 
+							  idElemento+"",
+							  rsUtente.getString("dittac"+idElemento), 
+							  rsUtente.getString("modelloc"+idElemento), 
+							  rsUtente.getString("matric"+idElemento), 
+							  rsCald.getString("pnfc"), 
+							  data,
+							  tecnico);
+			System.out.println("stampa allegato");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void cancella() {
+		
+	}
+	
+	public void seleziona() {
+		
+	}
+	
+	public void gotoSchedaUtente() {
+		SchedaUtente su;
+		try {
+			su = new SchedaUtente(codice!=-1?codice:1);
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
