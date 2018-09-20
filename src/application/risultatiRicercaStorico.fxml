@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -371,6 +372,8 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
+                  <Button layoutX="682.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoSchedaUtente" text="Scheda Utente" />
+                  <Button layoutX="844.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMain" text="Menu Principale" />
                </children>
             </AnchorPane>
          </children>

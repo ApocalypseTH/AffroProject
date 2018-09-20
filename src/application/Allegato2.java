@@ -42,74 +42,76 @@ public class Allegato2 {
 	    	            String text = r.getText(0);
 	    	            System.out.println("text with position:"+r.getText(0));
 	    	            System.out.println("just text:"+r.text());
-	    	            if (text != null && text.contains("%codiceCatasto")) {
-	    	                text = text.replace("%codiceCatasto", codiceCatasto);
+	    	            if (text != null && text.contains("@codiceCatasto")) {
+	    	                text = text.replace("@codiceCatasto", codiceCatasto);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%comuneU")) {
-	    	                text = text.replace("%comuneU", comuneU);
+	    	            if (text != null && text.contains("@comuneU")) {
+	    	                text = text.replace("@comuneU", comuneU);
 	    	                r.setText(text, 0);
 	    	            } 
-	    	            if (text != null && text.contains("%provU")) {
-	    	                text = text.replace("%provU", provU);
+	    	            if (text != null && text.contains("@provU")) {
+	    	                text = text.replace("@provU", provU);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%indrizzoU")) {
-	    	                text = text.replace("%indrizzoU", indrizzoU);
+	    	            if (text != null && text.contains("@indirizzoU")) {
+	    	                text = text.replace("@indirizzoU", indrizzoU);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%nU")) {
-	    	                text = text.replace("%nU", nU);
+	    	            if (text != null && text.contains("@nU")) {
+	    	                text = text.replace("@nU", nU);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%ragSocA")) {
-	    	                text = text.replace("%ragSocA", ragSocA);
+	    	            if (text != null && text.contains("@ragioneSocialeA")) {
+	    	                text = text.replace("@ragioneSocialeA", ragSocA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%ivaA")) {
-	    	                text = text.replace("%ivaA", ivaA);
+	    	            if (text != null && text.contains("@ivaA")) {
+	    	                text = text.replace("@ivaA", ivaA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%indirizzoA")) {
-	    	                text = text.replace("%indirizzoA", indirizzoA);
+	    	            if (text != null && text.contains("@indirizzoA")) {
+	    	                text = text.replace("@indirizzoA", indirizzoA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%nA")) {
-	    	                text = text.replace("%nA", nA);
+	    	            if (text != null && text.contains("@nA")) {
+	    	                text = text.replace("@nA", nA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%comuneA")) {
-	    	                text = text.replace("%comuneA", comuneA);
+	    	            if (text != null && text.contains("@comuneA")) {
+	    	                text = text.replace("@comuneA", comuneA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%provA")) {
-	    	                text = text.replace("%provA", provA);
+	    	            if (text != null && text.contains("@provA")) {
+	    	                text = text.replace("@provA", provA);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%nC")) {
-	    	                text = text.replace("%nC", nC);
+	    	            if (text != null && text.contains("@nC")) {
+	    	                text = text.replace("@nC", nC);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%dittaC")) {
-	    	                text = text.replace("%dittaC", dittaC);
+	    	            if (text != null && text.contains("@dittaC")) {
+	    	                text = text.replace("@dittaC", dittaC);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%modelloC")) {
-	    	                text = text.replace("%modelloC", modelloC);
+	    	            if (text != null && text.contains("@modelloC")) {
+	    	                text = text.replace("@modelloC", modelloC);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%matriC")) {
-	    	                text = text.replace("%matriC", matriC);
-	    	                r.setText(text, 0);
-	    	            }if (text != null && text.contains("%potFocC")) {
-	    	                text = text.replace("%potFocC", potFocC);
+	    	            if (text != null && text.contains("@matriC")) {
+	    	                text = text.replace("@matriC", matriC);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%dataInt")) {
-	    	                text = text.replace("%dataInt", dataInt);
+	    	            if (text != null && text.contains("@potFocC")) {
+	    	                text = text.replace("@potFocC", potFocC);
 	    	                r.setText(text, 0);
-	    	            }if (text != null && text.contains("%nomeCognTec")) {
-	    	                text = text.replace("%nomeCognTec", nomeCognTec);
+	    	            }
+	    	            if (text != null && text.contains("@dataIntervento")) {
+	    	                text = text.replace("@dataIntervento", dataInt);
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("@nomeCognTecnico")) {
+	    	                text = text.replace("@nomeCognTecnico", nomeCognTec);
 	    	                r.setText(text, 0);
 	    	            }
 	    	            

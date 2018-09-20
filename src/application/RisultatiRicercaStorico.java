@@ -24,6 +24,7 @@ public class RisultatiRicercaStorico extends Application {
 			
 			
 			RisultatiRicercaStoricoController.query = query;
+			RisultatiRicercaStoricoController.primaryStage = primaryStage;
 			
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("risultatiRicercaStorico.fxml"));

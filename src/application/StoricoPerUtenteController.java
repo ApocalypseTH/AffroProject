@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -35,6 +36,9 @@ public class StoricoPerUtenteController implements Initializable{
 	static int codice = -1;
 	private Vector<String> data;
 	private Vector<String> motivo;
+	
+	private String dataL;
+	private String motivoL;
 	
 	@FXML
 	private GridPane gp;
@@ -290,6 +294,10 @@ public class StoricoPerUtenteController implements Initializable{
 					}
 				} else if(e.getClickCount() == 1) {
 					foglioL.setDisable(false);
+					TextField source = (TextField) e.getSource();
+					int r = gp.getRowIndex(source);
+					motivoL = motivo.get(r);
+					dataL= data.get(r);
 					//procedo con la stampa senza aprire la finestra della richiesta intervento
 				}
 			}
@@ -297,8 +305,49 @@ public class StoricoPerUtenteController implements Initializable{
 	}
 	
 	public void printFoglioL() {
+		CaldaiaIntervento ci = new CaldaiaIntervento(codice, this);
+		ci.start(null);
 		
+	}
+	
+	public void creaDocumentoL(String idcaldaia) {
 		
+		DateConverter dateConv = new DateConverter();
+		
+		try {
+			
+			ResultSet rsInt = stm.executeQuery("select * from ricint where codiceu='"+codice+"' and datach='"+dataL+"' and motivoch='"+motivoL+"'");
+			rsInt.next();	
+			
+			ResultSet rsUtente = connection.createStatement().executeQuery("select u.cognomeu, u.nomeu, u.indirizzou, u.numerou, u.comuneu, u.modello"+idcaldaia+", u.mf"+idcaldaia+", "
+					+ "u.matri"+idcaldaia+", u.cognomea, u.indirizzoa, u.numeroa, u.comunea, u.cfivaa from utenti as u where u.codiceu='"+codice+"'");
+			rsUtente.next();
+			
+			System.out.println(rsUtente.getString("mf"+idcaldaia));
+			
+			if (rsUtente.getString("mf"+idcaldaia) == null || rsUtente.getString("mf"+idcaldaia).isEmpty()) {
+				System.out.println("dioporco");
+			}
+			
+			FoglioLavoro r = new FoglioLavoro(new Stage());
+			r.replace(dateConv.mysqlToLocal(rsInt.getString("dataint")), 
+						(rsUtente.getString("cognomea").equals("")?(rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu")):rsUtente.getString("cognomea")), 
+						rsUtente.getString("cfivaa"),
+						(rsUtente.getString("indirizzoa").equals("")?(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu")):(rsUtente.getString("indirizzoa")+(rsUtente.getString("numeroa").equals("")?"":", "+rsUtente.getString("numeroa"))+" - "+rsUtente.getString("comunea"))), 
+						rsUtente.getString("modello"+idcaldaia), 
+						rsUtente.getString("matri"+idcaldaia), 
+						rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu"), 
+						(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu"))+" - "+"M.F.: "+dateConv.mysqlToLocal(rsUtente.getString("mf"+idcaldaia)),
+						rsInt.getString("motivoch"), 
+						rsInt.getString("noteint"));
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -307,15 +356,16 @@ public class StoricoPerUtenteController implements Initializable{
 		ca2.start(new Stage());
 	}
 	
-	public void creaDocumento(String idElemento, String tecnico) {
+	public void creaDocumentoAl2(String idElemento, String tecnico) {
 		
 		try {
 		
 		ResultSet rsUtente; // il numero della caldaia lo ho già ... è idElemento
 		ResultSet rsCald;
 		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		String data = sdf.format(date);
+		
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			String data = sdf.format(date);
 		
 		
 			String sqlU = "select c"+idElemento+"catasto, comuneu, provinciau, indirizzou, numerou, cognomea, cfivaa, indirizzoa, numeroa, comunea, provinciaa,"
@@ -325,11 +375,11 @@ public class StoricoPerUtenteController implements Initializable{
 			rsUtente.next();
 			
 			String ditta = rsUtente.getString("DITTAC"+idElemento);
-			String modello = rs.getString("MODELLOC"+idElemento);
+			String modello = rsUtente.getString("MODELLOC"+idElemento);
 			
-			String sqlC = "select pnfc from caldaie where dittac='"+ditta+"' and modelloc='"+modello+"'";
+			String sqlC = "select pnfc from caldaie where dittac like '"+ditta+"' and modelloc like '"+modello+"'";
 			System.out.println("dati pot foc: "+sqlC);
-			rsCald = stm.executeQuery(sqlC);
+			rsCald = connection.createStatement().executeQuery(sqlC);
 			rsCald.next();
 			
 			Allegato2 allegato2 = new Allegato2(new Stage());

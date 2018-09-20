@@ -23,6 +23,7 @@ public class CaldaiaAllegato2Controller implements Initializable{
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
+	private int lastCaldIndex;
 	
 	public static int codice;
 	public static StoricoPerUtenteController spuc;
@@ -96,6 +97,12 @@ public class CaldaiaAllegato2Controller implements Initializable{
 			c5.setText(rs.getString("dittac5")+" - "+rs.getString("modelloc5"));
 			c6.setText(rs.getString("dittac6")+" - "+rs.getString("modelloc6"));
 			
+			lastCaldIndex=0;
+			for(int i=1;  i<=6; i++) {
+				if(!rs.getString("dittac"+i).isEmpty() && !rs.getString("modelloc"+i).isEmpty())
+					lastCaldIndex++;
+			}
+			
 			c1.setToggleGroup(caldaie);
 			c2.setToggleGroup(caldaie);
 			c3.setToggleGroup(caldaie);
@@ -121,28 +128,30 @@ public class CaldaiaAllegato2Controller implements Initializable{
 	
 	public void stampa() {
 		
-		if(c1.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("1", tecnici.getValue());
+		String tecnico = tecnici.getSelectionModel().isEmpty()?"":tecnici.getValue();
+		
+		if(c1.isSelected() && 1<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("1", tecnico);
 			annulla();
-		} else if(c2.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("2", tecnici.getValue());
+		} else if(c2.isSelected() && 2<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("2", tecnico);
 			annulla();
-		} else if(c3.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("3", tecnici.getValue());
+		} else if(c3.isSelected() && 3<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("3", tecnico);
 			annulla();
-		} else if(c4.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("4", tecnici.getValue());
+		} else if(c4.isSelected() && 4<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("4", tecnico);
 			annulla();
-		} else if(c5.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("5", tecnici.getValue());
+		} else if(c5.isSelected() && 5<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("5", tecnico);
 			annulla();
-		} else if(c6.isSelected() && tecnici.getValue() != "") {
-			spuc.creaDocumento("6", tecnici.getValue());
+		} else if(c6.isSelected() && 6<=lastCaldIndex) {
+			spuc.creaDocumentoAl2("6", tecnico);
 			annulla();
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Attenzione");
-			alert.setHeaderText("Selezionare almeno una caldaia ed un tecnico");
+			alert.setHeaderText("Selezionare una caldaia valida");
 			alert.showAndWait();
 		}
 		
