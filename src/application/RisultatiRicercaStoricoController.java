@@ -27,10 +27,13 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	public static String query;
 	public static Integer i;
 	public static String id;
+	public static Stage primaryStage;
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<Integer> coda;
+	
+	private int codiceu=-1;
 	
 	@FXML
 	private GridPane gp;
@@ -154,6 +157,7 @@ public class RisultatiRicercaStoricoController implements Initializable{
 					int r=gp.getRowIndex(source);
 					
 					int cod = coda.get(r-1);
+					this.codiceu = cod;
 					
 					String s="select * from utenti where codiceu=?";
 					
@@ -210,5 +214,21 @@ public class RisultatiRicercaStoricoController implements Initializable{
         });
         
     }
+	
+	public void gotoSchedaUtente() {
+		SchedaUtente su;
+		try {
+			su = new SchedaUtente(codiceu!=-1?codiceu:1);
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void gotoMain() {
+		Main m = new Main();
+		m.start(primaryStage);
+	}
 	
 }

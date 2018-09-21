@@ -10,7 +10,7 @@ public class DateConverter {
 	private SimpleDateFormat s2 = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public String mysqlToLocal(String mysqldate) throws ParseException {
-		if(!mysqldate.equals(null) && !"".equals(mysqldate)) {
+		if(mysqldate != null && !"".equals(mysqldate)) {
 			Date d;
 			d = s.parse(mysqldate);
 			return s2.format(d);

@@ -77,6 +77,12 @@ public class FoglioLavoro {
 	    	            if (text != null && text.contains("%motivo")) {
 	    	                text = text.replace("%motivo", motivo);
 	    	                r.setText(text, 0);
+	    	                if (motivo.contains("PULIZ") || motivo.contains("variazione orologio ad ora") || motivo.contains("accensione impianto") || motivo.contains("spegnimento impianto")) {
+								r.addCarriageReturn();
+								r.addCarriageReturn();
+	    	                	text+="ESECUZIONE DELLE OPERAZIONI DI MANUTENZIONE PROGRAMMATA DELL'IMPIANTO TERMICO COME DA CONTRATTO IN ESSERE CON PULIZIE E VERIFICHE";
+	    	                	r.setText(text, 1);
+							}
 	    	            }
 	    	            if (text != null && text.contains("%note")) {
 	    	            	if (note.contains("\n")) {
