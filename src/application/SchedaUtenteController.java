@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -355,7 +356,7 @@ public class SchedaUtenteController implements Initializable {
 	@FXML
 	private RadioButton altroTerzoResponsabile;
 	@FXML
-	private MenuButton analisi;
+	private ComboBox analisi;
 	@FXML
 	private AnchorPane dittaInstallatore;
 	
@@ -394,6 +395,9 @@ public class SchedaUtenteController implements Initializable {
 		altroDitta.setToggleGroup(edificio);
 		altroTerzoResponsabile.setToggleGroup(edificio);
 		
+		analisi.getItems().add("");
+		analisi.getItems().add("Una");
+		analisi.getItems().add("Due");
 		
 		griglia[0][0]=c1ditta;
 		griglia[0][1]=c1modello;
@@ -865,7 +869,7 @@ public class SchedaUtenteController implements Initializable {
 		puliziacb.setText("");
 		analComb.setText("");
 		bollino.setText("");
-		analisi.setText("");
+		analisi.setValue("");
 		installatore.setText("");
 		certificatoConformita.setText("");
 		c1catasto.setText("");
@@ -1205,7 +1209,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void confermaModifica() {
 		try {
-			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getText()+"',  ";
+			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getValue()+"',  ";
 			for(int i=0; i<6; i++) {				
 				q=q.concat("dittac"+(i+1)+"='"+griglia[i][0].getText()+"', modelloc"+(i+1)+"='"+griglia[i][1].getText()+"', matric"+(i+1)+"='"+griglia[i][3].getText()+"', combc"+(i+1)+"='"+griglia[i][4].getText()+"', ");
 			}
@@ -1279,6 +1283,9 @@ public class SchedaUtenteController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void analisiEseguite() {
+		
+	}
 	
 	public void refresh() {
 		try {
@@ -1317,6 +1324,7 @@ public class SchedaUtenteController implements Initializable {
 			c4catasto.setText(rs.getString("C4CATASTO"));
 			c5catasto.setText(rs.getString("C5CATASTO"));
 			c6catasto.setText(rs.getString("C6CATASTO"));
+			analisi.setValue(rs.getString("N_ANALISI"));
 			
 			if("Circuiti".equals(rs.getString("IMPCIRC"))) {
 				circuiti.setSelected(true);

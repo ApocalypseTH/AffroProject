@@ -108,7 +108,7 @@ public class MessaInFunzioneController implements Initializable{
 			 else
 				 q=q.concat("mfc6=null ");
 			 
-			stm.execute(q.concat("where codiceu="+id));
+			stm.execute(q.concat(" where codiceu="+id));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,21 +122,12 @@ public class MessaInFunzioneController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-//		String connectionString="jdbc:mysql://127.0.0.1:3306/affro?user=root&password=";
-//
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-
+		
+		ConnDB conn = new ConnDB();
+		connection = conn.getConnection();
 		
 		try {
 			
-//			connection = DriverManager.getConnection(connectionString);
-			ConnDB conn = new ConnDB();
-			connection = conn.getConnection();
 			stm = connection.createStatement();
 			rs = stm.executeQuery("select * from utenti where codiceu="+id);
 			rs.next();
