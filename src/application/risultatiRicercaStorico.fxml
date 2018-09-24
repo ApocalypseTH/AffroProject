@@ -374,6 +374,8 @@
                   </Label>
                   <Button layoutX="682.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoSchedaUtente" text="Scheda Utente" />
                   <Button layoutX="844.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMain" text="Menu Principale" />
+                  <Button layoutX="56.0" layoutY="349.0" mnemonicParsing="false" onAction="#scegliStampante" text="Scelta Stp." />
+                  <Button layoutX="187.0" layoutY="349.0" mnemonicParsing="false" onAction="#printFoglioL" text="Foglio Lav." />
                </children>
             </AnchorPane>
          </children>

@@ -1,5 +1,7 @@
 package application;
 
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterJob;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,8 +39,8 @@ public class StoricoPerUtenteController implements Initializable{
 	private Vector<String> data;
 	private Vector<String> motivo;
 	
-	private String dataL;
-	private String motivoL;
+	public String dataL;
+	public String motivoL;
 	
 	@FXML
 	private GridPane gp;
@@ -51,6 +53,8 @@ public class StoricoPerUtenteController implements Initializable{
 	private Button allegato2;
 	@FXML
 	private Button foglioL;
+	@FXML
+	private Button cancella;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -108,6 +112,7 @@ public class StoricoPerUtenteController implements Initializable{
 			
 			foglioL.setDisable(true);
 			allegato2.setDisable(true);
+			cancella.setDisable(true);
 			
 			if (codice != -1) {
 				refresh();
@@ -293,6 +298,7 @@ public class StoricoPerUtenteController implements Initializable{
 						e1.printStackTrace();
 					}
 				} else if(e.getClickCount() == 1) {
+					cancella.setDisable(false);
 					foglioL.setDisable(false);
 					TextField source = (TextField) e.getSource();
 					int r = gp.getRowIndex(source);
@@ -325,12 +331,8 @@ public class StoricoPerUtenteController implements Initializable{
 			
 			System.out.println(rsUtente.getString("mf"+idcaldaia));
 			
-			if (rsUtente.getString("mf"+idcaldaia) == null || rsUtente.getString("mf"+idcaldaia).isEmpty()) {
-				System.out.println("dioporco");
-			}
-			
 			FoglioLavoro r = new FoglioLavoro(new Stage());
-			r.replace(dateConv.mysqlToLocal(rsInt.getString("dataint")), 
+			r.replace(dateConv.mysqlToLocal(rsInt.getString("datach")), 
 						(rsUtente.getString("cognomea").equals("")?(rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu")):rsUtente.getString("cognomea")), 
 						rsUtente.getString("cfivaa"),
 						(rsUtente.getString("indirizzoa").equals("")?(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu")):(rsUtente.getString("indirizzoa")+(rsUtente.getString("numeroa").equals("")?"":", "+rsUtente.getString("numeroa"))+" - "+rsUtente.getString("comunea"))), 
@@ -412,9 +414,28 @@ public class StoricoPerUtenteController implements Initializable{
 	
 	public void cancella() {
 		
+		String delSql = "delete from ricint where codiceu='"+codice+"' and motivoch='"+motivoL+"' and datach='"+dataL+"'";
+		try {
+			stm.execute(delSql);
+			refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void seleziona() {
+		
+		RicercaUtenti r = new RicercaUtenti(true);
+		try {
+			analisi.getChildren().clear();
+			codice = -1;
+			r.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -428,4 +449,19 @@ public class StoricoPerUtenteController implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	
+	public void scegliStampante() {
+		 PrinterJob printer = PrinterJob.getPrinterJob(); // this method calls to setup a job for printing pages
+		 PageFormat pFormat = printer.defaultPage(); // the page is set to default size format and orientation
+		 
+		 printer.printDialog();
+		 try {
+		     printer.print(); //if clicking ok in the print dialog, this will print the pages with the default format
+		     
+		 }
+		 catch (Exception pe) {
+			 System.out.println(pe);
+		 }
+	}
+	
 }

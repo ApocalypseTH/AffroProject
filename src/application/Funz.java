@@ -30,7 +30,7 @@ public class Funz {
 	private static DOMSource source;
 	private static StreamResult result;
 	
-	private static String path = "C:/Users/ApocalypseTH/Documents/dati.xml";
+	private static String path = "C:/Users/"+System.getProperty("user.name")+"/Documents/dati.xml";
 	
 	public Funz() {
 		

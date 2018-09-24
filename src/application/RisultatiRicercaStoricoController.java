@@ -1,5 +1,7 @@
 package application;
 
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterJob;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,7 +34,10 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	private Statement stm;
 	private ResultSet rs;
 	private Vector<Integer> coda;
+	private Vector<String> data;
+	private Vector<String> motivo;
 	
+	private String dataL, motivoL;
 	private int codiceu=-1;
 	
 	@FXML
@@ -93,6 +98,9 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	private TextField bollino;
 	@FXML
 	private TextField messaInFunzione;
+	
+	@FXML
+	private Button foglioL;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -117,6 +125,8 @@ public class RisultatiRicercaStoricoController implements Initializable{
 			System.out.println(query);
 			
 			coda= new Vector<Integer>();
+			data = new Vector<String>();
+			motivo = new Vector<String>();
 			
 			int i=1;
 			while (rs.next()) {				
@@ -130,6 +140,8 @@ public class RisultatiRicercaStoricoController implements Initializable{
 				t4.setEditable(false);
 
 				coda.add(Integer.parseInt(rs.getString("CODICEU")));
+				motivo.add(rs.getString("r.motivoch"));
+				data.add(rs.getString("r.dataint"));
 				
 				refresh(t2);
 				refresh(t3);
@@ -158,6 +170,9 @@ public class RisultatiRicercaStoricoController implements Initializable{
 					
 					int cod = coda.get(r-1);
 					this.codiceu = cod;
+					
+					this.dataL = data.elementAt(gp.getRowIndex(source)-1);
+					this.motivoL = motivo.elementAt(gp.getRowIndex(source)-1);
 					
 					String s="select * from utenti where codiceu=?";
 					
@@ -229,6 +244,25 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	public void gotoMain() {
 		Main m = new Main();
 		m.start(primaryStage);
+	}
+	
+	public void scegliStampante() {
+		 PrinterJob printer = PrinterJob.getPrinterJob(); // this method calls to setup a job for printing pages
+		 PageFormat pFormat = printer.defaultPage(); // the page is set to default size format and orientation
+		 
+		 printer.printDialog();
+		 try {
+		     printer.print(); //if clicking ok in the print dialog, this will print the pages with the default format
+		 }
+		 catch (Exception pe) {
+			 System.out.println(pe);
+		 }
+	}
+	
+	public void printFoglioL() {
+		
+		
+		
 	}
 	
 }

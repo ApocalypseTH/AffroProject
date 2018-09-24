@@ -429,6 +429,7 @@
             <Button fx:id="nuova" layoutX="599.0" layoutY="16.0" mnemonicParsing="false" onAction="#caldaiaNuovaAnalisi" text="Nuova analisi" />
             <Button fx:id="stampa" layoutX="28.0" layoutY="16.0" mnemonicParsing="false" text="Stampa" />
             <Button fx:id="sceltaStp" layoutX="120.0" layoutY="16.0" mnemonicParsing="false" text="Scelta Stp." />
+            <Button layoutX="815.0" layoutY="16.0" mnemonicParsing="false" onAction="#gotoSchedaUtente" text="Scheda Utente" />
          </children>
       </AnchorPane>
    </children>

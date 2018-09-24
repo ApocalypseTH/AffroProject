@@ -531,6 +531,17 @@ public class AnalisiController implements Initializable{
 		
 	}
 	
+	public void gotoSchedaUtente() {
+		
+		SchedaUtente su = new SchedaUtente(codiceu);
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
 	public static void main(String[] args) {
 		AnalisiController ac = new AnalisiController();
 		ac.caldaiaNuovaAnalisi();

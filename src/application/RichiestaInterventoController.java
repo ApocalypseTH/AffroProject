@@ -236,7 +236,7 @@ public class RichiestaInterventoController implements Initializable{
 				
 				if(!rs.equals(null)) {
 					FoglioLavoro r = new FoglioLavoro(new Stage());
-					r.replace(dateConv.mysqlToLocal(dataIntervento.getValue().toString()), 
+					r.replace(dateConv.mysqlToLocal(dataChiamata.getValue().toString()), 
 								(rs.getString("cognomea").equals("")?(rs.getString("cognomeu")+" "+rs.getString("nomeu")):rs.getString("cognomea")), 
 								rs.getString("cfivaa"),
 								(rs.getString("indirizzoa").equals("")?(rs.getString("indirizzou")+(rs.getString("numerou").equals("")?"":", "+rs.getString("numerou"))+" - "+rs.getString("comuneu")):(rs.getString("indirizzoa")+(rs.getString("numeroa").equals("")?"":", "+rs.getString("numeroa"))+" - "+rs.getString("comunea"))), 
