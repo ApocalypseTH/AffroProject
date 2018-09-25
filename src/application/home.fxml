@@ -54,8 +54,6 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#unioneUtenti" text="Unione Utenti" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#percorsi" text="Percorsi Di Ricerca" />
                   <MenuItem mnemonicParsing="false" onAction="#parametriConnessione" text="Parametri Di Connessione" />
             </items>

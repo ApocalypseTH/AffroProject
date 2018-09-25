@@ -17,7 +17,7 @@ public class StoricoPerAmministratore extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			
+			StoricoPerAmministratoreController.primaryStage=primaryStage;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("storicoPerAmministratore.fxml"));
 	        AnchorPane pane = (AnchorPane) loader.load();
