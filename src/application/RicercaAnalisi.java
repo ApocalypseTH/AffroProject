@@ -14,7 +14,7 @@ public class RicercaAnalisi extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
+			Stage s = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(RicercaAnalisi.class.getResource("ricercaAnalisi.fxml"));
 	        AnchorPane ap = loader.load();
@@ -22,17 +22,18 @@ public class RicercaAnalisi extends Application {
 	        root.setCenter(ap);
 
 			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
+			s.setScene(scene);
 			Screen screen = Screen.getPrimary();
 			Rectangle2D bounds = screen.getVisualBounds();
 
-			primaryStage.setX(bounds.getMinX());
-			primaryStage.setY(bounds.getMinY());
-			primaryStage.setWidth(bounds.getWidth());
-			primaryStage.setHeight(bounds.getHeight());
-			primaryStage.show();
+			s.setX(bounds.getMinX());
+			s.setY(bounds.getMinY());
+			s.setWidth(bounds.getWidth());
+			s.setHeight(bounds.getHeight());
+			s.show();
 			
 			RicercaAnalisiController.primaryStage = primaryStage;
+			RicercaAnalisiController.s = s;
 			
 		} catch(Exception e) {
 			e.printStackTrace();

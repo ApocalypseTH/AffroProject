@@ -27,6 +27,7 @@ public class RicercaUtentiController implements Initializable{
 	
 	static Stage primaryStage;
 	static boolean storico = false;
+	public static Stage s;
 	private Connection connection;
 	public Statement stm;
 	public ResultSet amministratori;
@@ -178,6 +179,7 @@ public class RicercaUtentiController implements Initializable{
 	public void schedaU(){
 		SchedaUtente su = new SchedaUtente();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -189,6 +191,7 @@ public class RicercaUtentiController implements Initializable{
 	public void ricercheU(){
 		RicercaUtenti su = new RicercaUtenti();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -199,6 +202,7 @@ public class RicercaUtentiController implements Initializable{
 	public void ricercheA(){
 		RicercaAnalisi su = new RicercaAnalisi();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -209,6 +213,7 @@ public class RicercaUtentiController implements Initializable{
 	public void ricercheS(){
 		RicercaStorico su = new RicercaStorico();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -218,6 +223,7 @@ public class RicercaUtentiController implements Initializable{
 	public void storicoPerUtente(){
 		RicercaUtenti ru = new RicercaUtenti(true);
 		try {
+			s.close();
 			ru.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -227,6 +233,7 @@ public class RicercaUtentiController implements Initializable{
 	public void storicoPerAmministratore(){
 		StoricoPerAmministratore su = new StoricoPerAmministratore();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -236,6 +243,7 @@ public class RicercaUtentiController implements Initializable{
 	public void archivioCaldaie(){
 		Caldaie su = new Caldaie();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -245,6 +253,7 @@ public class RicercaUtentiController implements Initializable{
 	public void archivioInstallatori(){
 		Installatori su = new Installatori();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -255,6 +264,7 @@ public class RicercaUtentiController implements Initializable{
 	public void archivioBruciatori() {
 		Bruciatore b = new Bruciatore();
 		try {
+			s.close();
 			b.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -265,6 +275,7 @@ public class RicercaUtentiController implements Initializable{
 	public void archivioAmministratori(){
 		Amministratori su = new Amministratori();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -274,6 +285,7 @@ public class RicercaUtentiController implements Initializable{
 	public void elencoTecnici(){
 		Tecnici su = new Tecnici();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -283,6 +295,7 @@ public class RicercaUtentiController implements Initializable{
 	public void anagraficaDitta(){
 		AnagraficaDitta su = new AnagraficaDitta();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -292,6 +305,7 @@ public class RicercaUtentiController implements Initializable{
 	public void unioneUtenti(){
 		UnioneUtenti su = new UnioneUtenti();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -301,6 +315,7 @@ public class RicercaUtentiController implements Initializable{
 	public void parametriConnessione(){
 		Connessione su = new Connessione();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -310,6 +325,7 @@ public class RicercaUtentiController implements Initializable{
 	public void percorsi(){
 		Percorsi su = new Percorsi();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -319,6 +335,7 @@ public class RicercaUtentiController implements Initializable{
 	public void backup(){
 		Backup su = new Backup();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -802,10 +819,12 @@ public class RicercaUtentiController implements Initializable{
 			stm.execute(q);
 			if(storico) {
 				StoricoPerUtente su = new StoricoPerUtente(q);
+				s.close();
 				su.start(primaryStage);
 			}
 			else {
 				RisultatiRicercaUtenti ru = new RisultatiRicercaUtenti(q);
+				s.close();
 				ru.start(primaryStage);
 			}
 		} catch (SQLException e1) {
@@ -820,10 +839,10 @@ public class RicercaUtentiController implements Initializable{
 	}
 	
 	public void annulla() {
-		Main su = new Main();
+//		Main su = new Main();
 		try {
-			su.start(new Stage());
-			Stage s = (Stage) bollinoAnno.getScene().getWindow();
+//			su.start(new Stage());
+//			Stage s = (Stage) bollinoAnno.getScene().getWindow();
 			s.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -36,6 +36,7 @@ public class StoricoPerUtenteController implements Initializable{
 	private Vector<Integer> coda;
 	static Stage primaryStage;
 	static int codice = -1;
+	public static Stage s;
 	private Vector<String> data;
 	private Vector<String> motivo;
 	
@@ -59,17 +60,17 @@ public class StoricoPerUtenteController implements Initializable{
 	public void schedaU(){
 		SchedaUtente su = new SchedaUtente();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-	
 	public void ricercheU(){
 		RicercaUtenti su = new RicercaUtenti();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -80,6 +81,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void ricercheA(){
 		RicercaAnalisi su = new RicercaAnalisi();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -90,6 +92,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void ricercheS(){
 		RicercaStorico su = new RicercaStorico();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -99,6 +102,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void storicoPerUtente(){
 		RicercaUtenti ru = new RicercaUtenti(true);
 		try {
+			s.close();
 			ru.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -108,6 +112,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void storicoPerAmministratore(){
 		StoricoPerAmministratore su = new StoricoPerAmministratore();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -117,6 +122,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioCaldaie(){
 		Caldaie su = new Caldaie();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -126,6 +132,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioInstallatori(){
 		Installatori su = new Installatori();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -136,6 +143,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioBruciatori() {
 		Bruciatore b = new Bruciatore();
 		try {
+			s.close();
 			b.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -146,6 +154,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioAmministratori(){
 		Amministratori su = new Amministratori();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -155,6 +164,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void elencoTecnici(){
 		Tecnici su = new Tecnici();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -164,6 +174,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void anagraficaDitta(){
 		AnagraficaDitta su = new AnagraficaDitta();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -173,6 +184,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void unioneUtenti(){
 		UnioneUtenti su = new UnioneUtenti();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -182,6 +194,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void parametriConnessione(){
 		Connessione su = new Connessione();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -191,6 +204,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void percorsi(){
 		Percorsi su = new Percorsi();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -200,6 +214,7 @@ public class StoricoPerUtenteController implements Initializable{
 	public void backup(){
 		Backup su = new Backup();
 		try {
+			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -521,6 +536,7 @@ public class StoricoPerUtenteController implements Initializable{
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			String data = sdf.format(date);
 		
+			System.out.println(data);
 		
 			String sqlU = "select c"+idElemento+"catasto, comuneu, provinciau, indirizzou, numerou, cognomea, cfivaa, indirizzoa, numeroa, comunea, provinciaa,"
 					+ " dittac"+idElemento+", modelloc"+idElemento+", matric"+idElemento+" from utenti where codiceu='"+codice+"'";

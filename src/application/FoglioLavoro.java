@@ -43,51 +43,51 @@ public class FoglioLavoro {
 	    	            String text = r.getText(0);
 	    	            System.out.println("text with position:"+r.getText(0));
 	    	            System.out.println("just text:"+r.text());
-	    	            if (text != null && text.contains("%data")) {
-	    	                text = text.replace("%data", data);
+	    	            if (text != null && text.contains("data")) {
+	    	                text = text.replace("data", data);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%ammin")) {
-	    	                text = text.replace("%ammin", ammin);
+	    	            if (text != null && text.contains("ammin")) {
+	    	                text = text.replace("ammin", ammin);
 	    	                r.setText(text, 0);
 	    	            } 
-	    	            if (text != null && text.contains("%iva")) {
-	    	                text = text.replace("%iva", iva);
+	    	            if (text != null && text.contains("iva")) {
+	    	                text = text.replace("iva", iva);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%indAmmin")) {
-	    	                text = text.replace("%indAmmin", indAmmin);
+	    	            if (text != null && text.contains("indAmmin")) {
+	    	                text = text.replace("indAmmin", indAmmin);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%elemento")) {
-	    	                text = text.replace("%elemento", modelloc);
+	    	            if (text != null && text.contains("elemento")) {
+	    	                text = text.replace("elemento", modelloc);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%matri")) {
-	    	                text = text.replace("%matri", matri);
+	    	            if (text != null && text.contains("matri")) {
+	    	                text = text.replace("matri", matri);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%utente")) {
-	    	                text = text.replace("%utente", utente);
+	    	            if (text != null && text.contains("utente")) {
+	    	                text = text.replace("utente", utente);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%indUtente")) {
-	    	                text = text.replace("%indUtente", indUtente);
+	    	            if (text != null && text.contains("indUtente")) {
+	    	                text = text.replace("indUtente", indUtente);
 	    	                r.setText(text, 0);
 	    	            }
-	    	            if (text != null && text.contains("%motivo")) {
-	    	                text = text.replace("%motivo", motivo);
+	    	            if (text != null && text.contains("motivo")) {
+	    	                text = text.replace("motivo", motivo);
 	    	                r.setText(text, 0);
-	    	                if (motivo.contains("PULIZ") || motivo.contains("variazione orologio ad ora") || motivo.contains("accensione impianto") || motivo.contains("spegnimento impianto")) {
+	    	                if (motivo.toUpperCase().contains("PULIZ") || motivo.toUpperCase().contains("VARIAZ") || motivo.toUpperCase().contains("ACCENSIONE IMPIANTO") || motivo.toUpperCase().contains("SPEGNIMENTO IMPIANTO")) {
 								r.addCarriageReturn();
 								r.addCarriageReturn();
 	    	                	String text2="ESECUZIONE DELLE OPERAZIONI DI MANUTENZIONE PROGRAMMATA DELL'IMPIANTO TERMICO COME DA CONTRATTO IN ESSERE CON PULIZIE E VERIFICHE";
 	    	                	r.setText(text2, 1);
 							}
 	    	            }
-	    	            if (text != null && text.contains("%note")) {
+	    	            if (text != null && text.contains("note")) {
 	    	            	if (note.contains("\n")) {
-	    	            		text = text.replace("%note", note.substring(0, note.indexOf('\n')));
+	    	            		text = text.replace("note", note.substring(0, note.indexOf('\n')));
 	    	            		r.setText(text, 0);
 	    	            		if (note.indexOf('\n')+1 <= note.length()-1) {
 	    	            			note = note.substring(note.indexOf('\n')+1, note.length());
@@ -105,7 +105,7 @@ public class FoglioLavoro {
 	    	            		}
 	    	            			
 							} else {
-								text = text.replace("%note", note);
+								text = text.replace("note", note);
 		    	                r.setText(text, 0);
 							}
 	    	            	

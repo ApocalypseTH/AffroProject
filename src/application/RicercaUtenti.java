@@ -22,20 +22,23 @@ public class RicercaUtenti extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		
+		Stage s = new Stage();
+		
 		RicercaUtentiController.primaryStage = primaryStage;
+		RicercaUtentiController.s = s;
 		
 		loader.setLocation(this.getClass().getResource("ricercaUtenti.fxml"));
 		AnchorPane pane = (AnchorPane) loader.load();
 		Scene scene = new Scene(pane);
-		primaryStage.setScene(scene);
+		s.setScene(scene);
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 
-		primaryStage.setX(bounds.getMinX());
-		primaryStage.setY(bounds.getMinY());
-		primaryStage.setWidth(bounds.getWidth());
-		primaryStage.setHeight(bounds.getHeight());
-		primaryStage.show();
+		s.setX(bounds.getMinX());
+		s.setY(bounds.getMinY());
+		s.setWidth(bounds.getWidth());
+		s.setHeight(bounds.getHeight());
+		s.show();
 	}
 
 	public static void main(String[] args) {
