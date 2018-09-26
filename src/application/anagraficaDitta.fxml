@@ -143,52 +143,5 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <MenuBar layoutX="204.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Scheda Utente" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Analisi" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Storico" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Utente" />
-                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
-                  <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Anagrafica Ditta" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Stampe">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Elenco Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Schede Utenti" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Opzioni">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
-                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
-                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
-                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Unione Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Azzeramento Numero Analisi" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
-                  <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
-                  <MenuItem mnemonicParsing="false" text="Libretti" />
-                  <MenuItem mnemonicParsing="false" text="Cartella" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
    </children>
 </AnchorPane>

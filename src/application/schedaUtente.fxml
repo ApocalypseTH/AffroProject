@@ -17,8 +17,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController" style="-fx-background-color: green;">
+<AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: green;">
    <children>
       <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -1046,45 +1046,31 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Scheda Utente" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Analisi" />
-                  <MenuItem mnemonicParsing="false" text="Ricerche Storico" />
+              <MenuItem mnemonicParsing="false" onAction="#schedaU" text="Scheda Utente" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheU" text="Ricerche Utenti" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheA" text="Ricerche Analisi" />
+                  <MenuItem mnemonicParsing="false" onAction="#ricercheS" text="Ricerche Storico" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Utente" />
-                  <MenuItem mnemonicParsing="false" text="Storico Interventi per Amministratore" />
+                  <MenuItem mnemonicParsing="false" onAction="#storicoPerUtente" text="Storico Interventi per Utente" />
+                  <MenuItem mnemonicParsing="false" onAction="#storicoPerAmministratore" text="Storico Interventi per Amministratore" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Caldaie" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Bruciatori" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Installatori" />
-                  <MenuItem mnemonicParsing="false" text="Archivio Amministratori" />
-                  <MenuItem mnemonicParsing="false" text="Elenco Tecnici" />
+                  <MenuItem mnemonicParsing="false" onAction="#archivioCaldaie" text="Archivio Caldaie" />
+                  <MenuItem mnemonicParsing="false" onAction="#archivioBruciatori" text="Archivio Bruciatori" />
+                  <MenuItem mnemonicParsing="false" onAction="#archivioInstallatori" text="Archivio Installatori" />
+                  <MenuItem mnemonicParsing="false" onAction="#archivioAmministratori" text="Archivio Amministratori" />
+                  <MenuItem mnemonicParsing="false" onAction="#elencoTecnici" text="Elenco Tecnici" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Anagrafica Ditta" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Stampe">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Elenco Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Schede Utenti" />
+                  <MenuItem mnemonicParsing="false" onAction="#anagraficaDitta" text="Anagrafica Ditta" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Opzioni">
             <items>
-              <MenuItem mnemonicParsing="false" text="Ripara Archivi" />
-                  <MenuItem mnemonicParsing="false" text="Ricostruzione Indici" />
-                  <MenuItem mnemonicParsing="false" text="Compattazione Archivi" />
-                  <MenuItem mnemonicParsing="false" text="Recupero Dati" />
+                  <MenuItem mnemonicParsing="false" onAction="#backup" text="Recupero Dati" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Unione Utenti" />
-                  <MenuItem mnemonicParsing="false" text="Azzeramento Numero Analisi" />
+                  <MenuItem mnemonicParsing="false" onAction="#unioneUtenti" text="Unione Utenti" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Scelta Stampante" />
-                  <MenuItem mnemonicParsing="false" text="Parametri Di Stampa" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Percorsi Di Ricerca" />
-                  <MenuItem mnemonicParsing="false" text="Libretti" />
-                  <MenuItem mnemonicParsing="false" text="Cartella" />
+                  <MenuItem mnemonicParsing="false" onAction="#percorsi" text="Percorsi Di Ricerca" />
+                  <MenuItem mnemonicParsing="false" onAction="#parametriConnessione" text="Parametri Di Connessione" />
             </items>
           </Menu>
         </menus>
@@ -1144,4 +1130,5 @@
             <Button fx:id="altroUt" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
          </children></AnchorPane>
    </children>
+</AnchorPane>
 </AnchorPane>

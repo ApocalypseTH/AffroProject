@@ -18,6 +18,7 @@ public class UnioneUtenti extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			
+			UnioneUtentiController.primaryStage=primaryStage;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(RicercaAnalisi.class.getResource("unioneUtenti.fxml"));
 	        AnchorPane ap = loader.load();
