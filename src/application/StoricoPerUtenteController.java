@@ -332,7 +332,8 @@ public class StoricoPerUtenteController implements Initializable{
 			System.out.println(rsUtente.getString("mf"+idcaldaia));
 			
 			FoglioLavoro r = new FoglioLavoro(new Stage());
-			r.replace(dateConv.mysqlToLocal(rsInt.getString("datach")), 
+			r.replace(codice,
+						dateConv.mysqlToLocal(rsInt.getString("datach")), 
 						(rsUtente.getString("cognomea").equals("")?(rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu")):rsUtente.getString("cognomea")), 
 						rsUtente.getString("cfivaa"),
 						(rsUtente.getString("indirizzoa").equals("")?(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu")):(rsUtente.getString("indirizzoa")+(rsUtente.getString("numeroa").equals("")?"":", "+rsUtente.getString("numeroa"))+" - "+rsUtente.getString("comunea"))), 
@@ -385,7 +386,8 @@ public class StoricoPerUtenteController implements Initializable{
 			rsCald.next();
 			
 			Allegato2 allegato2 = new Allegato2(new Stage());
-			allegato2.replace(rsUtente.getString("c"+idElemento+"catasto"), 
+			allegato2.replace(codice,
+							  rsUtente.getString("c"+idElemento+"catasto"), 
 							  rsUtente.getString("comuneu"), 
 							  rsUtente.getString("provinciau"), 
 							  rsUtente.getString("indirizzou"), 

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -28,7 +29,7 @@ public class FoglioLavoro {
 		this.primaryStage = stage;
 	}
 	
-	public void replace(String data, String ammin, String iva, String indAmmin, String modelloc, String matri, String utente, String indUtente, String motivo, String note) {
+	public void replace(int codiceu, String data, String ammin, String iva, String indAmmin, String modelloc, String matri, String utente, String indUtente, String motivo, String note) {
 		
 		try {
 			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/modello_lav.docx"));
@@ -80,8 +81,8 @@ public class FoglioLavoro {
 	    	                if (motivo.contains("PULIZ") || motivo.contains("variazione orologio ad ora") || motivo.contains("accensione impianto") || motivo.contains("spegnimento impianto")) {
 								r.addCarriageReturn();
 								r.addCarriageReturn();
-	    	                	text+="ESECUZIONE DELLE OPERAZIONI DI MANUTENZIONE PROGRAMMATA DELL'IMPIANTO TERMICO COME DA CONTRATTO IN ESSERE CON PULIZIE E VERIFICHE";
-	    	                	r.setText(text, 1);
+	    	                	String text2="ESECUZIONE DELLE OPERAZIONI DI MANUTENZIONE PROGRAMMATA DELL'IMPIANTO TERMICO COME DA CONTRATTO IN ESSERE CON PULIZIE E VERIFICHE";
+	    	                	r.setText(text2, 1);
 							}
 	    	            }
 	    	            if (text != null && text.contains("%note")) {
@@ -115,8 +116,13 @@ public class FoglioLavoro {
 			
 			 FileChooser fileChooser = new FileChooser();
 			 fileChooser.setTitle("Save file");
-			 fileChooser.setInitialFileName("rich");
-			 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 DateConverter dateConv = new DateConverter();
+			 fileChooser.setInitialFileName("Intervento_"+dateConv.localToMysql(data));
+			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codiceu);
+			 if (temp.exists())
+				 fileChooser.setInitialDirectory(temp);
+			 else 
+				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);
@@ -138,6 +144,13 @@ public class FoglioLavoro {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Attenzione");
 			alert.setHeaderText("Il file è attualmente in uso, chiudere il file aperto e riprovare");
+			alert.showAndWait();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Attenzione");
+			alert.setHeaderText("Inserire la data dell'intervento");
 			alert.showAndWait();
 		}
 		

@@ -70,6 +70,7 @@ public class MessaInFunzioneController implements Initializable{
 	private Label modello6;
 	@FXML
 	private DatePicker data6;
+	
 	private Connection connection;
 	private Statement stm;
 	private ResultSet rs;
@@ -116,6 +117,7 @@ public class MessaInFunzioneController implements Initializable{
 		
 		annulla();
 	}
+	
 	public void annulla(){
 		Stage stage = (Stage) ditta1.getScene().getWindow();
 	    stage.close();		
@@ -164,9 +166,11 @@ public class MessaInFunzioneController implements Initializable{
 	}
 	
 	public static final LocalDate LOCAL_DATE (String dateString){
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	    LocalDate localDate = LocalDate.parse(dateString, formatter);
-	    return localDate;
+	    if(dateString != "" && dateString != null) {
+	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		    LocalDate localDate = LocalDate.parse(dateString, formatter);
+		    return localDate;
+	    } return null;
 	}
 	
 }

@@ -27,7 +27,8 @@ public class CaldaiaInterventoController implements Initializable {
 	static StoricoPerUtenteController spuc;
 	static RichiestaInterventoController ric;
 	static int codiceu;
-	static int i; //i=0 richiesta intervento, i=1 storico per utente
+	static int i; //i=0 richiesta intervento, i=1 storico per utente, i=2 risultati ricerca storico
+	static RisultatiRicercaStoricoController rsc;
 	
 	ToggleGroup caldaie = new ToggleGroup();
 	
@@ -101,6 +102,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c1");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c1");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c1");
 			}
 			annulla();
 		} else if(c2.isSelected() && 2<=lastCaldIndex) {
@@ -108,6 +111,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c2");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c2");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c2");
 			}
 			annulla();
 		} else if(c3.isSelected() && 3<=lastCaldIndex) {
@@ -115,6 +120,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c3");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c3");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c3");
 			}
 			annulla();
 		} else if(c4.isSelected() && 4<=lastCaldIndex) {
@@ -122,6 +129,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c4");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c4");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c4");
 			}
 			annulla();
 		} else if(c5.isSelected() && 5<=lastCaldIndex) {
@@ -129,6 +138,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c5");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c5");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c5");
 			}
 			annulla();
 		} else if(c6.isSelected() && 6<=lastCaldIndex) {
@@ -136,6 +147,8 @@ public class CaldaiaInterventoController implements Initializable {
 				ric.creaDocumento("c6");
 			} else if (i==1) {
 				spuc.creaDocumentoL("c6");
+			} else if (i==2) {
+				rsc.creaDocumentoL("c6");
 			}
 			annulla();
 		} else {

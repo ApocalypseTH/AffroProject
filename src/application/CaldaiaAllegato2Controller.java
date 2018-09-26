@@ -128,7 +128,7 @@ public class CaldaiaAllegato2Controller implements Initializable{
 	
 	public void stampa() {
 		
-		String tecnico = tecnici.getSelectionModel().isEmpty()?"":tecnici.getValue();
+		String tecnico = tecnici.getValue() == null?"":tecnici.getValue();
 		
 		if(c1.isSelected() && 1<=lastCaldIndex) {
 			spuc.creaDocumentoAl2("1", tecnico);

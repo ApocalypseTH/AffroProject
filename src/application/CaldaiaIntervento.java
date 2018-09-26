@@ -13,6 +13,7 @@ public class CaldaiaIntervento extends Application {
 	private RichiestaInterventoController ric;
 	private StoricoPerUtenteController spuc;
 	private int i;
+	private RisultatiRicercaStoricoController rsc;
 	
 	public CaldaiaIntervento() {
 		super();
@@ -30,6 +31,13 @@ public class CaldaiaIntervento extends Application {
 		i=1;
 	}
 	
+	public CaldaiaIntervento(int codiceu, RisultatiRicercaStoricoController rsc) {
+		// TODO Auto-generated constructor stub
+		this.codiceu = codiceu;
+		this.rsc = rsc;
+		i=2;
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		
@@ -39,6 +47,7 @@ public class CaldaiaIntervento extends Application {
 			CaldaiaInterventoController.codiceu = this.codiceu;
 			CaldaiaInterventoController.ric = this.ric;
 			CaldaiaInterventoController.spuc = this.spuc;
+			CaldaiaInterventoController.rsc = this.rsc;
 			CaldaiaInterventoController.i = this.i;
 			
 			FXMLLoader loader = new FXMLLoader();

@@ -27,7 +27,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class SchedaUtenteController implements Initializable {
 	
@@ -913,6 +916,12 @@ public class SchedaUtenteController implements Initializable {
 			alert.setTitle("Attenzione");
 			alert.setHeaderText("Nessuna cartella associata a questo utente");
 			alert.showAndWait();
+			
+			DirectoryChooser dirchooser = new DirectoryChooser();
+			dirchooser.setTitle("seleziona cartella");
+			dirchooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));			
+			dirchooser.showDialog(primaryStage);
+			
         } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -121,8 +122,9 @@ public class RisultatiRicercaStoricoController implements Initializable{
 			connection = conn.getConnection();
 			stm = connection.createStatement();
 			rs= stm.executeQuery(query);
-			
 			System.out.println(query);
+			
+			foglioL.setDisable(true);
 			
 			coda= new Vector<Integer>();
 			data = new Vector<String>();
@@ -173,6 +175,8 @@ public class RisultatiRicercaStoricoController implements Initializable{
 					
 					this.dataL = data.elementAt(gp.getRowIndex(source)-1);
 					this.motivoL = motivo.elementAt(gp.getRowIndex(source)-1);
+					
+					foglioL.setDisable(false);
 					
 					String s="select * from utenti where codiceu=?";
 					
@@ -260,8 +264,45 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	}
 	
 	public void printFoglioL() {
+		CaldaiaIntervento ci = new CaldaiaIntervento(codiceu, this);
+		ci.start(null);
+	}
+	
+	public void creaDocumentoL(String idcaldaia) {
 		
+		DateConverter dateConv = new DateConverter();
 		
+		try {
+			
+			ResultSet rsInt = stm.executeQuery("select * from ricint where codiceu='"+codiceu+"' and datach='"+dataL+"' and motivoch='"+motivoL+"'");
+			rsInt.next();	
+			
+			ResultSet rsUtente = connection.createStatement().executeQuery("select u.cognomeu, u.nomeu, u.indirizzou, u.numerou, u.comuneu, u.modello"+idcaldaia+", u.mf"+idcaldaia+", "
+					+ "u.matri"+idcaldaia+", u.cognomea, u.indirizzoa, u.numeroa, u.comunea, u.cfivaa from utenti as u where u.codiceu='"+codiceu+"'");
+			rsUtente.next();
+			
+			System.out.println(rsUtente.getString("mf"+idcaldaia));
+			
+			FoglioLavoro r = new FoglioLavoro(new Stage());
+			r.replace(codiceu,
+						rsInt.getString("datach") == null?"":dateConv.mysqlToLocal(rsInt.getString("datach")), 
+						(rsUtente.getString("cognomea").equals("")?(rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu")):rsUtente.getString("cognomea")), 
+						rsUtente.getString("cfivaa"),
+						(rsUtente.getString("indirizzoa").equals("")?(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu")):(rsUtente.getString("indirizzoa")+(rsUtente.getString("numeroa").equals("")?"":", "+rsUtente.getString("numeroa"))+" - "+rsUtente.getString("comunea"))), 
+						rsUtente.getString("modello"+idcaldaia), 
+						rsUtente.getString("matri"+idcaldaia), 
+						rsUtente.getString("cognomeu")+" "+rsUtente.getString("nomeu"), 
+						(rsUtente.getString("indirizzou")+(rsUtente.getString("numerou").equals("")?"":", "+rsUtente.getString("numerou"))+" - "+rsUtente.getString("comuneu"))+" - "+"M.F.: "+dateConv.mysqlToLocal(rsUtente.getString("mf"+idcaldaia)),
+						rsInt.getString("motivoch"), 
+						rsInt.getString("noteint"));
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

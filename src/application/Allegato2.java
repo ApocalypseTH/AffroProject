@@ -28,7 +28,7 @@ public class Allegato2 {
 		this.primaryStage = stage;
 	}
 	
-	public void replace(String codiceCatasto, String comuneU, String provU, String indrizzoU, String nU, String ragSocA, String ivaA, String indirizzoA, String nA, String comuneA, String provA, String nC, String dittaC, String modelloC, String matriC, String potFocC, String dataInt, String nomeCognTec) {
+	public void replace(int codiceu, String codiceCatasto, String comuneU, String provU, String indrizzoU, String nU, String ragSocA, String ivaA, String indirizzoA, String nA, String comuneA, String provA, String nC, String dittaC, String modelloC, String matriC, String potFocC, String dataInt, String nomeCognTec) {
 		
 		try {
 			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/modello_2.docx"));
@@ -122,7 +122,11 @@ public class Allegato2 {
 			 FileChooser fileChooser = new FileChooser();
 			 fileChooser.setTitle("Save file");
 			 fileChooser.setInitialFileName("rich");
-			 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codiceu);
+			 if (temp.exists())
+				 fileChooser.setInitialDirectory(temp);
+			 else 
+				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);
