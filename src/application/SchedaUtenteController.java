@@ -1127,6 +1127,8 @@ public class SchedaUtenteController implements Initializable {
 		b4matricola.setEditable(true);
 		b5matricola.setEditable(true);
 		b6matricola.setEditable(true);
+		puliziacb.setEditable(true);
+		analComb.setEditable(true);
 		bollino.setEditable(true);
 		codManut.setEditable(true);
 		c1catasto.setEditable(true);
@@ -1328,6 +1330,8 @@ public class SchedaUtenteController implements Initializable {
 		b5matricola.setEditable(false);
 		b6matricola.setEditable(false);
 		bollino.setEditable(false);
+		puliziacb.setEditable(false);
+		analComb.setEditable(false);
 		codManut.setEditable(false);
 		c1catasto.setEditable(false);
 		c2catasto.setEditable(false);
@@ -1357,7 +1361,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void confermaModifica() {
 		try {
-			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getValue()+"',  ";
+			String q="update utenti set cognomeu='"+cognome.getText()+"', nomeu='"+nome.getText()+"', indirizzou='"+viaU.getText()+"', numerou='"+numeroU.getText()+"', localitau='"+localita.getText()+"', capu='"+cap.getText()+"', comuneu='"+comuneU.getText()+"', provinciau='"+provU.getText()+"', telefonou='"+telefonoU.getText()+"', cellulareu='"+cellulareU.getText()+"', cfivau='"+cfU.getText()+"', cognomea='"+amministratore.getText()+"', indirizzoa='"+viaA.getText()+"', numeroa='"+numeroA.getText()+"', comunea='"+comuneA.getText()+"', provinciaa='"+provA.getText()+"', telefonoa='"+telefonoA.getText()+"', cfivaa='"+cfA.getText()+"', dittai='"+installatore.getText()+"', codmanu='"+codManut.getText()+"', bollino='"+bollino.getText()+"', manprogm='"+puliziacb.getText()+"', analcomb='"+analComb.getText()+"', certconfv='"+certificatoConformita.getText()+"', n_analisi='"+analisi.getValue()+"',  ";
 			for(int i=0; i<6; i++) {				
 				q=q.concat("dittac"+(i+1)+"='"+griglia[i][0].getText()+"', modelloc"+(i+1)+"='"+griglia[i][1].getText()+"', matric"+(i+1)+"='"+griglia[i][3].getText()+"', combc"+(i+1)+"='"+griglia[i][4].getText()+"', ");
 			}
