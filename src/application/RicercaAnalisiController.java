@@ -207,7 +207,9 @@ public class RicercaAnalisiController implements Initializable{
 	public void annulla() {
 		Main su = new Main();
 		try {
-			su.start(primaryStage);
+			su.start(new Stage());
+			Stage s = (Stage) eseguita.getScene().getWindow();
+			s.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

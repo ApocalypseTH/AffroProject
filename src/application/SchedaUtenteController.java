@@ -1599,7 +1599,9 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void gotoMain() {
 		Main m = new Main();
-		m.start(primaryStage);
+		m.start(new Stage());
+		Stage s = (Stage) codice.getScene().getWindow();
+		s.close();
 	}
 	
 	public void gotoBruciatori() {

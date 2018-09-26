@@ -4,6 +4,8 @@ import java.sql.Statement;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +33,13 @@ public class RisultatiRicercaAnalisi extends Application {
 	        AnchorPane pane = (AnchorPane) loader.load();
 			Scene scene = new Scene(pane);
 			primaryStage.setScene(scene);
+			Screen screen = Screen.getPrimary();
+			Rectangle2D bounds = screen.getVisualBounds();
+
+			primaryStage.setX(bounds.getMinX());
+			primaryStage.setY(bounds.getMinY());
+			primaryStage.setWidth(bounds.getWidth());
+			primaryStage.setHeight(bounds.getHeight());
 			primaryStage.show();
 			
 		} catch(Exception e) {

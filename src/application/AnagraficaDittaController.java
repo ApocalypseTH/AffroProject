@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class AnagraficaDittaController implements Initializable{
 	
-	static Stage primaryStage;
+//	static Stage primaryStage;
 	@FXML
 	private TextField ditta;
 	@FXML
@@ -57,13 +57,13 @@ public class AnagraficaDittaController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		Main su = new Main();
-		try {
-			su.start(primaryStage);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Main su = new Main();
+//		try {
+//			su.start(primaryStage);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		Stage stage = (Stage) ditta.getScene().getWindow();
 	    stage.close();

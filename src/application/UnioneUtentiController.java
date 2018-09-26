@@ -682,7 +682,7 @@ public class UnioneUtentiController implements Initializable{
 					alert.showAndWait();
 				}
 				
-			} else {
+			} else { //bruciatore
 				String sql = "select ditta"+IDiniz+", modello"+IDiniz+", tipo"+IDiniz+", matri"+IDiniz+", comb"+IDiniz+" from utenti where codiceu='"+codiceu+"'";
 				try {
 					rs = stm.executeQuery(sql);

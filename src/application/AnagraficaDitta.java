@@ -28,7 +28,7 @@ public class AnagraficaDitta extends Application {
 			s.setScene(scene);
 			s.show();
 			
-			AnagraficaDittaController.primaryStage = primaryStage;
+//			AnagraficaDittaController.primaryStage = primaryStage;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
