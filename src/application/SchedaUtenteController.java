@@ -2,6 +2,9 @@ package application;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -9,8 +12,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -1462,10 +1471,10 @@ public class SchedaUtenteController implements Initializable {
 			cfA.setText(rs.getString("CFIVAA"));
 			installatore.setText(rs.getString("DITTAI"));
 			certificatoConformita.setText(rs.getString("CERTCONFV"));
-			intervento1.setText(rs.getString("ANNOPREC1"));
-			intervento2.setText(rs.getString("ANNOPREC2"));
-			intervento3.setText(rs.getString("ANNOCOR1"));
-			intervento4.setText(rs.getString("ANNOCOR2"));
+			intervento1.setText(d.mysqlToLocal(rs.getString("ANNOPREC1")));
+			intervento2.setText(d.mysqlToLocal(rs.getString("ANNOPREC2")));
+			intervento3.setText(d.mysqlToLocal(rs.getString("ANNOCOR1")));
+			intervento4.setText(d.mysqlToLocal(rs.getString("ANNOCOR2")));
 			codManut.setText(rs.getString("CODMANU"));
 			puliziacb.setText(rs.getString("MANPROGM"));
 			analComb.setText(rs.getString("ANALCOMB"));
@@ -1598,7 +1607,255 @@ public class SchedaUtenteController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
+	}
+	
+	public void printScheda() {
+		
+		try {
+			XWPFDocument document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/schedautente.docx"));
+			FileOutputStream out;
+			
+			for (XWPFParagraph p : document.getParagraphs()) {
+	    	    List<XWPFRun> runs = p.getRuns();
+	    	    System.out.println("^^^^^^^^^^^^^^^New Paragraph, with "+runs.size()+" runs^^^^^^^^^^^^^");
+	    	    if (runs != null) {
+	    	        for (XWPFRun r : runs) {
+	    	        	System.out.println("---------New run-------");
+	    	            String text = r.getText(0);
+	    	            System.out.println("text with position:"+r.getText(0));
+	    	            System.out.println("just text:"+r.text());
+	    	            if (text != null && text.contains("codiceU")) {
+	    	                text = text.replace("codiceU", codice.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("cognomeU")) {
+	    	                text = text.replace("cognomeU", cognome.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("nomeU")) {
+	    	                text = text.replace("nomeU", nome.getText());
+	    	                r.setText(text, 0);
+	    	            } 
+	    	            if (text != null && text.contains("indirizzoU")) {
+	    	                text = text.replace("indirizzoU", viaU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("numeroU")) {
+	    	                text = text.replace("numeroU", numeroU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("localitaU")) {
+	    	                text = text.replace("localitaU", localita.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("capU")) {
+	    	                text = text.replace("capU", cap.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("comuneU")) {
+	    	                text = text.replace("comuneU", comuneU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("provU")) {
+	    	                text = text.replace("provU", provU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("telefonoU")) {
+	    	                text = text.replace("telefonoU", telefonoU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("cellulareU")) {
+	    	                text = text.replace("cellulareU", cellulareU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("ivaU")) {
+	    	                text = text.replace("ivaU", cfU.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("cognomeA")) {
+	    	                text = text.replace("cognomeA", amministratore.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("indirizzoA")) {
+	    	                text = text.replace("indirizzoA", viaA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("numeroA")) {
+	    	                text = text.replace("numeroA", numeroA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("comuneA")) {
+	    	                text = text.replace("comuneA", comuneA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("provinciaA")) {
+	    	                text = text.replace("provinciaA", provA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("telefonoA")) {
+	    	                text = text.replace("telefonoA", telefonoA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("ivaA")) {
+	    	                text = text.replace("ivaA", cfA.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("tipoImp")) {
+	    	            	RadioButton c = (RadioButton) edificio.getSelectedToggle();
+	    	            	String temp = c!=null?(c.getText()+" "):""; 
+	    	            	temp += circuiti.isSelected()?(circuiti.getText()+" "):"";
+	    	            	temp += termoregolato.isSelected()?(termoregolato.getText()+" "):"";
+	    	            	temp += contacalorie.isSelected()?(contacalorie.getText()+" "):"";
+	    	            	temp += superiore35.isSelected()?(superiore35.getText()+" "):"";
+	    	            	temp += superiore116.isSelected()?(superiore116.getText()+" "):"";
+	    	            	temp += superiore350.isSelected()?(superiore350.getText()+" "):"";
+	    	                text = text.replace("tipoImp", temp);
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("orologioU")) {
+	    	            	RadioButton c = (RadioButton) orologio.getSelectedToggle();
+	    	                text = text.replace("orologioU", c!=null?c.getText():"");
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("caldaia")) {
+	    	            	try {
+		    	            	String q = "select ";
+		    	        		for(int i=1; i<=6; i++) {
+		    	        			q=q+"dittac"+i+", modelloc"+i+", c"+i+"catasto, mfc"+i+", matric"+i+", combc"+i+(i==6?" ":", ");
+		    	        		}
+		    	        		q=q+"from utenti where codiceu='"+codice.getText()+"'";
+	    	            	
+								ResultSet rstemp = connection.createStatement().executeQuery(q);
+								rstemp.next();
+								String temp = "";
+								DateConverter d = new DateConverter();
+								for(int i=1; i<= 6; i++) {
+									if(!rstemp.getString("dittac"+i).equals("")) {
+										temp = "C"+i+": "+rstemp.getString("dittac"+i)+" / "+rstemp.getString("modelloc"+i)+" / "+rstemp.getString("matric"+i)+" / "+rstemp.getString("combc"+i)+" / "+rstemp.getString("c"+i+"catasto")+" / "+d.mysqlToLocal(rstemp.getString("mfc"+i));
+										if(i==1) {
+											text = text.replace("caldaia", temp);
+											r.setText(text, 0);
+										} else {
+											r.addCarriageReturn();
+											r.setText(temp);
+										}
+									}
+								}
+	    	        		} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+	    	            }
+	    	            if (text != null && text.contains("bruciatore")) {
+	    	                
+	    	            	try {
+		    	            	String q = "select ";
+		    	        		for(int i=1; i<=6; i++) {
+		    	        			q=q+"dittab"+i+", modellob"+i+", tipob"+i+", matrib"+i+", combb"+i+(i==6?" ":", ");
+		    	        		}
+		    	        		q=q+"from utenti where codiceu='"+codice.getText()+"'";
+	    	            	
+								ResultSet rstemp = connection.createStatement().executeQuery(q);
+								rstemp.next();
+								String temp = "";
+								for(int i=1; i<=6; i++) {
+									if(!rstemp.getString("dittab"+i).equals("")) {
+										temp = "B"+i+": "+rstemp.getString("dittab"+i)+" / "+rstemp.getString("modellob"+i)+" / "+rstemp.getString("tipob"+i)+" / "+rstemp.getString("matrib"+i)+" / "+rstemp.getString("combb"+i);
+										if(i==1) {
+											text = text.replace("bruciatore", temp);
+											r.setText(text, 0);
+										} else {
+											r.addCarriageReturn();
+											r.setText(temp);
+										}
+									}
+								}
+	    	        		} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+	    	            	
+	    	            }
+	    	            if (text != null && text.contains("codiceManut")) {
+	    	                text = text.replace("codiceManut", codManut.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("puliziacb")) {
+	    	            	String temp = puliziacb.getText();
+	    	            	String dataPuliz = "";
+	    	            	if (temp != null) {
+	    	            		 dataPuliz = temp.substring(0, 2)+"/"+temp.substring(2, 4)+"/20"+temp.substring(4, temp.length());
+							}
+	    	                text = text.replace("puliziacb", dataPuliz);
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("analcomb")) {
+	    	                text = text.replace("analcomb", analComb.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("bollino")) {
+	    	            	System.out.println(bollino.getText());
+	    	                text = text.replace("bollino", bollino.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("InterventoC")) {
+	    	            	String temp = "";
+	    	            	temp += intervento1.getText()!=null && intervento1.getText()!=" "?(intervento1.getText()+" "):"";
+							temp += intervento2.getText()!=null && intervento2.getText()!=" "?" - "+(intervento2.getText()+" "):"";
+							temp += intervento3.getText()!=null && intervento3.getText()!=" "?" - "+(intervento3.getText()+" "):"";
+							temp += intervento4.getText()!=null && intervento4.getText()!=" "?" - "+(intervento4.getText()+" "):"";
+							text = text.replace("InterventoC", temp);
+		    	               r.setText(text, 0);
+						}
+	    	            if (text != null && text.contains("dittaInst")) {
+	    	                text = text.replace("dittaInst", installatore.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            if (text != null && text.contains("certconf")) {
+	    	            	System.out.println(certificatoConformita.getText());
+	    	                text = text.replace("certconf", certificatoConformita.getText());
+	    	                r.setText(text, 0);
+	    	            }
+	    	            
+	    	            }
+	    	        }
+	    	    }
+			
+			FileChooser fileChooser = new FileChooser();
+			 fileChooser.setTitle("Save file");
+			 fileChooser.setInitialFileName("SchedaUtente_"+codice.getText());
+			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codice.getText());
+			 if (temp.exists())
+				 fileChooser.setInitialDirectory(temp);
+			 else 
+				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
+			 
+			 File file = fileChooser.showSaveDialog(primaryStage);
+			 
+            if(file != null){
+           	 out = new FileOutputStream(file);
+           	 document.write(out);
+    		 out.close();     			
+            } else {
+           	 System.out.println("save cancelled");
+            }
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void gotoMain() {

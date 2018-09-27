@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -33,6 +34,8 @@ public class RisultatiRicercaUtentiController implements Initializable{
 	private ResultSet rs;
 	private Vector<Integer> coda;
 	private int cod;
+	
+	private DateConverter d = new DateConverter();
 	
 	@FXML
 	private GridPane gp;
@@ -353,11 +356,14 @@ public class RisultatiRicercaUtentiController implements Initializable{
 						manuProgrammata.setText(rs.getString("MANPROGM"));
 						analisi.setText(rs.getString("ANALCOMB"));
 						bollino.setText(rs.getString("BOLLINO"));
-						messaInFunzione.setText(rs.getString("CONTRATM"));
+						messaInFunzione.setText(d.mysqlToLocal(rs.getString("CONTRATM")));
 						
 						schedaUtente.setDisable(false);
 						
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

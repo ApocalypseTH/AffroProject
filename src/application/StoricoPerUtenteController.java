@@ -36,9 +36,10 @@ public class StoricoPerUtenteController implements Initializable{
 	private Vector<Integer> coda;
 	static Stage primaryStage;
 	static int codice = -1;
-	public static Stage s;
 	private Vector<String> data;
 	private Vector<String> motivo;
+	
+	private DateConverter d = new DateConverter();
 	
 	public String dataL;
 	public String motivoL;
@@ -60,7 +61,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void schedaU(){
 		SchedaUtente su = new SchedaUtente();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -70,7 +70,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void ricercheU(){
 		RicercaUtenti su = new RicercaUtenti();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -81,7 +80,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void ricercheA(){
 		RicercaAnalisi su = new RicercaAnalisi();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,7 +90,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void ricercheS(){
 		RicercaStorico su = new RicercaStorico();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -102,7 +99,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void storicoPerUtente(){
 		RicercaUtenti ru = new RicercaUtenti(true);
 		try {
-			s.close();
 			ru.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -112,7 +108,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void storicoPerAmministratore(){
 		StoricoPerAmministratore su = new StoricoPerAmministratore();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -122,7 +117,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioCaldaie(){
 		Caldaie su = new Caldaie();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -132,7 +126,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioInstallatori(){
 		Installatori su = new Installatori();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -143,7 +136,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioBruciatori() {
 		Bruciatore b = new Bruciatore();
 		try {
-			s.close();
 			b.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -154,7 +146,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void archivioAmministratori(){
 		Amministratori su = new Amministratori();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -164,7 +155,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void elencoTecnici(){
 		Tecnici su = new Tecnici();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -174,7 +164,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void anagraficaDitta(){
 		AnagraficaDitta su = new AnagraficaDitta();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -184,7 +173,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void unioneUtenti(){
 		UnioneUtenti su = new UnioneUtenti();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -194,7 +182,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void parametriConnessione(){
 		Connessione su = new Connessione();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -204,7 +191,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void percorsi(){
 		Percorsi su = new Percorsi();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -214,7 +200,6 @@ public class StoricoPerUtenteController implements Initializable{
 	public void backup(){
 		Backup su = new Backup();
 		try {
-			s.close();
 			su.start(primaryStage);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -324,12 +309,12 @@ public class StoricoPerUtenteController implements Initializable{
 				motivo.add(rs.getString("r.MOTIVOCH"));
 				
 				Label t1= new Label(" "+rs.getString("r.CODICEU"));
-				TextField t2= new TextField(" "+rs.getString("r.DATACH"));
+				TextField t2= new TextField(" "+d.mysqlToLocal(rs.getString("r.DATACH")));
 				TextField t3= new TextField(" "+rs.getString("r.CODMANU"));
 				TextField t4= new TextField(" "+rs.getString("r.MOTIVOCH"));
 				TextField t5= new TextField(" "+rs.getString("r.COGNOMECH"));
 				TextField t6= new TextField(" "+rs.getString("r.TELECH"));
-				TextField t7= new TextField(" "+rs.getString("r.DATAINT"));
+				TextField t7= new TextField(" "+d.mysqlToLocal(rs.getString("r.DATAINT")));
 				TextField t8= new TextField(" "+rs.getString("r.TECNICO"));
 				
 				t2.setEditable(false);
@@ -355,6 +340,9 @@ public class StoricoPerUtenteController implements Initializable{
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -393,12 +381,12 @@ public class StoricoPerUtenteController implements Initializable{
 							motivo.add(rs.getString("r.MOTIVOCH"));
 							
 							Label t1= new Label(" "+rs.getString("r.CODICEU"));
-							TextField t2= new TextField(" "+rs.getString("r.DATACH"));
+							TextField t2= new TextField(" "+d.mysqlToLocal(rs.getString("r.DATACH")));
 							TextField t3= new TextField(" "+rs.getString("r.CODMANU"));
 							TextField t4= new TextField(" "+rs.getString("r.MOTIVOCH"));
 							TextField t5= new TextField(" "+rs.getString("r.COGNOMECH"));
 							TextField t6= new TextField(" "+rs.getString("r.TELECH"));
-							TextField t7= new TextField(" "+rs.getString("r.DATAINT"));
+							TextField t7= new TextField(" "+d.mysqlToLocal(rs.getString("r.DATAINT")));
 							TextField t8= new TextField(" "+rs.getString("r.TECNICO"));
 							
 							t2.setEditable(false);
@@ -422,6 +410,9 @@ public class StoricoPerUtenteController implements Initializable{
 						}						
 						
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

@@ -38,6 +38,8 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	private Vector<String> data;
 	private Vector<String> motivo;
 	
+	DateConverter d = new DateConverter();
+	
 	private String dataL, motivoL;
 	private int codiceu=-1;
 	
@@ -285,7 +287,7 @@ public class RisultatiRicercaStoricoController implements Initializable{
 			while (rs.next()) {				
 				Label t1= new Label(" "+rs.getString("u.CODICEU"));
 				TextField t2= new TextField(rs.getString("u.COGNOMEU")+" "+rs.getString("u.NOMEU"));
-				TextField t3= new TextField(rs.getString("r.dataint"));
+				TextField t3= new TextField(d.mysqlToLocal(rs.getString("r.dataint")));
 				TextField t4= new TextField(rs.getString("r.motivoch"));
 				
 				t2.setEditable(false);
@@ -373,10 +375,13 @@ public class RisultatiRicercaStoricoController implements Initializable{
 						manuProgrammata.setText(rs.getString("MANPROGM"));
 						analisi.setText(rs.getString("ANALCOMB"));
 						bollino.setText(rs.getString("BOLLINO"));
-						messaInFunzione.setText(rs.getString("CONTRATM"));
+						messaInFunzione.setText(d.mysqlToLocal(rs.getString("CONTRATM")));
 						
 						
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

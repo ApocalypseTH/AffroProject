@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -34,6 +35,8 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 	private ResultSet rs;
 	private Vector<Integer> coda;
 	private int codiceu;
+	
+	DateConverter d = new DateConverter();
 	
 	static Stage primaryStage;
 	
@@ -339,7 +342,7 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 						int i=0;
 						while (rs.next()) {							
 							Label t1= new Label(" "+rs.getString("a.CODICEU"));
-							TextField t2= new TextField(" "+rs.getString("a.DATA"));
+							TextField t2= new TextField(" "+d.mysqlToLocal(rs.getString("a.DATA")));
 							TextField t3= new TextField(" "+rs.getString("a.ID"));
 							
 							t2.setEditable(false);
@@ -350,6 +353,9 @@ public class RisultatiRicercaAnalisiController implements Initializable{
 						}						
 						
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

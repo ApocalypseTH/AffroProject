@@ -27,7 +27,6 @@ public class StoricoPerUtente extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
 			StoricoPerUtenteController.primaryStage = primaryStage;
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("storicoPerUtente.fxml"));
