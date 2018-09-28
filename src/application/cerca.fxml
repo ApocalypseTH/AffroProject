@@ -9,9 +9,9 @@
    <children>
       <Label alignment="CENTER" layoutX="136.0" layoutY="6.0" text="Ricerca Utenti" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0" />
       <Button fx:id="cerca" layoutX="243.0" layoutY="168.0" mnemonicParsing="false" onAction="#cerca" text="Cerca" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="155.0" />
-      <Label layoutX="50.0" layoutY="109.0" text="Cognome:" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="118.0" />
-      <TextField fx:id="cognome" layoutX="123.0" layoutY="105.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="113.0" />
-      <TextField fx:id="nome" layoutX="123.0" layoutY="54.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="58.0" />
-      <Label layoutX="50.0" layoutY="58.0" text="Nome:" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="63.0" />
+      <Label layoutX="21.0" layoutY="63.0" text="Cognome:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="63.0" />
+      <TextField fx:id="nome" layoutX="123.0" layoutY="105.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="113.0" />
+      <TextField fx:id="cognome" layoutX="123.0" layoutY="54.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="58.0" />
+      <Label layoutX="50.0" layoutY="58.0" text="Nome:" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="118.0" />
    </children>
 </AnchorPane>
