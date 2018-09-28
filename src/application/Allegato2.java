@@ -23,6 +23,7 @@ public class Allegato2 {
 	private XWPFDocument document;
 	FileOutputStream out;
 	Desktop desktop;
+	Funz funz = new Funz();
 	
 	public Allegato2(Stage stage) {
 		this.primaryStage = stage;
@@ -31,7 +32,7 @@ public class Allegato2 {
 	public void replace(int codiceu, String codiceCatasto, String comuneU, String provU, String indrizzoU, String nU, String ragSocA, String ivaA, String indirizzoA, String nA, String comuneA, String provA, String nC, String dittaC, String modelloC, String matriC, String potFocC, String dataInt, String nomeCognTec) {
 		
 		try {
-			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/modello_2.docx"));
+			document = new XWPFDocument(new  FileInputStream(funz.getAllegato()));
 			
 			for (XWPFParagraph p : document.getParagraphs()) {
 	    	    List<XWPFRun> runs = p.getRuns();
@@ -122,11 +123,17 @@ public class Allegato2 {
 			 FileChooser fileChooser = new FileChooser();
 			 fileChooser.setTitle("Save file");
 			 fileChooser.setInitialFileName("rich");
-			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codiceu);
+			 File temp = new File(funz.getCartella()+"/"+codiceu+"/");
 			 if (temp.exists())
 				 fileChooser.setInitialDirectory(temp);
-			 else 
-				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 else {
+				 File temp2 = new File(funz.getCartella()+"/");
+				 if (temp2.exists()) {
+					 fileChooser.setInitialDirectory(temp2);
+				} else {
+					fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+				}
+			 }
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);

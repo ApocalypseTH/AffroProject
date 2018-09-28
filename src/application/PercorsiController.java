@@ -25,6 +25,8 @@ public class PercorsiController implements Initializable {
 	@FXML
 	private TextField allegato2;
 	@FXML
+	private TextField schedautente;
+	@FXML
 	private Button annulla;
 	
 	
@@ -34,6 +36,7 @@ public class PercorsiController implements Initializable {
 		cartella.setText(funz.getCartella());
 		foglioLav.setText(funz.getFoglioLavoro());
 		allegato2.setText(funz.getAllegato());
+		schedautente.setText(funz.getSchedaUtente());
 		
 	}
 	
@@ -41,6 +44,7 @@ public class PercorsiController implements Initializable {
 		funz.SetCartella(cartella.getText());
 		funz.SetFoglioLavoro(foglioLav.getText());
 		funz.SetAllegato(allegato2.getText());
+		funz.setSchedaUtente(schedautente.getText());
 		annulla();
 	}
 	
@@ -74,6 +78,16 @@ public class PercorsiController implements Initializable {
 		File selectedFile = fileChooser.showOpenDialog(new Stage());
 		if (selectedFile != null) {
 			allegato2.setText(selectedFile.getAbsolutePath());
+		}
+	}
+	
+	public void chooserSchedaUtente() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open Resource File");
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("All Files", "*.*"));
+		File selectedFile = fileChooser.showOpenDialog(new Stage());
+		if (selectedFile != null) {
+			schedautente.setText(selectedFile.getAbsolutePath());
 		}
 	}
 

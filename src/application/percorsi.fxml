@@ -5,20 +5,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PercorsiController">
+<AnchorPane prefHeight="505.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PercorsiController">
    <children>
       <Label alignment="CENTER" layoutX="144.0" layoutY="36.0" style="-fx-background-color: lime;" text="Percorsi di Ricerca" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="36.0" />
       <TextField fx:id="passVisible" layoutX="160.0" layoutY="273.0" prefHeight="31.0" prefWidth="218.0" visible="false" />
-      <Label layoutX="87.0" layoutY="99.0" text="Cartella:" />
+      <Label layoutX="73.0" layoutY="100.0" text="Cartella:" />
       <TextField fx:id="cartella" editable="false" layoutX="145.0" layoutY="95.0" prefHeight="25.0" prefWidth="318.0" />
-      <Button fx:id="annulla" layoutX="124.0" layoutY="336.0" mnemonicParsing="false" onAction="#annulla" text="Annulla" />
-      <Button layoutX="304.0" layoutY="336.0" mnemonicParsing="false" onAction="#conferma" text="Conferma" />
+      <Button fx:id="annulla" layoutX="126.0" layoutY="436.0" mnemonicParsing="false" onAction="#annulla" text="Annulla" />
+      <Button layoutX="304.0" layoutY="436.0" mnemonicParsing="false" onAction="#conferma" text="Conferma" />
       <TextField fx:id="foglioLav" editable="false" layoutX="142.0" layoutY="188.0" prefHeight="25.0" prefWidth="318.0" />
-      <Label layoutX="24.0" layoutY="192.0" text="Stampa foglio lavoro:" />
+      <Label layoutX="50.0" layoutY="193.0" text="Foglio Lav.:" />
       <TextField fx:id="allegato2" editable="false" layoutX="142.0" layoutY="273.0" prefHeight="25.0" prefWidth="318.0" />
-      <Label layoutX="38.0" layoutY="277.0" text="Stampa allegato 2:" />
+      <Label layoutX="52.0" layoutY="278.0" text="Allegato II:" />
       <Button layoutX="412.0" layoutY="129.0" mnemonicParsing="false" onAction="#chooserCartella" text="Scegli" />
       <Button layoutX="412.0" layoutY="221.0" mnemonicParsing="false" onAction="#chooserFoglio" text="Scegli" />
       <Button layoutX="412.0" layoutY="304.0" mnemonicParsing="false" onAction="#chooserAllegato" text="Scegli" />
+      <TextField fx:id="schedautente" layoutX="144.0" layoutY="354.0" prefHeight="31.0" prefWidth="318.0" />
+      <Label layoutX="27.0" layoutY="359.0" text="Scheda Utente:" />
+      <Button layoutX="409.0" layoutY="385.0" mnemonicParsing="false" onAction="#chooserSchedaUtente" text="Scegli" />
    </children>
 </AnchorPane>

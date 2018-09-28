@@ -24,6 +24,7 @@ public class FoglioLavoro {
 	private XWPFDocument document;
 	FileOutputStream out;
 	Desktop desktop;
+	Funz funz = new Funz();
 	
 	public FoglioLavoro(Stage stage) {
 		this.primaryStage = stage;
@@ -32,7 +33,7 @@ public class FoglioLavoro {
 	public void replace(int codiceu, String data, String ammin, String iva, String indAmmin, String modelloc, String matri, String utente, String indUtente, String motivo, String note) {
 		
 		try {
-			document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/modello_lav.docx"));
+			document = new XWPFDocument(new  FileInputStream(funz.getFoglioLavoro()));
 			
 			for (XWPFParagraph p : document.getParagraphs()) {
 	    	    List<XWPFRun> runs = p.getRuns();
@@ -118,11 +119,17 @@ public class FoglioLavoro {
 			 fileChooser.setTitle("Save file");
 			 DateConverter dateConv = new DateConverter();
 			 fileChooser.setInitialFileName("Intervento_"+dateConv.localToMysql(data));
-			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codiceu);
+			 File temp = new File(funz.getCartella()+"/"+codiceu+"/");
 			 if (temp.exists())
 				 fileChooser.setInitialDirectory(temp);
-			 else 
-				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 else {
+				 File temp2 = new File(funz.getCartella()+"/");
+				 if (temp2.exists()) {
+					 fileChooser.setInitialDirectory(temp2);
+				} else {
+					fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+				}
+			 }
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);

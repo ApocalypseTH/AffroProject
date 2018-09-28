@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RicercaUtentiController" style="-fx-background-color: green;">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RicercaUtentiController">
 <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: green;">
    <children>
       <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -305,7 +305,7 @@
                   <TextField fx:id="codManu" layoutX="167.0" layoutY="38.0" prefWidth="225.0" AnchorPane.topAnchor="38.0" />
                   <Label layoutX="52.0" layoutY="81.0" text="Analisi effettuate:" />
                   <ComboBox fx:id="nAnalisi" layoutX="242.0" layoutY="76.0" prefWidth="150.0" />
-                  <AnchorPane layoutX="7.0" layoutY="116.0" prefHeight="61.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0">
+                  <AnchorPane layoutX="7.0" layoutY="117.0" prefHeight="68.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="116.0">
                      <children>
                         <Label layoutX="14.0" layoutY="22.0" text="Pulizia C/B:" />
                         <RadioButton fx:id="puliziacbEseguitaSoloSchedaUtente" layoutX="164.0" layoutY="9.0" mnemonicParsing="false" text="Eseguita" AnchorPane.topAnchor="3.0" />
@@ -316,7 +316,7 @@
                         <TextField fx:id="aa" layoutX="446.0" layoutY="18.0" prefHeight="25.0" prefWidth="36.0" promptText="aa" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="9.0" layoutY="177.0" prefHeight="61.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="178.0">
+                  <AnchorPane layoutX="9.0" layoutY="177.0" prefHeight="61.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="186.0">
                      <children>
                         <RadioButton fx:id="analisiEseguita" layoutX="192.0" layoutY="8.0" mnemonicParsing="false" text="Eseguita" AnchorPane.topAnchor="6.0" />
                         <RadioButton fx:id="analisiNonEseguita" layoutX="192.0" layoutY="37.0" mnemonicParsing="false" text="Non Eseguita" AnchorPane.bottomAnchor="6.0" />
@@ -325,7 +325,7 @@
                         <Label layoutX="435.0" layoutY="20.0" text="anno" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="19.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="5.0" layoutY="241.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="235.0">
+                  <AnchorPane layoutX="5.0" layoutY="241.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="243.0">
                      <children>
                         <RadioButton fx:id="bollinoEseguito" layoutX="159.0" layoutY="8.0" mnemonicParsing="false" text="Eseguito" AnchorPane.topAnchor="6.0" />
                         <RadioButton fx:id="bollinoNonEseguito" layoutX="159.0" layoutY="34.0" mnemonicParsing="false" text="Non Eseguito" AnchorPane.bottomAnchor="6.0" />
@@ -334,21 +334,21 @@
                         <Label layoutX="437.0" layoutY="18.0" text="anno" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="19.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="2.0" layoutY="302.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="298.0">
+                  <AnchorPane layoutX="2.0" layoutY="302.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="306.0">
                      <children>
                         <RadioButton fx:id="impAcceso" layoutX="218.0" layoutY="8.0" mnemonicParsing="false" text="Acceso" AnchorPane.topAnchor="6.0" />
                         <RadioButton fx:id="impSpento" layoutX="218.0" layoutY="36.0" mnemonicParsing="false" text="Spento" AnchorPane.bottomAnchor="6.0" />
                         <Label layoutX="14.0" layoutY="18.0" text="Impianto:" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="5.0" layoutY="362.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="360.0">
+                  <AnchorPane layoutX="5.0" layoutY="362.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="368.0">
                      <children>
                         <RadioButton fx:id="legale" layoutX="207.0" layoutY="4.0" mnemonicParsing="false" text="Legale" AnchorPane.topAnchor="6.0" />
                         <RadioButton fx:id="solare" layoutX="207.0" layoutY="29.0" mnemonicParsing="false" text="Solare" AnchorPane.bottomAnchor="6.0" />
                         <Label layoutX="14.0" layoutY="18.0" text="Ora:" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="9.0" layoutY="431.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="422.0">
+                  <AnchorPane layoutX="9.0" layoutY="431.0" prefHeight="60.0" prefWidth="495.0" style="-fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="430.0">
                      <children>
                         <Label layoutX="14.0" layoutY="20.0" text="Messa in Funzione:" />
                         <DatePicker fx:id="messaInFunzione" layoutX="216.0" layoutY="15.0" prefHeight="25.0" prefWidth="221.0" />

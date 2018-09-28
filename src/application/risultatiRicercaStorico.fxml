@@ -375,7 +375,8 @@
                   </Label>
                   <Button layoutX="682.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoSchedaUtente" text="Scheda Utente" />
                   <Button layoutX="844.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMain" text="Menu Principale" />
-                  <Button fx:id="foglioL" layoutX="119.0" layoutY="349.0" mnemonicParsing="false" onAction="#printFoglioL" text="Foglio Lav." />
+                  <Button fx:id="foglioL" layoutX="189.0" layoutY="349.0" mnemonicParsing="false" onAction="#printFoglioL" text="Foglio Lav." />
+                     <Button layoutX="48.0" layoutY="349.0" mnemonicParsing="false" onAction="#scegliStampante" text="Scelta Stp." />
                </children>
             </AnchorPane>
          </children>

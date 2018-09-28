@@ -1052,12 +1052,12 @@ public class SchedaUtenteController implements Initializable {
 	}
 	
 	public void apriCartella() {
-		
+		Funz funz = new Funz();
 		String username = System.getProperty("user.name");
 		Desktop desktop = Desktop.getDesktop();
         File dirToOpen = null;
         try {
-            dirToOpen = new File("C:/Users/"+username+"/Documents/"+codice.getText());
+            dirToOpen = new File(funz.getCartella()+"/"+codice.getText()+"/");
             desktop.open(dirToOpen);
         } catch (IllegalArgumentException iae) {
         	Alert alert = new Alert(AlertType.WARNING);
@@ -1615,8 +1615,10 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void printScheda() {
 		
+		Funz funz = new Funz();
+		
 		try {
-			XWPFDocument document = new XWPFDocument(new  FileInputStream("C:/Users/Architetto/Desktop/WordTest/schedautente.docx"));
+			XWPFDocument document = new XWPFDocument(new  FileInputStream(funz.getSchedaUtente()));
 			FileOutputStream out;
 			
 			for (XWPFParagraph p : document.getParagraphs()) {
@@ -1831,11 +1833,17 @@ public class SchedaUtenteController implements Initializable {
 			FileChooser fileChooser = new FileChooser();
 			 fileChooser.setTitle("Save file");
 			 fileChooser.setInitialFileName("SchedaUtente_"+codice.getText());
-			 File temp = new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"+codice.getText());
+			 File temp = new File(funz.getCartella()+"/"+codice.getText()+"/");
 			 if (temp.exists())
 				 fileChooser.setInitialDirectory(temp);
-			 else 
-				 fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+			 else {
+				 File temp2 = new File(funz.getCartella()+"/");
+				 if (temp2.exists()) {
+					 fileChooser.setInitialDirectory(temp2);
+				} else {
+					fileChooser.setInitialDirectory(new File("C:/Users/"+System.getProperty("user.name")+"/Documents/"));
+				}
+			 }
 			 fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Word Document", "*.docx"));
 			 
 			 File file = fileChooser.showSaveDialog(primaryStage);

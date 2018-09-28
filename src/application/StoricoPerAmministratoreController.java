@@ -36,6 +36,8 @@ public class StoricoPerAmministratoreController implements Initializable{
 	private Vector<String> coda;
 	private Vector<Integer> ut;
 	
+	private int codiceu;
+	
 	DateConverter d = new DateConverter();
 	
 	@FXML
@@ -48,6 +50,8 @@ public class StoricoPerAmministratoreController implements Initializable{
 	private Label l1;
 	@FXML
 	private Label l2;
+	@FXML
+	private Button schedaut;
 
 	public void schedaU(){
 		SchedaUtente su = new SchedaUtente();
@@ -220,6 +224,8 @@ public class StoricoPerAmministratoreController implements Initializable{
 			stm = connection.createStatement();
 			rs= stm.executeQuery("select * from ammin");
 			
+			schedaut.setDisable(true);
+			
 			coda= new Vector<String>();
 			ut= new Vector<Integer>();
 			
@@ -307,6 +313,11 @@ public class StoricoPerAmministratoreController implements Initializable{
 			int r=utenti.getRowIndex(source);
 			
 			int cod = ut.get(r);
+			codiceu = cod;
+			
+			if (schedaut.isDisabled()) {
+				schedaut.setDisable(false);
+			}
 			
 			String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
 			
@@ -352,6 +363,27 @@ public class StoricoPerAmministratoreController implements Initializable{
 			
 			
 });
+	}
+	
+	public void gotoSchedaUtente() {
+		SchedaUtente su = new SchedaUtente(codiceu);
+		try {
+			su.start(primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void gotoMain() {
+		Main m = new Main();
+		try {
+			primaryStage.close();
+			m.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

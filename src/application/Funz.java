@@ -30,7 +30,7 @@ public class Funz {
 	private static DOMSource source;
 	private static StreamResult result;
 	
-	private static String path = "C:/Users/"+System.getProperty("user.name")+"/Documents/dati.xml";
+	private static String path = "C:/Users/Architetto/Documents/dati.xml";
 	
 	public Funz() {
 		
@@ -99,6 +99,9 @@ public class Funz {
 	public String getAllegato() {		
 		return document.getElementsByTagName("allegato").item(0).getTextContent();
 	}
+	public String getSchedaUtente() {		
+		return document.getElementsByTagName("schedautente").item(0).getTextContent();
+	}	
 	
 	public void setIp(String ip) {
 		
@@ -195,11 +198,11 @@ public class Funz {
 		source = new DOMSource(document);
 		result = new StreamResult(new File(path));
 		
-		Node npassword = document.getElementsByTagName("cartella").item(0);
-		if(npassword.hasChildNodes())
-			npassword.replaceChild(document.createTextNode(cartella), npassword.getFirstChild());
+		Node ncartella = document.getElementsByTagName("cartella").item(0);
+		if(ncartella.hasChildNodes())
+			ncartella.replaceChild(document.createTextNode(cartella), ncartella.getFirstChild());
 		else
-			npassword.appendChild(document.createTextNode(cartella));
+			ncartella.appendChild(document.createTextNode(cartella));
 		
 		try {
 			transformer.transform(source, result);
@@ -212,11 +215,11 @@ public class Funz {
 		source = new DOMSource(document);
 		result = new StreamResult(new File(path));
 		
-		Node npassword = document.getElementsByTagName("foglioLavoro").item(0);
-		if(npassword.hasChildNodes())
-			npassword.replaceChild(document.createTextNode(foglio), npassword.getFirstChild());
+		Node nfoglio = document.getElementsByTagName("foglioLavoro").item(0);
+		if(nfoglio.hasChildNodes())
+			nfoglio.replaceChild(document.createTextNode(foglio), nfoglio.getFirstChild());
 		else
-			npassword.appendChild(document.createTextNode(foglio));
+			nfoglio.appendChild(document.createTextNode(foglio));
 		
 		try {
 			transformer.transform(source, result);
@@ -229,11 +232,29 @@ public class Funz {
 		source = new DOMSource(document);
 		result = new StreamResult(new File(path));
 		
-		Node npassword = document.getElementsByTagName("allegato").item(0);
-		if(npassword.hasChildNodes())
-			npassword.replaceChild(document.createTextNode(allegato), npassword.getFirstChild());
+		Node nallegato = document.getElementsByTagName("allegato").item(0);
+		if(nallegato.hasChildNodes())
+			nallegato.replaceChild(document.createTextNode(allegato), nallegato.getFirstChild());
 		else
-			npassword.appendChild(document.createTextNode(allegato));
+			nallegato.appendChild(document.createTextNode(allegato));
+		
+		try {
+			transformer.transform(source, result);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void setSchedaUtente(String schedaUtente) {
+		source = new DOMSource(document);
+		result = new StreamResult(new File(path));
+		
+		Node nschedautente = document.getElementsByTagName("schedautente").item(0);
+		if(nschedautente.hasChildNodes())
+			nschedautente.replaceChild(document.createTextNode(schedaUtente), nschedautente.getFirstChild());
+		else
+			nschedautente.appendChild(document.createTextNode(schedaUtente));
 		
 		try {
 			transformer.transform(source, result);
