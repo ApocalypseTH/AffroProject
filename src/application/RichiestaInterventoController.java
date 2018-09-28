@@ -2,23 +2,23 @@ package application;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.Printer;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -258,6 +258,14 @@ public class RichiestaInterventoController implements Initializable{
 			}			
 			
 	
+	}
+	
+	public void sceglistampante() {
+		ChoiceDialog dialog = new ChoiceDialog(Printer.getDefaultPrinter(), Printer.getAllPrinters());
+		dialog.setHeaderText("Choose the printer!");
+		dialog.setContentText("Choose a printer from available printers");
+		dialog.setTitle("Printer Choice");
+		Optional<Printer> opt = dialog.showAndWait();
 	}
 	
 }
