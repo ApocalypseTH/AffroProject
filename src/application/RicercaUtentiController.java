@@ -736,19 +736,19 @@ public class RicercaUtentiController implements Initializable{
 		else {
 			if(!"".equals(aa.getText()) && "".equals(mm.getText()) && "".equals(gg.getText())) {
 				q=q.concat(andCheck());
-				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '____"+aa.getText()+"' )");
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '__"+aa.getText()+"______' )");
 
 			}
 			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && "".equals(gg.getText())) {
 
 				q=q.concat(andCheck());
-				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '__"+mm.getText()+""+aa.getText()+"' )");
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '__"+aa.getText()+"_"+mm.getText()+"___' )");
 
 			}
 			else if (!"".equals(aa.getText()) && !"".equals(mm.getText()) && !"".equals(gg.getText())) {
 
 				q=q.concat(andCheck());
-				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '"+gg.getText()+""+mm.getText()+""+aa.getText()+"' )");
+				q=q.concat(" ( motivoch like '%pulizi%' and manprogm like '__"+aa.getText()+"_"+mm.getText()+"_"+gg.getText()+"' )");
 
 			}
 		}
