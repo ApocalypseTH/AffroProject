@@ -219,7 +219,7 @@ public class RicercaStoricoController implements Initializable{
 
 		}
 		
-		q=q.concat(" order by r.dataint desc");
+		q=q.concat(" order by r.dataint desc, u.cognomeu, u.nomeu");
 		
 //		System.out.println(q);
 		

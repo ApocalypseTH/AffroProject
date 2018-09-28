@@ -372,7 +372,7 @@ public class RisultatiRicercaStoricoController implements Initializable{
 						installatore.setText(rs.getString("DITTAI"));
 						
 						codManu.setText(rs.getString("CODMANU"));
-						manuProgrammata.setText(rs.getString("MANPROGM"));
+						manuProgrammata.setText(d.mysqlToLocal(rs.getString("MANPROGM")));
 						analisi.setText(rs.getString("ANALCOMB"));
 						bollino.setText(rs.getString("BOLLINO"));
 						messaInFunzione.setText(d.mysqlToLocal(rs.getString("CONTRATM")));
@@ -403,7 +403,8 @@ public class RisultatiRicercaStoricoController implements Initializable{
 	
 	public void gotoMain() {
 		Main m = new Main();
-		m.start(primaryStage);
+		m.start(new Stage());
+		primaryStage.close();
 	}
 	
 	public void scegliStampante() {

@@ -222,7 +222,7 @@ public class StoricoPerAmministratoreController implements Initializable{
 			ConnDB conn = new ConnDB();
 			connection = conn.getConnection();
 			stm = connection.createStatement();
-			rs= stm.executeQuery("select * from ammin");
+			rs= stm.executeQuery("select cognomea, telefonoa from ammin");
 			
 			schedaut.setDisable(true);
 			
@@ -263,7 +263,7 @@ public class StoricoPerAmministratoreController implements Initializable{
 					
 					l1.setText("Utenti di "+cod);
 					
-					String s="select * from utenti as u join ammin as a on u.cognomea=a.cognomea join ricint as r on r.codiceu=u.codiceu where a.cognomea=?";
+					String s="select u.cognomeu, u.codiceu, u.nomeu from utenti as u join ammin as a on u.cognomea=a.cognomea where a.cognomea=? and exists (select 1 from ricint as r where r.codiceu=u.codiceu)";
 					
 					
 					try {
@@ -272,7 +272,11 @@ public class StoricoPerAmministratoreController implements Initializable{
 						PreparedStatement prepStat = connection.prepareStatement(s);
 						prepStat.setString(1, cod);
 						
-						rs = prepStat.executeQuery();		
+						rs = prepStat.executeQuery();
+						
+						interventi.getChildren().clear();
+						interventi.setGridLinesVisible(false);		
+						interventi.setGridLinesVisible(true);
 						
 						utenti.getChildren().clear();
 						utenti.setGridLinesVisible(false);
@@ -319,7 +323,7 @@ public class StoricoPerAmministratoreController implements Initializable{
 				schedaut.setDisable(false);
 			}
 			
-			String s="select * from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
+			String s="select u.cognomeu, r.codiceu, r.datach, r.motivoch from utenti as u join ricint as r on u.codiceu=r.codiceu where u.codiceu=? order by r.datach desc";
 			
 			
 			try {

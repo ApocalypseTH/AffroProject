@@ -811,6 +811,8 @@ public class RicercaUtentiController implements Initializable{
 		}
 		else if(ordineCI.isSelected()) {
 			q=q.concat(" order by u.comuneu, u.indirizzou");
+		} else {
+			q=q.concat(" order by u.cognomeu, u.nomeu");
 		}
 		
 		try {

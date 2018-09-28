@@ -540,7 +540,7 @@ public class SchedaUtenteController implements Initializable {
 			ConnDB conn = new ConnDB();
 			connection = conn.getConnection();
 			stm = connection.createStatement();
-			rs = stm.executeQuery("select * from utenti order by codiceu");
+			rs = stm.executeQuery("select * from utenti order by cognomeu, nomeu");
 			rs.next();			
 
 		} catch (SQLException e) {
@@ -738,7 +738,7 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void requery() {
 		try {
-			rs = stm.executeQuery("select * from utenti order by codiceu");
+			rs = stm.executeQuery("select * from utenti order by cognomeu, nomeu");
 			rs.next();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -748,13 +748,14 @@ public class SchedaUtenteController implements Initializable {
 	
 	public void requery(int row) {
 		try {
-			rs = stm.executeQuery("select * from utenti order by codiceu");
+			rs = stm.executeQuery("select * from utenti order by cognomeu, nomeu");
 			rs.absolute(row);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 	public void returnToId(int i) {
 		requery();
 		try {
@@ -1476,7 +1477,7 @@ public class SchedaUtenteController implements Initializable {
 			intervento3.setText(d.mysqlToLocal(rs.getString("ANNOCOR1")));
 			intervento4.setText(d.mysqlToLocal(rs.getString("ANNOCOR2")));
 			codManut.setText(rs.getString("CODMANU"));
-			puliziacb.setText(rs.getString("MANPROGM"));
+			puliziacb.setText(d.mysqlToLocal(rs.getString("MANPROGM")));
 			analComb.setText(rs.getString("ANALCOMB"));
 			bollino.setText(rs.getString("BOLLINO"));
 			c1catasto.setText(rs.getString("C1CATASTO"));
