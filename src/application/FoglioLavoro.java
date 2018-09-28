@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
@@ -154,22 +155,17 @@ public class FoglioLavoro {
      			out.close();
      			
      			File wordFile = file, target = new File(file.getParent()+"/targetL.pdf");
-           	 IConverter converter = LocalConverter.make();
+           	 IConverter converter = LocalConverter.builder()
+                     .workerPool(20, 25, 2, TimeUnit.SECONDS)
+                     .processTimeout(5, TimeUnit.SECONDS)
+                     .build();
            	 
-           	 Future<Boolean> conversion = converter
-           	   .convert(wordFile)
+           	 converter.convert(wordFile)
            	 .as(DocumentType.DOCX)
            	 .to(target)
            	 .as(DocumentType.PDF)
            	 .prioritizeWith(1000)
            	 .schedule();
-           	 
-           	 try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
            	 
            	 //stampa del pdf
 

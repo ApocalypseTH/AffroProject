@@ -159,15 +159,17 @@ public class Allegato2 {
     			//conversione in pdf
     			
             	 File wordFile = file, target = new File(file.getParent()+"/targetAL.pdf");
-            	 IConverter converter = LocalConverter.make();
+            	 IConverter converter = LocalConverter.builder()
+                         .workerPool(20, 25, 2, TimeUnit.SECONDS)
+                         .processTimeout(5, TimeUnit.SECONDS)
+                         .build();
             	 
-            	 Future<Boolean> conversion = converter
-            	   .convert(wordFile)
-            	 .as(DocumentType.DOCX)
-            	 .to(target)
-            	 .as(DocumentType.PDF)
-            	 .prioritizeWith(1000)
-            	 .schedule();
+            	 converter.convert(wordFile)
+               	 .as(DocumentType.DOCX)
+               	 .to(target)
+               	 .as(DocumentType.PDF)
+               	 .prioritizeWith(1000)
+               	 .schedule();
             	 
             	 try {
 					Thread.sleep(1000);

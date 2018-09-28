@@ -1562,19 +1562,19 @@ public class SchedaUtenteController implements Initializable {
 				}
 			}
 			
-			if(!"".equals(rs.getString("NOTEA"))) {
+			if(!"".equals(rs.getString("NOTEA")) && rs.getString("NOTEA") != null) {
 				noteAmministratore.setStyle("-fx-text-fill: red;");
 			}
 			else {
 				noteAmministratore.setStyle("-fx-text-fill: black;");
 			}
-			if(!"".equals(rs.getString("NOTEM"))) {
+			if(!"".equals(rs.getString("NOTEM")) && rs.getString("NOTEM") != null) {
 				noteManutenzione.setStyle("-fx-text-fill: red;");
 			}
 			else {
 				noteManutenzione.setStyle("-fx-text-fill: black;");
 			}
-			if(!"".equals(rs.getString("NOTEI"))) {
+			if(!"".equals(rs.getString("NOTEI")) && rs.getString("NOTEI") != null) {
 				noteInstallatore.setStyle("-fx-text-fill: red;");
 			}
 			else {
