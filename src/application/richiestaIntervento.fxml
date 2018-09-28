@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RichiestaInterventoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RichiestaInterventoController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="350.0" prefWidth="740.0" style="-fx-border-color: black; -fx-background-color: grey;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -197,7 +198,10 @@
                   <TextArea fx:id="note" prefHeight="167.0" prefWidth="606.0" wrapText="true" />
                </content>
             </ScrollPane>
-            <CheckBox fx:id="stampaNote" layoutX="16.0" layoutY="199.0" mnemonicParsing="false" text="Stampa Note" />
+            <CheckBox fx:id="stampaNote" layoutX="7.0" layoutY="199.0" mnemonicParsing="false" text="Stampa Note">
+               <font>
+                  <Font size="10.0" />
+               </font></CheckBox>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="49.0" layoutY="344.0" prefHeight="84.0" prefWidth="740.0" style="-fx-border-color: black; -fx-background-color: red;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
