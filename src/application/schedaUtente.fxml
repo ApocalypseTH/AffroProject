@@ -18,23 +18,23 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
-<AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: green;">
+<AnchorPane prefHeight="1020.0" prefWidth="1200.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SchedaUtenteController">
+<AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: green;">
    <children>
-      <AnchorPane layoutX="39.0" layoutY="-23.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="39.0" layoutY="-23.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="112.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="25.0">
+            <AnchorPane layoutX="112.0" layoutY="24.0" prefHeight="464.0" prefWidth="600.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
                <children>
-                  <Label alignment="CENTER" layoutX="6.0" layoutY="23.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="CODICE" AnchorPane.bottomAnchor="334.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="23.0" />
-                  <Label alignment="CENTER" layoutX="224.0" layoutY="14.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Dati Utente" textAlignment="CENTER" AnchorPane.bottomAnchor="350.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0">
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="23.0" style="-fx-background-color: #8CD3AD;" text="CODICE" />
+                  <Label alignment="CENTER" layoutX="259.0" layoutY="12.0" style="-fx-background-color: #8CD3AD;" text="Dati Utente" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="utentegp" gridLinesVisible="true" layoutX="85.0" layoutY="45.0" prefHeight="190.0" prefWidth="403.0" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="44.0">
+                  <GridPane fx:id="utentegp" gridLinesVisible="true" layoutX="77.0" layoutY="44.0" prefHeight="225.0" prefWidth="485.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="138.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="252.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="168.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="317.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -97,12 +97,12 @@
                               <TextField fx:id="nome" editable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <GridPane layoutX="-20.0" layoutY="-45.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="188.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="63.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="163.0" prefWidth="233.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="84.0" prefWidth="84.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -123,8 +123,8 @@
                            <children>
                               <GridPane layoutX="40.0" layoutY="-32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="10.0" prefWidth="66.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="127.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="57.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="159.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="64.0" />
                                 </columnConstraints>
                                 <rowConstraints>
@@ -155,9 +155,9 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <AnchorPane layoutX="14.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="240.0">
+                  <AnchorPane layoutX="41.0" layoutY="277.0" prefHeight="173.0" prefWidth="327.0" style="-fx-border-color: black;">
                      <children>
-                        <GridPane fx:id="tipiimpiantogp" layoutX="3.0" layoutY="27.0" prefHeight="108.0" prefWidth="334.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="26.0">
+                        <GridPane fx:id="tipiimpiantogp" layoutX="3.0" layoutY="27.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="22.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -230,40 +230,51 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" layoutX="152.0" layoutY="2.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Tipo di Impianto" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label alignment="CENTER" layoutX="152.0" layoutY="2.0" style="-fx-background-color: #8CD3AD;" text="Tipo di Impianto" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="orologioap" layoutX="308.0" layoutY="176.0" prefHeight="10.0" prefWidth="10.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="240.0">
+                  <AnchorPane fx:id="orologioap" layoutX="433.0" layoutY="281.0" prefHeight="82.0" prefWidth="128.0" style="-fx-border-color: black;">
                      <children>
-                        <Label alignment="CENTER" layoutX="36.0" layoutY="2.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Orologio" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" style="-fx-background-color: #8CD3AD;" text="Orologio" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="automatico" layoutX="17.0" layoutY="31.0" mnemonicParsing="false" text="Automatico" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
-                        <RadioButton fx:id="manuale" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" text="Manuale" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                           <GridPane layoutX="1.0" layoutY="22.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
+                             <columnConstraints>
+                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                             </columnConstraints>
+                             <rowConstraints>
+                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             </rowConstraints>
+                              <children>
+                              <RadioButton fx:id="automatico" mnemonicParsing="false" text="Automatico" />
+                              <RadioButton fx:id="manuale" mnemonicParsing="false" text="Manuale" GridPane.rowIndex="1" />
+                              </children>
+                           </GridPane>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="404.0" layoutY="341.0" mnemonicParsing="false" onAction="#apriCartella" text="Apri Cartella" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="330.0" />
-                  <Label fx:id="codice" alignment="CENTER" layoutX="6.0" layoutY="55.0" text="cod" textFill="RED" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="55.0">
+                  <Button layoutX="459.0" layoutY="423.0" mnemonicParsing="false" onAction="#apriCartella" text="Apri Cartella" />
+                  <Label fx:id="codice" alignment="CENTER" layoutX="6.0" layoutY="55.0" text="cod" textFill="RED">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="622.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="600.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
+            <AnchorPane layoutX="600.0" layoutY="32.0" prefHeight="236.0" prefWidth="600.0" style="-fx-background-color: grey; -fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="224.0" layoutY="1.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Dati Amministratore" textAlignment="CENTER" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
+                  <Label alignment="CENTER" layoutX="228.0" layoutY="20.0" style="-fx-background-color: #8CD3AD;" text="Dati Amministratore" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="ammingp" gridLinesVisible="true" layoutX="60.0" layoutY="45.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                  <GridPane fx:id="ammingp" gridLinesVisible="true" layoutX="23.0" layoutY="63.0" prefHeight="150.0" prefWidth="475.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="131.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.0" minWidth="10.0" prefWidth="259.0" />
@@ -352,21 +363,21 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button id="amministratore" fx:id="noteAmministratore" layoutX="429.0" layoutY="141.0" mnemonicParsing="false" onAction="#noteA" text="Note" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0" />
+                  <Button id="amministratore" fx:id="noteAmministratore" layoutX="524.0" layoutY="182.0" mnemonicParsing="false" onAction="#noteA" text="Note" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="44.0" layoutY="350.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="400.0">
+            <AnchorPane layoutY="489.0" prefHeight="343.0" prefWidth="600.0" style="-fx-background-color: gray; -fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="218.0" layoutY="17.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Centrale Termica" textAlignment="CENTER" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
+                  <Label alignment="CENTER" layoutX="240.0" layoutY="14.0" style="-fx-background-color: #8CD3AD;" text="Centrale Termica" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="144.0" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="41.0">
+                  <ScrollPane layoutX="7.0" layoutY="42.0" prefHeight="290.0" prefWidth="586.0">
                      <content>
-                        <AnchorPane prefHeight="300.0" prefWidth="1019.0">
+                        <AnchorPane>
                            <children>
-                              <GridPane fx:id="caldbrugp" gridLinesVisible="true" layoutX="117.0" layoutY="-1.0" prefHeight="301.0" prefWidth="914.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <GridPane fx:id="caldbrugp" gridLinesVisible="true" layoutX="117.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="35.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="120.0" />
@@ -819,14 +830,14 @@
                      </content>
                   </ScrollPane>
                </children></AnchorPane>
-            <AnchorPane layoutX="500.0" layoutY="400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="400.0">
+            <AnchorPane layoutX="600.0" layoutY="596.0" prefHeight="236.0" prefWidth="600.0" style="-fx-background-color: grey; -fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="156.0" layoutY="71.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Installatore" textAlignment="CENTER" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="156.0" AnchorPane.topAnchor="71.0">
+                  <Label alignment="CENTER" layoutX="260.0" layoutY="45.0" style="-fx-background-color: #8CD3AD;" text="Installatore" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="installatoregp" gridLinesVisible="true" layoutX="16.0" layoutY="122.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="122.0">
+                  <GridPane fx:id="installatoregp" gridLinesVisible="true" layoutX="44.0" layoutY="99.0" prefHeight="60.0" prefWidth="513.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -858,34 +869,35 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button id="installatore" fx:id="noteInstallatore" layoutX="438.0" layoutY="210.0" mnemonicParsing="false" onAction="#noteI" text="Note" />
-                  <Button fx:id="statusImpianto" layoutX="302.0" layoutY="210.0" mnemonicParsing="false" onAction="#statusImpianto" text="Impianto Acceso" />
+                  <Button id="installatore" fx:id="noteInstallatore" layoutX="523.0" layoutY="191.0" mnemonicParsing="false" onAction="#noteI" text="Note" />
+                  <Button fx:id="statusImpianto" layoutX="371.0" layoutY="191.0" mnemonicParsing="false" onAction="#statusImpianto" text="Impianto Acceso" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="524.0" layoutY="566.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="650.0">
+            <AnchorPane layoutX="600.0" layoutY="832.0" prefHeight="189.0" prefWidth="600.0" style="-fx-background-color: #FFBCA9; -fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="222.0" layoutY="12.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Gestione Scheda Utente" textAlignment="CENTER" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
+                  <Label alignment="CENTER" layoutX="216.0" layoutY="14.0" style="-fx-background-color: #8CD3AD;" text="Gestione Scheda Utente" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="nuovo" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#nuovo" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
-                  <Button layoutX="173.0" layoutY="33.0" mnemonicParsing="false" onAction="#modifica" prefHeight="30.0" prefWidth="150.0" text="Modifica" />
-                  <Button fx:id="canc" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
-                  <Button fx:id="richiestaInt" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#richInt" prefHeight="30.0" prefWidth="150.0" text="Richiesta Intervento" />
-                  <Button fx:id="stamp" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" onAction="#printScheda" prefHeight="30.0" prefWidth="150.0" text="Stampa Scheda" />
-                  <Button fx:id="menu" layoutX="331.0" layoutY="116.0" mnemonicParsing="false" onAction="#gotoMain" prefHeight="30.0" prefWidth="150.0" text="Menu Principale" />
-                  <Button fx:id="confModifica" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#confermaModifica" prefHeight="30.0" prefWidth="150.0" text="Conferma" visible="false" />
-                  <Button fx:id="annullaModifica" layoutX="173.0" layoutY="116.0" mnemonicParsing="false" onAction="#annullaModifica" prefHeight="30.0" prefWidth="150.0" text="Annulla" visible="false" />
-               </children></AnchorPane>
-            <AnchorPane layoutX="500.0" layoutY="213.0" prefHeight="244.0" prefWidth="495.0" style="-fx-background-color: grey; -fx-border-color: black;" AnchorPane.bottomAnchor="356.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="213.0">
+                  <Button fx:id="nuovo" layoutX="23.0" layoutY="57.0" mnemonicParsing="false" onAction="#nuovo" prefHeight="30.0" prefWidth="150.0" text="Nuovo" />
+                  <Button layoutX="225.0" layoutY="57.0" mnemonicParsing="false" onAction="#modifica" prefHeight="30.0" prefWidth="150.0" text="Modifica" />
+                  <Button fx:id="canc" layoutX="421.0" layoutY="57.0" mnemonicParsing="false" onAction="#cancellaRecord" prefHeight="30.0" prefWidth="150.0" text="Cancella" />
+                  <Button fx:id="richiestaInt" layoutX="20.0" layoutY="100.0" mnemonicParsing="false" onAction="#richInt" prefHeight="31.0" prefWidth="157.0" text="Richiesta Intervento" />
+                  <Button fx:id="stamp" layoutX="225.0" layoutY="100.0" mnemonicParsing="false" onAction="#printScheda" prefHeight="30.0" prefWidth="150.0" text="Stampa Scheda" />
+                  <Button fx:id="menu" layoutX="421.0" layoutY="147.0" mnemonicParsing="false" onAction="#gotoMain" prefHeight="30.0" prefWidth="150.0" text="Menu Principale" />
+                  <Button fx:id="confModifica" layoutX="23.0" layoutY="147.0" mnemonicParsing="false" onAction="#confermaModifica" prefHeight="30.0" prefWidth="150.0" text="Conferma" />
+                  <Button fx:id="annullaModifica" layoutX="225.0" layoutY="147.0" mnemonicParsing="false" onAction="#annullaModifica" prefHeight="30.0" prefWidth="150.0" text="Annulla" />
+               </children>
+               </AnchorPane>
+            <AnchorPane layoutX="600.0" layoutY="268.0" prefHeight="328.0" prefWidth="600.0" style="-fx-background-color: grey; -fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="221.0" layoutY="6.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Manutenzioni" textAlignment="CENTER" AnchorPane.bottomAnchor="213.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="6.0">
+                  <Label alignment="CENTER" layoutX="251.0" layoutY="14.0" style="-fx-background-color: #8CD3AD;" text="Manutenzioni" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="manutsxgp" gridLinesVisible="true" layoutX="8.0" layoutY="41.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="41.0">
+                  <GridPane fx:id="manutsxgp" gridLinesVisible="true" layoutX="50.0" layoutY="56.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -924,7 +936,7 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <GridPane fx:id="manutdxgp" gridLinesVisible="true" layoutX="253.0" layoutY="41.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="41.0">
+                  <GridPane fx:id="manutdxgp" gridLinesVisible="true" layoutX="349.0" layoutY="56.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -953,7 +965,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                            <children>
-                              <Label alignment="CENTER" text="Bollino" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label alignment="CENTER" layoutY="-2.0" text="Bollino" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -978,11 +990,11 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Button fx:id="messaInFunzione" disable="true" layoutX="254.0" layoutY="171.0" mnemonicParsing="false" onAction="#messaInFunzione" text="Messa In Funzione" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="166.0" />
-                  <GridPane gridLinesVisible="true" layoutX="8.0" layoutY="170.0" prefHeight="32.0" prefWidth="236.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="167.0">
+                  <Button fx:id="messaInFunzione" disable="true" layoutX="349.0" layoutY="209.0" mnemonicParsing="false" onAction="#messaInFunzione" text="Messa In Funzione" />
+                  <GridPane gridLinesVisible="true" layoutX="50.0" layoutY="208.0" prefHeight="33.0" prefWidth="200.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="121.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="79.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -990,7 +1002,7 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <ComboBox fx:id="analisi" disable="true" layoutX="-16.0" layoutY="6.0" onAction="#analisiEseguite" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ComboBox fx:id="analisi" disable="true" onAction="#analisiEseguite" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -1000,13 +1012,13 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="8.0" layoutY="201.0" prefHeight="42.0" prefWidth="481.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="201.0">
+                  <GridPane layoutX="28.0" layoutY="267.0" prefHeight="30.0" prefWidth="558.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="90.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="120.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="101.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="85.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="73.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="118.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="137.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="139.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="89.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -1041,6 +1053,61 @@
                   </GridPane>
                </children>
             </AnchorPane>
+            <AnchorPane layoutY="832.0" prefHeight="189.0" prefWidth="600.0" style="-fx-background-color: #FFD8A9; -fx-border-color: black;">
+               <children>
+                  <GridPane gridLinesVisible="true" layoutX="30.0" layoutY="45.0" prefHeight="41.0" prefWidth="317.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="10.0" prefWidth="42.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="128.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="68.0" minWidth="10.0" prefWidth="48.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.0" minWidth="10.0" prefWidth="36.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <Label alignment="CENTER" layoutX="50.0" text="Utenti" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Button fx:id="prec" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#previous" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="primo" layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#first" text="&lt;&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                           <children>
+                              <Button fx:id="segue" layoutX="-5.0" layoutY="1.0" mnemonicParsing="false" onAction="#next" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+                           <children>
+                              <Button fx:id="ultimo" layoutY="1.0" mnemonicParsing="false" onAction="#last" text="&gt;&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" layoutX="208.0" layoutY="15.0" style="-fx-background-color: #8CD3AD;" text="Gestione Archivio Utenti" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="ricerche" layoutX="30.0" layoutY="100.0" mnemonicParsing="false" onAction="#gotoRicercaUtenti" prefHeight="30.0" prefWidth="150.0" text="Ricerche" />
+                  <Button fx:id="caldaie" layoutX="30.0" layoutY="146.0" mnemonicParsing="false" onAction="#gotoCaldaie" prefHeight="30.0" prefWidth="150.0" text="Caldaie" />
+                  <Button fx:id="storico" layoutX="225.0" layoutY="100.0" mnemonicParsing="false" onAction="#gotoStoricoInterventi" prefHeight="30.0" prefWidth="150.0" text="Storico" />
+                  <Button fx:id="installatori" layoutX="225.0" layoutY="146.0" mnemonicParsing="false" onAction="#gotoInstallatori" prefHeight="30.0" prefWidth="150.0" text="Installatori" />
+                  <Button fx:id="bruciatori" layoutX="416.0" layoutY="100.0" mnemonicParsing="false" onAction="#gotoBruciatori" prefHeight="30.0" prefWidth="150.0" text="Bruciatori" />
+                  <Button fx:id="amministratori" layoutX="416.0" layoutY="146.0" mnemonicParsing="false" onAction="#gotoAmministratori" prefHeight="30.0" prefWidth="150.0" text="Amministratori" />
+                  <Button fx:id="altroUt" layoutX="416.0" layoutY="55.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
+               </children>
+               </AnchorPane>
          </children>
       </AnchorPane>
       <MenuBar layoutX="204.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -1076,60 +1143,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane layoutX="62.0" layoutY="726.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow; -fx-border-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="650.0">
-         <children>
-            <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="36.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="35.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="10.0" prefWidth="42.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="68.0" minWidth="10.0" prefWidth="41.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.0" minWidth="10.0" prefWidth="36.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-                     <children>
-                        <Label alignment="CENTER" layoutX="50.0" text="Utenti" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <Button fx:id="prec" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#previous" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="primo" layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#first" text="&lt;&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-                     <children>
-                        <Button fx:id="segue" layoutX="-5.0" layoutY="1.0" mnemonicParsing="false" onAction="#next" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
-                     <children>
-                        <Button fx:id="ultimo" layoutY="1.0" mnemonicParsing="false" onAction="#last" text="&gt;&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </GridPane>
-            <Label alignment="CENTER" layoutX="208.0" layoutY="15.0" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: lime;" text="Gestione Archivio Utenti" textAlignment="CENTER" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="ricerche" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#gotoRicercaUtenti" prefHeight="30.0" prefWidth="150.0" text="Ricerche" />
-            <Button fx:id="caldaie" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#gotoCaldaie" prefHeight="30.0" prefWidth="150.0" text="Caldaie" />
-            <Button fx:id="storico" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" onAction="#gotoStoricoInterventi" prefHeight="30.0" prefWidth="150.0" text="Storico" />
-            <Button fx:id="installatori" layoutX="173.0" layoutY="114.0" mnemonicParsing="false" onAction="#gotoInstallatori" prefHeight="30.0" prefWidth="150.0" text="Installatori" />
-            <Button fx:id="bruciatori" layoutX="331.0" layoutY="76.0" mnemonicParsing="false" onAction="#gotoBruciatori" prefHeight="30.0" prefWidth="150.0" text="Bruciatori" />
-            <Button fx:id="amministratori" layoutX="331.0" layoutY="114.0" mnemonicParsing="false" onAction="#gotoAmministratori" prefHeight="30.0" prefWidth="150.0" text="Amministratori" />
-            <Button fx:id="altroUt" layoutX="331.0" layoutY="33.0" mnemonicParsing="false" onAction="#cercaW" prefHeight="30.0" prefWidth="150.0" text="Altro Utente" />
-         </children></AnchorPane>
    </children>
 </AnchorPane>
 </AnchorPane>
