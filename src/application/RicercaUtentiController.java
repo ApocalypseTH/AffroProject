@@ -815,27 +815,18 @@ public class RicercaUtentiController implements Initializable{
 			q=q.concat(" order by u.cognomeu, u.nomeu");
 		}
 		
-		try {
-			System.out.println(q);
-			
+		System.out.println(q);
+		
 //			stm.execute(q);
-			if(storico) {
-				StoricoPerUtente su = new StoricoPerUtente(q);
-				s.close();
-				su.start(primaryStage);
-			}
-			else {
-				RisultatiRicercaUtenti ru = new RisultatiRicercaUtenti(q);
-				s.close();
-				ru.start(primaryStage);
-			}
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attenzione");
-			alert.setHeaderText("Non inserire caratteri sensibili come ' o /");
-			alert.showAndWait();
+		if(storico) {
+			StoricoPerUtente su = new StoricoPerUtente(q);
+			s.close();
+			su.start(primaryStage);
+		}
+		else {
+			RisultatiRicercaUtenti ru = new RisultatiRicercaUtenti(q);
+			s.close();
+			ru.start(primaryStage);
 		}
 			
 	}
