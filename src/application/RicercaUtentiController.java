@@ -818,7 +818,7 @@ public class RicercaUtentiController implements Initializable{
 		try {
 			System.out.println(q);
 			
-			stm.execute(q);
+//			stm.execute(q);
 			if(storico) {
 				StoricoPerUtente su = new StoricoPerUtente(q);
 				s.close();
